@@ -1,0 +1,54 @@
+.navbar {
+    display: flex;
+    height: 50px;
+    background: #003580;
+}
+
+.navContainer {
+    width: 100%;
+    max-width: 1024px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    margin-left: 50px;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 39px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}   
+
+.navItemLinks {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+}
+
+.navItemLinks a {
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navItemActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navItemMenu {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+
+
+
