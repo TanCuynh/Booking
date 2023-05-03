@@ -1,0 +1,21 @@
+.latestProperties {
+    display: flex;
+    flex-direction: column;
+}
+
+.latestPropertiesTitle {
+    width: 20%;
+    padding:  3rem 0 0 4rem;
+}
+
+.latestPropertiesTitle h1 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 48px;
+    color: #484848;
+}
+
+.latestPropertiesItem {
+    padding:  3rem;
+}

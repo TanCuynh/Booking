@@ -1,54 +1,106 @@
 .navbar {
+    height: 75px;
     display: flex;
-    height: 50px;
-    background: #003580;
-}
-
-.navContainer {
-    width: 100%;
-    max-width: 1024px;
-    color: #fff;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    /* background-color: #003580; */
 }
 
-.logo {
-    margin-left: 50px;
+.navLinks {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navLinks span {
+    font-family: 'Montserrat';
     font-weight: 800;
-    font-size: 25px;
+    font-size: 35px;
     line-height: 39px;
+
     display: flex;
     align-items: center;
-    cursor: pointer;
-}   
 
-.navItemLinks {
+    color: #fff;
+    cursor: pointer;
+}
+
+.navLinksContainer {
     display: flex;
     flex-direction: row;
-    margin: 2rem;
+    margin-left: 1rem;
 }
 
-.navItemLinks a {
-    padding: 5px 10px;
-    color: #fff;
+.navLinksContainer a {
+    font-family: 'Montserrat';
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
     text-decoration: none;
-    cursor: pointer;
+    margin-left: 3rem;
 }
 
 .navItemActions {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.becomeHostBtn {
+    padding: 0 2rem;
+    background: #FDC32D;
+    color: #484848;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
 .navItemMenu {
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    justify-content: flex-end;
+    margin-left: 2rem;
+
+    display: flex;
+    align-items: center;
 }
 
+.navItemMenu svg {
+    cursor: pointer;
+}
 
+.navItemMenuContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
 
+    text-align: start;
+    background-color: #eee;
+    padding: 1rem;
+    position: absolute;
+    top: 45px;
+    right: -5px;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    min-width: 150px;
+    border-radius: 10px;
+    z-index: 999;
+}
 
+.navItemMenuContainer p {
+    margin: 1rem 0;
+}
+
+.navItemMenuContainer a {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: #484848;
+    text-decoration: none;
+}

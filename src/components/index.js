@@ -1,2 +1,10 @@
 export {default as Navbar} from './navbar/Navbar';
 export {default as Header} from './header/Header';
+export {default as LatestProperties} from './latestProperties/LatestProperties';
+export {default as NearbyProperties} from './nearbyProperties/NearbyProperties';
+export {default as TopRateProperties} from './topRateProperties/TopRateProperties';
+export {default as FeaturedProperties} from './featuredProperties/FeaturedProperties';
+export {default as HostRequest} from './hostRequest/HostRequest';
+export {default as BrowseRequest} from './browseRequest/BrowseRequest';
+export {default as Blogs} from './blogs/Blogs';
+export {default as Footer} from './footer/Footer';

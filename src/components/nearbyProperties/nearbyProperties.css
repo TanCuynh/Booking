@@ -1,0 +1,21 @@
+.nearbyProperties {
+    display: flex;
+    flex-direction: column;
+}
+
+.nearbyPropertiesTitle {
+    width: 20%;
+    padding:  3rem 0 0 4rem;
+}
+
+.nearbyPropertiesTitle h1 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 48px;
+    color: #484848;
+}
+
+.nearbyPropertiesItem {
+    padding:  3rem;
+}

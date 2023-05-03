@@ -1,0 +1,59 @@
+.browseRequest {
+    /* background: #003580; */
+    background-image: url('https://wallpaper.dog/large/20517137.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 2rem 4rem;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+}
+
+.browseRequestItems {
+    padding: 4rem 5rem;
+}
+
+.browseRequestItems h3 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 52px;
+    width: 70%;
+}
+
+.browseRequestItems span {
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.browseRequestBtn {
+    background: #4173D8;
+    border-radius: 35px;
+    width: fit-content;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+.browseRequestBtn span {
+    padding: 2rem;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 70px;
+}
+
+.browseRequestTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.browseRequestTitle h1 {
+    width: 70%;
+    font-weight: 800;
+    font-size: 100px;
+    line-height: 122px;
+}

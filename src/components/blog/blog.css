@@ -1,0 +1,32 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    color: #484848;
+    cursor: pointer;
+}
+
+.blogImg img {
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.blogDesc h3 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 15px;
+}
+
+.blogDesc span {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 5px;
+    color: #FDC32D;
+}
+
+
+.moreBlogsBtn span {
+    width: fit-content;
+    color: #fff;
+    display: flex;
+}

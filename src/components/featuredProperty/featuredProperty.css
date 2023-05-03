@@ -1,0 +1,68 @@
+.featuredProperty {
+    width: 100%;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.featuredPropertyImg {
+    width: 90%;
+    height: 400px;
+    background: url('https://media.moddb.com/images/downloads/1/12/11394/gallery150.jpg');
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+
+.featuredWishlistIcon {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+    padding: 1rem;
+}
+
+.featuredPropertyImg span {
+    padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+}
+
+.featuredPropertyDesc {
+    display: flex;
+    flex-direction: column;
+    color: #484848;
+    font-family: 'Montserrat';
+    padding: 0 1rem;
+}
+
+.featuredPropertyDesc h3 {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 22px;
+}
+
+.featuredPropertyDesc span {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 17px;
+    color: #FDC32D;
+}
+
+.featuredPropertyAmenities {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 20px;
+    gap: 15px;
+}
+
+.featuredPropertyAmenities span {
+    color: #484848;
+    font-size: 20px;
+}
