@@ -4,3 +4,30 @@
     margin: 0;
     scroll-behavior: smooth;
 }
+.main-layout {
+    margin: 0 4rem;
+    margin-top: 100px;
+}
+.btn-custom {
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    cursor: pointer;
+}
+.btn-custom:hover {
+    opacity: 0.8;
+}
+.btn-custom-primary {
+    color: #ffffff;
+    background-color: #FDAB2C;
+}
+
+.btn-custom-default {
+    color: #484848;
+    background-color: #DDDDDD;
+}
+.btn-custom-danger {
+    color: #ffffff;
+    background-color: rgb(239 68 68);
+}
