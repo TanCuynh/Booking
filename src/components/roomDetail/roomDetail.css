@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+.roomDetailContainer {
+    width: 1400px;
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 8px rgba(194, 198, 204, 0.6);
+    display: grid;
+    grid-template-rows: 8fr 2fr;
+    gap: 10px;
+}
+
+.roomDetailDesc {
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    gap: 10px;
+}
+
+.roomDetailImgContainer {
+    background: #ddd;
+    padding: 1rem;
+}
+
+
+.roomDetailContentContainer {
+    padding: 2rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.roomDetailName {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.roomDetailAmenities {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 5px;
+}
+
+.roomDetailAmenity {
+    display: flex;
+    gap: 5px;
+}
+
+.roomDetailAmenity span {
+    font-size: 15px;
+}
+
+.roomDetailBedType {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.roomDetailDescContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.roomDetailDescContent>span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.roomDetailDescContentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.roomDetailDescContentItem {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.roomDetailDescContentItem span {
+    font-size: 15px;
+}
+
+.roomDetailBookingContainer {
+    padding: 2rem;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: #eee;
+}
+
+.roomDetailPriceContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.roomDetailPriceDescTitle h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.roomDetailPriceDescContent {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.roomDetailPriceDescContent span {
+    font-size: 16px;
+}
+
+.roomDetailPrice span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.roomDetailBookingBtn {
+    background: #0071c2;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    width: 200px;
+    height: 70px;
+    border-radius: 888px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.roomDetailBookingBtn:hover {
+    background: #00487a;
+}

@@ -1,5 +1,4 @@
 .browseRequest {
-    /* background: #003580; */
     background-image: url('https://wallpaper.dog/large/20517137.jpg');
     background-size: cover;
     background-position: center;
@@ -19,22 +18,27 @@
 
 .browseRequestItems h3 {
     font-weight: 700;
-    font-size: 40px;
-    line-height: 52px;
+    font-size: 35px;
+    line-height: 50px;
     width: 70%;
 }
 
 .browseRequestItems span {
     font-weight: 500;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .browseRequestBtn {
     background: #4173D8;
     border-radius: 35px;
-    width: fit-content;
+    width: 250px;
     margin-top: 3rem;
+    text-align: center;
     cursor: pointer;
+}
+
+.browseRequestBtn:hover {
+    background: #7295db;
 }
 
 .browseRequestBtn span {

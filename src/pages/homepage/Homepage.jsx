@@ -18,7 +18,7 @@ const Homepage = () => {
     return (
         <div className='App'>
             <div className='header_bg'>
-                <Navbar />
+                <Navbar type="home"/>
                 <Header />
             </div>
             <LatestProperties />
@@ -28,7 +28,7 @@ const Homepage = () => {
             <FeaturedProperties />
             <BrowseRequest />
             <Blogs />
-            < Footer />
+            <Footer />
         </div>
     )
 }

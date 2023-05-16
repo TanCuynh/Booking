@@ -5,15 +5,17 @@
 
 .blogsTitle {
     width: 20%;
-    padding: 3rem 0 0 4rem;
+    padding-top: 1rem;
+    padding-left: 4rem;
 }
 
 .blogsTitle h1 {
     font-family: 'Montserrat';
     font-weight: 700;
-    font-size: 36px;
-    line-height: 48px;
+    font-size: 28px;
+    line-height: 40px;
     color: #484848;
+    padding-bottom: 1rem;
 }
 
 .blogItems {
@@ -21,6 +23,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 4rem;
+    gap: 20px;
 }
 
 .moreBlogsBtn {
@@ -30,14 +33,17 @@
 }
 
 .moreBlogsBtn span {
-    margin-top: 1rem;
     padding: 0 4rem;
     font-family: 'Montserrat';
     font-weight: 600;
-    font-size: 18px;
-    line-height: 70px;
+    font-size: 16px;
+    line-height: 60px;
     width: fit-content;
     background: #4173D8;
-    border-radius: 35px;
+    border-radius: 30px;
     cursor: pointer;
+}
+
+.moreBlogsBtn span:hover {
+    background: #7295db;
 }

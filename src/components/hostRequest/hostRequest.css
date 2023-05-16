@@ -1,5 +1,4 @@
 .hostRequest {
-    /* background: #003580; */
     background-image: url('https://wallpaperaccess.com/full/4492362.jpg');
     background-size: cover;
     background-position: center;
@@ -19,22 +18,27 @@
 
 .hostRequestItems h3 {
     font-weight: 700;
-    font-size: 40px;
-    line-height: 52px;
+    font-size: 35px;
+    line-height: 50px;
     width: 60%;
 }
 
 .hostRequestItems span {
     font-weight: 500;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .hostRequestBtn {
     background: #4173D8;
     border-radius: 35px;
-    width: fit-content;
+    width: 250px;
+    text-align: center;
     margin-top: 3rem;
     cursor: pointer;
+}
+
+.hostRequestBtn:hover {
+    background: #7295db;
 }
 
 .hostRequestBtn span {

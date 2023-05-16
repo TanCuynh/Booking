@@ -1,0 +1,119 @@
+.roomsTableContainer {
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 5fr 4fr 2fr 3fr;
+    gap: 0;
+}
+
+.roomsTableShowPricesBtnContainer,
+.roomsTableSleepsContainer,
+.roomsTableRoomQuantity {
+    border-right: 1px solid #4c76b2;
+    border-bottom: 1px solid #4c76b2;
+}
+
+.roomsTableRoomTypeContainer {
+    border-left: 1px solid #4c76b2;
+    border-bottom: 1px solid #4c76b2;
+    border-right: 1px solid #4c76b2;
+    display: flex;
+    align-items: center;
+}
+
+.roomsTableRoomType,
+.roomsTableSleeps,
+.roomsTableRoomQuantity,
+.roomsTableShowPriceBtn {
+    padding: 0.5rem 2rem;
+}
+
+.roomsTableRoomType {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.roomsTableRoomTypeTitle h3 {
+    font-size: 14px;
+}
+
+.roomsTableRoomTypeDesc {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    gap: 5px;
+}
+
+.roomsTableSleepsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.roomsTableSleeps {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.roomsTableSleepsItem {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    gap: 5px;
+}
+
+.roomsTableRoomQuantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.roomsTableRoomQuantity select {
+    width: 50%;
+    height: 75%;
+}
+
+.roomsTableShowPricesBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roomsTableShowPriceBtn {
+    width: 75%;
+    height: max-content;
+    text-align: center;
+    background: #0071c2;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.roomsTableShowPriceBtn:hover {
+    background: #00487a;
+}
+
+.roomDetailModalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.roomDetailModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

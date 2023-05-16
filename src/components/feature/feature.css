@@ -1,14 +1,19 @@
 .feature {
-    width: 90%;
+    width: 80%;
     margin: 1rem;
     height: 450px;
-    background: url('https://cf.bstatic.com/xdata/images/hotel/max1280x900/297693925.jpg?k=c5cfc34421f30c8fb83452c7a9be6b0741e55bcbcc02b4e5c61fa500b99b8f80&o=&hp=1');
     color: #fff;
+    font-family: 'Montserrat', sans-serif;
+
+    background: url('https://cf.bstatic.com/xdata/images/hotel/max1280x900/297693925.jpg?k=c5cfc34421f30c8fb83452c7a9be6b0741e55bcbcc02b4e5c61fa500b99b8f80&o=&hp=1');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
-    cursor: pointer;
 }
 
 .wishlistIcon {
@@ -16,6 +21,7 @@
     display: flex;
     justify-content: flex-end;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .featureHotelInfo {
@@ -26,15 +32,23 @@
 }
 
 .featureHotelName {
-    font-family: 'Montserrat';
-    font-weight: 700;
-    font-size: 23px;
-    line-height: 48px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.featureHotelName a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.featureHotelName:hover {
+    text-decoration: underline;
 }
 
 .featureHotelAddress {
-    font-family: 'Montserrat';
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 16px;
 }

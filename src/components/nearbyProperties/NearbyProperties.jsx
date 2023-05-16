@@ -18,16 +18,13 @@ const NearbyProperties = () => {
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     slidesPerView={4}
-                    navigation
                     autoplay={{
-                        delay: 5000,
+                        delay: 3000,
                         disableOnInteraction: false
                     }}
                     onSlideChange={() => console.log('Slide Change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
-                    <div className="next"></div>
-                    <div className="prev"></div>
                     <SwiperSlide><Feature /></SwiperSlide>
                     <SwiperSlide><Feature /></SwiperSlide>
                     <SwiperSlide><Feature /></SwiperSlide>

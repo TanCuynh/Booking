@@ -18,9 +18,8 @@ const TopRateProperties = () => {
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     slidesPerView={4}
-                    navigation
                     autoplay={{
-                        delay: 5000,
+                        delay: 3000,
                         disableOnInteraction: false
                     }}
                     onSlideChange={() => console.log('Slide Change')}

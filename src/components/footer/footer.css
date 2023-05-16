@@ -18,22 +18,24 @@
     align-items: flex-start;
     flex-wrap: wrap;
     text-align: left;
+    padding-top: 2rem;
 }
 
 .footerLogo {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .footerLogo h1 {
     font-weight: 800;
-    font-size: 45px;
-    line-height: 61px;
+    font-size: 40px;
+    line-height: 60px;
 }
 
 .footerLogo p {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 20px;
 }
 
@@ -41,21 +43,26 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    gap: 15px;
 }
 
 .footerLinksDiv h4 {
     font-weight: 700;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 30px;
 }
 
 .footerLinksDiv p {
     font-weight: 500;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 30px;
     cursor: pointer;
 }
 
+.footerLinksDiv p:hover {
+    text-decoration: underline;
+}
+
 .footerCopyright {
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
