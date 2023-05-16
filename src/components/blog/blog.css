@@ -1,0 +1,47 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    color: #484848;
+}
+
+.blogImg img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.blogDesc {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogDesc h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 15px;
+    padding: 1rem 0;
+}
+
+.blogDesc a {
+    text-decoration: none;
+    color: #484848;
+    cursor: pointer;
+}
+
+.blogDesc a:hover {
+    text-decoration: underline;
+}
+
+.blogDesc span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 10px;
+    color: #FDC32D;
+}
+
+
+.moreBlogsBtn span {
+    width: fit-content;
+    color: #fff;
+}

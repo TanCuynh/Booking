@@ -1,0 +1,62 @@
+.slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Big image section */
+.big-image {
+    width: 100%;
+}
+
+
+/* Styling for Swiper slides */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the big image */
+.big-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling for the thumbnails */
+.thumbnails img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Active thumbnail styling */
+.swiper-pagination-bullet-active {
+    background-color: #8DD3BB;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    opacity: 0.5;
+    color: #fff;
+    font-weight: 800;
+    font-size: 20px;
+    border-radius: 99px;
+    padding: 10px;
+}
+
+.swiper-pagination-bullet {
+    background-color: #fff;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}

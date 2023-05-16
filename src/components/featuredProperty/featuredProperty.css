@@ -1,0 +1,86 @@
+.featuredProperty {
+    width: 100%;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.featuredPropertyImg {
+    width: 100%;
+    height: auto;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.featuredPropertyImg img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.featuredWishlistIcon {
+    font-size: 30px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.featuredPropertyPrice {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1;
+}
+
+.featuredPropertyDesc {
+    display: flex;
+    flex-direction: column;
+    color: #484848;
+    font-family: 'Montserrat';
+}
+
+.featuredPropertyDesc h3 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 20px;
+    padding: 1rem 0;
+}
+
+.featuredPropertyDesc a {
+    text-decoration: none;
+    color: #484848;
+    cursor: pointer;
+
+}
+
+.featuredPropertyDesc a:hover {
+    text-decoration: underline;
+}
+
+.featuredPropertyDesc span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+    color: #FDC32D;
+}
+
+.featuredPropertyAmenities {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 20px;
+    gap: 10px;
+}
+
+.featuredPropertyAmenities span {
+    color: #484848;
+    font-size: 20px;
+}

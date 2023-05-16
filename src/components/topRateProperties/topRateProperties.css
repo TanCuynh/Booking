@@ -1,0 +1,22 @@
+.topRateProperties {
+    display: flex;
+    flex-direction: column;
+}
+
+.topRatePropertiesTitle {
+    width: 20%;
+    padding-left: 4rem; 
+}
+
+.topRatePropertiesTitle h1 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 40px;
+    color: #484848;
+    padding-bottom: 1rem;
+}
+
+.topRatePropertiesItem {
+    padding: 3rem;
+}

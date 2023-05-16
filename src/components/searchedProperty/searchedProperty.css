@@ -1,0 +1,89 @@
+.searchedProperty {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+    color: #484848;
+    margin-bottom: 5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.searchedPropertyImg {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.searchedPropertyImg img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.searchedWishlistIcon {
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.searchedPropertyImg span {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.searchedPropertyDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1rem;
+}
+
+.searchedPropertyName {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 1rem;
+}
+
+.searchedPropertyName a {
+    text-decoration: none;
+    color: #484848;
+}
+
+.searchedPropertyName a:hover {
+    text-decoration: underline;
+}
+
+.searchedPropertyAddress {
+    font-size: 14px;
+    line-height: 30px;
+    color: #FDC32D;
+}
+
+.searchedPropertyAmenities {
+    padding: 0.5rem 0 1rem 1rem;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.searchedPropertyAmenity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}

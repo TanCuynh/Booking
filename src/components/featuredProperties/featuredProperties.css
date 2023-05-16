@@ -1,0 +1,34 @@
+.featuredProperties {
+    display: flex;
+    flex-direction: column;
+}
+
+.featuredPropertiesTitle {
+    width: 23%;
+    padding-left: 4rem;
+}
+
+.featuredPropertiesTitle h1 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 40px;
+    color: #484848;
+    padding-bottom: 1rem;
+}
+
+.a-sticky-thing {
+    width: 15%;
+    height: 3px;
+    background: #484848;
+    margin-left: 4rem;
+    border-radius: 5px;
+}
+
+.featuredPropertiesItem {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    padding: 3rem;
+    column-gap: 5rem;
+}
