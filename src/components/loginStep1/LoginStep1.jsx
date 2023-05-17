@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
-const Login = ({ onClose }) => {
+const LoginStep1 = ({ onClose }) => {
 
     const [openLogin2, setOpenLogin2] = useState(false);
 
@@ -40,7 +40,7 @@ const Login = ({ onClose }) => {
                     <input required="" type="email" className="container__mail-input" placeholder="Please enter email" />
                     <span className="container__mail-mess">We’ll send you a message to confirm your email. Standard message and data
                         rates apply.</span>
-                    <button className="container__mail-login" onClick={openPopupLogin2}>Continue</button>
+                    <button className="container__mail-login" onClick={ openPopupLogin2 }>Continue</button>
                 </div>
                 <div className="container__else">
                     <hr className="spe-first" />
@@ -61,18 +61,18 @@ const Login = ({ onClose }) => {
                         <span>Google</span>
                     </button>
                 </div>
-                <FontAwesomeIcon icon={faXmark} className='loginCloseBtn' onClick={handleClose}/>
+                <FontAwesomeIcon icon={ faXmark } className='loginCloseBtn' onClick={ handleClose } />
             </div>
-            {openLogin2 &&
-                <div className="login2ModalContainer" onClick={closePopupLogin2}>
-                    <div className="login2Modal" onClick={(e) => e.stopPropagation()}>
-                        <LoginStep2 onClose2={closePopupLogin2}/>
+            { openLogin2 &&
+                <div className="login2ModalContainer" onClick={ closePopupLogin2 }>
+                    <div className="login2Modal" onClick={ (e) => e.stopPropagation() }>
+                        <LoginStep2 onClose2={ closePopupLogin2 } />
                     </div>
                 </div>
             }
-            
+
         </>
     )
 }
 
-export default Login
+export default LoginStep1
