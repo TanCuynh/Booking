@@ -13,18 +13,20 @@ const HostProperties = () => {
 	return (
 		<div className="host-properties">
 			<div className="list-properties">
-				<div className="host-properties-title">
-					<h1>List Properties</h1>
+				<div className="host-properties-header">
+					<h1 className="host-properties-title">List Properties</h1>
 					<div>
-						<button className="btn-create" onClick={ handleClickCreate }>
-							<FontAwesomeIcon icon={ faPlus } />
+						<button className="btn-create" onClick={handleClickCreate}>
+							<FontAwesomeIcon icon={faPlus} />
 							<span>
 								Create new hotel
 							</span>
 						</button>
 					</div>
 				</div>
-				<HotelItem />
+				<div className="host-properties-container">
+					<HotelItem />
+				</div>
 			</div>
 
 		</div>

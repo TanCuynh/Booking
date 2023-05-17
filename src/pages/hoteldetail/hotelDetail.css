@@ -537,8 +537,6 @@
 .hotelDetailReviewComment {
     padding-top: 4rem;
     width: 100%;
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr); */
     display: flex;
     flex-direction: column;
     gap: 3rem;

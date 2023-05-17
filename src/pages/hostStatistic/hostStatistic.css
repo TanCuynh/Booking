@@ -1,0 +1,94 @@
+.hostStatisticContainer {
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+    gap: 2rem;
+}
+
+.hostStatisticInfo {
+    width: 100%;
+    height: fit-content;
+    padding: 4rem;
+    padding-top: 5rem;
+    background: #ddd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.hostAccountAvt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hostAccountImg {
+    width: 200px;
+    height: 200px;
+    background: #FDC32D;
+    border-radius: 999px;
+}
+
+.hostAccountChangeImg {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #484848;
+}
+
+.hostAccountVerify {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hostAccountVerify h3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    color: #484848;
+}
+
+.hostAccountVerify span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #9A9A9A;
+}
+
+.hostAccountVerifyConfirmContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hostAccountVerifyConfirmContainer h3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    color: #484848;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hostStatisticContent {
+    width: 100%;
+    height: 300px;
+    background: #eee;
+}

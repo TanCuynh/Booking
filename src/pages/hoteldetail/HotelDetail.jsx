@@ -240,13 +240,6 @@ const HotelDetail = () => {
                             </div>
                             <div className="hotelDetailItem">
                                 <span> <b>+5</b> more amenities</span>
-                                <FontAwesomeIcon icon={ faAnchor } className='offeredAmenityIcon' />
-                                <span>Yacht</span>
-                            </div>
-                        </div>
-                        <div className="showAmenitiesBtnContainer">
-                            <div className="showAmenitiesBtn">
-                                <span>Show All Amenities</span>
                             </div>
                         </div>
                     </div>
@@ -308,74 +301,6 @@ const HotelDetail = () => {
                             <ReviewComment />
                             <ReviewComment />
                             <ReviewComment />
-                            <div className="hotelDetailReviewCommentItem">
-                                <div className="hotelDetailReviewCommentHeader">
-                                    <div className="hotelDetailReviewAvt"></div>
-                                    <div className="hotelDetailReviewInfo">
-                                        <Rating
-                                            name="my-rating"
-                                            value={ value }
-                                            onChange={ handleRatingChange }
-                                        />
-                                        <h3>John Doberman</h3>
-                                        <span className='reviewDate'>Mar 12 2020</span>
-                                    </div>
-                                </div>
-                                <div className="hotelDetailReviewCommentContent">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div className="hotelDetailReviewCommentItem">
-                                <div className="hotelDetailReviewCommentHeader">
-                                    <div className="hotelDetailReviewAvt"></div>
-                                    <div className="hotelDetailReviewInfo">
-                                        <Rating
-                                            name="my-rating"
-                                            value={ value }
-                                            onChange={ handleRatingChange }
-                                        />
-                                        <h3>John Doberman</h3>
-                                        <span className='reviewDate'>Mar 12 2020</span>
-                                    </div>
-                                </div>
-                                <div className="hotelDetailReviewCommentContent">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div className="hotelDetailReviewCommentItem">
-                                <div className="hotelDetailReviewCommentHeader">
-                                    <div className="hotelDetailReviewAvt"></div>
-                                    <div className="hotelDetailReviewInfo">
-                                        <Rating
-                                            name="my-rating"
-                                            value={ value }
-                                            onChange={ handleRatingChange }
-                                        />
-                                        <h3>John Doberman</h3>
-                                        <span className='reviewDate'>Mar 12 2020</span>
-                                    </div>
-                                </div>
-                                <div className="hotelDetailReviewCommentContent">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div className="hotelDetailReviewCommentItem">
-                                <div className="hotelDetailReviewCommentHeader">
-                                    <div className="hotelDetailReviewAvt"></div>
-                                    <div className="hotelDetailReviewInfo">
-                                        <Rating
-                                            name="my-rating"
-                                            value={ value }
-                                            onChange={ handleRatingChange }
-                                        />
-                                        <h3>John Doberman</h3>
-                                        <span className='reviewDate'>Mar 12 2020</span>
-                                    </div>
-                                </div>
-                                <div className="hotelDetailReviewCommentContent">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
                         </div>
                         <div className="hotelDetailReviewShowCommentBtnContainer">
                             <div className="hotelDetailReviewShowCommentBtn">

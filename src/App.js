@@ -12,6 +12,7 @@ import HostProperties from "./pages/hostProperties/HostProperties";
 import './App.css';
 import HostPropertiesModify from "./pages/hostPropertiesModify/HostPropertiesModify";
 import HostCreateHotel from "./pages/hostCreateHotel/HostCreateHotel";
+import HostStatistic from "./pages/hostStatistic/HostStatistic";
 
 const App = () => {
     return (
@@ -19,11 +20,12 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="host" element={<AppLayout />}>
+                    <Route path="statistic" element={<HostStatistic />} />  
                     <Route path="page" element={<HostProperties />} />
                     <Route path="modify" element={<HostPropertiesModify />} />
                     <Route path="create" element={<HostCreateHotel />} />
                 </Route>
-                <Route path="search" element={<AppLayout />}>
+                <Route path="search" element={<AppLayout /> }>
                     <Route path="" element={<Searchpage />} />
                     <Route path=":id" element={<HotelDetail />} />
                 </Route>
