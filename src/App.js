@@ -23,8 +23,10 @@ const App = () => {
                     <Route path="modify" element={<HostPropertiesModify />} />
                     <Route path="create" element={<HostCreateHotel />} />
                 </Route>
-                <Route path="/search" element={<Searchpage />} />
-                <Route path="/search/:id" element={<HotelDetail />} />
+                <Route path="search" element={<AppLayout />}>
+                    <Route path="" element={<Searchpage />} />
+                    <Route path=":id" element={<HotelDetail />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );
