@@ -18,6 +18,8 @@ const Menu = () => (
 
 const Navbar = ({ type }) => {
 
+    const [openPopups, setOpenPopups] = useState([]);
+
     const [openLogin, setOpenLogin] = useState(false);
 
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -63,7 +65,7 @@ const Navbar = ({ type }) => {
             {openLogin &&
                 <div className="loginModalContainer" onClick={closePopup}>
                     <div className="loginModal" onClick={(e) => e.stopPropagation()}>
-                        <Login />
+                        <Login onClose={closePopup} />
                     </div>
                 </div>
             }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnchor, faBath, faBed, faBuilding, faCar, faGamepad, faHouseMedicalCircleCheck, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi } from '@fortawesome/free-solid-svg-icons'
+import { faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi, faAnchor } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck, faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
 import { LinearProgress, Rating } from '@mui/material'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
@@ -14,6 +14,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
+import ReviewComment from '../../components/reviewComment/ReviewComment'
 
 
 const markerIcon = L.icon({
@@ -238,6 +239,7 @@ const HotelDetail = () => {
                                 <span>Console Games</span>
                             </div>
                             <div className="hotelDetailItem">
+                                <span> <b>+5</b> more amenities</span>
                                 <FontAwesomeIcon icon={ faAnchor } className='offeredAmenityIcon' />
                                 <span>Yacht</span>
                             </div>
@@ -303,6 +305,9 @@ const HotelDetail = () => {
                             </div>
                         </div>
                         <div className="hotelDetailReviewComment">
+                            <ReviewComment />
+                            <ReviewComment />
+                            <ReviewComment />
                             <div className="hotelDetailReviewCommentItem">
                                 <div className="hotelDetailReviewCommentHeader">
                                     <div className="hotelDetailReviewAvt"></div>

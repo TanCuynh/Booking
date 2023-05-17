@@ -1,15 +1,18 @@
 .slideshow {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 /* Big image section */
 .big-image {
     width: 100%;
 }
-
 
 /* Styling for Swiper slides */
 .swiper-slide {
@@ -38,10 +41,6 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    opacity: 0.5;
     color: #fff;
     font-weight: 800;
     font-size: 20px;

@@ -1,17 +1,12 @@
 import React, { useRef, useState } from 'react'
 import './searchpage.css'
 import { Footer, Navbar, SearchedProperty } from '../../components'
-import { MapContainer, TileLayer } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 import { useLocation } from 'react-router-dom'
 import { DateRange } from 'react-date-range'
 import { format } from 'date-fns'
 
 const Searchpage = () => {
-
-    const [center, setCenter] = useState({ lat: 13.084622, lng: 80.248357 });
-    const ZOOM_LEVEL = 16;
-    const mapRef = useRef();
 
     const location = useLocation();
     const [destination, setDestination] = useState(location.state.destination);

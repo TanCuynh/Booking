@@ -26,10 +26,17 @@
 }
 
 .roomDetailImgContainer {
-    background: #ddd;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* background: #ddd; */
     padding: 1rem;
 }
 
+.roomDetailImgSlideshowContainer {
+    width: 800px;
+    height: auto;
+}
 
 .roomDetailContentContainer {
     padding: 2rem;
@@ -148,4 +155,12 @@
 
 .roomDetailBookingBtn:hover {
     background: #00487a;
+}
+
+.roomDetailCloseBtn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 30px;
+    cursor: pointer;
 }

@@ -59,7 +59,7 @@ const RoomsTable = () => {
             {showPrices &&
                 <div className="roomDetailModalContainer" onClick={closePopup}>
                 <div className="roomDetailModal" onClick={(e) => e.stopPropagation()}>
-                    <RoomDetail />
+                    <RoomDetail onClose={closePopup} />
                 </div>
             </div>}
         </div>

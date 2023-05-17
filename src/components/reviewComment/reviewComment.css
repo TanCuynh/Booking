@@ -1,0 +1,39 @@
+.reviewCommentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reviewCommentHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.reviewCommentUserAvt {
+    width: 70px;
+    height: 70px;
+    border-radius: 999px;
+    background: #FDC32D;
+}
+
+.reviewCommentUsername {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.reviewCommentDate {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9A9A9A;
+}
+
+.reviewCommentContent {
+    width: 80%;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #9A9A9A;
+}

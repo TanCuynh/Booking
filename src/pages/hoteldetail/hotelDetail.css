@@ -414,37 +414,6 @@
     justify-content: flex-start;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .hotelDetailOfferedAmenities {
     padding-top: 4rem;
     display: flex;
@@ -474,6 +443,10 @@
     gap: 1rem;
 }
 
+.hotelDetailItem b {
+    font-size: 18px;
+}
+
 .offeredAmenityIcon {
     font-size: 20px;
 }
@@ -483,27 +456,6 @@
     font-size: 16px;
     line-height: 18px;
     color: #484848;
-}
-
-.showAmenitiesBtnContainer {
-    padding-top: 1rem;
-}
-
-.showAmenitiesBtn {
-    width: 30%;
-    padding: 1.5rem 0;
-    background: #FDC32D;
-    text-align: center;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 18px;
-    color: #484848;
-    border-radius: 999px;
-    cursor: pointer;
-}
-
-.showAmenitiesBtn:hover {
-    background: #ffb700;
 }
 
 .hotelDetailSafetyHygiene {
@@ -585,54 +537,15 @@
 .hotelDetailReviewComment {
     padding-top: 4rem;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.hotelDetailReviewCommentItem {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr); */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-}
-
-.hotelDetailReviewCommentHeader {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-.hotelDetailReviewAvt {
-    width: 70px;
-    height: 70px;
-    border-radius: 999px;
-    background: #FDC32D;
-}
-
-.hotelDetailReviewInfo h3 {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-}
-
-.hotelDetailReviewInfo .reviewDate {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: #9A9A9A;
-}
-
-.hotelDetailReviewCommentContent {
-    width: 80%;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 20px;
-    color: #9A9A9A;
+    gap: 3rem;
 }
 
 .hotelDetailReviewShowCommentBtnContainer {
     padding-top: 3rem;
-    /* background: #9A9A9A; */
 }
 
 .hotelDetailReviewShowCommentBtn {
