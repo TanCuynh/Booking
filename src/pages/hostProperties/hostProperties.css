@@ -1,0 +1,31 @@
+.host-properties {
+}
+.list-properties{
+
+}
+
+.list-properties h1{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin-bottom: 18px;
+}
+
+.host-properties-title {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.btn-create {
+	padding: 10px 20px;
+	color: #ffffff;
+	border: none;
+	background-color: #FDAB2C;
+	border-radius: 999px;
+	cursor: pointer;
+}
+.btn-create span {
+	margin-left: 4px;
+}
+.btn-create:hover {
+	opacity: 0.8;
+}
