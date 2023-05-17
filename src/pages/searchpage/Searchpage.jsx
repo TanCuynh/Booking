@@ -21,25 +21,24 @@ const Searchpage = () => {
 
     return (
         <div className="searchpage">
-            <Navbar />
             <div className="searchContainer">
                 <div className="searchFilters">
                     <div className="searchedInput">
                         <h1 className="searchedInputTitle">Search</h1>
                         <div className="searchedInputItem">
                             <label>Destination</label>
-                            <input placeholder={destination} type="text" />
+                            <input placeholder={ destination } type="text" />
                         </div>
                         <div className="searchedInputItem">
                             <label>Check-in Date</label>
-                            <span onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-                            {openDate && (
+                            <span onClick={ () => setOpenDate(!openDate) }>{ `${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}` }</span>
+                            { openDate && (
                                 <DateRange
-                                    onChange={item => setDate([item.selection])}
-                                    minDate={new Date()}
-                                    ranges={date}
+                                    onChange={ item => setDate([item.selection]) }
+                                    minDate={ new Date() }
+                                    ranges={ date }
                                 />
-                            )}
+                            ) }
                         </div>
                         <div className="searchedInputItem">
                             <label>Options</label>
@@ -54,15 +53,15 @@ const Searchpage = () => {
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Adult </span>
-                                    <input type="number" min={1} className="searchedOptionInput" placeholder={options.adult} />
+                                    <input type="number" min={ 1 } className="searchedOptionInput" placeholder={ options.adult } />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Children </span>
-                                    <input type="number" min={0} className="searchedOptionInput" placeholder={options.children} />
+                                    <input type="number" min={ 0 } className="searchedOptionInput" placeholder={ options.children } />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Room </span>
-                                    <input type="number" min={1} className="searchedOptionInput" placeholder={options.room} />
+                                    <input type="number" min={ 1 } className="searchedOptionInput" placeholder={ options.room } />
                                 </div>
                             </div>
                         </div>
@@ -216,7 +215,6 @@ const Searchpage = () => {
                     </div>
                 </div>
             </div>
-            < Footer />
         </div>
     )
 }

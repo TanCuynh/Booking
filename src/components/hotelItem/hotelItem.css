@@ -1,0 +1,32 @@
+.hotel-item {
+	width: 280px;
+}
+.hotel-item-content {
+	position: relative;
+	margin-bottom: 10px;
+}
+.hotel-item-content img {
+	width: 280px;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 6px;
+}
+.short-description {
+	position: absolute;
+	bottom: 0;
+	margin-left: 24px;
+	margin-bottom: 20px;
+	color: #ffffff;
+}
+.short-description-h1 {
+	font-size: 18px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.short-description-span {
+	font-size: 14px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.hotel-item-action {
+	display: flex;
+	justify-content: space-around;
+}
