@@ -3,8 +3,15 @@ import './loginStep2.css'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LoginStep2 = () => {
+const LoginStep2 = ({ onClose2 }) => {
+
+    const handleClose = () => {
+        onClose2();
+    }
+
     return (
         <>
             <div class="login2Container">
@@ -48,6 +55,7 @@ const LoginStep2 = () => {
                     </button>
                 </div>
             </div>
+            <FontAwesomeIcon icon={faXmark} className='login2CloseBtn' onClick={handleClose}/>
         </>
     )
 }

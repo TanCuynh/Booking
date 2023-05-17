@@ -1,7 +1,7 @@
 import React from 'react'
 import './roomDetail.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faCheck, faDoorOpen, faMountainSun, faShower, faVolumeXmark, faWifi } from '@fortawesome/free-solid-svg-icons'
+import { faBed, faCheck, faDoorOpen, faMountainSun, faShower, faVolumeXmark, faWifi, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faSnowflake } from '@fortawesome/free-regular-svg-icons'
 import Slideshow from '../slideshow/Slideshow'
 
@@ -14,13 +14,19 @@ const images = [
     "https://cf.bstatic.com/xdata/images/hotel/max1280x900/373917970.jpg?k=e9ca04d3911f6ff3dc37e1a157b2baa9fefd9871c0f9ec905cbac61809c8bca8&o=&hp=1",
 ];
 
-const RoomDetail = () => {
+const RoomDetail = ({ onClose }) => {
+
+    const handleClose = () => {
+        onClose(); // Call the onClose function passed from the parent component
+    };
+
     return (
         <div className="roomDetailContainer">
             <div className="roomDetailDesc">
                 <div className="roomDetailImgContainer">
-                <Slideshow images={images} />
-                   
+                    <div className="roomDetailImgSlideshowContainer">
+                        <Slideshow images={images} className='roomDetailSlideshow' />
+                    </div>
                 </div>
                 <div className="roomDetailContentContainer">
                     <h3 className='roomDetailName'>Small Double Room</h3>
@@ -133,7 +139,7 @@ const RoomDetail = () => {
                             </div>
                             <div className="roomDetailDescContentItem">
                                 <FontAwesomeIcon icon={faCheck} />
-                                <span>There are rooms connenting through the connecting doors</span>
+                                <span>There are rooms connecting through the connecting doors</span>
                             </div>
                         </div>
                     </div>
@@ -160,6 +166,7 @@ const RoomDetail = () => {
                     </div>
                 </div>
             </div>
+            <FontAwesomeIcon icon={faXmark} className='roomDetailCloseBtn' onClick={handleClose} />
         </div>
     )
 }

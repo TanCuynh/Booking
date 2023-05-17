@@ -4,9 +4,11 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
 import LoginStep2 from "../loginStep2/LoginStep2";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
-const Login = () => {
+const Login = ({ onClose }) => {
 
     const [openLogin2, setOpenLogin2] = useState(false);
 
@@ -21,6 +23,10 @@ const Login = () => {
         setOpenLogin2(false);
         document.body.style.overflow = 'auto';
     };
+
+    const handleClose = () => {
+        onClose();
+    }
 
     return (
         <>
@@ -55,14 +61,16 @@ const Login = () => {
                         <span>Google</span>
                     </button>
                 </div>
+                <FontAwesomeIcon icon={faXmark} className='loginCloseBtn' onClick={handleClose}/>
             </div>
             {openLogin2 &&
                 <div className="login2ModalContainer" onClick={closePopupLogin2}>
                     <div className="login2Modal" onClick={(e) => e.stopPropagation()}>
-                        <LoginStep2 />
+                        <LoginStep2 onClose2={closePopupLogin2}/>
                     </div>
                 </div>
             }
+            
         </>
     )
 }
