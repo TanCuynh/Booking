@@ -155,6 +155,9 @@ const RoomDetail = ({ onClose }) => {
                             <span>1 double bed</span>
                             <FontAwesomeIcon icon={faBed} />
                         </div>
+                        <div className="roomDetailAvailableRooms">
+                            <span>2 rooms available</span>
+                        </div>
                     </div>
                     <div className="roomDetailPrice">
                         <span>$ 2000 USD for 2 nights</span>

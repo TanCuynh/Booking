@@ -7,6 +7,73 @@
     color: #484848;
 }
 
+.hotelDetailPopupImgContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.hotelDetailPopupImg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.popupImgWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupImgWrapper img {
+    width: fit-content;
+    height: auto;
+    object-fit: cover;
+}
+
+
+.closePopupBtn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 50px;
+    color: lightgray;
+}
+
+.arrowPopupBtn {
+    margin: 20px;
+    font-size: 50px;
+    color: lightgray;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .hotelDetailImg {
     width: 100%;
     padding: 4rem;
@@ -329,7 +396,7 @@
 
 .hotelDetailDate {
     position: absolute;
-    top: 1950px;
+    top: 2000px;
     left: 145px;
     font-family: 'Montserrat', sans-serif;
     border-radius: 10px;
@@ -339,7 +406,7 @@
 
 .hotelDetailOptions {
     position: absolute;
-    top: 1950px;
+    top: 2000px;
     background: #fff;
     color: #484848;
     border-radius: 10px;

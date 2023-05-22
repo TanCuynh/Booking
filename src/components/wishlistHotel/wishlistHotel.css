@@ -1,0 +1,39 @@
+.wishlistHotelContainer {
+    width: 330px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    color: white;
+    border-radius: 10px;
+
+}
+
+.wishlistHotelContainer img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.wishlistHotelInfo {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.wishlistHotelName {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 150%;
+}
+
+.wishlistHotelAddress {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.wishlistHotelDeleteBtn {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 30px;
+}

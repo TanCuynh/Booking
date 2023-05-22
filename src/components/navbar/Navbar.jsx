@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./navbar.css"
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { Link } from "react-router-dom";
-import Login from "../login/Login";
-import LoginStep2 from "../loginStep2/LoginStep2";
-import SignupStep2 from "../signupStep2/SignupStep2";
+import Login from '../../pages/login/Login';
+import { Avatar } from '@mui/material';
+import { APP_CONTEXT } from '../../App';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUp, faUpLong, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const Menu = () => (
@@ -17,10 +19,10 @@ const Menu = () => (
 
 
 const Navbar = ({ type }) => {
-
-    const [openPopups, setOpenPopups] = useState([]);
+    const context = useContext(APP_CONTEXT);
 
     const [openLogin, setOpenLogin] = useState(false);
+
 
     const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -34,6 +36,12 @@ const Navbar = ({ type }) => {
         document.body.style.overflow = 'auto';
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <div className={type === "home" ? "navbar homeMode" : "navbar"}>
@@ -42,10 +50,19 @@ const Navbar = ({ type }) => {
                 <div className="navLinksContainer">
                     <Menu />
                 </div>
+
             </div>
-            <div className="becomeHostBtn">
-                <span>Become A Host</span>
-            </div>
+            {
+                context?.user && <div className="becomeHostBtn">
+                    <Avatar alt="Remy Sharp" src={context.user.avatar} />
+                    <span>
+                        {
+                            context.user.email
+                        }
+                    </span>
+                </div>
+            }
+
             <div className="navItemMenu">
                 {toggleMenu
                     ? <RiCloseLine color='#fff' size='27' onClick={() => setToggleMenu(false)} />
@@ -55,12 +72,14 @@ const Navbar = ({ type }) => {
                 {toggleMenu && (
                     <div className="navItemMenuContainer">
                         <div className="navItemMenuContainerLinks">
-                            <p onClick={openPopup}><span>Log In</span></p>
-                            <p onClick={openPopup}><span>Sign Up</span></p>
+                            <p onClick={openPopup}><span>Log In - Sign Up</span></p>
                             <p><Link to="/help_center">Help Center</Link></p>
                         </div>
                     </div>
                 )}
+            </div>
+            <div className="scrollToTopBtn" onClick={scrollToTop}>
+                <FontAwesomeIcon icon={faUpLong} />
             </div>
             {openLogin &&
                 <div className="loginModalContainer" onClick={closePopup}>

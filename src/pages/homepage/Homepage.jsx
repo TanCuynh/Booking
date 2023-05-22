@@ -2,6 +2,7 @@ import React from 'react'
 import {
     Blogs,
     BrowseRequest,
+    DownloadRequest,
     FeaturedProperties,
     Footer,
     Header,
@@ -28,6 +29,7 @@ const Homepage = () => {
             <FeaturedProperties />
             <BrowseRequest />
             <Blogs />
+            <DownloadRequest />
             <Footer />
         </div>
     )

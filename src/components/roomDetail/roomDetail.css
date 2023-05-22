@@ -139,6 +139,12 @@
     font-weight: 600;
 }
 
+.roomDetailAvailableRooms span {
+    font-size: 16px;
+    font-weight: 600;
+    color: green;
+}
+
 .roomDetailBookingBtn {
     background: #0071c2;
     color: #fff;

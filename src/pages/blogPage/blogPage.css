@@ -1,0 +1,100 @@
+.blogPage {
+    padding: 4rem 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    color: #484848;
+}
+
+.blogPage small {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.blogPage h1 {
+    font-weight: 800;
+    font-size: 70px;
+    padding-bottom: 5rem;
+}
+
+.blogPage span {
+    font-weight: 700;
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+.blogPage p {
+    font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 2rem;
+}
+
+.blogPageImg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4rem;
+}
+
+.blogPageImg img {
+    width: 60%;
+    object-fit: cover;
+}
+
+.introduction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.introductionContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.introduction img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.location {
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 5rem;
+}
+
+.location img {
+    width: 150%;
+    object-fit: cover;
+}
+
+.locationContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.exploreAmenity {
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+
+.exploreAmenity img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.exploreAmenityContent {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}

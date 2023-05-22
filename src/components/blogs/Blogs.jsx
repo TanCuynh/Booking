@@ -12,9 +12,6 @@ const Blogs = () => {
                 <Blog />
                 <Blog />
             </div>
-            <div className="moreBlogsBtn">
-                <span>View All Blogs</span>
-            </div>
         </div>
     )
 }
