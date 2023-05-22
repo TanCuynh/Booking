@@ -29,7 +29,7 @@
 }
 
 .hostRequestBtn {
-    background: #4173D8;
+    background: #eca900;
     border-radius: 35px;
     width: 250px;
     text-align: center;
@@ -38,7 +38,7 @@
 }
 
 .hostRequestBtn:hover {
-    background: #7295db;
+    opacity: 0.8;
 }
 
 .hostRequestBtn span {

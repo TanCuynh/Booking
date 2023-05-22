@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Login from '../../pages/login/Login';
 import { Avatar } from '@mui/material';
 import { APP_CONTEXT } from '../../App';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUp, faUpLong, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const Menu = () => (
@@ -34,9 +36,15 @@ const Navbar = ({ type }) => {
         document.body.style.overflow = 'auto';
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
     return (
-        <div className={ type === "home" ? "navbar homeMode" : "navbar" }>
+        <div className={type === "home" ? "navbar homeMode" : "navbar"}>
             <div className="navLinks">
                 <span className='logo'> <Link to="/">STAYCATION.</Link></span>
                 <div className="navLinksContainer">
@@ -46,7 +54,7 @@ const Navbar = ({ type }) => {
             </div>
             {
                 context?.user && <div className="becomeHostBtn">
-                    <Avatar alt="Remy Sharp" src={ context.user.avatar } />
+                    <Avatar alt="Remy Sharp" src={context.user.avatar} />
                     <span>
                         {
                             context.user.email
@@ -56,25 +64,27 @@ const Navbar = ({ type }) => {
             }
 
             <div className="navItemMenu">
-                { toggleMenu
-                    ? <RiCloseLine color='#fff' size='27' onClick={ () => setToggleMenu(false) } />
-                    : <RiMenu3Line color='#fff' size='27' onClick={ () => setToggleMenu(true) } />
+                {toggleMenu
+                    ? <RiCloseLine color='#fff' size='27' onClick={() => setToggleMenu(false)} />
+                    : <RiMenu3Line color='#fff' size='27' onClick={() => setToggleMenu(true)} />
                 }
 
-                { toggleMenu && (
+                {toggleMenu && (
                     <div className="navItemMenuContainer">
                         <div className="navItemMenuContainerLinks">
-                            <p onClick={ openPopup }><span>Log In</span></p>
-                            <p onClick={ openPopup }><span>Sign Up</span></p>
+                            <p onClick={openPopup}><span>Log In - Sign Up</span></p>
                             <p><Link to="/help_center">Help Center</Link></p>
                         </div>
                     </div>
-                ) }
+                )}
             </div>
-            { openLogin &&
-                <div className="loginModalContainer" onClick={ closePopup }>
-                    <div className="loginModal" onClick={ (e) => e.stopPropagation() }>
-                        <Login onClose={ closePopup } />
+            <div className="scrollToTopBtn" onClick={scrollToTop}>
+                <FontAwesomeIcon icon={faUpLong} />
+            </div>
+            {openLogin &&
+                <div className="loginModalContainer" onClick={closePopup}>
+                    <div className="loginModal" onClick={(e) => e.stopPropagation()}>
+                        <Login onClose={closePopup} />
                     </div>
                 </div>
             }

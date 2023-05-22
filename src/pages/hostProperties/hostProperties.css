@@ -1,22 +1,33 @@
+.hotel-item {
+}
+
 .host-properties {
 }
 .list-properties{
 
 }
 
-.list-properties h1{
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	margin-bottom: 18px;
+.host-properties-title {
+	padding-bottom: 3rem;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 35px;
+	font-weight: 700;
+	color: #484848;
 }
 
-.host-properties-title {
+.host-properties-header {
 	display: flex;
 	justify-content: space-between;
+}
 
+.host-properties-container {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }
 
 .btn-create {
-	padding: 10px 20px;
+	padding: 1rem 2rem;
 	color: #ffffff;
 	border: none;
 	background-color: #FDAB2C;

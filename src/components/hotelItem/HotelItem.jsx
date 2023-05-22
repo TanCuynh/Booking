@@ -37,9 +37,9 @@ const HotelItem = () => {
 				onClose={ handleClose }
 				aria-describedby="alert-dialog-slide-description"
 			>
-				<DialogTitle>{ "Are you sure delete this hotel ?" }</DialogTitle>
+				<DialogTitle style={{fontFamily:"Montserrat"}}>{ "Are you sure delete this hotel ?" }</DialogTitle>
 				<DialogContent>
-					<DialogContentText id="alert-dialog-slide-description">
+					<DialogContentText id="alert-dialog-slide-description" style={{fontFamily:"Montserrat"}}>
 						When you delete the hotel, all data about the room will be deleted.
 					</DialogContentText>
 				</DialogContent>
