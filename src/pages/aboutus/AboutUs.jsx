@@ -1,8 +1,11 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import './aboutus.css'
 import { Footer, Navbar } from '../../components'
 
 const AboutUs = () => {
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
     return (
         <div className="aboutUsContainer">
             <div className="aboutusHeader">
@@ -22,20 +25,6 @@ const AboutUs = () => {
                         <h2>Phone: (+84) 989 112 223</h2>
                         <h2>Email: mario&luigi@gmail.com</h2>
                     </div>
-                </div>
-            </div>
-            <div className="aboutusContentContainer">
-                <div className="aboutusContent">
-                    <h2>About Us</h2>
-                    <p>We are a leading online platform dedicated to helping you find the perfect accommodations for your travel needs. With a wide selection of hotels and properties worldwide, we strive to make the process of booking a hotel seamless and enjoyable.</p>
-                    <p>Whether you're planning a business trip, a family vacation, or a romantic getaway, let <b>Staycation.</b> be your trusted companion in finding the perfect accommodations for your next adventure.</p>
-                    <p>Start your journey with us today and discover the world of endless possibilities!</p>
-                    <div className="exploreBtn">
-                        Explore
-                    </div>
-                </div>
-                <div className="aboutusBigImg">
-                    <img src="https://images.unsplash.com/photo-1562790351-d273a961e0e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="aboutus" />
                 </div>
             </div>
             <div className="aboutus">

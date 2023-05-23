@@ -1,100 +1,220 @@
-.blogPage {
-    padding: 4rem 8rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+.blogTitle {
+    padding: 6rem 7rem;
     color: #484848;
 }
 
-.blogPage small {
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 30px;
-}
-
-.blogPage h1 {
-    font-weight: 800;
+.blogTitle h1 {
     font-size: 70px;
-    padding-bottom: 5rem;
+    font-weight: 900;
 }
 
-.blogPage span {
-    font-weight: 700;
-    font-size: 40px;
+.blogTitle span {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.blogIntroduction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.blogIntroductionContent {
+    color: #484848;
+    background: #eee;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.blogIntroductionContent h3 {
+    font-size: 60px;
+    font-weight: 900;
+}
+
+.blogIntroductionContent p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+.blogIntroductionImg {
+    width: 100%;
+}
+
+.blogIntroductionImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #484848;
+    margin-bottom: 8rem;
+}
+
+.blog1 h3 {
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    font-size: 30px;
+    font-weight: 900;
     text-decoration: underline;
 }
 
-.blogPage p {
-    font-weight: 500;
-    font-size: 20px;
-    padding-bottom: 2rem;
+.blog1 p {
+    padding: 0 10rem;
+    font-size: 17px;
+    line-height: 25px;
 }
 
-.blogPageImg {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 4rem;
+.blog1Img {
+    width: 100%;
+    height: 500px;
 }
 
-.blogPageImg img {
-    width: 60%;
+.blog1Img img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.introduction {
+.blog2 {
+    margin-top: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    color: #484848;
+    background: #eee;
 }
 
-.introductionContent {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.introduction img {
+.blog2Img {
     width: 100%;
+}
+
+.blog2Img img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.location {
-    padding-top: 5rem;
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 5rem;
-}
-
-.location img {
-    width: 150%;
-    object-fit: cover;
-}
-
-.locationContent {
+.blog2Content {
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    align-items: center;
     justify-content: center;
 }
 
-.exploreAmenity {
-    padding-top: 5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+.blog2Content h3 {
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: underline;
 }
 
-.exploreAmenity img {
+.blog2Content p {
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.blog3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #eee;
+    color: #484848;
+}
+
+.blog3Content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: center;
+}
+
+.blog3Content h3 {
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+.blog3Content p {
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.blog3Img {
     width: 100%;
+}
+
+.blog3Img img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.exploreAmenityContent {
+.blog4 {
+    margin-top: 4rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #484848;
+}
+
+.blog4Content h3 {
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: underline;
+    padding-bottom: 0.5rem;
+}
+
+.blog4Content p {
+    padding: 0 10rem;
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.blog4Img {
+    width: 100%;
+    height: 600px;
+}
+
+.blog4Img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conclusion {
+    margin-top: 4rem;
+    width: 100%;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    color: #484848;
+    background: #eee;
+}
+
+.conclusion h1 {
+    font-size: 70px;
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+.conclusion p {
+    padding: 3rem;
+    font-size: 23px;
+    font-weight: 400;
+    text-align: left;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -110,12 +110,16 @@ const HotelDetail = () => {
             newSlideIndex = slideIndex === 4 ? 0 : slideIndex + 1;
         }
         setSlideIndex(newSlideIndex);
-    }
+    };
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, []);
 
     return (
         <div className="hotelDetailComponent">
             {openPopup &&
-                <div className="hotelDetailPopupImgContainer" onClick={() =>setOpenPopup(false)}>
+                <div className="hotelDetailPopupImgContainer">
                     <div className="hotelDetailPopupImg">
                         <FontAwesomeIcon icon={faCircleXmark} className='closePopupBtn' onClick={() => setOpenPopup(false)} />
                         <FontAwesomeIcon icon={faCircleArrowLeft} className='arrowPopupBtn' onClick={() => handleMove("l")} />
