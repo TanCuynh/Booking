@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import './HostCreateHotel.css';
-import { RoomsTable } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnchor, faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPhone, faPaw, faSnowflake, faStar, faTv, faUtensils, faWifi } from '@fortawesome/free-solid-svg-icons'
-import { faCircleCheck, faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
-import { LinearProgress, Rating } from '@mui/material'
+import { faBath, faBed, faBuilding, faCar, faPhone, faPaw, faPencil, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 import L from 'leaflet';
-import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { format } from 'date-fns';
 import { useNavigate } from "react-router";
+import ImageSelect from "./components/ImageSelect/ImageSelect";
+import AddImage from "./components/AddImage/AddImage";
+import { toast } from "react-hot-toast";
 
 
 const markerIcon = L.icon({
@@ -25,10 +24,11 @@ const markerIcon = L.icon({
 const HostCreateHotel = () => {
 
 	useEffect(() => {
-        window.scrollTo(0,0);
-    }, []);
-	
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [openDate, setOpenDate] = useState(false);
+	const [totalImg, setTotalImg] = useState(1);
 
 	const [date, setDate] = useState([
 		{
@@ -62,21 +62,83 @@ const HostCreateHotel = () => {
 
 
 	const [value, setValue] = React.useState(100);
+	const [imgFiles, setImgFiles] = useState({ img_1: '' });
+	const handleChangeImg = (e) => {
+		const file = e.target.files[0];
+		file.preview = URL.createObjectURL(file);
+		setImgFiles({ ...imgFiles, [e.target.name]: file });
+	}
 
 	const handleRatingChange = (event, newValue) => {
 		setValue(newValue);
 	};
+	const handleClear = () => {
+		setImgFiles({ ...imgFiles, img_1: '' })
+	}
+	const handleClickAdd = () => {
+		const temp = { ...imgFiles };
+		if (Object.keys(temp).length >= 5) {
+			toast.error('Qua 5 anh');
+		} else {
+			const addNew = `img_${Object.keys(temp).length + 1}`;
+			temp[addNew] = '';
+			setImgFiles(temp);
+		}
+	}
+	const renderView = useMemo(() => {
+		const temp = { ...imgFiles };
+		const entries = Object.entries(temp);
+		const slicedEntries = entries.slice(1);
+		const updatedImgFiles = Object.fromEntries(slicedEntries);
+		console.log(updatedImgFiles)
+		if (Object.keys(updatedImgFiles).length > 0) {
+			return (
+				<>
+					{ Object.entries(updatedImgFiles).map(([key, value]) => {
+						if (parseInt(key.split('_')[1]) > 1) {
+							return <>
+								<ImageSelect key={ key } handleClear={ handleClear } border={ true } handleChange={ handleChangeImg } imgUrl={ value } />
+							</>
+						}
+					}
+					) }
+					{
+						Object.keys(updatedImgFiles).length < 4 && <AddImage handleClick={ handleClickAdd } />
+					}
+
+
+				</>
+			)
+		}
+		else {
+			console.log(1)
+			return <AddImage handleClick={ handleClickAdd } />
+		}
+	}, [imgFiles])
+
 	return (
 		<div className="hotelDetailComponent">
 			<div className="hotelDetailImg">
+
 				<div className="hotelDetailImgLarge">
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/213244036.jpg?k=4d029a6a277dda491d6c94398932e9f7ece6e3c76fa5062131ca354c4ca8edc2&o=&hp=1" alt="hotelImg1" />
+					<ImageSelect handleClear={ handleClear } handleChange={ handleChangeImg } imgUrl={ imgFiles.img_1?.preview } />
 				</div>
+
 				<div className="hotelDetailImgSmall">
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418397.jpg?k=41d6819de7f349f0ee02538d5a1a038259156dccaefd22d5fb1c7a994339335f&o=&hp=1" alt="hotelImg2" />
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418368.jpg?k=579dbcfeac8598858a58d4e529aa9b81a0b58873433ff364716ec45d3b228673&o=&hp=1" alt="hotelImg3" />
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418275.jpg?k=91693ba2206542fa332133eb5d2cb1ec096f2b91c0c14b747cc35c9b8186de11&o=&hp=1" alt="hotelImg4" />
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418256.jpg?k=2658b42e78a63e74689ac5234e05cba716cf39be71dc152642c5756a4e7a4f78&o=&hp=1" alt="hotelImg5" />
+					{
+						renderView
+					}
+					{/* <ImageSelect handleClear={ handleClear } border={ true } handleChange={ handleChangeImg } imgUrl='https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418368.jpg?k=579dbcfeac8598858a58d4e529aa9b81a0b58873433ff364716ec45d3b228673&o=&hp=1' /> */ }
+					{
+
+					}
+
+
+					{/* <span onClick={ () => console.log(imgFiles) }>ssss</span> */ }
+					{/* <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418397.jpg?k=41d6819de7f349f0ee02538d5a1a038259156dccaefd22d5fb1c7a994339335f&o=&hp=1" alt="hotelImg2" /> */ }
+					{/* <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418368.jpg?k=579dbcfeac8598858a58d4e529aa9b81a0b58873433ff364716ec45d3b228673&o=&hp=1" alt="hotelImg3" /> */ }
+					{/* <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418275.jpg?k=91693ba2206542fa332133eb5d2cb1ec096f2b91c0c14b747cc35c9b8186de11&o=&hp=1" alt="hotelImg4" /> */ }
+					{/* <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418256.jpg?k=2658b42e78a63e74689ac5234e05cba716cf39be71dc152642c5756a4e7a4f78&o=&hp=1" alt="hotelImg5" /> */ }
 				</div>
 			</div>
 			<div className="hotelDetail">
