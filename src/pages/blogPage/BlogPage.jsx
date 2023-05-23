@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import './blogPage.css'
-import { Footer, Navbar } from '../../components'
 
 const BlogPage = () => {
 
@@ -10,7 +9,6 @@ const BlogPage = () => {
 
     return (
         <div className="blogPageContainer">
-            <Navbar />
             <div className="blogPage">
                 <div className="blogTitle">
                     <h1>Choose the Right Property!<br /> Tips for Booking the Perfect Hotel</h1>
@@ -67,7 +65,6 @@ const BlogPage = () => {
                     <p>Choosing the right hotel property plays a vital role in the overall success of your trip. By defining your needs, considering the location, reading customer reviews, setting a budget, exploring amenities, and assessing cancellation policies, you can make an informed decision when booking your hotel. Remember, taking the time to research and choose wisely will ensure a comfortable and enjoyable stay, making your travel experience even more memorable. <br /><b>Happy hotel hunting and have a fantastic trip!</b></p>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }

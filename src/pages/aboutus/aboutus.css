@@ -23,7 +23,7 @@
 }
 
 .aboutusTitle h1 {
-    font-weight: 800;
+    font-weight: 900;
     font-size: 80px;
     line-height: 98px;
     color: #FFFFFF;
@@ -41,7 +41,7 @@
 }
 
 .aboutusParagraph h1 {
-    font-weight: 700;
+    font-weight: 900;
     font-size: 60px;
     line-height: 73px;
     color: #484848;
@@ -82,4 +82,12 @@
     font-size: 40px;
     line-height: 49px;
     color: #484848;
+}
+
+.goToHome a {
+    padding-left: 7rem;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 37px;
+    text-decoration: none;
 }
