@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './HostCreateHotel.css';
 import { RoomsTable } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +15,7 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import { useNavigate } from "react-router";
 
+
 const markerIcon = L.icon({
 	iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
 	iconSize: [25, 41],
@@ -22,6 +23,11 @@ const markerIcon = L.icon({
 });
 
 const HostCreateHotel = () => {
+
+	useEffect(() => {
+        window.scrollTo(0,0);
+    }, []);
+	
 	const [openDate, setOpenDate] = useState(false);
 
 	const [date, setDate] = useState([
