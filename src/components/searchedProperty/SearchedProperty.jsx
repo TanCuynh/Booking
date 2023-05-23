@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './searchedProperty.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faBath, faBed, faCar, faPaw } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as heart } from '@fortawesome/free-regular-svg-icons'
+import { faBath, faBed, faCar, faHeart as solidHeart, faPaw } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 const SearchedProperty = () => {
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleToggleLike = () => {
+        setIsLiked(!isLiked);
+    };
+
     return (
         <div className="searchedProperty">
             <div className="searchedPropertyImg">
@@ -14,13 +20,16 @@ const SearchedProperty = () => {
                     alt="searchedProp"
                 />
                 <div className="searchedWishlistIcon">
-                    <FontAwesomeIcon icon={faHeart} />
+                    <FontAwesomeIcon
+                        icon={isLiked ? solidHeart : heart}
+                        onClick={handleToggleLike}
+                    />
                 </div>
                 <span>$1000-3000 USD</span>
             </div>
             <div className="searchedPropertyDesc">
                 <h3 className="searchedPropertyName">
-                    <Link to ="/unknown-hotel">Well Furnished Apartment</Link>
+                    <Link to="/unknown-hotel">Well Furnished Apartment</Link>
                 </h3>
                 <span className="searchedPropertyAddress">
                     100 Grove Street, LS, USA

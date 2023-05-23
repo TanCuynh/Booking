@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './feature.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as heart } from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-router-dom'
+import { Rating } from '@mui/material'
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
 
 const Feature = () => {
+
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleToggleLike = () => {
+        setIsLiked(!isLiked);
+    };
+
     return (
         <div className="feature">
+            <div className="ratingStars">
+                <Rating
+                    name="my-rating"
+                    value={5}
+                />
+            </div>
             <div className="wishlistIcon">
-            <FontAwesomeIcon icon={faHeart} />
+                <FontAwesomeIcon
+                    icon={isLiked ? solidHeart : heart}
+                    onClick={handleToggleLike}
+                />
             </div>
             <div className="featureHotelInfo">
                 <div className="featureHotelName">

@@ -9,15 +9,18 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
 const LoginStep1 = ({ onClose }) => {
+
+    const [openLogin2, setOpenLogin2] = useState(false);
+
     const [email, setEmail] = useState('');
 
     const [showAlert, setShowAlert] = useState(false);
 
-    const [openLogin2, setOpenLogin2] = useState(false);
-
     const openPopupLogin2 = () => {
+        console.log(email);
         if (email === '') {
             setShowAlert(true);
+            // console.log("Siu?");
         } else {
             setOpenLogin2(true);
             document.body.style.overflow = 'hidden';
@@ -44,7 +47,8 @@ const LoginStep1 = ({ onClose }) => {
                     </div>
                 </div>
                 <div className="container__mail">
-                    <input required="" type="email"
+                    <input
+                        type="email"
                         className="container__mail-input"
                         placeholder="Please enter email"
                         value={email}
