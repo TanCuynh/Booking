@@ -24,6 +24,9 @@ const AboutUs = () => {
                         <h2>Email: mario&luigi@gmail.com</h2>
                     </div>
                 </div>
+                <div className="aboutusParagraph">
+                    <p>If you prefer to reach out to us through our contact form, please fill out the required fields and we'll get back to you as soon as possible.</p>
+                </div>
             </div>
             <div className="aboutus">
                 <div className="aboutusParagraph">

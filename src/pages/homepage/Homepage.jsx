@@ -13,6 +13,7 @@ import {
     TopRateProperties
 } from "../../components";
 import "./homepage.css";
+import { Link } from 'react-router-dom';
 
 
 const Homepage = () => {
@@ -35,7 +36,7 @@ const Homepage = () => {
                     <p>Whether you're planning a business trip, a family vacation, or a romantic getaway, let <b>Staycation.</b> be your trusted companion in finding the perfect accommodations for your next adventure.</p>
                     <p>Start your journey with us today and discover the world of endless possibilities!</p>
                     <div className="exploreBtn">
-                        Explore
+                        <Link to="aboutus">Explore</Link>
                     </div>
                 </div>
                 <div className="aboutusBigImg">
