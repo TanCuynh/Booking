@@ -6,7 +6,7 @@ import Login from '../../pages/login/Login';
 import { Avatar } from '@mui/material';
 import { APP_CONTEXT } from '../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUp, faUpLong, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAnglesUp, faCircleUp, faUpLong, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const Menu = () => (
@@ -79,7 +79,7 @@ const Navbar = ({ type }) => {
                 )}
             </div>
             <div className="scrollToTopBtn" onClick={scrollToTop}>
-                <FontAwesomeIcon icon={faUpLong} />
+                <FontAwesomeIcon icon={faAnglesUp} />
             </div>
             {openLogin &&
                 <div className="loginModalContainer" onClick={closePopup}>

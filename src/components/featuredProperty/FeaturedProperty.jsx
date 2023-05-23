@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './featuredProperty.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faBath, faBed, faCar, faPaw } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as heart } from '@fortawesome/free-regular-svg-icons'
+import { faBath, faBed, faCar, faHeart as solidHeart, faPaw } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 
 const FeaturedProperty = () => {
+
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleToggleLike = () => {
+        setIsLiked(!isLiked);
+    };
     return (
         <div className="featuredProperty">
             <div className="featuredPropertyImg">
@@ -15,7 +21,10 @@ const FeaturedProperty = () => {
                     alt="prop"
                 />
                 <div className="featuredWishlistIcon">
-                    <FontAwesomeIcon icon={faHeart} />
+                    <FontAwesomeIcon
+                        icon={isLiked ? solidHeart : heart}
+                        onClick={handleToggleLike}
+                    />
                 </div>
                 <span className='featuredPropertyPrice'>$1000-3000 USD</span>
             </div>

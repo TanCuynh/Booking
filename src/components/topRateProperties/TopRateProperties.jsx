@@ -22,7 +22,7 @@ const TopRateProperties = () => {
                         delay: 3000,
                         disableOnInteraction: false
                     }}
-                    onSlideChange={() => console.log('Slide Change')}
+                    // onSlideChange={() => console.log('Slide Change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <div className="next"></div>

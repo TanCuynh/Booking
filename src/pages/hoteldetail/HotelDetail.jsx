@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi, faAnchor, faCircleXmark, faCircleArrowLeft, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faCircleCheck, faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
-import { LinearProgress, Rating } from '@mui/material'
+import { faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faHeart as heart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
+import { LinearProgress } from '@mui/material'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
@@ -25,6 +25,12 @@ const markerIcon = L.icon({
 
 
 const HotelDetail = () => {
+
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleToggleLike = () => {
+        setIsLiked(!isLiked);
+    };
 
     const [openDate, setOpenDate] = useState(false);
 
@@ -113,7 +119,7 @@ const HotelDetail = () => {
     };
 
     useEffect(() => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, []);
 
     return (
@@ -148,7 +154,10 @@ const HotelDetail = () => {
                             <span>100 Smart Street, LA, USA</span>
                         </div>
                         <div className="hotelDetailAction">
-                            <FontAwesomeIcon icon={faHeart} />
+                            <FontAwesomeIcon
+                                icon={isLiked ? solidHeart : heart}
+                                onClick={handleToggleLike}
+                            />
                             <FontAwesomeIcon icon={faShareFromSquare} />
                         </div>
                     </div>

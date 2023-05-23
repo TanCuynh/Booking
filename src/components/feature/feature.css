@@ -16,6 +16,12 @@
     border-radius: 10px;
 }
 
+.ratingStars {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+}
+
 .wishlistIcon {
     font-size: 30px;
     display: flex;
