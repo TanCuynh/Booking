@@ -27,12 +27,14 @@ const App = () => {
     return (
         <APP_CONTEXT.Provider value={{ user, setUser }}>
             <BrowserRouter>
-            <StartOnTop />
+                <StartOnTop />
                 <Routes>
                     <Route path="/" element={<Homepage />} />
-                    <Route path="blog" element={<BlogPage />} />
-                    <Route path="blog" element={<BlogPage />} />
-                    <Route path="aboutus" element={<AboutUs />}>
+                    <Route path="/" element={<AppLayout />}>
+                        <Route path="blog" element={<BlogPage />} />
+                        <Route path="about" element={<AboutUs />} />
+                    </Route>
+                    <Route path="host" element={<AppLayout />}>
                         <Route path="page" element={<HostProperties />} />
                         <Route path="modify" element={<HostPropertiesModify />} />
                         <Route path="create" element={<HostCreateHotel />} />

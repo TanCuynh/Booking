@@ -1,15 +1,13 @@
-import React , {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import './aboutus.css'
-import { Footer, Navbar } from '../../components'
 
 const AboutUs = () => {
     useEffect(() => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, [])
     return (
         <div className="aboutUsContainer">
             <div className="aboutusHeader">
-                <Navbar type="home" />
                 <div className="aboutusTitle">
                     <h1>ABOUT US</h1>
                 </div>
@@ -31,10 +29,9 @@ const AboutUs = () => {
                 <div className="aboutusParagraph">
                     <p>We value your feedback and use it to improve our services. Please don't hesitate to let us know how we're doing or how we can make your experience with us even better.</p>
                     <p><u>Thank you for choosing our website for your travel needs.
-                        <br/><b>We look forward to hearing from you!</b></u></p>
+                        <br /><b>We look forward to hearing from you!</b></u></p>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }
