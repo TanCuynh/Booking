@@ -22,11 +22,14 @@
 	border: 6px solid rgb(209 213 219);
 	border-radius: 8px;
 }
+.selectImgWapperLarge {
+	height: 100%;
+}
 .selectImgWapper {
 	position: relative;
 	background-position: center; 
 	background-repeat: no-repeat;
-	/* height: 100%; */
+	background-size: cover;
 	min-width: 336px;
 	min-height: 252px;
 }
