@@ -6,7 +6,7 @@ import { faXmark, faPencil } from '@fortawesome/free-solid-svg-icons';
 const ImageSelect = ({ handleClear, handleChange, imgUrl, border = false, name }) => {
 	console.log(name, imgUrl)
 	return (
-		<div className={ border ? 'selectImgWapper borderCustom' : "selectImgWapper" } style={ { backgroundImage: `url(${imgUrl?.preview})` } }>
+		<div className={ border ? 'selectImgWapperLarge selectImgWapper borderCustom' : "selectImgWapperLarge selectImgWapper" } style={ { backgroundImage: `url(${imgUrl?.preview})` } }>
 			{
 				imgUrl?.preview ? <button onClick={ handleClear } className="editBtn editClear"><FontAwesomeIcon icon={ faXmark } /></button>
 					:

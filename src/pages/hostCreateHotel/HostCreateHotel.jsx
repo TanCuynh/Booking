@@ -59,7 +59,6 @@ const HostCreateHotel = () => {
 	const renderView = useMemo(() => {
 		const temp = [...imgFiles];
 		temp.shift(1);
-		console.log('first', temp);
 
 		if (temp.length > 0) {
 			return (
