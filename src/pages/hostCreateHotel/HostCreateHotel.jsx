@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import './HostCreateHotel.css';
-import { RoomsTable } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnchor, faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPhone, faPaw, faSnowflake, faStar, faTv, faUtensils, faWifi } from '@fortawesome/free-solid-svg-icons'
-import { faCircleCheck, faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
-import { LinearProgress, Rating } from '@mui/material'
+import { faBath, faBed, faBuilding, faCar, faPhone, faPaw } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 import L from 'leaflet';
-import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { format } from 'date-fns';
-import { useNavigate } from "react-router";
+import ImageSelect from "./components/ImageSelect/ImageSelect";
+import AddImage from "./components/AddImage/AddImage";
+import { toast } from "react-hot-toast";
 
 
 const markerIcon = L.icon({
@@ -25,58 +23,77 @@ const markerIcon = L.icon({
 const HostCreateHotel = () => {
 
 	useEffect(() => {
-        window.scrollTo(0,0);
-    }, []);
-	
-	const [openDate, setOpenDate] = useState(false);
+		window.scrollTo(0, 0);
+	}, []);
 
-	const [date, setDate] = useState([
-		{
-			startDate: new Date(),
-			endDate: new Date(),
-			key: 'selection'
+	const [imgFiles, setImgFiles] = useState([{ img_1: {} }]);
+
+	const handleChangeImg = (e) => {
+		const file = e.target.files[0];
+		const index = parseInt(e.target.name.split('_')[1]) - 1;
+		file.preview = URL.createObjectURL(file);
+		const temp = [...imgFiles];
+		temp[index][e.target.name] = file;
+		setImgFiles(temp);
+	}
+
+	const handleClear = (index) => {
+		const temp = [...imgFiles];
+		const key = `img_${index + 1}`;
+		temp[index][key] = {};
+
+		setImgFiles(temp);
+		console.log('click', index, temp);
+	}
+	const handleClickAdd = () => {
+		const length = imgFiles.length;
+		console.log(1, length);
+		if (length >= 5) {
+			toast.error('Qua 5 ảnh');
+		} else {
+			const newKey = `img_${length + 1}`;
+			const newImgFiles = [...imgFiles, { [newKey]: {} }];
+			setImgFiles(newImgFiles);
 		}
-	]);
-	const [openOptions, setOpenOptions] = useState(false);
-
-	const [options, setOptions] = useState({
-		adult: 1,
-		children: 0,
-		room: 1,
-	});
-
-	const handleOption = (name, operation) => {
-		setOptions((prev) => {
-			return {
-				...prev, [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-			}
-		})
 	};
+	const renderView = useMemo(() => {
+		const temp = [...imgFiles];
+		temp.shift(1);
 
-	const navigate = useNavigate();
+		if (temp.length > 0) {
+			return (
+				<>
+					{ temp.map((ele, index) => {
+						const key = `img_${index + 2}`;
+						const imgUrl = ele[key];
+						return <>
+							<ImageSelect key={ index } handleClear={ () => handleClear(index + 1) } border={ true } name={ key } handleChange={ handleChangeImg } imgUrl={ imgUrl } />
+						</>
+					}
+					) }
+					{
+						temp.length < 4 && <AddImage handleClick={ handleClickAdd } />
+					}
+				</>
+			)
+		}
+		else {
+			return <AddImage handleClick={ handleClickAdd } />
+		}
+	}, [imgFiles])
 
-	const handleSearch = () => {
-		navigate("/search", { state: { date, options } });
-	};
-
-
-
-	const [value, setValue] = React.useState(100);
-
-	const handleRatingChange = (event, newValue) => {
-		setValue(newValue);
-	};
 	return (
 		<div className="hotelDetailComponent">
 			<div className="hotelDetailImg">
+
 				<div className="hotelDetailImgLarge">
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/213244036.jpg?k=4d029a6a277dda491d6c94398932e9f7ece6e3c76fa5062131ca354c4ca8edc2&o=&hp=1" alt="hotelImg1" />
+					<ImageSelect handleClear={ () => handleClear(0) } name='img_1' handleChange={ handleChangeImg } imgUrl={ imgFiles[0].img_1 } />
 				</div>
+
 				<div className="hotelDetailImgSmall">
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418397.jpg?k=41d6819de7f349f0ee02538d5a1a038259156dccaefd22d5fb1c7a994339335f&o=&hp=1" alt="hotelImg2" />
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418368.jpg?k=579dbcfeac8598858a58d4e529aa9b81a0b58873433ff364716ec45d3b228673&o=&hp=1" alt="hotelImg3" />
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418275.jpg?k=91693ba2206542fa332133eb5d2cb1ec096f2b91c0c14b747cc35c9b8186de11&o=&hp=1" alt="hotelImg4" />
-					<img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418256.jpg?k=2658b42e78a63e74689ac5234e05cba716cf39be71dc152642c5756a4e7a4f78&o=&hp=1" alt="hotelImg5" />
+					{
+						renderView
+					}
 				</div>
 			</div>
 			<div className="hotelDetail">
