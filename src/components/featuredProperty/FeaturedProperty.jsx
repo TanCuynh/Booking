@@ -24,6 +24,7 @@ const FeaturedProperty = () => {
                     <FontAwesomeIcon
                         icon={isLiked ? solidHeart : heart}
                         onClick={handleToggleLike}
+                        style={{ color: "#e46780", }}
                     />
                 </div>
                 <span className='featuredPropertyPrice'>$1000-3000 USD</span>

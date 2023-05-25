@@ -25,7 +25,8 @@
 }
 
 .searchedInputTitle {
-    font-size: 28px;
+    font-size: 30px;
+    font-weight: 900;
     padding: 1rem 0;
     text-align: center;
 }
