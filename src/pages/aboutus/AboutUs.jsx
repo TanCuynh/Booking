@@ -21,7 +21,7 @@ const AboutUs = () => {
                     <p>You can reach us by phone, email, or through our online contact form. Our customer support team is available 24/7 to assist you.</p>
                     <div className="phoneAndEmail">
                         <h2>Phone: (+84) 989 112 223</h2>
-                        <h2>Email: mario&luigi@gmail.com</h2>
+                        <h2>Email: staycation.support@gmail.com</h2>
                     </div>
                 </div>
                 <div className="aboutusParagraph">
