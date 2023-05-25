@@ -14,6 +14,9 @@ import Wishlist from "./pages/wishlist/Wishlist";
 import BlogPage from "./pages/blogPage/BlogPage";
 import AboutUs from "./pages/aboutus/AboutUs";
 import StartOnTop from "./StartOnTop";
+import BookingStep1 from "./pages/booking/booking1/BookingStep1";
+import BookingStep2 from "./pages/booking/booking2/BookingStep2";
+import BookingStep3 from "./pages/booking/booking3/BookingStep3";
 import { HostLayout, HostPropertiesPage, HostPropertiesModifyPage, HostCreateHotelPage, HostStatisticPage } from './pages/hostPage/HostLayout';
 
 
@@ -44,6 +47,9 @@ const App = () => {
                     <Route path="user" element={<AppLayout />}>
                         <Route path="wishlist" element={<Wishlist />} />
                     </Route>
+                    <Route path="/booking/step1" element={<BookingStep1 />} />
+                    <Route path="/booking/step2" element={<BookingStep2 />} />
+                    <Route path="/booking/step3" element={<BookingStep3 />} />
                 </Routes>
             </BrowserRouter>
             <Toaster />

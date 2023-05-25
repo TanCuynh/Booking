@@ -1,0 +1,39 @@
+.step-itemm {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #484848;
+    margin-right: 50px; /* Không có khoảng cách ở vòng tròn cuối cùng */
+  }
+
+  .complex-text{
+    text-align: center;
+    line-height: 0.8;
+    margin-top: 30px;
+    font-size: 18;
+  }
+
+  .body-layoutt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .miss {
+    text-align: center;
+    color: #ccc;
+  }
+
+  .home-button {
+    position: relative;
+    width: 298px;
+    height: 57px;
+    border-radius: 10px;
+    background: #003580;
+    color: #ffffff;
+    top: 50px;
+  }
