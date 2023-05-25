@@ -49,7 +49,7 @@ const HostCreateHotel = () => {
 		const length = imgFiles.length;
 		console.log(1, length);
 		if (length >= 5) {
-			toast.error('Qua 5 ảnh');
+			toast.error('The number of photos exceeds the allowed limit!');
 		} else {
 			const newKey = `img_${length + 1}`;
 			const newImgFiles = [...imgFiles, { [newKey]: {} }];
@@ -83,55 +83,55 @@ const HostCreateHotel = () => {
 	}, [imgFiles])
 
 	return (
-		<div className="hotelDetailComponent">
-			<div className="hotelDetailImg">
+		<div className="hostCreateHotelComponent">
+			<div className="hostCreateHotelImg">
 
-				<div className="hotelDetailImgLarge">
+				<div className="hostCreateHotelImgLarge">
 					<ImageSelect handleClear={ () => handleClear(0) } name='img_1' handleChange={ handleChangeImg } imgUrl={ imgFiles[0].img_1 } />
 				</div>
 
-				<div className="hotelDetailImgSmall">
+				<div className="hostCreateHotelImgSmall">
 					{
 						renderView
 					}
 				</div>
 			</div>
-			<div className="hotelDetail">
-				<div className="hotelDetailContent">
-					<div className="hotelDetailTitle">
-						<div className="hotelDetailTitleContent">
+			<div className="hostCreateHotel">
+				<div className="hostCreateHotelContent">
+					<div className="hostCreateHotelTitle">
+						<div className="hostCreateHotelTitleContent">
 							<h3>Well Furnished Apartment</h3>
 							<span>100 Smart Street, LA, USA</span>
 						</div>
-						<div className="hotelDetailAction">
+						<div className="hostCreateHotelAction">
 							<FontAwesomeIcon icon={ faHeart } />
 							<FontAwesomeIcon icon={ faShareFromSquare } />
 						</div>
 					</div>
-					<div className="hotelDetailAmenities">
-						<div className="hotelDetailAmenity">
-							<FontAwesomeIcon icon={ faBed } className='hotelDetailAmenityIcon' />
+					<div className="hostCreateHotelAmenities">
+						<div className="hostCreateHotelAmenity">
+							<FontAwesomeIcon icon={ faBed } className='hostCreateHotelAmenityIcon' />
 							<span>3 Bedrooms</span>
 						</div>
-						<div className="hotelDetailAmenity">
-							<FontAwesomeIcon icon={ faBath } className='hotelDetailAmenityIcon' />
+						<div className="hostCreateHotelAmenity">
+							<FontAwesomeIcon icon={ faBath } className='hostCreateHotelAmenityIcon' />
 							<span>2 Bathrooms</span>
 						</div>
-						<div className="hotelDetailAmenity">
-							<FontAwesomeIcon icon={ faCar } className='hotelDetailAmenityIcon' />
+						<div className="hostCreateHotelAmenity">
+							<FontAwesomeIcon icon={ faCar } className='hostCreateHotelAmenityIcon' />
 							<span>3 Cars/2 Bikes</span>
 						</div>
-						<div className="hotelDetailAmenity">
-							<FontAwesomeIcon icon={ faPaw } className='hotelDetailAmenityIcon' />
+						<div className="hostCreateHotelAmenity">
+							<FontAwesomeIcon icon={ faPaw } className='hostCreateHotelAmenityIcon' />
 							<span>0 Pets Allowed</span>
 						</div>
 					</div>
-					<div className="hotelDetailDesc">
+					<div className="hostCreateHotelDesc">
 						<h3>Apartment Description</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 					</div>
-					<div className="hotelDetailMapLocation">
+					<div className="hostCreateHotelMapLocation">
 						<MapContainer center={ [16.06827770014092, 108.2009288146462] } zoom={ 18 } scrollWheelZoom={ false } style={ { height: '400px', width: '100%' } }>
 							<TileLayer
 								attribution='Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>OpenStreetMap</a> contributors'
@@ -147,7 +147,7 @@ const HostCreateHotel = () => {
 					</div>
 
 				</div>
-				<div className="hotelDetailReserve">
+				<div className="hostCreateHotelReserve">
 					<div className="reserveBox">
 						<div className="reserveBoxPrice">
 							<h3>$ 1000 - $ 3000</h3>

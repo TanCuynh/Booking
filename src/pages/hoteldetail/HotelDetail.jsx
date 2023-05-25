@@ -142,7 +142,7 @@ const HotelDetail = () => {
                 </div>
                 <div className="hotelDetailImgSmall">
                     {photos.slice(1).map((photo, i) => (
-                        <img onClick={() => handleOpen(i + 1)} src={photo.src} alt="" className="smallImg" />
+                        <img key={i} onClick={() => handleOpen(i + 1)} src={photo.src} alt="" className="smallImg" />
                     ))}
                 </div>
             </div>

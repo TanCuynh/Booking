@@ -11,6 +11,7 @@ const ReviewComment = () => {
                     <Rating 
                         name="my-rating"
                         value={5}
+                        readOnly
                     />
                     <h3 className="reviewCommentUsername">John Dobberman</h3>
                     <span className="reviewCommentDate">Mar 12 2020</span>

@@ -1,4 +1,4 @@
-.hotelDetailComponent {
+.hostCreateHotelComponent {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -6,11 +6,11 @@
 	font-family: 'Montserrat', sans-serif;
 	color: #484848;
 }
-.hotelDetailImgLarge {
+.hostCreateHotelImgLarge {
 	border: 6px solid rgb(209 213 219);
 	border-radius: 8px;
 }
-.hotelDetailImg {
+.hostCreateHotelImg {
 	width: 100%;
 	padding: 4rem;
 	display: grid;
@@ -68,21 +68,21 @@
 .iconEdit {
 	color: #ffffff;
 }
-.hotelDetailImgLarge img {
+.hostCreateHotelImgLarge img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	border-radius: 16px;
 }
 
-.hotelDetailImgSmall {
+.hostCreateHotelImgSmall {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	gap: 1rem;
 }
 
-.hotelDetailImgSmall img {
+.hostCreateHotelImgSmall img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -90,8 +90,8 @@
 	border-radius: 8px;
 }
 
-.hotelDetail {
-	width: 100%;
+.hostCreateHotel {
+	width: 100%;	
 	display: grid;
 	grid-template-columns: 7fr 3fr;
 	gap: 2rem;
@@ -99,7 +99,7 @@
 	padding-right: 4rem;
 }
 
-.hotelDetailReserve {
+.hostCreateHotelReserve {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -196,45 +196,45 @@
 	line-height: 18px;
 }
 
-.hotelDetailContent {
+.hostCreateHotelContent {
 	padding-left: 3rem;
 }
 
-.hotelDetailTitle {
+.hostCreateHotelTitle {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.hotelDetailTitleContent {
+.hostCreateHotelTitleContent {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
 }
 
-.hotelDetailTitleContent h3 {
+.hostCreateHotelTitleContent h3 {
 	font-weight: 700;
 	font-size: 28px;
 	line-height: 34px;
 	color: #484848;
 }
 
-.hotelDetailTitleContent span {
+.hostCreateHotelTitleContent span {
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 20px;
 	color: #9A9A9A;
 }
 
-.hotelDetailAction {
+.hostCreateHotelAction {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 	font-size: 33px;
 }
 
-.hotelDetailAmenities {
+.hostCreateHotelAmenities {
 	padding-top: 3rem;
 	width: 100%;
 	height: 275px;
@@ -243,7 +243,7 @@
 	gap: 3%;
 }
 
-.hotelDetailAmenity {
+.hostCreateHotelAmenity {
 	width: 100%;
 	background: #7EBAF1;
 	border-radius: 10px;
@@ -255,56 +255,56 @@
 	gap: 1rem;
 }
 
-.hotelDetailAmenity span {
+.hostCreateHotelAmenity span {
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 20px;
 }
 
-.hotelDetailAmenityIcon {
+.hostCreateHotelAmenityIcon {
 	font-size: 33px;
 }
 
-.hotelDetailDesc {
+.hostCreateHotelDesc {
 	padding-top: 3rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-.hotelDetailDesc h3 {
+.hostCreateHotelDesc h3 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 27px;
 	color: #484848;
 }
 
-.hotelDetailDesc p {
+.hostCreateHotelDesc p {
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 20px;
 	color: #9A9A9A;
 }
 
-.hotelDetailMapLocation {
+.hostCreateHotelMapLocation {
 	padding-top: 3rem;
 }
 
-.hotelDetailRoomOptions {
+.hostCreateHotelRoomOptions {
 	padding-top: 3rem;
 }
 
-.hotelDetailRoomOptions>h3 {
+.hostCreateHotelRoomOptions>h3 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 27px;
 }
 
-.hotelDetailSearchBarContainer {
+.hostCreateHotelSearchBarContainer {
 	padding-top: 1rem;
 }
 
-.hotelDetailSearchBar {
+.hostCreateHotelSearchBar {
 	width: 75%;
 	height: 70px;
 	border-radius: 35px;
@@ -318,7 +318,7 @@
 	box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
 }
 
-.hotelDetailSearchItem {
+.hostCreateHotelSearchItem {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -326,7 +326,7 @@
 	padding: 3rem;
 }
 
-.hotelDetailSearchItemTitle {
+.hostCreateHotelSearchItemTitle {
 	font-family: 'Montserrat';
 	font-weight: 600;
 	font-size: 14px;
@@ -334,14 +334,14 @@
 	color: #484848;
 }
 
-.hotelDetailSearchItem span {
+.hostCreateHotelSearchItem span {
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 17px;
 	cursor: pointer;
 }
 
-.hotelDetailSearchInput {
+.hostCreateHotelSearchInput {
 	font-family: 'Montserrat';
 	width: 100%;
 	font-size: 18px;
@@ -352,7 +352,7 @@
 	outline: none;
 }
 
-.hotelDetailSearchText {
+.hostCreateHotelSearchText {
 	font-family: 'Montserrat';
 	font-weight: 600;
 	font-size: 18px;
@@ -360,7 +360,7 @@
 	cursor: pointer;
 }
 
-.hotelDetailSearchBtn {
+.hostCreateHotelSearchBtn {
 	background: #FDC32D;
 	color: #fff;
 	font-size: 23px;
@@ -374,11 +374,11 @@
 	cursor: pointer;
 }
 
-.hotelDetailSearchBtn:hover {
+.hostCreateHotelSearchBtn:hover {
 	background: #ffb700;
 }
 
-.hotelDetailDate {
+.hostCreateHotelDate {
 	position: absolute;
 	top: 2000px;
 	left: 200px;
@@ -388,7 +388,7 @@
 	box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
 }
 
-.hotelDetailOptions {
+.hostCreateHotelOptions {
 	position: absolute;
 	top: 2000px;
 	background: #fff;
@@ -430,12 +430,12 @@
 	cursor: not-allowed;
 }
 
-#hotelDetailSearchCalendar {
+#hostCreateHotelSearchCalendar {
 	z-index: 999;
 }
 
 
-.hotelDetailRoomsTable {
+.hostCreateHotelRoomsTable {
 	margin-top: 1rem;
 	width: 100%;
 	display: flex;
@@ -443,7 +443,7 @@
 	gap: 0;
 }
 
-.hotelDetailRoomsTableTitle {
+.hostCreateHotelRoomsTableTitle {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 5fr 4fr 2fr 3fr;
@@ -455,9 +455,9 @@
 	gap: 1px;
 }
 
-.hotelDetailRoomType,
-.hotelDetailRoomSleeps,
-.hotelDetailRoomQuantity {
+.hostCreateHotelRoomType,
+.hostCreateHotelRoomSleeps,
+.hostCreateHotelRoomQuantity {
 	padding-left: 2rem;
 	border-right: 1px solid #fff;
 	display: flex;
@@ -465,14 +465,14 @@
 	justify-content: flex-start;
 }
 
-.hotelDetailOfferedAmenities {
+.hostCreateHotelOfferedAmenities {
 	padding-top: 4rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-.hotelDetailOfferedAmenities h3 {
+.hostCreateHotelOfferedAmenities h3 {
 	/* padding: 1rem 0; */
 	font-weight: 700;
 	font-size: 22px;
@@ -488,7 +488,7 @@
 	row-gap: 1.5rem;
 }
 
-.hotelDetailItem {
+.hostCreateHotelItem {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
@@ -526,14 +526,14 @@
 	background: #ffb700;
 }
 
-.hotelDetailSafetyHygiene {
+.hostCreateHotelSafetyHygiene {
 	padding-top: 4rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-.hotelDetailSafetyHygiene h3 {
+.hostCreateHotelSafetyHygiene h3 {
 	/* padding-top: 1rem; */
 	font-weight: 700;
 	font-size: 22px;
@@ -549,14 +549,14 @@
 	row-gap: 1.5rem;
 }
 
-.hotelDetailReview {
+.hostCreateHotelReview {
 	padding-top: 4rem;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-.hotelDetailReviewTitle {
+.hostCreateHotelReviewTitle {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -565,17 +565,17 @@
 	gap: 10px;
 }
 
-.hotelDetailReviewTitle h3 {
+.hostCreateHotelReviewTitle h3 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 27px;
 }
 
-.hotelDetailReviewTitleIcon {
+.hostCreateHotelReviewTitleIcon {
 	font-size: 20px;
 }
 
-.hotelDetailReviewRate {
+.hostCreateHotelReviewRate {
 	padding-top: 1.5rem;
 	width: 100%;
 	height: max-content;
@@ -584,30 +584,30 @@
 	row-gap: 1.5rem;
 }
 
-.hotelDetailReviewRateItem {
+.hostCreateHotelReviewRateItem {
 	display: grid;
 	grid-template-columns: 5fr 4fr 2fr;
 	align-items: center;
 	gap: 1rem;
 }
 
-.hotelDetailReviewRateItem>span {
+.hostCreateHotelReviewRateItem>span {
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 20px;
 }
 
-.hotelDetailReviewRateItem .ratingCount {
+.hostCreateHotelReviewRateItem .ratingCount {
 	font-weight: 700;
 	font-size: 18px;
 }
 
-.hotelDetailReviewShowCommentBtnContainer {
+.hostCreateHotelReviewShowCommentBtnContainer {
 	padding-top: 3rem;
 	/* background: #9A9A9A; */
 }
 
-.hotelDetailReviewShowCommentBtn {
+.hostCreateHotelReviewShowCommentBtn {
 	width: 30%;
 	padding: 1.5rem 0;
 	background: #ddd;
@@ -620,6 +620,6 @@
 	cursor: pointer;
 }
 
-.hotelDetailReviewShowCommentBtn:hover {
+.hostCreateHotelReviewShowCommentBtn:hover {
 	background: #ccc;
 }

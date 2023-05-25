@@ -38,7 +38,7 @@
 }
 
 .browseRequestBtn:hover {
-    background: #7295db;
+    opacity: 0.9;
 }
 
 .browseRequestBtn span {
