@@ -20,7 +20,6 @@ const LoginStep1 = ({ onClose }) => {
         console.log(email);
         if (email === '') {
             setShowAlert(true);
-            // console.log("Siu?");
         } else {
             setOpenLogin2(true);
             document.body.style.overflow = 'hidden';
