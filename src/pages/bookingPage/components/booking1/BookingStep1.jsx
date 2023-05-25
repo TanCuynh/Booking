@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from "../../../components/navbar/Navbar";
-import Footer from "../../../components/footer/Footer";
 import './bookingstep1.css';
 import 'typeface-montserrat';
 
-function BookingStep1() {
+const BookingStep1 = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -47,11 +45,10 @@ function BookingStep1() {
 
     // Chuyển hướng đến "/booking/step2" nếu dữ liệu hợp lệ
     navigate('/booking/step2');
-  }; 
+  };
 
   return (
     <div>
-      <Navbar />
       <nav>
         <ul className='step-list'>
           <li className='step-item-active'>1</li>
@@ -67,10 +64,10 @@ function BookingStep1() {
 
       <div className='body-layout'>
 
-      <div class="vertical-vector"></div>
+        <div class="vertical-vector"></div>
 
-      <div class="image-container">
-        <img src="https://www.hotelgrandsaigon.com/wp-content/uploads/sites/227/2017/12/GRAND_SEDK_01.jpg" alt="Ảnh hotel" class="image" />
+        <div class="image-container">
+          <img src="https://www.hotelgrandsaigon.com/wp-content/uploads/sites/227/2017/12/GRAND_SEDK_01.jpg" alt="Ảnh hotel" class="image" />
           <div class="text-container">
             <div class="left-text">
               <p className='name-hotel'>Podo Wae</p>
@@ -81,7 +78,7 @@ function BookingStep1() {
               <p>
                 <span className='price'>$480 USD</span>
                 <span className='for'> for </span>
-                <span className= 'day'>2 nights</span>
+                <span className='day'>2 nights</span>
               </p>
             </div>
           </div>
@@ -93,10 +90,10 @@ function BookingStep1() {
             <input
               type="text"
               id="first-name-input"
-              value={firstName}
+              value={ firstName }
               name="firstName"
               className="input-custom"
-              onChange={handleChange}
+              onChange={ handleChange }
             />
           </div>
 
@@ -105,10 +102,10 @@ function BookingStep1() {
             <input
               type="text"
               id="last-name-input"
-              value={lastName}
+              value={ lastName }
               name="lastName"
               className="input-custom"
-              onChange={handleChange}
+              onChange={ handleChange }
             />
           </div>
 
@@ -117,10 +114,10 @@ function BookingStep1() {
             <input
               type="text"
               id="email-input"
-              value={email}
+              value={ email }
               name="email"
               className="input-custom"
-              onChange={handleChange}
+              onChange={ handleChange }
             />
           </div>
 
@@ -129,27 +126,26 @@ function BookingStep1() {
             <input
               type="text"
               id="phone-number-input"
-              value={phoneNumber}
+              value={ phoneNumber }
               name="phoneNumber"
               className="input-custom"
-              onChange={handleChange}
+              onChange={ handleChange }
             />
           </div>
         </div>
       </div>
 
       <div className='button-layout'>
-          <div className="button-container">
-            <button className="skip-button" onClick={handleSubmit}>
-             Skip this step
+        <div className="button-container">
+          <button className="skip-button" onClick={ handleSubmit }>
+            Skip this step
           </button>
-          </div>
-          
-          <div className='button-container'>
-            <button className='cancel-button'>Cancel</button>
-          </div>  
-      </div>  
-      <Footer className='footer'/>
+        </div>
+
+        <div className='button-container'>
+          <button className='cancel-button'>Cancel</button>
+        </div>
+      </div>
     </div>
   );
 }

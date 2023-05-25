@@ -19,7 +19,7 @@
     margin-right: 50px; /* Không có khoảng cách ở vòng tròn cuối cùng */
   }
    .step-item-image{
-      background-image: url('../Paomedia-Small-N-Flat-Sign-check.512.png'); /* Đường dẫn đến hình ảnh */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png'); /* Đường dẫn đến hình ảnh */
     background-size:120%; /* Đảm bảo hình ảnh vừa với kích thước của phần tử */
     background-repeat: no-repeat; /* Không lặp lại hình ảnh */
     background-position: center; /* Hiển thị hình ảnh ở giữa */

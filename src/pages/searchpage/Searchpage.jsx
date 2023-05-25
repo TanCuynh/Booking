@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './searchpage.css'
-import { Footer, Navbar, SearchedProperty } from '../../components'
+import { SearchedProperty } from '../../components'
 import "leaflet/dist/leaflet.css"
 import { useLocation } from 'react-router-dom'
 import { DateRange } from 'react-date-range'
