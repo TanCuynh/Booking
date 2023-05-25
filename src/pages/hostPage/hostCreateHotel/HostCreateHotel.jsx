@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import './HostCreateHotel.css';
+import { TextField } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faBuilding, faCar, faPhone, faPaw } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
@@ -26,6 +27,10 @@ const HostCreateHotel = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
+	const [edit, setEdit] = useState(false);
+
+	const [data, setData] = useState({ name: '', amenities: '', size: 0, bed: 0, bathroomFacilities: '', directionsView: '', price: 0, maxPeople: 0, isSmoking: 0, description: '' });
+
 	const [imgFiles, setImgFiles] = useState([{ img_1: {} }]);
 
 	const handleChangeImg = (e) => {
@@ -43,11 +48,9 @@ const HostCreateHotel = () => {
 		temp[index][key] = {};
 
 		setImgFiles(temp);
-		console.log('click', index, temp);
 	}
 	const handleClickAdd = () => {
 		const length = imgFiles.length;
-		console.log(1, length);
 		if (length >= 5) {
 			toast.error('The number of photos exceeds the allowed limit!');
 		} else {
@@ -100,7 +103,7 @@ const HostCreateHotel = () => {
 				<div className="hostCreateHotelContent">
 					<div className="hostCreateHotelTitle">
 						<div className="hostCreateHotelTitleContent">
-							<h3>Well Furnished Apartment</h3>
+							<TextField id="outlined-basic" label="Outlined" variant="outlined" />
 							<span>100 Smart Street, LA, USA</span>
 						</div>
 						<div className="hostCreateHotelAction">
