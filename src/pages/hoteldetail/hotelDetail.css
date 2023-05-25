@@ -62,18 +62,6 @@
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .hotelDetailImg {
     width: 100%;
     padding: 4rem;
@@ -248,6 +236,14 @@
     flex-direction: row;
     gap: 1rem;
     font-size: 33px;
+}
+
+.hotelDetailHeartIcon:hover {
+    opacity: 0.7;
+}
+
+.hotelDetailHeartIcon.active {
+    color: #ff3040;
 }
 
 .hotelDetailAmenities {
