@@ -1,5 +1,5 @@
 import React from "react";
-import HotelItem from "../../components/hotelItem/HotelItem";
+import HotelItem from "../../../components/hotelItem/HotelItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './hostProperties.css';
@@ -16,8 +16,8 @@ const HostProperties = () => {
 				<div className="host-properties-header">
 					<h1 className="host-properties-title">List Properties</h1>
 					<div>
-						<button className="btn-create" onClick={handleClickCreate}>
-							<FontAwesomeIcon icon={faPlus} />
+						<button className="btn-create" onClick={ handleClickCreate }>
+							<FontAwesomeIcon icon={ faPlus } />
 							<span>
 								Create new hotel
 							</span>
