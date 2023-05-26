@@ -7,23 +7,29 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns'
 import { useNavigate } from "react-router-dom";
-import { Box, Slider } from '@mui/material';
+import { Autocomplete, Box, Slider, TextField } from '@mui/material';
 
-
+const top100Films = [
+    { label: 'The Shawshank Redemption', year: 1994 },
+    { label: 'The Godfather', year: 1972 },
+    { label: 'The Godfather: Part II', year: 1974 },
+    { label: 'The Dark Knight', year: 2008 },
+    { label: '12 Angry Men', year: 1957 },
+    { label: "Schindler's List", year: 1993 },
+    { label: 'Pulp Fiction', year: 1994 },
+];
 
 const Header = () => {
+    const [destination, setDestination] = useState("");
+    const [price, setPrice] = useState([200, 500]);
+
     function valuetext(value) {
         return `${value} USD`;
     }
 
-    const minDistance = 10;
-
-    const [destination, setDestination] = useState("");
-
-    const [price, setPrice] = useState([20, 37]);
+    const minDistance = 50;
 
     const handlePrice = (event, newValue, activeThumb) => {
-        // setPrice(20,100);
         if (!Array.isArray(newValue)) {
             return;
         }
@@ -47,28 +53,59 @@ const Header = () => {
             <div className="headerSearch">
                 <div className="headerSearchBar">
                     <div className="headerSearchItem">
-                        <p className='headerSearchItemTitle'>Location</p>
-                        <input
+                        {/* <p className='headerSearchItemTitle'>Location</p>    */}
+                        {/* <input
                             type="text"
                             placeholder="Which city do you prefer?"
                             className="headerSearchInput"
                             onChange={e => setDestination(e.target.value)}
+                        /> */}
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={top100Films}
+                            sx={{ width: 350 }}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Which city do you prefer?"
+                                    InputLabelProps={{
+                                        style: {
+                                            fontFamily: 'Montserrat, sans-serif',
+                                        }
+                                    }}
+                                    InputProps={{
+                                        ...params.InputProps,
+                                        style: {
+                                            fontFamily: 'Montserrat, sans-serif',
+                                            borderRadius: '99px',
+                                        },
+                                    }}
+                                />
+                            )}
                         />
                     </div>
                     <div className="headerSearchItem">
                         <div className="headerSearchPriceTag">
-                            <p className='headerSearchItemTitle'>Price:</p>
-                            <span className='headerSearchText'>100USD - 500USD</span>
+                            <p className='headerSearchItemTitle'>Room price:</p>
+                            <span className='headerSearchText'>{`${price[0]} USD - ${price[1]} USD`}</span>
                         </div>
                         <div className="headerSearchPriceSlider">
-                            <Slider
-                                getAriaLabel={() => 'Minimum distance'}
-                                value={price}
-                                onChange={handlePrice}
-                                valueLabelDisplay="auto"
-                                getAriaValueText={valuetext}
-                                disableSwap
-                            />
+                            <Box width={350}>
+                                <Slider
+                                    getAriaLabel={() => 'Room price'}
+                                    value={price}
+                                    onChange={handlePrice}
+                                    valueLabelDisplay="auto"
+                                    getAriaValueText={valuetext}
+                                    valueLabelFormat={valuetext}
+                                    step={50}
+                                    min={100}
+                                    max={1000}
+                                    size='small'
+                                    disableSwap
+                                />
+                            </Box>
                         </div>
                     </div>
                     <div className="headerSearchBtn" onClick={() => handleSearch()}>

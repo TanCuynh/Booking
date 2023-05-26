@@ -88,7 +88,6 @@ const HotelDetail = () => {
         const map = useMapEvents({
             click: handleMapClick,
         });
-
         return null;
     };
 

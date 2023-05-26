@@ -17,7 +17,7 @@ const images = [
 const RoomDetail = ({ onClose }) => {
 
     const handleClose = () => {
-        onClose(); // Call the onClose function passed from the parent component
+        onClose();
     };
 
     return (

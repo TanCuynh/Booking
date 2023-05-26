@@ -6,7 +6,7 @@ import Login from '../../pages/login/Login';
 import { Avatar } from '@mui/material';
 import { APP_CONTEXT } from '../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesUp, faCircleUp, faUpLong, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAnglesUp, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const Menu = () => (

@@ -84,8 +84,6 @@
     border: none;
 }
 
-
-
 .searchedInput>button {
     padding: 1rem;
     background-color: #0071c2;
@@ -107,29 +105,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* z-index: -1; */
 }
 
-.searchedResultsQuantity {
+.searchedResultsCounts {
     width: 100%;
-    text-align: center;
+    text-align: left;
     margin-bottom: 3rem;
 }
 
-.searchedResultsQuantity span {
-    font-size: 30px;
-    font-weight: 700;
+.searchedResultsCounts span {
+    font-size: 32px;
+    font-weight: 900;
 }
 
-.searchResultsItem {
-    display: flex;
-    flex-direction: row;
-}
-
-.searchResultsCol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.searchResultsItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .searchFilterDetails {
