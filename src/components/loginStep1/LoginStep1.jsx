@@ -17,7 +17,6 @@ const LoginStep1 = ({ onClose }) => {
     const [showAlert, setShowAlert] = useState(false);
 
     const openPopupLogin2 = () => {
-        console.log(email);
         if (email === '') {
             setShowAlert(true);
         } else {
@@ -33,9 +32,13 @@ const LoginStep1 = ({ onClose }) => {
         document.body.style.overflow = 'auto';
     };
 
+    const handleChangeEmail = () => {
+
+    };
+
     const handleClose = () => {
         onClose();
-    }
+    };
 
     return (
         <>

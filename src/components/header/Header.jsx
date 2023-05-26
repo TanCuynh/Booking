@@ -71,6 +71,7 @@ const Header = () => {
                                     label="Which city do you prefer?"
                                     InputLabelProps={{
                                         style: {
+                                            paddingLeft: '1rem',
                                             fontFamily: 'Montserrat, sans-serif',
                                         }
                                     }}
