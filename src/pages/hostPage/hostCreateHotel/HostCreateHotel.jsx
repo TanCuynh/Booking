@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import './HostCreateHotel.css';
-import { TextField } from '@mui/material';
+import { TextField, Checkbox, FormGroup, FormControlLabel } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faBuilding, faCar, faPhone, faPaw } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
@@ -13,6 +13,8 @@ import 'react-date-range/dist/theme/default.css';
 import ImageSelect from "./components/ImageSelect/ImageSelect";
 import AddImage from "./components/AddImage/AddImage";
 import { toast } from "react-hot-toast";
+import { amenitieOptions, bathroomFacilitieOptions } from "./option";
+import { pink } from '@mui/material/colors';
 
 
 const markerIcon = L.icon({
@@ -26,6 +28,11 @@ const HostCreateHotel = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+	// const [state, setState] = useState({
+	//   gilad: true,
+	//   jason: false,
+	//   antoine: false,
+	// });
 
 	const [edit, setEdit] = useState(false);
 
@@ -83,7 +90,7 @@ const HostCreateHotel = () => {
 		else {
 			return <AddImage handleClick={ handleClickAdd } />
 		}
-	}, [imgFiles])
+	}, [imgFiles]);
 
 	return (
 		<div className="hostCreateHotelComponent">
@@ -103,7 +110,52 @@ const HostCreateHotel = () => {
 				<div className="hostCreateHotelContent">
 					<div className="hostCreateHotelTitle">
 						<div className="hostCreateHotelTitleContent">
-							<TextField id="outlined-basic" label="Outlined" variant="outlined" />
+							<TextField id="outlined-basic" label="Name" variant="outlined" />
+							<h1>bathroomFacilitieOptions</h1>
+							<FormGroup>
+								{
+									bathroomFacilitieOptions.map((ele) => {
+										return (
+											<FormControlLabel
+												control={
+													<Checkbox
+														sx={ {
+															color: pink[800],
+															'&.Mui-checked': {
+																color: pink[600],
+															},
+														} }
+													/>
+												}
+												label={ ele.label }
+											/>
+										)
+									})
+								}
+							</FormGroup>
+
+							<h1>amenitieOptions</h1>
+							<FormGroup>
+								{
+									amenitieOptions.map((ele) => {
+										return (
+											<FormControlLabel
+												control={
+													<Checkbox
+														sx={ {
+															color: pink[800],
+															'&.Mui-checked': {
+																color: pink[600],
+															},
+														} }
+													/>
+												}
+												label={ ele.label }
+											/>
+										)
+									})
+								}
+							</FormGroup>
 							<span>100 Smart Street, LA, USA</span>
 						</div>
 						<div className="hostCreateHotelAction">
