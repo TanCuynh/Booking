@@ -62,18 +62,6 @@
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .hotelDetailImg {
     width: 100%;
     padding: 4rem;
@@ -250,6 +238,14 @@
     font-size: 33px;
 }
 
+.hotelDetailHeartIcon:hover {
+    opacity: 0.7;
+}
+
+.hotelDetailHeartIcon.active {
+    color: #ff3040;
+}
+
 .hotelDetailAmenities {
     padding-top: 3rem;
     width: 100%;
@@ -396,7 +392,7 @@
 
 .hotelDetailDate {
     position: absolute;
-    top: 2000px;
+    top: 1950px;
     left: 145px;
     font-family: 'Montserrat', sans-serif;
     border-radius: 10px;
@@ -406,7 +402,7 @@
 
 .hotelDetailOptions {
     position: absolute;
-    top: 2000px;
+    top: 1950px;
     background: #fff;
     color: #484848;
     border-radius: 10px;

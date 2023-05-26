@@ -20,11 +20,10 @@ const FeaturedProperty = () => {
                     src="https://media.moddb.com/images/downloads/1/12/11394/gallery150.jpg"
                     alt="prop"
                 />
-                <div className="featuredWishlistIcon">
+                <div className={`featuredWishlistIcon ${isLiked ? 'active' : ''}`}>
                     <FontAwesomeIcon
                         icon={isLiked ? solidHeart : heart}
                         onClick={handleToggleLike}
-                        style={{ color: "#e46780", }}
                     />
                 </div>
                 <span className='featuredPropertyPrice'>$1000-3000 USD</span>

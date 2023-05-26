@@ -7,40 +7,44 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns'
 import { useNavigate } from "react-router-dom";
+import { Autocomplete, Box, Slider, TextField } from '@mui/material';
+
+const top100Films = [
+    { label: 'The Shawshank Redemption', year: 1994 },
+    { label: 'The Godfather', year: 1972 },
+    { label: 'The Godfather: Part II', year: 1974 },
+    { label: 'The Dark Knight', year: 2008 },
+    { label: '12 Angry Men', year: 1957 },
+    { label: "Schindler's List", year: 1993 },
+    { label: 'Pulp Fiction', year: 1994 },
+];
 
 const Header = () => {
     const [destination, setDestination] = useState("");
+    const [price, setPrice] = useState([200, 500]);
 
-    const [openDate, setOpenDate] = useState(false);
+    function valuetext(value) {
+        return `${value} USD`;
+    }
 
-    const [date, setDate] = useState([
-        {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: 'selection'
+    const minDistance = 50;
+
+    const handlePrice = (event, newValue, activeThumb) => {
+        if (!Array.isArray(newValue)) {
+            return;
         }
-    ]);
-    
-    const [openOptions, setOpenOptions] = useState(false);
 
-    const [options, setOptions] = useState({
-        adult: 1,
-        children: 0,
-        room: 1,
-    });
-
-    const handleOption = (name, operation) => {
-        setOptions((prev) => {
-            return {
-                ...prev, [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-            }
-        })
+        if (activeThumb === 0) {
+            setPrice([Math.min(newValue[0], price[1] - minDistance), price[1]]);
+        } else {
+            setPrice([price[0], Math.max(newValue[1], price[0] + minDistance)]);
+        }
     };
 
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        navigate("/search", { state: { destination, date, options } });
+        navigate("/search", { state: { destination, price } });
     };
 
     return (
@@ -49,58 +53,60 @@ const Header = () => {
             <div className="headerSearch">
                 <div className="headerSearchBar">
                     <div className="headerSearchItem">
-                        <p className='headerSearchItemTitle'>Location</p>
-                        <input
+                        {/* <p className='headerSearchItemTitle'>Location</p>    */}
+                        {/* <input
                             type="text"
                             placeholder="Which city do you prefer?"
                             className="headerSearchInput"
                             onChange={e => setDestination(e.target.value)}
+                        /> */}
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={top100Films}
+                            sx={{ width: 350 }}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Which city do you prefer?"
+                                    InputLabelProps={{
+                                        style: {
+                                            fontFamily: 'Montserrat, sans-serif',
+                                        }
+                                    }}
+                                    InputProps={{
+                                        ...params.InputProps,
+                                        style: {
+                                            fontFamily: 'Montserrat, sans-serif',
+                                            borderRadius: '99px',
+                                        },
+                                    }}
+                                />
+                            )}
                         />
                     </div>
-                    <div className="headerSearchItem" id="headerSearchCalendar">
-                        <p className='headerSearchItemTitle'>Check in - Check out date</p>
-                        <span onClick={() => setOpenDate(!openDate)} className='headerSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-                        {openDate &&
-                            <DateRange
-                                editableDateInputs={true}
-                                onChange={item => setDate([item.selection])}
-                                moveRangeOnFirstSelection={false}
-                                ranges={date}
-                                className='date'
-                                minDate={new Date()}
-                            />}
-                    </div>
                     <div className="headerSearchItem">
-                        <p className='headerSearchItemTitle'>Guests</p>
-                        <span onClick={() => setOpenOptions(!openOptions)} className='headerSearchText'>{`${options.adult} adults · ${options.children} children · ${options.room} rooms`}</span>
-                        {openOptions &&
-                            <div className="options">
-                                <div className="optionItem">
-                                    <span className="optionText">Adults</span>
-                                    <div className="optionCounter">
-                                        <button disabled={options.adult <= 1} className="optionCounterBtn" onClick={() => handleOption("adult", "d")}>-</button>
-                                        <span className="optionCounterNumber">{options.adult}</span>
-                                        <button className="optionCounterBtn" onClick={() => handleOption("adult", "i")}>+</button>
-                                    </div>
-                                </div>
-                                <div className="optionItem">
-                                    <span className="optionText">Children</span>
-                                    <div className="optionCounter">
-                                        <button disabled={options.children <= 0} className="optionCounterBtn" onClick={() => handleOption("children", "d")}>-</button>
-                                        <span className="optionCounterNumber">{options.children}</span>
-                                        <button className="optionCounterBtn" onClick={() => handleOption("children", "i")}>+</button>
-                                    </div>
-                                </div>
-                                <div className="optionItem">
-                                    <span className="optionText">Rooms</span>
-                                    <div className="optionCounter">
-                                        <button disabled={options.room <= 1} className="optionCounterBtn" onClick={() => handleOption("room", "d")}>-</button>
-                                        <span className="optionCounterNumber">{options.room}</span>
-                                        <button className="optionCounterBtn" onClick={() => handleOption("room", "i")}>+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+                        <div className="headerSearchPriceTag">
+                            <p className='headerSearchItemTitle'>Room price:</p>
+                            <span className='headerSearchText'>{`${price[0]} USD - ${price[1]} USD`}</span>
+                        </div>
+                        <div className="headerSearchPriceSlider">
+                            <Box width={350}>
+                                <Slider
+                                    getAriaLabel={() => 'Room price'}
+                                    value={price}
+                                    onChange={handlePrice}
+                                    valueLabelDisplay="auto"
+                                    getAriaValueText={valuetext}
+                                    valueLabelFormat={valuetext}
+                                    step={50}
+                                    min={100}
+                                    max={1000}
+                                    size='small'
+                                    disableSwap
+                                />
+                            </Box>
+                        </div>
                     </div>
                     <div className="headerSearchBtn" onClick={() => handleSearch()}>
                         <FontAwesomeIcon

@@ -13,6 +13,7 @@ const Searchpage = () => {
     const [date, setDate] = useState(location.state.date);
     const [openDate, setOpenDate] = useState(false);
     const [options, setOptions] = useState(location.state.options);
+    const [price, setPrice] = useState(location.state.price);
 
     return (
         <div className="searchpage">
@@ -21,7 +22,7 @@ const Searchpage = () => {
                     <div className="searchedInput">
                         <h1 className="searchedInputTitle">Search</h1>
                         <div className="searchedInputItem">
-                            <label>Destination</label>
+                            <label>Location</label>
                             <input placeholder={ destination } type="text" />
                         </div>
                         <div className="searchedInputItem">
@@ -189,24 +190,20 @@ const Searchpage = () => {
                     </div>
                 </div>
                 <div className="searchResults">
-                    <div className="searchedResultsQuantity">
+                    <div className="searchedResultsCounts">
                         <span>10 results found</span>
                     </div>
-                    <div className="searchResultsItem">
-                        <div className="searchResultsCol">
+                    <div className="searchResultsItems">
                             <SearchedProperty />
                             <SearchedProperty />
                             <SearchedProperty />
                             <SearchedProperty />
                             <SearchedProperty />
-                        </div>
-                        <div className="searchResultsCol">
                             <SearchedProperty />
                             <SearchedProperty />
                             <SearchedProperty />
                             <SearchedProperty />
                             <SearchedProperty />
-                        </div>
                     </div>
                 </div>
             </div>

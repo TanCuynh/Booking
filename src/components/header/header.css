@@ -6,10 +6,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .headerTitle {
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 800;
     font-size: 64px;
@@ -19,7 +19,7 @@
 }
 
 .headerSearch {
-    width: 70%;
+    width: 50%;
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
@@ -29,9 +29,9 @@
 }
 
 .headerSearchBar {
-    width: 90%;
+    width: 100%;
     height: 80px;
-    border-radius: 40px;
+    border-radius: 99px;
     background-color: #fff;
     color: #484848;
     display: flex;
@@ -45,11 +45,10 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    padding: 3rem;
+    padding-left: 2rem;
 }
 
 .headerSearchItemTitle {
-    font-family: 'Montserrat';
     font-weight: 600;
     font-size: 14px;
     line-height: 30px;
@@ -63,9 +62,8 @@
 }
 
 .headerSearchInput {
-    font-family: 'Montserrat';
     width: 110%;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 17px;
     font-weight: 600;
     color: #484848;
@@ -74,12 +72,29 @@
 }
 
 .headerSearchText {
-    font-family: 'Montserrat';
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
     color: #484848;
     cursor: pointer;
 }
+
+.headerSearchPriceTag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.headerSearchPriceTag span {
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+}
+
+.headerSearchPriceSlider {
+    width: 100%;
+}
+
 
 .headerSearchBtn {
     background: #FDC32D;
@@ -97,59 +112,4 @@
 
 .headerSearchBtn:hover {
     background: #ffb700;
-}
-
-.date {
-    position: absolute;
-    top: 600px;
-    left: 675px;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.options {
-    position: absolute;
-    top: 600px;
-    background: #fff;
-    color: #484848;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.optionItem {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.optionCounter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: 'Open Sans', sans-serif;
-    gap: 15px;
-    font-size: 13px;
-    color: #484848;
-}
-
-.optionCounterBtn {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #0071c2;
-    color: #0071c2;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.optionCounterBtn:disabled {
-    cursor: not-allowed;
-}
-
-#headerSearchCalendar {
-    z-index: 999;
 }

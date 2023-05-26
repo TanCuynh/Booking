@@ -24,7 +24,7 @@ const Feature = () => {
                     style={{color: 'white'}}
                 />
             </div>
-            <div className="wishlistIcon">
+            <div className={`wishlistIcon ${isLiked ? 'active' : ''}`}>
                 <FontAwesomeIcon
                     icon={isLiked ? solidHeart : heart}
                     onClick={handleToggleLike}
