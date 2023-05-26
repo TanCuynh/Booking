@@ -19,7 +19,7 @@
     margin-right: 50px; /* Không có khoảng cách ở vòng tròn cuối cùng */
   }
    .step-item-image{
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png'); /* Đường dẫn đến hình ảnh */
+    background-image: url('https://icons.iconarchive.com/icons/paomedia/small-n-flat/128/sign-check-icon.png'); /* Đường dẫn đến hình ảnh */
     background-size:120%; /* Đảm bảo hình ảnh vừa với kích thước của phần tử */
     background-repeat: no-repeat; /* Không lặp lại hình ảnh */
     background-position: center; /* Hiển thị hình ảnh ở giữa */
@@ -110,6 +110,7 @@
     left: 45%;
     width: 320px;
     height: 80px;
+    margin-top: 15px;
   }
   
   .card-number label {
@@ -126,6 +127,7 @@
     left: 45%;
     width: 320px;
     height: 80px;
+    margin-top: 15px;
   }
   
   .name label {
@@ -153,14 +155,6 @@
     border-radius: 10px;
     background: #003580;
     color: #ffffff;
-    top: 70px;
+    top: 20px;
   }
   
-  .button-layout2{
-    display: flex;
-    flex-direction: column;
-    height: 70px;
-    margin-top: 80px;
-    margin-left: auto; /* Đặt margin trái tự động là "auto" */
-    margin-right: auto; /* Đặt margin phải tự động là "auto" */
-  }

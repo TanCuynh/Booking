@@ -78,6 +78,7 @@ const BookingStep2 = () => {
                             className="input-custom"
                             onChange={ handleChange }
                         />
+                        {bank === '' && <p className='error-message'>Please enter a Bank.</p>}
                     </div>
 
                     <div class='card-number'>
@@ -90,6 +91,7 @@ const BookingStep2 = () => {
                             className="input-custom"
                             onChange={ handleChange }
                         />
+                        {cardNumber === '' && <p className='error-message'>Please enter a Card Number.</p>}
                     </div>
 
                     <div class="name">
@@ -102,27 +104,23 @@ const BookingStep2 = () => {
                             className="input-custom"
                             onChange={ handleChange }
                         />
+                        {name === '' && <p className='error-message'>Please enter Your Name.</p>}
                     </div>
                 </div>
             </div>
-
             <div className="button-container">
                 <button className="continue-button">
-                    Continue to book
+                    Payment Layter
                 </button>
             </div>
-
-            <div className='button-layout2'>
-
-
+            <div className='button-layout'>
+                <div className='button-container'>
+                    <button className='cancel-button' >Cancel</button>
+                </div>
                 <div className="button-container">
                     <button className="skip-button" onClick={ handleSubmit }>
                         Skip this step
                     </button>
-                </div>
-
-                <div className='button-container'>
-                    <button className='cancel-button' >Cancel</button>
                 </div>
             </div>
         </div>

@@ -95,6 +95,7 @@ const BookingStep1 = () => {
               className="input-custom"
               onChange={ handleChange }
             />
+            {firstName === '' && <p className='error-message'>Please enter a First name.</p>}
           </div>
 
           <div className="last-name">
@@ -107,6 +108,7 @@ const BookingStep1 = () => {
               className="input-custom"
               onChange={ handleChange }
             />
+            {lastName === '' && <p className='error-message'>Please enter a Last Name.</p>}
           </div>
 
           <div className="email">
@@ -119,6 +121,7 @@ const BookingStep1 = () => {
               className="input-custom"
               onChange={ handleChange }
             />
+            {email === '' && <p className='error-message'>Please enter a Email Address.</p>}
           </div>
 
           <div className="phone-number">
@@ -131,19 +134,19 @@ const BookingStep1 = () => {
               className="input-custom"
               onChange={ handleChange }
             />
+            {phoneNumber=== '' && <p className='error-message'>Please enter a Phone Number.</p>}
           </div>
         </div>
       </div>
 
       <div className='button-layout'>
+        <div className='button-container'>
+          <button className='cancel-button'>Cancel</button>
+        </div>
         <div className="button-container">
           <button className="skip-button" onClick={ handleSubmit }>
             Skip this step
           </button>
-        </div>
-
-        <div className='button-container'>
-          <button className='cancel-button'>Cancel</button>
         </div>
       </div>
     </div>
