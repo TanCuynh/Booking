@@ -11,6 +11,7 @@ import AppLayout from "./layout/AppLayout";
 import './App.css';
 import { Toaster } from 'react-hot-toast';
 import Wishlist from "./pages/wishlist/Wishlist";
+import Profile from "./pages/profilepage/Profile";
 import BlogPage from "./pages/blogPage/BlogPage";
 import AboutUs from "./pages/aboutus/AboutUs";
 import StartOnTop from "./StartOnTop";
@@ -49,6 +50,7 @@ const App = () => {
                     </Route>
                     <Route path="user" element={<AppLayout />}>
                         <Route path="wishlist" element={<Wishlist />} />
+                        <Route path="profile" element={<Profile />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
