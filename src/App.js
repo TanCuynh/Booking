@@ -42,6 +42,7 @@ const App = () => {
                             <Route path="step2" element={<BookingStepPage2 />} />
                             <Route path="step3" element={<BookingStepPage3 />} />
                         </Route>
+                        <Route path="hotel/:id" element={<HotelDetail />} />
                     </Route>
                     <Route path="search" element={<AppLayout />}>
                         <Route path="" element={<Searchpage />} />
