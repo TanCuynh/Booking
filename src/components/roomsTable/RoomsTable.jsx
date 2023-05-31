@@ -42,17 +42,11 @@ const RoomsTable = () => {
                 </div>
             </div>
             <div className="roomsTableRoomQuantity">
-                <select name="rooms" id="roomQuantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                <input type="number" min={0} max={4} className='roomTableRoomQuantityNumber'/>
             </div>
             <div className="roomsTableShowPricesBtnContainer">
                 <div className="roomsTableShowPriceBtn" onClick={openPopup}>
-                    <span>Show Prices</span>
+                    <span>Show Price</span>
                 </div>
             </div>
 

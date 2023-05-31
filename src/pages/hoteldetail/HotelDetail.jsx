@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import ReviewComment from '../../components/reviewComment/ReviewComment'
@@ -73,8 +73,6 @@ const HotelDetail = () => {
         })
     };
 
-    
-
     const handleSearch = () => {
         navigate("/search", { state: { date, options } });
     };
@@ -91,12 +89,9 @@ const HotelDetail = () => {
         return null;
     };
 
-
     const handleRatingChange = (event, newValue) => {
         setValue(newValue);
     };
-
-    
 
     const [slideIndex, setSlideIndex] = useState(0);
     const [openPopup, setOpenPopup] = useState(false);
@@ -114,6 +109,13 @@ const HotelDetail = () => {
             newSlideIndex = slideIndex === 4 ? 0 : slideIndex + 1;
         }
         setSlideIndex(newSlideIndex);
+    };
+
+    const handleScroll = () => {
+        const targetElement = document.querySelector('.hotelDetailRoomOptions');
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     useEffect(() => {
@@ -257,13 +259,13 @@ const HotelDetail = () => {
                         <div className="hotelDetailRoomsTable">
                             <div className="hotelDetailRoomsTableTitle">
                                 <div className="hotelDetailRoomType">
-                                    <span>Room Type</span>
+                                    <span>Category</span>
                                 </div>
                                 <div className="hotelDetailRoomSleeps">
                                     <span>Sleeps</span>
                                 </div>
                                 <div className="hotelDetailRoomQuantity">
-                                    <span>Choose a Room</span>
+                                    <span>Quantity</span>
                                 </div>
                                 <div className="hotelDetailShowPrices">
                                 </div>
@@ -380,7 +382,7 @@ const HotelDetail = () => {
                             <span>Long Period: $ 3000</span>
                         </div>
                         <div className="reserveBtnComponent">
-                            <div className="reserveBtn">
+                            <div className="reserveBtn" onClick={handleScroll}>
                                 <span>Reserve Now</span>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./navbar.css"
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { Link } from "react-router-dom";
@@ -9,22 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesUp, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
-const Menu = () => (
-    <>
-        <p><Link to="/find_property">Find a Property</Link></p>
-        <p><Link to="/rental_guides">Rental Guides</Link></p>
-    </>
-)
-
-
-
 const Navbar = ({ type }) => {
     const context = useContext(APP_CONTEXT);
 
     const [openLogin, setOpenLogin] = useState(false);
 
-
     const [toggleMenu, setToggleMenu] = useState(false);
+
+    const [scrollToTopBtn, setScrollToTopBtn] = useState(false);
 
     const openPopup = () => {
         setOpenLogin(true);
@@ -36,6 +28,11 @@ const Navbar = ({ type }) => {
         document.body.style.overflow = 'auto';
     };
 
+    const handleScroll = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        setScrollToTopBtn(scrollTop > 0);
+    };
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -43,24 +40,27 @@ const Navbar = ({ type }) => {
         });
     };
 
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <div className={type === "home" ? "navbar homeMode" : "navbar"}>
             <div className="navLinks">
                 <span className='logo'> <Link to="/">STAYCATION.</Link></span>
-                <div className="navLinksContainer">
-                    <Menu />
-                </div>
-
             </div>
             {
-                context?.user && <div className="becomeHostBtn">
-                    <Avatar alt="Remy Sharp" src={context.user.avatar} />
-                    <span>
-                        {
-                            context.user.email
-                        }
-                    </span>
-                </div>
+                context?.user ? (
+                    <div className="loginBtn">
+                        <Avatar alt="Avatar" src={context.user.avatar} />
+                        <span>{context.user.email}</span>
+                    </div>
+                ) : (
+                    <div className="loginBtn">
+                        <span>Login / Signup</span>
+                    </div>
+                )
             }
 
             <div className="navItemMenu">
@@ -73,14 +73,15 @@ const Navbar = ({ type }) => {
                     <div className="navItemMenuContainer">
                         <div className="navItemMenuContainerLinks">
                             <p onClick={openPopup}><span>Log In - Sign Up</span></p>
-                            <p><Link to="/help_center">Help Center</Link></p>
                         </div>
                     </div>
                 )}
             </div>
-            <div className="scrollToTopBtn" onClick={scrollToTop}>
-                <FontAwesomeIcon icon={faAnglesUp} />
-            </div>
+            {scrollToTopBtn && (
+                <div className="scrollToTopBtn" onClick={scrollToTop}>
+                    <FontAwesomeIcon icon={faAnglesUp} />
+                </div>
+            )}
             {openLogin &&
                 <div className="loginModalContainer" onClick={closePopup}>
                     <div className="loginModal" onClick={(e) => e.stopPropagation()}>

@@ -22,8 +22,7 @@ const NearbyProperties = () => {
                         delay: 3000,
                         disableOnInteraction: false
                     }}
-                    // onSlideChange={() => console.log('Slide Change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    // onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide><Feature /></SwiperSlide>
                     <SwiperSlide><Feature /></SwiperSlide>

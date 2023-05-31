@@ -10,7 +10,6 @@ const HostLayout = () => {
 	return (<Outlet />)
 }
 
-
 const HostPropertiesPage = () => {
 	return <HostProperties />;
 };

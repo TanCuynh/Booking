@@ -156,7 +156,7 @@ const RoomDetail = ({ onClose }) => {
                             <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>2 rooms available</span>
+                            <span>2 rooms</span>
                         </div>
                     </div>
                     <div className="roomDetailPrice">
@@ -165,7 +165,7 @@ const RoomDetail = ({ onClose }) => {
                 </div>
                 <div className="roomDetailBookingBtnContainer">
                     <div className="roomDetailBookingBtn">
-                        <span>Book now</span>
+                        <span>Book Now</span>
                     </div>
                 </div>
             </div>

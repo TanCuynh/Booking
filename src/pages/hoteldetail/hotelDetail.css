@@ -472,9 +472,7 @@
 .hotelDetailRoomQuantity {
     padding-left: 2rem;
     border-right: 1px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    text-align: flex-start;
 }
 
 .hotelDetailOfferedAmenities {

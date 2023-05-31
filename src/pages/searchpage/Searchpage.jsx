@@ -10,9 +10,19 @@ const Searchpage = () => {
 
     const location = useLocation();
     const [destination, setDestination] = useState(location.state.destination);
-    const [date, setDate] = useState(location.state.date);
+    const [date, setDate] = useState([
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: 'selection'
+        }
+    ]);
     const [openDate, setOpenDate] = useState(false);
-    const [options, setOptions] = useState(location.state.options);
+    const [options, setOptions] = useState({
+        adult: 1,
+        children: 0,
+        room: 1,
+    });
     const [price, setPrice] = useState(location.state.price);
 
     return (
@@ -23,41 +33,41 @@ const Searchpage = () => {
                         <h1 className="searchedInputTitle">Search</h1>
                         <div className="searchedInputItem">
                             <label>Location</label>
-                            <input placeholder={ destination } type="text" />
+                            <input placeholder={destination} type="text" />
                         </div>
                         <div className="searchedInputItem">
                             <label>Check-in Date</label>
-                            <span onClick={ () => setOpenDate(!openDate) }>{ `${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}` }</span>
-                            { openDate && (
+                            <span onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                            {openDate && (
                                 <DateRange
-                                    onChange={ item => setDate([item.selection]) }
-                                    minDate={ new Date() }
-                                    ranges={ date }
+                                    onChange={item => setDate([item.selection])}
+                                    minDate={new Date()}
+                                    ranges={date}
                                 />
-                            ) }
+                            )}
                         </div>
                         <div className="searchedInputItem">
                             <label>Options</label>
                             <div className="searchedOptions">
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Minimum price <small>per night</small></span>
-                                    <input type="number" className="searchedOptionInput" />
+                                    <input type="number" className="searchedOptionInput" placeholder={price[0]} />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Maximum price <small>per night</small></span>
-                                    <input type="number" className="searchedOptionInput" />
+                                    <input type="number" className="searchedOptionInput" placeholder={price[1]}/>
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Adult </span>
-                                    <input type="number" min={ 1 } className="searchedOptionInput" placeholder={ options.adult } />
+                                    <input type="number" min={1} className="searchedOptionInput" placeholder={options.adult} />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Children </span>
-                                    <input type="number" min={ 0 } className="searchedOptionInput" placeholder={ options.children } />
+                                    <input type="number" min={0} className="searchedOptionInput" placeholder={options.children} />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Room </span>
-                                    <input type="number" min={ 1 } className="searchedOptionInput" placeholder={ options.room } />
+                                    <input type="number" min={1} className="searchedOptionInput" placeholder={options.room} />
                                 </div>
                             </div>
                         </div>
@@ -191,19 +201,20 @@ const Searchpage = () => {
                 </div>
                 <div className="searchResults">
                     <div className="searchedResultsCounts">
-                        <span>10 results found</span>
+                        <h3 className='resultCount'>10</h3>
+                        <span>results found</span>
                     </div>
                     <div className="searchResultsItems">
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
-                            <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
+                        <SearchedProperty />
                     </div>
                 </div>
             </div>

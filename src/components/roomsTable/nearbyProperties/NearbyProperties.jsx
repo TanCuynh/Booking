@@ -1,6 +1,6 @@
 import React from 'react'
-import './latestProperties.css'
-import Feature from "../feature/Feature";
+import './nearbyProperties.css'
+import Feature from '../feature/Feature'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/swiper-bundle.min.css'
@@ -9,13 +9,12 @@ import SwiperCore, { Autoplay } from 'swiper';
 
 SwiperCore.use([Autoplay]);
 
-
-const LatestProperties = () => {
+const NearbyProperties = () => {
     return (
-        <div className="latestProperties">
-            <div className="latestPropertiesTitle"><h1>Latest on the Property Listing</h1></div>
+        <div className="nearbyProperties">
+            <div className="nearbyPropertiesTitle"><h1>Nearby Listed Properties</h1></div>
             <div className='a-sticky-thing'></div>
-            <div className="latestPropertiesItem">
+            <div className="nearbyPropertiesItem">
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     slidesPerView={4}
@@ -24,7 +23,7 @@ const LatestProperties = () => {
                         disableOnInteraction: false
                     }}
                     // onSlideChange={() => console.log('Slide Change')}
-                    // onSwiper={(swiper) => console.log(swiper)}
+                    onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide><Feature /></SwiperSlide>
                     <SwiperSlide><Feature /></SwiperSlide>
@@ -34,8 +33,8 @@ const LatestProperties = () => {
                     <SwiperSlide><Feature /></SwiperSlide>
                 </Swiper>
             </div>
-        </div >
+        </div>
     )
 }
 
-export default LatestProperties
+export default NearbyProperties

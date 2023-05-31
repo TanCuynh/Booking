@@ -16,8 +16,11 @@ const Feature = () => {
 
     return (
         <div className="feature">
+            <div className="featureImg">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/297693925.jpg?k=c5cfc34421f30c8fb83452c7a9be6b0741e55bcbcc02b4e5c61fa500b99b8f80&o=&hp=1" alt="" />
+            </div>
             <div className="ratingStars">
-                <Rating
+                <Rating 
                     name="my-rating"
                     value={5}
                     readOnly

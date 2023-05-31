@@ -35,33 +35,13 @@
     cursor: pointer;
 }
 
-.navLinksContainer {
-    display: flex;
-    flex-direction: row;
-    margin-left: 1rem;
-}
-
-.navLinksContainer a {
-    font-family: 'Montserrat';
-    color: #FFFFFF;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    text-decoration: none;
-    margin-left: 3rem;
-}
-
-.navLinksContainer a:hover {
-    text-decoration: underline;
-}
-
 .navItemActions {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.becomeHostBtn {
+.loginBtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +54,7 @@
     cursor: pointer;
 }
 
-.becomeHostBtn:hover {
+.loginBtn:hover {
     opacity: 0.9;
 }
 

@@ -14,17 +14,23 @@ import toast from 'react-hot-toast';
 const Login = ({ onClose }) => {
 	const context = useContext(APP_CONTEXT);
 
-
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [openLogin2, setOpenLogin2] = useState(false);
+
 	const [data, setData] = useState({ email: '', password: '' });
 
+	const [emailAlert, setEmailAlert] = useState(false);
+
 	const openPopupLogin2 = () => {
-		setOpenLogin2(true);
-		document.body.style.overflow = 'hidden';
-		const component = document.querySelector('.container');
-		component.style.display = 'none';
+		if (data.email === "") {
+			setEmailAlert(true);
+		} else {
+			setOpenLogin2(true);
+			document.body.style.overflow = 'hidden';
+			const component = document.querySelector('.container');
+			component.style.display = 'none';
+		}
 	};
 
 	const closePopupLogin2 = () => {
@@ -44,38 +50,37 @@ const Login = ({ onClose }) => {
 
 		console.log(data, isLoading)
 		await AuthAPI.login(data)
-		.then((res) => {
-			if(res.status === 200) {
-				context.setUser(res.data.data);
-				localStorage.setItem('token', res.data.token);
-				toast.success("Login successfully");
-			}
+			.then((res) => {
+				if (res.status === 200) {
+					context.setUser(res.data.data);
+					localStorage.setItem('token', res.data.token);
+					toast.success("Login successfully");
+				}
 
-		})
-		.catch((error) => {
-			toast.error("Email or password wrong")
-		})
-		.finally(
-			() => {
-				setIsLoading(false);
-				onClose();
-			}
-		);
-		
-
-		
+			})
+			.catch((error) => {
+				toast.error("Email or password wrong")
+			})
+			.finally(
+				() => {
+					setIsLoading(false);
+					onClose();
+				}
+			);
 	}
+
 	return (
 		<>
 			<div className="container">
-				<div className="container__login">
-					<div className="container__login-head">
+				<div className="loginContainer">
+					<div className="loginContainerHeader">
 						<h2>Login or Signup</h2>
 					</div>
 				</div>
 				<>
-					<div className="container__mail">
+					<div className="loginContainerMail">
 						<input required="" type="email" name='email' value={data.email} onChange={handleChange} className="container__mail-input" placeholder="Please enter email" />
+						{emailAlert && <span className='container__mail-alert'>You haven't entered your email!</span>}
 						<span className="container__mail-mess">We’ll send you a message to confirm your email. Standard message and data
 							rates apply.</span>
 						<button className="container__mail-login" onClick={openPopupLogin2}>Continue</button>
@@ -100,7 +105,6 @@ const Login = ({ onClose }) => {
 						</button>
 					</div>
 				</>
-
 
 				<FontAwesomeIcon icon={faXmark} className='loginCloseBtn' onClick={handleClose} />
 			</div>
@@ -156,7 +160,7 @@ const Login = ({ onClose }) => {
 				</div >
 			}
 		</>
-		
+
 	)
 }
 
