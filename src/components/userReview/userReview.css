@@ -1,0 +1,64 @@
+.user-review {
+    position: relative;
+    background-color: #EFF0F2;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 90%;
+}
+
+.hotel {
+    position: relative;
+    display: flex;
+    flex-direction:  row;
+}
+
+.avt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #ce5e5e;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.name-Hotel {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.namee {
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.address-hotel {
+    margin-top: 5px;
+    font-size: 10px;
+    color: #484848;
+}
+
+.review-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.day-review {
+    font-size: 12px;
+}
+
+.reviews-text {
+    font-size: 18px;
+    margin-top: 16px;
+    margin-bottom: 5px;
+}
