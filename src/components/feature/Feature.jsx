@@ -6,7 +6,7 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { Rating } from '@mui/material'
 
-const Feature = () => {
+const Feature = ({dataHotel}) => {
 
     const [isLiked, setIsLiked] = useState(false);
 
@@ -35,10 +35,10 @@ const Feature = () => {
             </div>
             <div className="featureHotelInfo">
                 <div className="featureHotelName">
-                    <span className="hotelName"><Link to="/search/asd">LA Supreme Hotel</Link></span>
+                    <span className="hotelName"><Link to={`/hotel/${dataHotel?.id}`}>{dataHotel?.name}</Link></span>
                 </div>
                 <div className="featureHotelAddress">
-                    <span className="address">1020 Super Bowl</span>
+                    <span className="address">{dataHotel?.address}</span>
                 </div>
             </div>
         </div>

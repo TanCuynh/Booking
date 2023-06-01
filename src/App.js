@@ -21,9 +21,10 @@ import { BookingLayout, BookingStepPage1, BookingStepPage2, BookingStepPage3 } f
 export const APP_CONTEXT = createContext({});
 const App = () => {
     const [user, setUser] = useState({});
+    const [dataAllHotels, setDataAllHotels] = useState([]);
 
     return (
-        <APP_CONTEXT.Provider value={{ user, setUser }}>
+        <APP_CONTEXT.Provider value={{ user, setUser,dataAllHotels, setDataAllHotels }}>
             <BrowserRouter>
                 <StartOnTop />
                 <Routes>
@@ -42,6 +43,7 @@ const App = () => {
                             <Route path="step2" element={<BookingStepPage2 />} />
                             <Route path="step3" element={<BookingStepPage3 />} />
                         </Route>
+                        <Route path="hotel/:id" element={<HotelDetail />} />
                     </Route>
                     <Route path="search" element={<AppLayout />}>
                         <Route path="" element={<Searchpage />} />

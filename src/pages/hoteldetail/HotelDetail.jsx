@@ -3,18 +3,21 @@ import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import ReviewComment from '../../components/reviewComment/ReviewComment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
+import { faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart, faSquareParking, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck, faHeart as heart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
 import { LinearProgress } from '@mui/material'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 import L from 'leaflet';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
+import { async } from 'q'
+import hotelAPI from '../../api/hotelAPI'
+
 
 
 const markerIcon = L.icon({
@@ -42,7 +45,28 @@ const photos = [
 
 
 const HotelDetail = () => {
+    const [dataHotel, setDataHotel] = useState({});
+    const [safetyHygiene, setSafetyHygiene] = useState([]);
+    const [amenities, setAmenities] = useState([]);
+
     const navigate = useNavigate();
+    const { id } = useParams();
+    console.log('id', id);
+
+    const getHotelDetail = async (id) => {
+        const res = await hotelAPI.getHotelById(id);
+        if (res.status === 200) {
+            console.log('data', res.data.data);
+            setDataHotel(res.data.data);
+            setSafetyHygiene(res.data.data.Safety_Hygiene.split(" \n"));
+            setAmenities(res.data.data.amenities.split(","));
+            console.log("array", res.data.data.amenities.split(","));
+
+        } else {
+            setDataHotel({});
+            console.log('err');
+        }
+    }
 
     const [isLiked, setIsLiked] = useState(false);
     const [openDate, setOpenDate] = useState(false);
@@ -54,6 +78,8 @@ const HotelDetail = () => {
         }
     ]);
     const [value, setValue] = React.useState(100);
+
+
     const [openOptions, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
         adult: 1,
@@ -73,9 +99,7 @@ const HotelDetail = () => {
         })
     };
 
-    const handleSearch = () => {
-        navigate("/search", { state: { date, options } });
-    };
+
 
     const handleMapClick = (e) => {
         const { lat, lng } = e.latlng;
@@ -92,6 +116,8 @@ const HotelDetail = () => {
     const handleRatingChange = (event, newValue) => {
         setValue(newValue);
     };
+
+
 
     const [slideIndex, setSlideIndex] = useState(0);
     const [openPopup, setOpenPopup] = useState(false);
@@ -120,6 +146,7 @@ const HotelDetail = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        getHotelDetail(id);
     }, []);
 
     return (
@@ -150,8 +177,8 @@ const HotelDetail = () => {
                 <div className="hotelDetailContent">
                     <div className="hotelDetailTitle">
                         <div className="hotelDetailTitleContent">
-                            <h3>Well Furnished Apartment</h3>
-                            <span>100 Smart Street, LA, USA</span>
+                            <h3>{dataHotel?.name}</h3>
+                            <span>{dataHotel?.address}</span>
                         </div>
                         <div className="hotelDetailAction">
                             <FontAwesomeIcon
@@ -165,15 +192,15 @@ const HotelDetail = () => {
                     <div className="hotelDetailAmenities">
                         <div className="hotelDetailAmenity">
                             <FontAwesomeIcon icon={faBed} className='hotelDetailAmenityIcon' />
-                            <span>3 Bedrooms</span>
+                            <span>{dataHotel?.room_total} Rooms</span>
                         </div>
                         <div className="hotelDetailAmenity">
                             <FontAwesomeIcon icon={faBath} className='hotelDetailAmenityIcon' />
-                            <span>2 Bathrooms</span>
+                            <span>{dataHotel?.bathrooms} Bathrooms</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faCar} className='hotelDetailAmenityIcon' />
-                            <span>3 Cars/2 Bikes</span>
+                            <FontAwesomeIcon icon={faSquareParking} className='hotelDetailAmenityIcon' />
+                            <span>{dataHotel?.parking_slot} Parking Slots</span>
                         </div>
                         <div className="hotelDetailAmenity">
                             <FontAwesomeIcon icon={faPaw} className='hotelDetailAmenityIcon' />
@@ -248,7 +275,7 @@ const HotelDetail = () => {
                                         </div>
                                     }
                                 </div>
-                                <div className="hotelDetailSearchBtn" onClick={() => handleSearch()}>
+                                <div className="hotelDetailSearchBtn">
                                     <FontAwesomeIcon
                                         icon={faMagnifyingGlass}
                                         className='hotelDetailSearchBtnIcon'
@@ -279,50 +306,47 @@ const HotelDetail = () => {
                     <div className="hotelDetailOfferedAmenities">
                         <h3>Offered Amenities</h3>
                         <div className="offeredAmenities">
+                            {
+                                
+                            }
                             <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faUtensils} className='offeredAmenityIcon' />
-                                <span>Kitchen</span>
+                                <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
+                                <span>{dataHotel?.amenities}</span>
                             </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faTv} className='offeredAmenityIcon' />
+                            {/* <div className="hotelDetailItem">
+                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
                                 <span>Television</span>
                             </div>
                             <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faSnowflake} className='offeredAmenityIcon' />
+                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
                                 <span>Air conditioner</span>
                             </div>
                             <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faWifi} className='offeredAmenityIcon' />
+                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
                                 <span>Free Wifi</span>
                             </div>
                             <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faGamepad} className='offeredAmenityIcon' />
+                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
                                 <span>Console Games</span>
                             </div>
                             <div className="hotelDetailItem">
                                 <span> <b>+5</b> more amenities</span>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="hotelDetailSafetyHygiene">
                         <h3>Safety and Hygiene</h3>
                         <div className="safetyHygiene">
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                <span>Daily Cleaning</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                <span>Fire Extinguishers</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                <span>Disinfections and Sterilizations</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                <span>Smoke Detectors</span>
-                            </div>
+                            {
+                                safetyHygiene.map((item, index) => {
+                                    return (
+                                        <div className="hotelDetailItem">
+                                            <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div className="hotelDetailReview">
@@ -373,13 +397,13 @@ const HotelDetail = () => {
                 <div className="hotelDetailReserve">
                     <div className="reserveBox">
                         <div className="reserveBoxPrice">
-                            <h3>$ 1000 - $ 3000</h3>
+                            <h3>{`$ ${dataHotel?.price} USD`}</h3>
                         </div>
                         <hr className='thin-line' />
                         <div className="reserveBoxPriceDesc">
-                            <span>Short Period: $ 1000</span>
-                            <span>Medium Period: $ 2000</span>
-                            <span>Long Period: $ 3000</span>
+                            <span>Short Period: $ {dataHotel?.price} USD</span>
+                            <span>Medium Period: $ {dataHotel?.price * 2} USD</span>
+                            <span>Long Period: $ {dataHotel?.price * 3} USD</span>
                         </div>
                         <div className="reserveBtnComponent">
                             <div className="reserveBtn" onClick={handleScroll}>
@@ -388,12 +412,12 @@ const HotelDetail = () => {
                         </div>
                         <div className="reserveBoxFuncs">
                             <div className="reserveBoxFunc">
-                                <FontAwesomeIcon icon={faBuilding} className='reserveBoxIcon' />
-                                <span>Property Inquiry</span>
+                                <FontAwesomeIcon icon={faEnvelope} className='reserveBoxIcon' />
+                                <span>{dataHotel?.email}</span>
                             </div>
                             <div className="reserveBoxFunc">
                                 <FontAwesomeIcon icon={faPhone} className='reserveBoxIcon' />
-                                <span>Contact Host</span>
+                                <span>{dataHotel?.hotline}</span>
                             </div>
                         </div>
                     </div>

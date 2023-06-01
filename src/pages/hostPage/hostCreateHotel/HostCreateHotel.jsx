@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import './HostCreateHotel.css';
 import { TextField, Checkbox, FormGroup, FormControlLabel } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBath, faBed, faBuilding, faCar, faPhone, faPaw } from '@fortawesome/free-solid-svg-icons'
+import { faBath, faBed, faBuilding, faCar, faPhone, faPaw, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
@@ -220,7 +220,7 @@ const HostCreateHotel = () => {
 						</div>
 						<div className="reserveBoxFuncs">
 							<div className="reserveBoxFunc">
-								<FontAwesomeIcon icon={ faBuilding } className='reserveBoxIcon' />
+								<FontAwesomeIcon icon={ faEnvelope } className='reserveBoxIcon' />
 								<span>Property Inquiry</span>
 							</div>
 							<div className="reserveBoxFunc">
