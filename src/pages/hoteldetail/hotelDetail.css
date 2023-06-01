@@ -46,7 +46,6 @@
     object-fit: cover;
 }
 
-
 .closePopupBtn {
     position: absolute;
     top: 0px;
@@ -321,11 +320,12 @@
 }
 
 .hotelDetailSearchBarContainer {
+    position: relative;
     padding-top: 1rem;
 }
 
 .hotelDetailSearchBar {
-    width: 75%;
+    width: 50%;
     height: 70px;
     border-radius: 35px;
     background-color: #fff;
@@ -400,60 +400,18 @@
 
 .hotelDetailDate {
     position: absolute;
-    top: 1950px;
-    left: 145px;
+    top: 90px;
+    left: 20px;
+    z-index: 999;
     font-family: 'Montserrat', sans-serif;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.hotelDetailOptions {
-    position: absolute;
-    top: 1950px;
-    background: #fff;
-    color: #484848;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.optionItem {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.optionCounter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: 'Open Sans', sans-serif;
-    gap: 15px;
-    font-size: 13px;
-    color: #484848;
-}
-
-.optionCounterBtn {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #0071c2;
-    color: #0071c2;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.optionCounterBtn:disabled {
-    cursor: not-allowed;
 }
 
 #hotelDetailSearchCalendar {
     z-index: 999;
 }
-
 
 .hotelDetailRoomsTable {
     margin-top: 1rem;

@@ -4,11 +4,6 @@
     color: #fff;
     font-family: 'Montserrat', sans-serif;
 
-    /* background: url('https://cf.bstatic.com/xdata/images/hotel/max1280x900/297693925.jpg?k=c5cfc34421f30c8fb83452c7a9be6b0741e55bcbcc02b4e5c61fa500b99b8f80&o=&hp=1');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
