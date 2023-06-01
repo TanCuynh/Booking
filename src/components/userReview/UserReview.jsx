@@ -1,4 +1,5 @@
 import React from "react";
+import { Rating } from '@mui/material'
 import './userReview.css';
 
 function UserReview () {
@@ -23,6 +24,11 @@ function UserReview () {
                 <div className="reviews-text">   
                     <p>Chất lượng phục vụ tốt</p>
                 </div>
+                <Rating 
+                        name="my-rating"
+                        value={5}
+                        readOnly
+                />
             </div>
         </div>
     );
