@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import ReviewComment from '../../components/reviewComment/ReviewComment'
@@ -56,11 +56,10 @@ const HotelDetail = () => {
     const getHotelDetail = async (id) => {
         const res = await hotelAPI.getHotelById(id);
         if (res.status === 200) {
-            console.log('data', res.data.data);
+            // console.log('data', res.data.data);
             setDataHotel(res.data.data);
             setSafetyHygiene(res.data.data.Safety_Hygiene.split(" \n"));
             setAmenities(res.data.data.amenities.split(","));
-            console.log("array", res.data.data.amenities.split(","));
 
         } else {
             setDataHotel({});
@@ -74,7 +73,8 @@ const HotelDetail = () => {
         {
             startDate: new Date(),
             endDate: new Date(),
-            key: 'selection'
+            key: 'selection',
+            totalDate: 0
         }
     ]);
     const [value, setValue] = React.useState(100);
@@ -143,6 +143,35 @@ const HotelDetail = () => {
             targetElement.scrollIntoView({ behavior: 'smooth' });
         }
     };
+    const renderSmallImgs = useMemo(() => {
+        if (dataHotel?.images) {
+            const temp = [...dataHotel.images];
+            return temp.slice(1).map((image, index) => {
+                return (
+                    <img key={index} onClick={() => handleOpen(index + 1)} src={image.image_url} alt="" className="smallImg" />
+                )
+            })
+        }
+    }, [dataHotel?.images])
+
+    const handleChangeDate = (item) => {
+        const sum = calculateDays(item.selection.startDate, item.selection.endDate)
+        const temp = item.selection;
+        temp.totalDate = sum;
+        console.log(23, temp, sum);
+        const tempDate = [...date];
+        tempDate[0] = temp;
+
+        setDate(tempDate)
+
+    }
+
+    const calculateDays = (startDate, endDate) => {
+        const time = new Date(endDate) - new Date(startDate);
+        const timeUnit = 24 * 60 * 60 * 1000;
+
+        return Math.round(time / timeUnit);
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -157,20 +186,23 @@ const HotelDetail = () => {
                         <FontAwesomeIcon icon={faCircleXmark} className='closePopupBtn' onClick={() => setOpenPopup(false)} />
                         <FontAwesomeIcon icon={faCircleArrowLeft} className='arrowPopupBtn' onClick={() => handleMove("l")} />
                         <div className="popupImgWrapper">
-                            <img src={photos[slideIndex].src} alt="popupImg" />
+                            <img src={dataHotel?.images[slideIndex].image_url} alt="popupImg" />
                         </div>
                         <FontAwesomeIcon icon={faCircleArrowRight} className='arrowPopupBtn' onClick={() => handleMove("r")} />
                     </div>
                 </div>
             }
             <div className="hotelDetailImg">
-                <div className="hotelDetailImgLarge">
-                    <img onClick={() => handleOpen(0)} src={photos[0].src} alt="" className="bigImg" />
-                </div>
+                {
+                    dataHotel?.images &&
+                    <div className="hotelDetailImgLarge">
+                        <img onClick={() => handleOpen(0)} src={dataHotel?.images[0].image_url} alt="" className="bigImg" />
+                    </div>
+                }
                 <div className="hotelDetailImgSmall">
-                    {photos.slice(1).map((photo, i) => (
-                        <img key={i} onClick={() => handleOpen(i + 1)} src={photo.src} alt="" className="smallImg" />
-                    ))}
+                    {
+                        renderSmallImgs
+                    }
                 </div>
             </div>
             <div className="hotelDetail">
@@ -204,13 +236,16 @@ const HotelDetail = () => {
                         </div>
                         <div className="hotelDetailAmenity">
                             <FontAwesomeIcon icon={faPaw} className='hotelDetailAmenityIcon' />
-                            <span>0 Pets Allowed</span>
+                            <span onClick={() => console.log(date)}>0 Pets Allowed</span>
                         </div>
                     </div>
                     <div className="hotelDetailDesc">
                         <h3>Apartment Description</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>
+                            {
+                                dataHotel?.description ? dataHotel.description : ''
+                            }
+                        </p>
                     </div>
                     <div className="hotelDetailMapLocation">
                         <MapContainer center={[16.06827770014092, 108.2009288146462]} zoom={18} scrollWheelZoom={false} style={{ height: '400px', width: '100%' }}>
@@ -232,11 +267,12 @@ const HotelDetail = () => {
                             <div className="hotelDetailSearchBar">
                                 <div className="hotelDetailSearchItem" id="hotelDetailSearchCalendar">
                                     <p className='hotelDetailSearchItemTitle'>Check in - Check out date</p>
-                                    <span onClick={() => setOpenDate(!openDate)} className='hotelDetailSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                                    <span onClick={() => { setOpenDate(!openDate); console.log(111111) }} className='hotelDetailSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
                                     {openDate &&
                                         <DateRange
                                             editableDateInputs={true}
-                                            onChange={item => setDate([item.selection])}
+                                            // onChange={item => setDate([item.selection])}
+                                            onChange={handleChangeDate}
                                             moveRangeOnFirstSelection={false}
                                             ranges={date}
                                             className='hotelDetailDate'
@@ -307,31 +343,15 @@ const HotelDetail = () => {
                         <h3>Offered Amenities</h3>
                         <div className="offeredAmenities">
                             {
-                                
+                                amenities.map((item, index) => {
+                                    return (
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
                             }
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                <span>{dataHotel?.amenities}</span>
-                            </div>
-                            {/* <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
-                                <span>Television</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
-                                <span>Air conditioner</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
-                                <span>Free Wifi</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
-                                <span>Console Games</span>
-                            </div>
-                            <div className="hotelDetailItem">
-                                <span> <b>+5</b> more amenities</span>
-                            </div> */}
                         </div>
                     </div>
                     <div className="hotelDetailSafetyHygiene">
@@ -340,7 +360,7 @@ const HotelDetail = () => {
                             {
                                 safetyHygiene.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem">
+                                        <div className="hotelDetailItem" key={index}>
                                             <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
                                             <span>{item}</span>
                                         </div>
