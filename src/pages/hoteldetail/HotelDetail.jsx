@@ -79,27 +79,9 @@ const HotelDetail = () => {
     ]);
     const [value, setValue] = React.useState(100);
 
-
-    const [openOptions, setOpenOptions] = useState(false);
-    const [options, setOptions] = useState({
-        adult: 1,
-        children: 0,
-        room: 1,
-    });
-
     const handleToggleLike = () => {
         setIsLiked(!isLiked);
     };
-
-    const handleOption = (name, operation) => {
-        setOptions((prev) => {
-            return {
-                ...prev, [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-            }
-        })
-    };
-
-
 
     const handleMapClick = (e) => {
         const { lat, lng } = e.latlng;
@@ -265,52 +247,19 @@ const HotelDetail = () => {
                         <h3>Availability</h3>
                         <div className="hotelDetailSearchBarContainer">
                             <div className="hotelDetailSearchBar">
-                                <div className="hotelDetailSearchItem" id="hotelDetailSearchCalendar">
-                                    <p className='hotelDetailSearchItemTitle'>Check in - Check out date</p>
-                                    <span onClick={() => { setOpenDate(!openDate); console.log(111111) }} className='hotelDetailSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-                                    {openDate &&
-                                        <DateRange
-                                            editableDateInputs={true}
-                                            // onChange={item => setDate([item.selection])}
-                                            onChange={handleChangeDate}
-                                            moveRangeOnFirstSelection={false}
-                                            ranges={date}
-                                            className='hotelDetailDate'
-                                            minDate={new Date()}
-                                        />}
-                                </div>
-                                <div className="hotelDetailSearchItem">
-                                    <p className='hotelDetailSearchItemTitle'>Guests</p>
-                                    <span onClick={() => setOpenOptions(!openOptions)} className='hotelDetailSearchText'>{`${options.adult} adults · ${options.children} children · ${options.room} rooms`}</span>
-                                    {openOptions &&
-                                        <div className="hotelDetailOptions">
-                                            <div className="optionItem">
-                                                <span className="optionText">Adults</span>
-                                                <div className="optionCounter">
-                                                    <button disabled={options.adult <= 1} className="optionCounterBtn" onClick={() => handleOption("adult", "d")}>-</button>
-                                                    <span className="optionCounterNumber">{options.adult}</span>
-                                                    <button className="optionCounterBtn" onClick={() => handleOption("adult", "i")}>+</button>
-                                                </div>
-                                            </div>
-                                            <div className="optionItem">
-                                                <span className="optionText">Children</span>
-                                                <div className="optionCounter">
-                                                    <button disabled={options.children <= 0} className="optionCounterBtn" onClick={() => handleOption("children", "d")}>-</button>
-                                                    <span className="optionCounterNumber">{options.children}</span>
-                                                    <button className="optionCounterBtn" onClick={() => handleOption("children", "i")}>+</button>
-                                                </div>
-                                            </div>
-                                            <div className="optionItem">
-                                                <span className="optionText">Rooms</span>
-                                                <div className="optionCounter">
-                                                    <button disabled={options.room <= 1} className="optionCounterBtn" onClick={() => handleOption("room", "d")}>-</button>
-                                                    <span className="optionCounterNumber">{options.room}</span>
-                                                    <button className="optionCounterBtn" onClick={() => handleOption("room", "i")}>+</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
+                                    <div className="hotelDetailSearchItem" id="hotelDetailSearchCalendar">
+                                        <p className='hotelDetailSearchItemTitle'>Check in - Check out date</p>
+                                        <span onClick={() => { setOpenDate(!openDate); console.log(111111) }} className='hotelDetailSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                                        {openDate &&
+                                            <DateRange
+                                                editableDateInputs={true}
+                                                onChange={handleChangeDate}
+                                                moveRangeOnFirstSelection={false}
+                                                ranges={date}
+                                                className='hotelDetailDate'
+                                                minDate={new Date()}
+                                            />}
+                                    </div>
                                 <div className="hotelDetailSearchBtn">
                                     <FontAwesomeIcon
                                         icon={faMagnifyingGlass}
