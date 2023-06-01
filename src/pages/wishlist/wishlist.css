@@ -1,5 +1,6 @@
 .wishlistContainer {
-    padding-left: 3rem;
+    padding: 4rem 0;
+    padding-left: 5rem;
     width: 100%;
     height: max-content;
     display: flex;
@@ -24,5 +25,5 @@
     padding-top: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 3rem;
+    row-gap: 4rem;
 }

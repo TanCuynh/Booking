@@ -10,30 +10,30 @@ import { useNavigate } from "react-router-dom";
 import { Autocomplete, Box, Slider, TextField } from '@mui/material';
 
 const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
+    'The Shawshank Redemption',
+    'The Godfather',
+    'The Godfather: Part II',
+    'The Dark Knight',
+    '12 Angry Men',
+    "Schindler's List",
+    'Pulp Fiction',
 ];
 
 const Header = () => {
+    const navigate = useNavigate();
     const [destination, setDestination] = useState("");
     const [price, setPrice] = useState([200, 500]);
+    
+    const minDistance = 50;
 
     function valuetext(value) {
         return `${value} USD`;
     }
 
-    const minDistance = 50;
-
     const handlePrice = (event, newValue, activeThumb) => {
         if (!Array.isArray(newValue)) {
             return;
         }
-
         if (activeThumb === 0) {
             setPrice([Math.min(newValue[0], price[1] - minDistance), price[1]]);
         } else {
@@ -41,10 +41,9 @@ const Header = () => {
         }
     };
 
-    const navigate = useNavigate();
-
     const handleSearch = () => {
         navigate("/search", { state: { destination, price } });
+        // console.log(destination, price);
     };
 
     return (
@@ -53,13 +52,6 @@ const Header = () => {
             <div className="headerSearch">
                 <div className="headerSearchBar">
                     <div className="headerSearchItem">
-                        {/* <p className='headerSearchItemTitle'>Location</p>    */}
-                        {/* <input
-                            type="text"
-                            placeholder="Which city do you prefer?"
-                            className="headerSearchInput"
-                            onChange={e => setDestination(e.target.value)}
-                        /> */}
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"
@@ -71,6 +63,7 @@ const Header = () => {
                                     label="Which city do you prefer?"
                                     InputLabelProps={{
                                         style: {
+                                            paddingLeft: '1rem',
                                             fontFamily: 'Montserrat, sans-serif',
                                         }
                                     }}
@@ -83,6 +76,7 @@ const Header = () => {
                                     }}
                                 />
                             )}
+                            onInputChange={(event, value) => setDestination(value)}
                         />
                     </div>
                     <div className="headerSearchItem">

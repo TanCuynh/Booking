@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
     Blogs,
     BrowseRequest,
@@ -14,9 +14,27 @@ import {
 } from "../../components";
 import "./homepage.css";
 import { Link } from 'react-router-dom';
+import hotelAPI from '../../api/hotelAPI';
+import { APP_CONTEXT } from '../../App';
+
 
 
 const Homepage = () => {
+    const context = useContext(APP_CONTEXT);
+    const getAllHotels = async () => {
+        const res = await hotelAPI.getAllHotel();
+        if (res.status === 200) {
+            console.log("Success", res.data.data.data);
+            context.setDataAllHotels(res.data.data.data);
+        }
+        else {
+            context.setDataAllHotels([]);
+            console.log("Error");
+        }
+    }
+    useEffect(() => {
+        getAllHotels();
+    }, [])
     return (
         <div className='App'>
             <div className='header_bg'>

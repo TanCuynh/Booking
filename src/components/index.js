@@ -9,7 +9,6 @@ export { default as BrowseRequest } from './browseRequest/BrowseRequest';
 export { default as Blogs } from './blogs/Blogs';
 export { default as Footer } from './footer/Footer';
 export { default as SearchedProperty } from './searchedProperty/SearchedProperty';
-export { default as LoginStep1 } from './loginStep1/LoginStep1';
 export { default as RoomsTable } from './roomsTable/RoomsTable';
 // export {default as ImageSlider} from './imageSlider/ImageSlider';
 export { default as Slideshow } from './slideshow/Slideshow';

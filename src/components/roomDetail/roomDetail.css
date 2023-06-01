@@ -138,9 +138,12 @@
     font-size: 18px;
     font-weight: 600;
 }
+/* .roomDetailAvailableRooms {
+    padding-top: 1rem;
+} */
 
 .roomDetailAvailableRooms span {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: green;
 }

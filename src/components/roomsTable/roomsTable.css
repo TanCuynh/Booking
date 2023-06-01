@@ -71,10 +71,13 @@
     justify-content: center;
 }
 
-.roomsTableRoomQuantity select {
+.roomTableRoomQuantityNumber {
+    text-align: center;
     width: 50%;
-    height: 75%;
+    height: 80%;
 }
+
+.roomsTableRoomQuantity select {}
 
 .roomsTableShowPricesBtnContainer {
     display: flex;

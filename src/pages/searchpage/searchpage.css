@@ -110,7 +110,19 @@
 .searchedResultsCounts {
     width: 100%;
     text-align: left;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
     margin-bottom: 3rem;
+}
+
+.searchedResultsCounts h3 {
+    font-size: 40px;
+    font-weight: 900;
+    background: #0071c2;
+    color: #fff;
+    padding: 0 5px;
 }
 
 .searchedResultsCounts span {

@@ -45,7 +45,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    padding-left: 2rem;
+    padding-left: 1rem;
 }
 
 .headerSearchItemTitle {
