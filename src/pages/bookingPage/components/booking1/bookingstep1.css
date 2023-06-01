@@ -160,6 +160,7 @@
   .address {
     font-size: 14px;
     line-height: 0.2; 
+    margin-top: 5px;
   }
   
   .price {
@@ -183,6 +184,7 @@
     padding-bottom: 100px;
     line-height: 1.4;
     font-weight:  bolder;
+    margin-top: 5px;
    }
   
    .first-name {
@@ -214,7 +216,6 @@
     border: none;
     width: 320px;
     height: 30px;
-  
   }
   
   .input-custom:focus {
@@ -226,6 +227,7 @@
     width: 320px;
     height: 80px;
     left: 45%;
+    margin-top: 15px;
   }
   
   .last-name label {
@@ -242,6 +244,7 @@
     width: 320px;
     height: 80px;
     left: 45%;
+    margin-top: 15px;
   }
   
   .email label {
@@ -258,6 +261,7 @@
     width: 320px;
     height: 80px;
     left: 45%;
+    margin-top: 15px;
   }
   
   .phone-number label {
@@ -281,18 +285,20 @@
   .skip-button {
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
-    position: absolute;
+    position: relative;
     width: 298px;
     height: 57px;
     border-radius: 10px;
     background: #003580;
     color: #ffffff;
+    left: 15px;
   }
   
   .button-container {
+    position: relative;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    
   }
   
   .cancel-button {
@@ -301,12 +307,24 @@
     position: relative;
     width: 298px;
     height: 57px;
-    top: 70px;
     border-radius: 10px;
+    right: 15px;
   }
   
   .button-layout{
     height: 70px;
     margin-top: 50px;
   }
-  
+
+  .error-message {
+    color:#f95454;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .button-layout {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
