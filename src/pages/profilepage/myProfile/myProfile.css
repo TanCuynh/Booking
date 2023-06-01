@@ -1,0 +1,42 @@
+.mainlayout {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftlayout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height:fit-content;
+}
+
+.rightlayout {
+    width: 100%;
+    border-left: 1px solid #484848;
+    height: max-content;
+    overflow: auto;
+}
+
+.btnitem {
+    background-color: #ffffff;
+    border: none;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+    height: 40px;
+    border-radius: 8px;
+    transform: scale(0.98);
+    background: transparent;
+    cursor: pointer;
+    margin-top: 1px;
+}
+
+.btnitem:hover {
+    background-color: #d8d2d2;
+}
+
+.btnitem.active {
+
+    background-color: #d8d2d2;
+  }
