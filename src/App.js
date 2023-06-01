@@ -17,6 +17,9 @@ import AboutUs from "./pages/aboutus/AboutUs";
 import StartOnTop from "./StartOnTop";
 import { HostLayout, HostPropertiesPage, HostPropertiesModifyPage, HostCreateHotelPage, HostStatisticPage } from './pages/hostPage/HostLayout';
 import { BookingLayout, BookingStepPage1, BookingStepPage2, BookingStepPage3 } from "./pages/bookingPage/BookingLayout";
+import AdminLayout from "./admin/AdminLayout";
+import Home from "./admin/pages/Home/Home";
+import Hotel from "./admin/pages/Hotel/Hotel";
 
 
 export const APP_CONTEXT = createContext({});
@@ -53,6 +56,10 @@ const App = () => {
                     <Route path="user" element={<AppLayout />}>
                         <Route path="wishlist" element={<Wishlist />} />
                         <Route path="profile" element={<Profile />} />
+                    </Route>
+                    <Route path="admin" element={<AdminLayout />}>
+                        <Route path="" element={<Home />} />
+                        <Route path="hotel" element={<Hotel />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
