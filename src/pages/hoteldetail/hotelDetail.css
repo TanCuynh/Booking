@@ -55,6 +55,14 @@
     color: lightgray;
 }
 
+.closePopupBtn:hover {
+    opacity: 0.8;
+}
+
+.arrowPopupBtn:hover {
+    opacity: 0.8;
+}
+
 .arrowPopupBtn {
     margin: 20px;
     font-size: 50px;

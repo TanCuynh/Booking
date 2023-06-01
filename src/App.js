@@ -24,7 +24,7 @@ const App = () => {
     const [dataAllHotels, setDataAllHotels] = useState([]);
 
     return (
-        <APP_CONTEXT.Provider value={{ user, setUser,dataAllHotels, setDataAllHotels }}>
+        <APP_CONTEXT.Provider value={{ user, setUser, dataAllHotels, setDataAllHotels }}>
             <BrowserRouter>
                 <StartOnTop />
                 <Routes>
