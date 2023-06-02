@@ -3,7 +3,7 @@ import React from 'react';
 const Hotel = () => {
 	return (
 		<h1>
-			Hoptel
+			Hotel
 		</h1>
 	)
 }

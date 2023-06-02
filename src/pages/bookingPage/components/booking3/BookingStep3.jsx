@@ -9,24 +9,23 @@ const BookingStep3 = () => {
     };
     return (
         <div>
-            <nav>
+            <nav>   
                 <ul className='step-list'>
                     <li className='step-item step-item-image'></li>
                     <li className='step-item step-item-image'></li>
-                    <li className='step-itemm step-item-image'></li>
+                    <li className='step-item step-item-image'></li>
                 </ul>
             </nav>
 
             <div className='header-layout'>
-                <h1 className="complex-text">Yay! Complex</h1>
+                <h1 className="complex-text">Yay! Complete</h1>
             </div>
 
-            <div className='body-layoutt'>
+            <div className='body-layout'>
                 <img src={ urlImg } alt="" />
             </div>
             <div>
-                <p className='miss'>We will inform you via email later</p>
-                <p className='miss'>once the transaction has been accepted</p>
+                <p className='miss'>We will inform you via email later <br/> once the transaction has been accepted</p>
             </div>
 
             <div className="button-container">

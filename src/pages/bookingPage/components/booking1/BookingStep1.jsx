@@ -22,7 +22,6 @@ const BookingStep1 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Kiểm tra các trường dữ liệu đã được nhập
     if (firstName.trim() === '') {
       alert('Please enter your first name');
       return;
@@ -43,7 +42,6 @@ const BookingStep1 = () => {
       return;
     }
 
-    // Chuyển hướng đến "/booking/step2" nếu dữ liệu hợp lệ
     navigate('/booking/step2');
   };
 
@@ -59,12 +57,10 @@ const BookingStep1 = () => {
 
       <div className='header-layout'>
         <h2 className='booking-information'>Booking Information</h2>
-        <h4 className='notee'>Please fill up the blank fields below</h4>
+        <h4 className='note'>Please fill up the blank fields below</h4>
       </div>
 
       <div className='body-layout'>
-
-        <div class="vertical-vector"></div>
 
         <div class="image-container">
           <img src="https://www.hotelgrandsaigon.com/wp-content/uploads/sites/227/2017/12/GRAND_SEDK_01.jpg" alt="Ảnh hotel" class="image" />
@@ -86,55 +82,55 @@ const BookingStep1 = () => {
 
         <div className='input-container'>
           <div className="first-name">
-            <label htmlFor="first-name-input" className="lable-custom">First Name</label>
+            <label htmlFor="first-name-input" className="lable-custom">First name</label>
             <input
               type="text"
               id="first-name-input"
-              value={ firstName }
+              value={firstName}
               name="firstName"
               className="input-custom"
-              onChange={ handleChange }
+              onChange={handleChange}
             />
-            {firstName === '' && <p className='error-message'>Please enter a First name.</p>}
+            {firstName === '' && <p className='error-message'>Please enter your first name.</p>}
           </div>
 
           <div className="last-name">
-            <label htmlFor="last-name-input" className="lable-custom">Last Name</label>
+            <label htmlFor="last-name-input" className="lable-custom">Last name</label>
             <input
               type="text"
               id="last-name-input"
-              value={ lastName }
+              value={lastName}
               name="lastName"
               className="input-custom"
-              onChange={ handleChange }
+              onChange={handleChange}
             />
-            {lastName === '' && <p className='error-message'>Please enter a Last Name.</p>}
+            {lastName === '' && <p className='error-message'>Please enter your last name.</p>}
           </div>
 
           <div className="email">
-            <label htmlFor="email-input" className="lable-custom">Email Address</label>
+            <label htmlFor="email-input" className="lable-custom">Email address</label>
             <input
               type="text"
               id="email-input"
-              value={ email }
+              value={email}
               name="email"
               className="input-custom"
-              onChange={ handleChange }
+              onChange={handleChange}
             />
-            {email === '' && <p className='error-message'>Please enter a Email Address.</p>}
+            {email === '' && <p className='error-message'>Please enter your email address.</p>}
           </div>
 
           <div className="phone-number">
-            <label htmlFor="phone-number-input" className="lable-custom">Phone Number</label>
+            <label htmlFor="phone-number-input" className="lable-custom">Phone number</label>
             <input
               type="text"
               id="phone-number-input"
-              value={ phoneNumber }
+              value={phoneNumber}
               name="phoneNumber"
               className="input-custom"
-              onChange={ handleChange }
+              onChange={handleChange}
             />
-            {phoneNumber=== '' && <p className='error-message'>Please enter a Phone Number.</p>}
+            {phoneNumber === '' && <p className='error-message'>Please enter your phone number.</p>}
           </div>
         </div>
       </div>
@@ -144,7 +140,7 @@ const BookingStep1 = () => {
           <button className='cancel-button'>Cancel</button>
         </div>
         <div className="button-container">
-          <button className="skip-button" onClick={ handleSubmit }>
+          <button className="skip-button" onClick={handleSubmit}>
             Skip this step
           </button>
         </div>
