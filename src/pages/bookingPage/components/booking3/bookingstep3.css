@@ -1,4 +1,10 @@
-.step-itemm {
+.step-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-item {
     position: relative;
     display: flex;
     align-items: center;
@@ -18,10 +24,16 @@
     font-size: 18;
   }
 
-  .body-layoutt{
+  .body-layout {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+  }
+
+  .body-layout img{
+    width: 50%;
+    height: max-content;
+
   }
   .miss {
     text-align: center;
@@ -33,7 +45,12 @@
     width: 298px;
     height: 57px;
     border-radius: 10px;
+    border: none;
     background: #003580;
     color: #ffffff;
     top: 50px;
+  }
+
+  .home-button:hover {
+    opacity: 0.9;
   }

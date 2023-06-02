@@ -20,6 +20,7 @@ import { BookingLayout, BookingStepPage1, BookingStepPage2, BookingStepPage3 } f
 import AdminLayout from "./admin/AdminLayout";
 import Home from "./admin/pages/Home/Home";
 import Hotel from "./admin/pages/Hotel/Hotel";
+import User from "./admin/pages/User/User";
 
 
 export const APP_CONTEXT = createContext({});
@@ -60,6 +61,7 @@ const App = () => {
                     <Route path="admin" element={<AdminLayout />}>
                         <Route path="" element={<Home />} />
                         <Route path="hotel" element={<Hotel />} />
+                        <Route path="user" element={<User />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
