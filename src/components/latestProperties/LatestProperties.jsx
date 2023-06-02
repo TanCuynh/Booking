@@ -12,6 +12,7 @@ SwiperCore.use([Autoplay]);
 
 const LatestProperties = () => {
     const context = useContext(APP_CONTEXT);
+    console.log("dasdsadas", context.dataAllHotels);
     return (
         <div className="latestProperties">
             <div className="latestPropertiesTitle"><h1>Latest on the Property Listing</h1></div>
