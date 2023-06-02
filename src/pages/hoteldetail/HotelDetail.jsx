@@ -25,24 +25,6 @@ const markerIcon = L.icon({
     iconSize: [25, 41],
     iconAnchor: [12, 41],
 });
-const photos = [
-    {
-        src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/213244036.jpg?k=4d029a6a277dda491d6c94398932e9f7ece6e3c76fa5062131ca354c4ca8edc2&o=&hp=1',
-    },
-    {
-        src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418397.jpg?k=41d6819de7f349f0ee02538d5a1a038259156dccaefd22d5fb1c7a994339335f&o=&hp=1',
-    },
-    {
-        src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418368.jpg?k=579dbcfeac8598858a58d4e529aa9b81a0b58873433ff364716ec45d3b228673&o=&hp=1',
-    },
-    {
-        src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418275.jpg?k=91693ba2206542fa332133eb5d2cb1ec096f2b91c0c14b747cc35c9b8186de11&o=&hp=1',
-    },
-    {
-        src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418256.jpg?k=2658b42e78a63e74689ac5234e05cba716cf39be71dc152642c5756a4e7a4f78&o=&hp=1',
-    },
-];
-
 
 const HotelDetail = () => {
     const [dataHotel, setDataHotel] = useState({});
@@ -51,13 +33,13 @@ const HotelDetail = () => {
 
     const navigate = useNavigate();
     const { id } = useParams();
-    console.log('id', id);
+    // console.log('id', id);
 
     const getHotelDetail = async (id) => {
         const res = await hotelAPI.getHotelById(id);
         if (res.status === 200) {
-            // console.log('data', res.data.data);
             setDataHotel(res.data.data);
+            console.log("ádewqasd", res.data.data);
             setSafetyHygiene(res.data.data.Safety_Hygiene.split(" \n"));
             setAmenities(res.data.data.amenities.split(","));
 
@@ -127,6 +109,7 @@ const HotelDetail = () => {
     };
     const renderSmallImgs = useMemo(() => {
         if (dataHotel?.images) {
+            console.log("siuuuuu", dataHotel?.images)
             const temp = [...dataHotel.images];
             return temp.slice(1).map((image, index) => {
                 return (
