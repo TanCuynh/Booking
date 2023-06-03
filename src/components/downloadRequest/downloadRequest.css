@@ -15,11 +15,14 @@
 
 .downloadRequestItems {
     padding: 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .downloadRequestItems h3 {
-    font-weight: 700;
-    font-size: 35px;
+    font-weight: 800;
+    font-size: 33px;
     line-height: 50px;
     width: 70%;
 }

@@ -12,34 +12,40 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 2rem;
+    color: #fff;
 }
 
 .aboutusContent {
     width: 64%;
     height: 600px;
     background: #003580;
-    padding: 10rem;
+    padding: 7rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .aboutusContent h2 {
-    font-weight: 800;
-    font-size: 50px;
+    font-weight: 900;
+    font-size: 40px;
     line-height: 98px;
-    color: #FFFFFF;
+}
+
+.aboutusContent p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 35px;
 }
 
 .exploreBtn {
-    padding: 1.25rem;
-    width: 175px;
+    margin-top: 2rem;
+    padding: 1rem;
+    width: 150px;
     background: #fdad2d;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     border-radius: 99px;
@@ -47,22 +53,15 @@
 }
 
 .exploreBtn span {
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .exploreBtn:hover {
     opacity: 0.8;
 }
 
-.aboutusContent p {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 35px;
-    color: #FFFFFF;
-}
 
 .aboutusBigImg {
     width: 700px;

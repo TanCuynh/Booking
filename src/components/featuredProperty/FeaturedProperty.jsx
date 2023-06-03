@@ -17,7 +17,7 @@ const FeaturedProperty = () => {
         <div className="featuredProperty">
             <div className="featuredPropertyImg">
                 <img
-                    src="https://media.moddb.com/images/downloads/1/12/11394/gallery150.jpg"
+                    src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/164870768.jpg?k=30c92fd45582c990b9e64427cd7f8feb4f3485ff6688a6df0da4f9a1963a8902&o=&hp=1"
                     alt="prop"
                 />
                 <div className={`featuredWishlistIcon ${isLiked ? 'active' : ''}`}>
