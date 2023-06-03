@@ -60,9 +60,11 @@ const Header = () => {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
+                                    className='headerSearchTextfield'
                                     label="Which city do you prefer?"
                                     InputLabelProps={{
                                         style: {
+                                            fontSize: '14px',
                                             paddingLeft: '1rem',
                                             fontFamily: 'Montserrat, sans-serif',
                                         }
@@ -85,7 +87,7 @@ const Header = () => {
                             <span className='headerSearchText'>{`${price[0]} USD - ${price[1]} USD`}</span>
                         </div>
                         <div className="headerSearchPriceSlider">
-                            <Box width={350}>
+                            <Box width={300}>
                                 <Slider
                                     getAriaLabel={() => 'Room price'}
                                     value={price}
@@ -110,7 +112,6 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <br />
         </div>
     )
 }

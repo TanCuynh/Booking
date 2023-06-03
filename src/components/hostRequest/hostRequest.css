@@ -6,7 +6,6 @@
     margin: 2rem 4rem;
     color: #fff;
     display: flex;
-    flex-direction: row;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
     border-radius: 20px;
@@ -14,13 +13,16 @@
 
 .hostRequestItems {
     padding: 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .hostRequestItems h3 {
-    font-weight: 700;
-    font-size: 35px;
+    font-weight: 800;
+    font-size: 32px;
     line-height: 50px;
-    width: 60%;
+    width: 70%;
 }
 
 .hostRequestItems span {
@@ -29,23 +31,25 @@
 }
 
 .hostRequestBtn {
+    height: 70px;
     background: #eca900;
     border-radius: 35px;
-    width: 250px;
+    width: 200px;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hostRequestBtn:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .hostRequestBtn span {
-    padding: 2rem;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 70px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .hostRequestTitle {
@@ -56,7 +60,7 @@
 
 
 .hostRequestTitle h1 {
-    width: 60%;
+    width: 75%;
     font-weight: 800;
     font-size: 100px;
     line-height: 122px;

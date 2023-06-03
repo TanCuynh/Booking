@@ -24,7 +24,6 @@ const Homepage = () => {
     const getAllHotels = async () => {
         const res = await hotelAPI.getAllHotel();
         if (res.status === 200) {
-            // console.log("Success", res.data.data.data);
             context.setDataAllHotels(res.data.data.data);
         } else {
             context.setDataAllHotels([]);

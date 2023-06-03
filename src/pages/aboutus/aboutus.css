@@ -34,7 +34,7 @@
 }
 
 .aboutusParagraph {
-    padding: 3rem;
+    padding: 2rem 3rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -42,34 +42,34 @@
 
 .aboutusParagraph h1 {
     font-weight: 900;
-    font-size: 60px;
+    font-size: 55px;
     line-height: 73px;
     color: #484848;
 }
 
 .aboutusParagraph p {
     font-weight: 400;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 37px;
     color: #14274A;
 }
 
 .aboutusContactParagraph {
-    padding: 3rem;
+    padding: 2rem 3rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .aboutusContactParagraph p {
     font-weight: 400;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 37px;
     color: #14274A;
 }
 
 .phoneAndEmail {
-    padding: 3rem;
+    padding: 2rem 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;

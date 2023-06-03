@@ -10,7 +10,7 @@
 
 .nearbyPropertiesTitle h1 {
     font-family: 'Montserrat';
-    font-weight: 700;
+    font-weight: 900;
     font-size: 28px;
     line-height: 40px;
     color: #484848;
@@ -18,5 +18,5 @@
 }
 
 .nearbyPropertiesItem {
-    padding:  3rem;
+    padding: 3rem;
 }

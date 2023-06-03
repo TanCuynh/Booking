@@ -4,13 +4,13 @@
 }
 
 .featuredPropertiesTitle {
-    width: 23%;
+    width: 25%;
     padding-left: 4rem;
 }
 
 .featuredPropertiesTitle h1 {
     font-family: 'Montserrat';
-    font-weight: 700;
+    font-weight: 900;
     font-size: 28px;
     line-height: 40px;
     color: #484848;
@@ -31,4 +31,5 @@
     place-items: center;
     padding: 3rem;
     column-gap: 5rem;
+    row-gap: 2rem;
 }

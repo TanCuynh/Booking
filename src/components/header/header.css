@@ -1,6 +1,6 @@
 .header {
     width: 100%;
-    height: 600px;
+    height: 500px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -11,16 +11,16 @@
 
 .headerTitle {
     font-style: normal;
-    font-weight: 800;
-    font-size: 64px;
+    font-weight: 900;
+    font-size: 60px;
     line-height: 78px;
-    padding-top: 8rem;
+    padding-top: 6rem;
     color: #FFFFFF;
 }
 
 .headerSearch {
     width: 50%;
-    margin-top: 5rem;
+    margin-top: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -35,7 +35,6 @@
     background-color: #fff;
     color: #484848;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
@@ -49,33 +48,20 @@
 }
 
 .headerSearchItemTitle {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 30px;
     color: #484848;
 }
 
-.headerSearchItem span {
-    font-size: 15px;
-    line-height: 17px;
-    cursor: pointer;
-}
-
 .headerSearchInput {
-    width: 110%;
-    font-size: 20px;
+    width: 100%;
+    font-size: 18px;
     line-height: 17px;
     font-weight: 600;
     color: #484848;
     border: none;
     outline: none;
-}
-
-.headerSearchText {
-    font-weight: 600;
-    font-size: 20px;
-    color: #484848;
-    cursor: pointer;
 }
 
 .headerSearchPriceTag {
@@ -86,8 +72,9 @@
 }
 
 .headerSearchPriceTag span {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 17px;  
     color: gray;
 }
 

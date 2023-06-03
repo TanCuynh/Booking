@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AuthAPI } from '../../api/AuthAPI';
 import { APP_CONTEXT } from '../../App';
-import Loading from '../../components/loading/Loading';
 import toast from 'react-hot-toast';
 import { CircularProgress } from '@mui/material';
 
