@@ -70,13 +70,12 @@
 }
 
 .navItemMenuContainer {
-    display: flex;
     text-align: start;
     background-color: #eee;
-    padding: 1rem;
     width: 200px;
     position: absolute;
     top: 45px;
+    overflow: hidden;
     right: -5px;
     margin-top: 2rem;
     margin-right: 1rem;
@@ -90,7 +89,13 @@
 .navItemMenuContainer p {
     margin: 1rem 0;
 }
-
+.navItemMenuContainerLinks {
+    padding: 0.1rem 0.8rem;
+}
+.navItemMenuContainerLinks:hover {
+    cursor: pointer;
+    background-color: rgb(229 231 235);
+}
 .navItemMenuContainer a,
 .navItemMenuContainer span {
     font-family: 'Montserrat';
