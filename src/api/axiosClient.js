@@ -6,7 +6,7 @@ const axiosClient = axios.create({
 });
 axiosClient.interceptors.request.use(
 	(config) => {
-		const accessToken = localStorage.getItem("userID");
+		const accessToken = localStorage.getItem("token");
 		if (accessToken != null) {
 			return {
 				...config,

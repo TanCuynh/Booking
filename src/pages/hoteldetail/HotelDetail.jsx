@@ -1,21 +1,20 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import './hotelDetail.css'
 import { RoomsTable } from '../../components'
 import ReviewComment from '../../components/reviewComment/ReviewComment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBath, faBed, faBuilding, faCar, faGamepad, faMagnifyingGlass, faPaw, faPhone, faSnowflake, faStar, faTv, faUtensils, faWifi, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart, faSquareParking, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faBath, faBed, faMagnifyingGlass, faPaw, faPhone, faStar, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart, faSquareParking, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck, faHeart as heart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
 import { LinearProgress } from '@mui/material'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 import L from 'leaflet';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
-import { async } from 'q'
 import hotelAPI from '../../api/hotelAPI'
 
 
@@ -31,7 +30,6 @@ const HotelDetail = () => {
     const [safetyHygiene, setSafetyHygiene] = useState([]);
     const [amenities, setAmenities] = useState([]);
 
-    const navigate = useNavigate();
     const { id } = useParams();
     // console.log('id', id);
 
@@ -113,7 +111,7 @@ const HotelDetail = () => {
             const temp = [...dataHotel.images];
             return temp.slice(1).map((image, index) => {
                 return (
-                    <img key={index} onClick={() => handleOpen(index + 1)} src={image.image_url} alt="" className="smallImg" />
+                    <img key={ index } onClick={ () => handleOpen(index + 1) } src={ image.image_url } alt="" className="smallImg" />
                 )
             })
         }
@@ -145,15 +143,15 @@ const HotelDetail = () => {
 
     return (
         <div className="hotelDetailComponent">
-            {openPopup &&
+            { openPopup &&
                 <div className="hotelDetailPopupImgContainer">
                     <div className="hotelDetailPopupImg">
-                        <FontAwesomeIcon icon={faCircleXmark} className='closePopupBtn' onClick={() => setOpenPopup(false)} />
-                        <FontAwesomeIcon icon={faCircleArrowLeft} className='arrowPopupBtn' onClick={() => handleMove("l")} />
+                        <FontAwesomeIcon icon={ faCircleXmark } className='closePopupBtn' onClick={ () => setOpenPopup(false) } />
+                        <FontAwesomeIcon icon={ faCircleArrowLeft } className='arrowPopupBtn' onClick={ () => handleMove("l") } />
                         <div className="popupImgWrapper">
-                            <img src={dataHotel?.images[slideIndex].image_url} alt="popupImg" />
+                            <img src={ dataHotel?.images[slideIndex].image_url } alt="popupImg" />
                         </div>
-                        <FontAwesomeIcon icon={faCircleArrowRight} className='arrowPopupBtn' onClick={() => handleMove("r")} />
+                        <FontAwesomeIcon icon={ faCircleArrowRight } className='arrowPopupBtn' onClick={ () => handleMove("r") } />
                     </div>
                 </div>
             }
@@ -161,7 +159,7 @@ const HotelDetail = () => {
                 {
                     dataHotel?.images &&
                     <div className="hotelDetailImgLarge">
-                        <img onClick={() => handleOpen(0)} src={dataHotel?.images[0].image_url} alt="" className="bigImg" />
+                        <img onClick={ () => handleOpen(0) } src={ dataHotel?.images[0].image_url } alt="" className="bigImg" />
                     </div>
                 }
                 <div className="hotelDetailImgSmall">
@@ -174,34 +172,34 @@ const HotelDetail = () => {
                 <div className="hotelDetailContent">
                     <div className="hotelDetailTitle">
                         <div className="hotelDetailTitleContent">
-                            <h3>{dataHotel?.name}</h3>
-                            <span>{dataHotel?.address}</span>
+                            <h3>{ dataHotel?.name }</h3>
+                            <span>{ dataHotel?.address }</span>
                         </div>
                         <div className="hotelDetailAction">
                             <FontAwesomeIcon
-                                className={`hotelDetailHeartIcon ${isLiked ? 'active' : ''}`}
-                                icon={isLiked ? solidHeart : heart}
-                                onClick={handleToggleLike}
+                                className={ `hotelDetailHeartIcon ${isLiked ? 'active' : ''}` }
+                                icon={ isLiked ? solidHeart : heart }
+                                onClick={ handleToggleLike }
                             />
-                            <FontAwesomeIcon icon={faShareFromSquare} />
+                            <FontAwesomeIcon icon={ faShareFromSquare } />
                         </div>
                     </div>
                     <div className="hotelDetailAmenities">
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faBed} className='hotelDetailAmenityIcon' />
-                            <span>{dataHotel?.room_total} Rooms</span>
+                            <FontAwesomeIcon icon={ faBed } className='hotelDetailAmenityIcon' />
+                            <span>{ dataHotel?.room_total } Rooms</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faBath} className='hotelDetailAmenityIcon' />
-                            <span>{dataHotel?.bathrooms} Bathrooms</span>
+                            <FontAwesomeIcon icon={ faBath } className='hotelDetailAmenityIcon' />
+                            <span>{ dataHotel?.bathrooms } Bathrooms</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faSquareParking} className='hotelDetailAmenityIcon' />
-                            <span>{dataHotel?.parking_slot} Parking Slots</span>
+                            <FontAwesomeIcon icon={ faSquareParking } className='hotelDetailAmenityIcon' />
+                            <span>{ dataHotel?.parking_slot } Parking Slots</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faPaw} className='hotelDetailAmenityIcon' />
-                            <span onClick={() => console.log(date)}>0 Pets Allowed</span>
+                            <FontAwesomeIcon icon={ faPaw } className='hotelDetailAmenityIcon' />
+                            <span onClick={ () => console.log(date) }>0 Pets Allowed</span>
                         </div>
                     </div>
                     <div className="hotelDetailDesc">
@@ -213,39 +211,39 @@ const HotelDetail = () => {
                         </p>
                     </div>
                     <div className="hotelDetailMapLocation">
-                        <MapContainer center={[16.06827770014092, 108.2009288146462]} zoom={18} scrollWheelZoom={false} style={{ height: '400px', width: '100%' }}>
+                        <MapContainer center={ [16.06827770014092, 108.2009288146462] } zoom={ 18 } scrollWheelZoom={ false } style={ { height: '400px', width: '100%' } }>
                             <TileLayer
                                 attribution='Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            <Marker position={[16.06827770014092, 108.2009288146462]} icon={markerIcon}>
+                            <Marker position={ [16.06827770014092, 108.2009288146462] } icon={ markerIcon }>
                                 <Popup>
                                     The hotel's location.
                                 </Popup>
                             </Marker>
-                            {/* <MapClickHandler /> */}
+                            {/* <MapClickHandler /> */ }
                         </MapContainer>
                     </div>
                     <div className="hotelDetailRoomOptions">
                         <h3>Availability</h3>
                         <div className="hotelDetailSearchBarContainer">
                             <div className="hotelDetailSearchBar">
-                                    <div className="hotelDetailSearchItem" id="hotelDetailSearchCalendar">
-                                        <p className='hotelDetailSearchItemTitle'>Check in - Check out date</p>
-                                        <span onClick={() => { setOpenDate(!openDate); console.log(111111) }} className='hotelDetailSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-                                        {openDate &&
-                                            <DateRange
-                                                editableDateInputs={true}
-                                                onChange={handleChangeDate}
-                                                moveRangeOnFirstSelection={false}
-                                                ranges={date}
-                                                className='hotelDetailDate'
-                                                minDate={new Date()}
-                                            />}
-                                    </div>
+                                <div className="hotelDetailSearchItem" id="hotelDetailSearchCalendar">
+                                    <p className='hotelDetailSearchItemTitle'>Check in - Check out date</p>
+                                    <span onClick={ () => { setOpenDate(!openDate); console.log(111111) } } className='hotelDetailSearchText'>{ `${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}` }</span>
+                                    { openDate &&
+                                        <DateRange
+                                            editableDateInputs={ true }
+                                            onChange={ handleChangeDate }
+                                            moveRangeOnFirstSelection={ false }
+                                            ranges={ date }
+                                            className='hotelDetailDate'
+                                            minDate={ new Date() }
+                                        /> }
+                                </div>
                                 <div className="hotelDetailSearchBtn">
                                     <FontAwesomeIcon
-                                        icon={faMagnifyingGlass}
+                                        icon={ faMagnifyingGlass }
                                         className='hotelDetailSearchBtnIcon'
                                     />
                                 </div>
@@ -277,9 +275,9 @@ const HotelDetail = () => {
                             {
                                 amenities.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
@@ -292,9 +290,9 @@ const HotelDetail = () => {
                             {
                                 safetyHygiene.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
@@ -304,33 +302,33 @@ const HotelDetail = () => {
                     <div className="hotelDetailReview">
                         <div className="hotelDetailReviewTitle">
                             <h3>Reviews</h3>
-                            <FontAwesomeIcon icon={faStar} className='hotelDetailReviewTitleIcon' />
+                            <FontAwesomeIcon icon={ faStar } className='hotelDetailReviewTitleIcon' />
                             <h3>5.0</h3>
                         </div>
                         <div className="hotelDetailReviewRate">
                             <div className="hotelDetailReviewRateItem">
                                 <span>Amenity</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Hygiene</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Communication</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Location of Property</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Value for Money</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                         </div>
@@ -349,27 +347,27 @@ const HotelDetail = () => {
                 <div className="hotelDetailReserve">
                     <div className="reserveBox">
                         <div className="reserveBoxPrice">
-                            <h3>{`$ ${dataHotel?.price} USD`}</h3>
+                            <h3>{ `$ ${dataHotel?.price} USD` }</h3>
                         </div>
                         <hr className='thin-line' />
                         <div className="reserveBoxPriceDesc">
-                            <span>Short Period: $ {dataHotel?.price} USD</span>
-                            <span>Medium Period: $ {dataHotel?.price * 2} USD</span>
-                            <span>Long Period: $ {dataHotel?.price * 3} USD</span>
+                            <span>Short Period: $ { dataHotel?.price } USD</span>
+                            <span>Medium Period: $ { dataHotel?.price * 2 } USD</span>
+                            <span>Long Period: $ { dataHotel?.price * 3 } USD</span>
                         </div>
                         <div className="reserveBtnComponent">
-                            <div className="reserveBtn" onClick={handleScroll}>
+                            <div className="reserveBtn" onClick={ handleScroll }>
                                 <span>Reserve Now</span>
                             </div>
                         </div>
                         <div className="reserveBoxFuncs">
                             <div className="reserveBoxFunc">
-                                <FontAwesomeIcon icon={faEnvelope} className='reserveBoxIcon' />
-                                <span>{dataHotel?.email}</span>
+                                <FontAwesomeIcon icon={ faEnvelope } className='reserveBoxIcon' />
+                                <span>{ dataHotel?.email }</span>
                             </div>
                             <div className="reserveBoxFunc">
-                                <FontAwesomeIcon icon={faPhone} className='reserveBoxIcon' />
-                                <span>{dataHotel?.hotline}</span>
+                                <FontAwesomeIcon icon={ faPhone } className='reserveBoxIcon' />
+                                <span>{ dataHotel?.hotline }</span>
                             </div>
                         </div>
                     </div>

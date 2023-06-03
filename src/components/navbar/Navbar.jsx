@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./navbar.css"
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login from '../../pages/login/Login';
 import { Avatar } from '@mui/material';
 import { APP_CONTEXT } from '../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesUp, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
+import Line from '../Line/Line';
+import { toast } from 'react-hot-toast';
 
 
 const Navbar = ({ type }) => {
+    const navigate = useNavigate();
     const context = useContext(APP_CONTEXT);
 
     const [openLogin, setOpenLogin] = useState(false);
@@ -33,6 +36,14 @@ const Navbar = ({ type }) => {
         setScrollToTopBtn(scrollTop > 0);
     };
 
+    const handleLogout = () => {
+        context.setUser({});
+        toast.success('Logged out');
+    };
+    const handleClickAdmin = () => {
+        navigate('/admin');
+    }
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -46,46 +57,57 @@ const Navbar = ({ type }) => {
     }, []);
 
     return (
-        <div className={type === "home" ? "navbar homeMode" : "navbar"}>
+        <div className={ type === "home" ? "navbar homeMode" : "navbar" }>
             <div className="navLinks">
                 <span className='logo'> <Link to="/">STAYCATION.</Link></span>
             </div>
             {
-                context?.user ? (
-                    <div className="loginBtn">
-                        <Avatar alt="Avatar" src={context.user.avatar} />
-                        <span>{context.user.email}</span>
-                    </div>
-                ) : (
-                    <div className="loginBtn">
-                        <span>Login / Signup</span>
-                    </div>
+                context?.user?.id && (
+                    <>
+                        <div className="loginBtn">
+                            <Avatar alt="Avatar" src={ context.user.avatar } />
+                            <span>{ context.user.email }</span>
+                        </div>
+                    </>
                 )
             }
 
             <div className="navItemMenu">
-                {toggleMenu
-                    ? <RiCloseLine color='#fff' size='27' onClick={() => setToggleMenu(false)} />
-                    : <RiMenu3Line color='#fff' size='27' onClick={() => setToggleMenu(true)} />
+                { toggleMenu
+                    ? <RiCloseLine color='#fff' size='27' onClick={ () => setToggleMenu(false) } />
+                    : <RiMenu3Line color='#fff' size='27' onClick={ () => setToggleMenu(true) } />
                 }
 
-                {toggleMenu && (
+                { toggleMenu && (
                     <div className="navItemMenuContainer">
-                        <div className="navItemMenuContainerLinks">
-                            <p onClick={openPopup}><span>Log In - Sign Up</span></p>
-                        </div>
+                        {
+                            context?.user?.role === 'admin' ?
+                                <>
+                                    <div className="navItemMenuContainerLinks" onClick={ handleClickAdmin }>
+                                        <p><span>Admin Page</span></p>
+                                    </div>
+                                    <Line />
+                                    <div className="navItemMenuContainerLinks" onClick={ handleLogout }>
+                                        <p><span>Logout</span></p>
+                                    </div>
+                                </>
+                                :
+                                <div className="navItemMenuContainerLinks">
+                                    <p onClick={ openPopup }><span>Log In</span></p>
+                                </div>
+                        }
                     </div>
-                )}
+                ) }
             </div>
-            {scrollToTopBtn && (
-                <div className="scrollToTopBtn" onClick={scrollToTop}>
-                    <FontAwesomeIcon icon={faAnglesUp} />
+            { scrollToTopBtn && (
+                <div className="scrollToTopBtn" onClick={ scrollToTop }>
+                    <FontAwesomeIcon icon={ faAnglesUp } />
                 </div>
-            )}
-            {openLogin &&
-                <div className="loginModalContainer" onClick={closePopup}>
-                    <div className="loginModal" onClick={(e) => e.stopPropagation()}>
-                        <Login onClose={closePopup} />
+            ) }
+            { openLogin &&
+                <div className="loginModalContainer" onClick={ closePopup }>
+                    <div className="loginModal" onClick={ (e) => e.stopPropagation() }>
+                        <Login onClose={ closePopup } />
                     </div>
                 </div>
             }

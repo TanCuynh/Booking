@@ -1,0 +1,12 @@
+.btn-option {
+	background-color: transparent;
+	border: none;
+	padding: 2px;
+}
+.btn-option:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+.btn-option-danger {
+	color: rgb(220 38 38);
+}
