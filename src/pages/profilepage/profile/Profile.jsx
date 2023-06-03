@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import UserReview from "../../components/userReview/UserReview";
-import AllReviewsUser from '../../components/allReviewsUser/AllReviewsUser'
+import UserReview from "../../../components/userReview/UserReview";
+import AllReviewsUser from '../../../components/allReviewsUser/AllReviewsUser'
 import "./profile.css";
 
 const Profile = () => {
@@ -20,8 +20,13 @@ const Profile = () => {
         document.body.style.overflow = 'auto';
     };
 
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/user/myprofile');
+    }
     return (
         <div>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"></link>
             <div className="main-layoutt">
                 <div className="verify-layout">
                     <div className="avatar">
@@ -50,8 +55,8 @@ const Profile = () => {
                     <div className="profile-container">
                         <p className="hello-text">Hello, Trần Hồng Đức</p>
                         <p className="time-join">Joined in 2023</p>
-                        <button className="btn-edit-profile">
-                            Edit Profile
+                        <button className="btn-edit-profile" onClick={handleClick}>
+                            My Profile
                         </button>
                         <p className="reviews-text">&#x2605; 0 Reviews</p>
                     </div>

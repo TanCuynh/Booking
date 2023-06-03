@@ -70,7 +70,6 @@ const Header = () => {
                                         }
                                     }}
                                     InputProps={{
-                                        ...params.InputProps,
                                         style: {
                                             fontFamily: 'Montserrat, sans-serif',
                                             borderRadius: '99px',
