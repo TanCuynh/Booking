@@ -45,17 +45,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     background: #FDC32D;
     color: #484848;
-    font-family: 'Montserrat';
-    padding: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 10px;
+    padding: 6px 8px;
     border-radius: 999px;
+    border: none;
     cursor: pointer;
 }
 
 .loginBtn:hover {
     opacity: 0.9;
+}
+
+.userAvatar {
+    border: 1px solid #fff;
 }
 
 
@@ -72,34 +78,27 @@
 .navItemMenuContainer {
     text-align: start;
     background-color: #eee;
-    width: 200px;
+    width: 250px;
     position: absolute;
-    top: 45px;
+    top: 50px;
+    right: 15px;
     overflow: hidden;
-    right: -5px;
     margin-top: 2rem;
     margin-right: 1rem;
     min-width: 150px;
     border-radius: 10px;
     z-index: 1;
-    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
 }
 
-.navItemMenuContainer p {
-    margin: 1rem 0;
-}
 .navItemMenuContainerLinks {
-    padding: 0.1rem 0.8rem;
+    padding: 1rem;
 }
-.navItemMenuContainerLinks:hover {
-    cursor: pointer;
-    background-color: rgb(229 231 235);
-}
+
 .navItemMenuContainer a,
 .navItemMenuContainer span {
     font-family: 'Montserrat';
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
     line-height: 25px;
     text-transform: capitalize;
@@ -110,7 +109,7 @@
 
 .navItemMenuContainer a:hover,
 .navItemMenuContainer span:hover {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .loginModalContainer {

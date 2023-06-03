@@ -77,7 +77,7 @@ const Login = ({ onClose }) => {
 								value={ data.email }
 								onChange={ handleChange }
 								className="loginContainerMailInput"
-								placeholder="Please enter email"
+								placeholder="Enter your email"
 							/>
 						</div>
 						{ emailAlert && <span className='loginContainerAlert'>You haven't entered your email!</span> }
@@ -104,7 +104,7 @@ const Login = ({ onClose }) => {
 							{
 								isLoading ?
 									<div className='loadingWrap'>
-										<CircularProgress className='iconSpinner' size={ 24 } />
+										<CircularProgress className='iconSpinner' size={ 24 } style={{ color: 'white' }} />
 										<span>Pending</span>
 									</div>
 									:

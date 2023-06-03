@@ -9,6 +9,8 @@ const hotelAPI = {
 	getHotelByNation: (nation) => axiosClient.get(`/hotels/nation/${nation}`),
 	getHotelByPrice: (min_price, max_price) => axiosClient.get(`/hotels/price?min_price=${min_price}&max_price=${max_price}`),
 	getHotelByRating: (rating) => axiosClient.get(`/hotels/rating?rating=${rating}`),
+
+	getImageByHotel: (id) => axiosClient.get(`/hotel-images/hotel/${id}`),
 }
 
 export default hotelAPI;

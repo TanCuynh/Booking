@@ -1,16 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './feature.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as heart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { Rating } from '@mui/material'
+import hotelAPI from '../../api/hotelAPI'
 
 const Feature = ({ dataHotel }) => {
 
-    // console.log("test001", dataHotel);
-
     const [isLiked, setIsLiked] = useState(false);
+
+    const [hotelImage, setHotelImage] = useState({});
+
+    const getImageByHotel = async () => {
+        const res = await hotelAPI.getImageByHotel(dataHotel?.id);
+        if (res.status === 200) {
+            console.log("getImageByHotel", res.data.data[0]);
+            setHotelImage(res.data.data[0]);
+        }
+        else {
+            setHotelImage({});
+            console.log("Error");
+        }
+    }
+    useEffect(() => {
+        getImageByHotel(dataHotel?.id);
+    },[])
 
     const handleToggleLike = () => {
         setIsLiked(!isLiked);
@@ -20,7 +36,7 @@ const Feature = ({ dataHotel }) => {
         <div className="feature">
             <Link to={`/hotel/${dataHotel?.id}`}>
                 <div className="featureImg">
-                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/297693925.jpg?k=c5cfc34421f30c8fb83452c7a9be6b0741e55bcbcc02b4e5c61fa500b99b8f80&o=&hp=1" alt="" />
+                    <img src={hotelImage.image_url} alt="" />
                 </div>
             </Link>
             <div className="ratingStars">

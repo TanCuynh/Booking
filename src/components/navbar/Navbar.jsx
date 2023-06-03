@@ -63,9 +63,9 @@ const Navbar = ({ type }) => {
             </div>
             {
                 context?.user?.id && (
-                    <>
+                    <>  
                         <div className="loginBtn">
-                            <Avatar alt="Avatar" src={ context.user.avatar } />
+                            <Avatar className='userAvatar' alt="Avatar" src={ context.user.avatar } />
                             <span>{ context.user.email }</span>
                         </div>
                     </>

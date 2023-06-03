@@ -31,13 +31,12 @@ const HotelDetail = () => {
     const [amenities, setAmenities] = useState([]);
 
     const { id } = useParams();
-    // console.log('id', id);
 
     const getHotelDetail = async (id) => {
         const res = await hotelAPI.getHotelById(id);
         if (res.status === 200) {
             setDataHotel(res.data.data);
-            console.log("ádewqasd", res.data.data);
+            // console.log("ádewqasd", res.data.data);
             setSafetyHygiene(res.data.data.Safety_Hygiene.split(" \n"));
             setAmenities(res.data.data.amenities.split(","));
 
