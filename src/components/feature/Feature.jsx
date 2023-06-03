@@ -8,7 +8,7 @@ import { Rating } from '@mui/material'
 
 const Feature = ({ dataHotel }) => {
 
-    console.log("test001", dataHotel);
+    // console.log("test001", dataHotel);
 
     const [isLiked, setIsLiked] = useState(false);
 
