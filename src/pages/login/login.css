@@ -1,4 +1,3 @@
-/* Reset CSS */
 * {
 	margin: 0;
 	padding: 0;
@@ -8,6 +7,7 @@
 
 .container {
 	width: 612px;
+	position: relative;
 	min-height: max-content;
 	padding-bottom: 1rem;
 	max-width: calc(100% - 50px);
@@ -19,6 +19,22 @@
 	background: #FFFFFF;
 	box-shadow: 0px 0px 8px rgba(194, 198, 204, 0.6);
 }
+
+.loginCloseBtn {
+	padding: 4px;
+	position: absolute;
+	font-size: 32px;
+	color: #484848;
+	top: 24px;
+	right: 24px;
+}
+
+.loginCloseBtn:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+
 
 .loginContainer {
 	width: 100%;
@@ -44,17 +60,68 @@
 	gap: 10px;
 }
 
-.container__mail-input {
-	width: 100%;
+.loginContainerMailInputContainer {
 	height: 60px;
-
-	background: #FFFFFF;
-	border: 1px solid #C2C6CC;
-	border-radius: 30px;
-	padding: 0 20px;
+	padding: 0.5rem 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 5px;
+	border: 1px solid #ccc;
+	border-radius: 999px;
 }
 
-.container__mail-alert {
+.loginContainerPasswordInputContainer span {
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 15px;
+	color: #4173D8;
+}
+
+.loginContainerMailInput {
+	border: none;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #484848;
+	outline: none;
+}
+
+.loginContainerPassword {
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.loginContainerPasswordInputContainer {
+	height: 60px;
+	padding: 0.5rem 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 5px;
+	border: 1px solid #ccc;
+	border-radius: 999px;
+}
+
+.loginContainerPasswordInputContainer span {
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 15px;
+	color: #4173D8;
+}
+
+.loginContainerPasswordInput {
+	border: none;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #484848;
+	outline: none;
+}
+
+.loginContainerAlert {
 	width: 100%;
 	font-weight: 500;
 	font-size: 13px;
@@ -62,7 +129,14 @@
 	padding-left: 12px;
 }
 
-.container__mail-mess {
+.loginContainerConfirm {
+	padding: 0 2rem;
+	padding-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.loginContainerMailMess {
 	width: 100%;
 	margin-top: 16px;
 	margin-bottom: 25px;
@@ -75,7 +149,7 @@
 	text-align: center;
 }
 
-.container__mail-login {
+.loginContainerBtn {
 	width: 187px;
 	height: 54px;
 
@@ -90,12 +164,13 @@
 
 }
 
-.container__mail-login:hover {
+.loginContainerBtn:hover {
+	cursor: pointer;
 	background: #4173D8;
 	opacity: 0.8;
 }
 
-.container__else {
+.loginContainerElse {
 	display: flex;
 	align-items: center;
 	padding: 5px 40px;
@@ -108,7 +183,7 @@
 	background: #E0E2E6;
 }
 
-.container__else-text {
+.loginContainerElseText {
 	height: 14px;
 	width: 204px;
 	margin: 0 10px;
@@ -128,7 +203,7 @@
 	background: #E0E2E6;
 }
 
-.container__loginElse {
+.loginContainerElseBtn {
 	width: 100%;
 	height: auto;
 	padding: 23px 40px 0px;
@@ -162,167 +237,18 @@
 	opacity: 0.8;
 }
 
-.container__loginElse i {
+.loginContainerElseBtn i {
 	margin-right: 6px;
 }
 
-.login2ModalContainer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+.loadingWrap {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	overflow: hidden;
-	z-index: 10000;
-}
-
-.login2Modal {
-	position: fixed;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.loginCloseBtn {
-	position: absolute;
-	top: 3rem;
-	right: 3rem;
-	font-size: 30px;
-	cursor: pointer;
-}
-
-.login2Container {
-	width: 612px;
-	height: max-content;
-	padding-bottom: 1rem;
-	max-width: calc(100% - 50px);
-	margin: 0 auto;
-	display: block;
-	border-radius: 10px;
-	margin-top: 2rem;
-
-	background: #FFFFFF;
-	box-shadow: 0px 0px 8px rgba(194, 198, 204, 0.6);
-}
-
-.login2Header {
-	width: 100%;
-	height: 100%;
-	padding: 10px 2rem;
-}
-
-.login2Title {
-	font-weight: bold;
-	font-size: 18px;
-	color: #484848;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 20px 0 10px 0;
-	border-bottom: 1px solid #E0E2E6;
-}
-
-.login2Login {
-	padding: 1rem 2rem;
-	display: flex;
-	flex-direction: column;
 	gap: 10px;
 }
 
-.login2Hello {
-	padding: 1rem 3rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	gap: 10px;
-}
-
-.login2Avt {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background: #bbb;
-}
-
-.login2Hello h3 {
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 20px;
-	color: #484848;
-}
-
-.login2Hello span {
-	font-weight: 600;
-	font-size: 13px;
-	line-height: 16px;
-	color: #4173D8;
-	cursor: pointer;
-}
-
-.login2Password {
-	height: 60px;
-	padding: 0.5rem 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	gap: 5px;
-	border: 1px solid #ccc;
-	border-radius: 999px;
-}
-
-.login2Password span {
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 15px;
-	color: #4173D8;
-}
-
-.login2Password input {
-	border: none;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 17px;
-	color: #484848;
-	outline: none;
-}
-
-.login2Login>span {
-	padding-top: 10px;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 17px;
-	color: #4173D8;
-	cursor: pointer;
-}
-
-.login2LoginBtn {
-	/* margin-top: 10px; */
-	width: 170px;
-	height: 54px;
-	border-radius: 999px;
-	font-weight: 600;
+.iconSpinner {
 	color: #fff;
-	background-color: #4173D8;
-	line-height: 14px;
-	font-size: 14px;
-	border: none;
-	align-items: center;
-	gap: 5px;
-	cursor: pointer;
-}
-
-.login2LoginBtn:hover {
-	background: #4173D8;
-	opacity: 0.8;
-}
-
-.login2CloseBtn {
-	position: absolute;
-	top: 3rem;
-	right: 3rem;
-	font-size: 30px;
-	cursor: pointer;
+	font-size: 8px;
 }
