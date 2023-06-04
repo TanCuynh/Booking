@@ -42,7 +42,7 @@ const Feature = ({ dataHotel }) => {
             <div className="ratingStars">
                 <Rating
                     name="my-rating"
-                    value={5}
+                    value={3}
                     readOnly
                     style={{ color: 'white' }}
                 />
