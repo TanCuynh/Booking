@@ -22,9 +22,9 @@ const top100Films = [
 const Header = () => {
     const navigate = useNavigate();
     const [destination, setDestination] = useState("");
-    const [price, setPrice] = useState([200, 500]);
+    const [price, setPrice] = useState([2000, 3000]);
     
-    const minDistance = 50;
+    const minDistance = 100;
 
     function valuetext(value) {
         return `${value} USD`;
@@ -43,7 +43,6 @@ const Header = () => {
 
     const handleSearch = () => {
         navigate("/search", { state: { destination, price } });
-        // console.log(destination, price);
     };
 
     return (
@@ -94,9 +93,9 @@ const Header = () => {
                                     valueLabelDisplay="auto"
                                     getAriaValueText={valuetext}
                                     valueLabelFormat={valuetext}
-                                    step={50}
-                                    min={100}
-                                    max={1000}
+                                    step={100}
+                                    min={1000}
+                                    max={5000}
                                     size='small'
                                     disableSwap
                                 />

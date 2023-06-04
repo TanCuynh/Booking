@@ -112,7 +112,7 @@
     font-weight: 700;
 }
 
-.loginModalContainer {
+.modalContainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -126,7 +126,7 @@
     z-index: 9999;
 }
 
-.loginModal {
+.modal {
     position: fixed;
     top: 30%;
     left: 50%;
