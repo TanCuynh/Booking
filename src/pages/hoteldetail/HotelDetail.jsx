@@ -106,11 +106,10 @@ const HotelDetail = () => {
     };
     const renderSmallImgs = useMemo(() => {
         if (dataHotel?.images) {
-            // console.log("siuuuuu", dataHotel?.images)
             const temp = [...dataHotel.images];
             return temp.slice(1).map((image, index) => {
                 return (
-                        <img key={index} onClick={() => handleOpen(index + 1)} src={image.image_url} alt="" className="smallImg" />
+                    <img key={index} onClick={() => handleOpen(index + 1)} src={image.image_url} alt="" className="smallImg" />
                 )
             })
         }
@@ -139,13 +138,14 @@ const HotelDetail = () => {
         window.scrollTo(0, 0);
         getHotelDetail(id);
     }, []);
+    
 
     return (
         <div className="hotelDetailComponent">
             {openPopup &&
                 <div className="hotelDetailPopupImgContainer">
+                    <FontAwesomeIcon icon={faCircleXmark} className='closePopupBtn' onClick={() => setOpenPopup(false)} />
                     <div className="hotelDetailPopupImg">
-                        <FontAwesomeIcon icon={faCircleXmark} className='closePopupBtn' onClick={() => setOpenPopup(false)} />
                         <FontAwesomeIcon icon={faCircleArrowLeft} className='arrowPopupBtn' onClick={() => handleMove("l")} />
                         <div className="popupImgWrapper">
                             <img src={dataHotel?.images[slideIndex].image_url} alt="popupImg" />
