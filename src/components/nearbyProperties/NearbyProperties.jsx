@@ -13,19 +13,19 @@ SwiperCore.use([Autoplay]);
 
 const NearbyProperties = () => {
 
-    const [dataHotelByCity, setDataHotelByCity] = useState([]);
-    const getHotelByCity = async () => {
-        const res = await hotelAPI.getHotelByCity("da nang");
+    const [dataHotelNearby, setDataHotelNearby] = useState([]);
+    const getHotelNearby = async () => {
+        const res = await hotelAPI.getHotelNearby();
         if (res.status === 200) {
-            console.log("getHotelByCity", res.data.data.data);
-            setDataHotelByCity(res.data.data.data);
+            console.log("getHotelByCity", res.data.data);
+            setDataHotelNearby(res.data.data);
         } else {
-            setDataHotelByCity([]);
+            setDataHotelNearby([]);
             console.log("Error");
         }
     }
     useEffect(() => {
-        getHotelByCity("da nang");
+        getHotelNearby();
     }, [])
 
     return (
@@ -42,7 +42,7 @@ const NearbyProperties = () => {
                     }}
                 >
                     {
-                        dataHotelByCity.map((hotel) => {
+                        dataHotelNearby.map((hotel) => {
                             return (
                                 <SwiperSlide key={hotel?.id}>
                                     <Feature dataHotel={hotel}/>

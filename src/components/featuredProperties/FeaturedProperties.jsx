@@ -5,7 +5,7 @@ import FeaturedProperty from "../featuredProperty/FeaturedProperty";
 const FeaturedProperties = () => {
     return (
         <div className="featuredProperties">
-            <div className="featuredPropertiesTitle"><h1>Featured Properties on our Listing</h1></div>
+            <div className="featuredPropertiesTitle"><h1>Most Booked Properties on our Listing</h1></div>
             <div className='a-sticky-thing'></div>
             <div className="featuredPropertiesItem">
                 <FeaturedProperty />

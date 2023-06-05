@@ -76,31 +76,32 @@
 }
 
 .navItemMenuContainer {
+    padding: 0.5rem;
     text-align: start;
     background-color: #eee;
-    width: 250px;
+    width: 180px;
     position: absolute;
-    top: 50px;
-    right: 15px;
+    top: 40px;
+    right: 20px;
     overflow: hidden;
     margin-top: 2rem;
     margin-right: 1rem;
     min-width: 150px;
-    border-radius: 10px;
+    border-radius: 6px;
     z-index: 1;
     box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
 }
 
 .navItemMenuContainerLinks {
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .navItemMenuContainer a,
 .navItemMenuContainer span {
     font-family: 'Montserrat';
     font-weight: 400;
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 17px;
     text-transform: capitalize;
     color: #484848;
     text-decoration: none;

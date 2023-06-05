@@ -9,11 +9,13 @@ const Signup = ({ onClose }) => {
     const [emailAlert, setEmailAlert] = useState(false);
     const [passwordAlert, setPasswordAlert] = useState(false);
     const [repasswordAlert, setRepasswordAlert] = useState(false);
+    const [nameAlert, setNameAlert] = useState(false);
 
     const handleSubmit = () => {
         setEmailAlert(true);
         setPasswordAlert(true);
         setRepasswordAlert(true);
+        setNameAlert(true);
     }
 
     const handleClose = () => {
@@ -33,6 +35,21 @@ const Signup = ({ onClose }) => {
                 </div>
                 <form onSubmit={handleSubmit} onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}>
                     <div class="signupSignup">
+                        <div className="signupContainerMail">
+                            <div className="signupContainerMailInputContainer">
+                                <span>Name</span>
+                                <input
+                                    required=""
+                                    type="name"
+                                    name='name'
+                                    // value={data.email}
+                                    // onChange={handleChange}
+                                    className="signupContainerMailInput"
+                                    placeholder="Enter your name"
+                                />
+                            </div>
+                            {nameAlert && <span className='signupContainerAlert'>You haven't entered your name!</span>}
+                        </div>
                         <div className="signupContainerMail">
                             <div className="signupContainerMailInputContainer">
                                 <span>Email</span>

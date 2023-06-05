@@ -7,7 +7,6 @@ import { Avatar } from '@mui/material';
 import { APP_CONTEXT } from '../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
-import Line from '../Line/Line';
 import { toast } from 'react-hot-toast';
 import Signup from '../../pages/signup/Signup';
 
@@ -78,7 +77,7 @@ const Navbar = ({ type }) => {
                     <>
                         <div className="loginBtn">
                             <Avatar className='userAvatar' alt="Avatar" src={context.user.avatar} />
-                            <span>{context.user.email}</span>
+                            <span>{context.user.name}</span>
                         </div>
                     </>
                 )
@@ -93,26 +92,61 @@ const Navbar = ({ type }) => {
                 {toggleMenu && (
                     <div className="navItemMenuContainer">
                         {
-                            context?.user?.role === 'admin' ?
+                            context?.user?.role === 'admin' ? (
                                 <>
                                     <div className="navItemMenuContainerLinks" onClick={handleClickAdmin}>
                                         <p><span>Admin Page</span></p>
                                     </div>
-                                    <Line />
-                                    <div className="navItemMenuContainerLinks" onClick={handleLogout}>
-                                        <p><span>Log Out</span></p>
+                                    {/* <Line /> */}
+                                    <div className="navItemMenuContainerLinks"
+                                        style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
+                                    >
+                                        <p onClick={handleLogout}><span>Log Out</span></p>
                                     </div>
                                 </>
-                                :
+                            ) : context?.user?.role === 'hotel' ? (
+                                <>
+                                    <div className="navItemMenuContainerLinks">
+                                        <p><span>Host Page</span></p>
+                                    </div>
+                                    {/* <Line /> */}
+                                    <div className="navItemMenuContainerLinks"
+                                        style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
+                                    >
+                                        <p onClick={handleLogout}><span>Log Out</span></p>
+                                    </div>
+                                </>
+                            ) : context?.user?.role === 'user' ? (
+                                <>
+                                    <div className="navItemMenuContainerLinks">
+                                        <p><span>Reservations</span></p>
+                                    </div>
+                                    <div className="navItemMenuContainerLinks">
+                                        <p><span>Wishlists</span></p>
+                                    </div>
+                                    <div className="navItemMenuContainerLinks">
+                                        <p><span>Account</span></p>
+                                    </div>
+                                    {/* <Line /> */}
+                                    <div className="navItemMenuContainerLinks"
+                                        style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
+                                    >
+                                        <p onClick={handleLogout}><span>Log Out</span></p>
+                                    </div>
+                                </>
+                            ) : (
                                 <>
                                     <div className="navItemMenuContainerLinks">
                                         <p onClick={openPopupLogin}><span>Log In</span></p>
                                     </div>
-                                    <Line />
-                                    <div className="navItemMenuContainerLinks">
+                                    <div
+                                        className="navItemMenuContainerLinks"
+                                        style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
+                                    >
                                         <p onClick={openPopupSignup}><span>Sign Up</span></p>
                                     </div>
                                 </>
+                            )
                         }
                     </div>
                 )}
@@ -131,7 +165,7 @@ const Navbar = ({ type }) => {
             }
 
             {openSignup &&
-                <div className="modalContainer" onClick={closePopup}>
+                <div className="modalContainer signup" onClick={closePopup}>
                     <div className="modal" onClick={(e) => e.stopPropagation()}>
                         <Signup onClose={closePopup} />
                     </div>
