@@ -6,7 +6,7 @@
 }
 
 .signupContainer {
-    margin-top: 6rem;
+    margin-top: 10rem;
     width: 612px;
     position: relative;
     min-height: max-content;
@@ -67,7 +67,7 @@
 
 .signupContainerMailInputContainer span {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 15px;
     color: #4173D8;
 }

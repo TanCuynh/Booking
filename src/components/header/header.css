@@ -39,12 +39,13 @@
     justify-content: space-between;
 }
 
-.headerSearchItem {
+.headerSearchItem.destination {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    padding-left: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 0.5rem;
 }
 
 .headerSearchItemTitle {

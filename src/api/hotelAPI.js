@@ -3,7 +3,7 @@ import axiosClient from "./axiosClient";
 const hotelAPI = {
 	getAllHotel:() => axiosClient.get(`/hotels`),
 	getHotelById: (id) => axiosClient.get(`/hotels/${id}`),
-	getHotelByCity: (city) => axiosClient.get(`/hotels/city/${city}`),
+	getHotelNearby: (city) => axiosClient.get(`/hotels/nearby`),
 	getHotelByName: (name) => axiosClient.get(`/hotels/name/${name}`),
 	getHotelByAddress: (address) => axiosClient.get(`/hotels/address/${address}`),
 	getHotelByNation: (nation) => axiosClient.get(`/hotels/nation/${nation}`),
@@ -11,6 +11,8 @@ const hotelAPI = {
 	getHotelByRating: (rating) => axiosClient.get(`/hotels/rating?rating=${rating}`),
 
 	getImageByHotel: (id) => axiosClient.get(`/hotel-images/hotel/${id}`),
+	
+	searchBarHotel: () => axiosClient.get(`/hotels/city`),
 }
 
 export default hotelAPI;

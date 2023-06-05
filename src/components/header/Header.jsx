@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +8,7 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns'
 import { useNavigate } from "react-router-dom";
 import { Autocomplete, Box, Slider, TextField } from '@mui/material';
+import hotelAPI from '../../api/hotelAPI';
 
 const top100Films = [
     'The Shawshank Redemption',
@@ -23,7 +24,24 @@ const Header = () => {
     const navigate = useNavigate();
     const [destination, setDestination] = useState("");
     const [price, setPrice] = useState([2000, 3000]);
-    
+
+    const [searchBarCities, setSearchBarCities] = useState([]); 
+
+    const getSearchBarCities = async () => {
+        const res = await hotelAPI.searchBarHotel();
+        if (res.status === 200) {
+            console.log("searchBarCities", res.data.data);
+            setSearchBarCities(res.data.data);
+        }
+        else {
+            setSearchBarCities([]);
+            console.log("Error");
+        }
+    }
+    useEffect(() => {
+        getSearchBarCities();
+    }, [])
+
     const minDistance = 100;
 
     function valuetext(value) {
@@ -50,17 +68,23 @@ const Header = () => {
             <h1 className="headerTitle">FORGET BUSY WORK,<br /> START NEXT VACATION.</h1>
             <div className="headerSearch">
                 <div className="headerSearchBar">
-                    <div className="headerSearchItem">
+                    <div className="headerSearchItem destination">
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"
-                            options={top100Films}
-                            sx={{ width: 350 }}
+                            options={searchBarCities}
+                            sx={{ width: 300 }}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
                                     className='headerSearchTextfield'
                                     label="Which city do you prefer?"
+                                    // InputProps={{
+                                    //     style: {
+                                    //         fontFamily: 'Montserrat, sans-serif',
+                                    //         borderRadius: '99px',
+                                    //     },
+                                    // }}
                                     InputLabelProps={{
                                         style: {
                                             fontSize: '14px',
@@ -68,12 +92,7 @@ const Header = () => {
                                             fontFamily: 'Montserrat, sans-serif',
                                         }
                                     }}
-                                    InputProps={{
-                                        style: {
-                                            fontFamily: 'Montserrat, sans-serif',
-                                            borderRadius: '99px',
-                                        },
-                                    }}
+                                    variant="standard"
                                 />
                             )}
                             onInputChange={(event, value) => setDestination(value)}
