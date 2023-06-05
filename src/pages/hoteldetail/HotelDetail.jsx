@@ -29,6 +29,7 @@ const HotelDetail = () => {
     const [dataHotel, setDataHotel] = useState({});
     const [safetyHygiene, setSafetyHygiene] = useState([]);
     const [amenities, setAmenities] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const { id } = useParams();
 
@@ -38,7 +39,7 @@ const HotelDetail = () => {
             setDataHotel(res.data.data);
             setSafetyHygiene(res.data.data.Safety_Hygiene.split(" \n"));
             setAmenities(res.data.data.amenities.split(","));
-
+            setCategories(res.data.data.categories);
         } else {
             setDataHotel({});
             console.log('err');
@@ -261,10 +262,17 @@ const HotelDetail = () => {
                                 <div className="hotelDetailShowPrices">
                                 </div>
                             </div>
+                            {
+                                categories.map((category) => {
+                                    return (
+                                        <RoomsTable key={category?.id} dataCategory={category}/>
+                                    )
+                                })
+                            }
+                            {/* <RoomsTable />
                             <RoomsTable />
                             <RoomsTable />
-                            <RoomsTable />
-                            <RoomsTable />
+                            <RoomsTable /> */}
                         </div>
                     </div>
                     <div className="hotelDetailOfferedAmenities">
