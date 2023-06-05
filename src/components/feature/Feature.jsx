@@ -3,6 +3,7 @@ import './feature.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as heart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
+import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom'
 import { Rating } from '@mui/material'
 import hotelAPI from '../../api/hotelAPI'
@@ -26,7 +27,7 @@ const Feature = ({ dataHotel }) => {
     }
     useEffect(() => {
         getImageByHotel(dataHotel?.id);
-    },[])
+    }, [])
 
     const handleToggleLike = () => {
         setIsLiked(!isLiked);
@@ -39,19 +40,23 @@ const Feature = ({ dataHotel }) => {
                     <img src={hotelImage.image_url} alt="" />
                 </div>
             </Link>
-            <div className="ratingStars">
-                <Rating
-                    name="my-rating"
-                    value={3}
-                    readOnly
-                    style={{ color: 'white' }}
-                />
-            </div>
-            <div className={`wishlistIcon ${isLiked ? 'active' : ''}`}>
-                <FontAwesomeIcon
-                    icon={isLiked ? solidHeart : heart}
-                    onClick={handleToggleLike}
-                />
+            <div className="featureHotelState">
+                <div className="ratingStars">
+                    <Rating
+                        name="my-rating"
+                        value={3.5}
+                        precision={0.5}
+                        readOnly
+                        style={{ color: '#FDC32D' }}
+                        emptyIcon={<StarIcon fontSize="inherit" />}
+                    />
+                </div>
+                <div className={`wishlistIcon ${isLiked ? 'active' : ''}`}>
+                    <FontAwesomeIcon
+                        icon={isLiked ? solidHeart : heart}
+                        onClick={handleToggleLike}
+                    />
+                </div>
             </div>
             <div className="featureHotelInfo">
                 <div className="featureHotelName">
