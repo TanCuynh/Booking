@@ -14,8 +14,7 @@
 .rightlayout {
     width: 100%;
     border-left: 1px solid #484848;
-    height: max-content;
-    overflow: auto;
+    height:700px;
 }
 
 .btnitem {
