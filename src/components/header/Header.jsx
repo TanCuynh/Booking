@@ -10,16 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { Autocomplete, Box, Slider, TextField } from '@mui/material';
 import hotelAPI from '../../api/hotelAPI';
 
-const top100Films = [
-    'The Shawshank Redemption',
-    'The Godfather',
-    'The Godfather: Part II',
-    'The Dark Knight',
-    '12 Angry Men',
-    "Schindler's List",
-    'Pulp Fiction',
-];
-
 const Header = () => {
     const navigate = useNavigate();
     const [destination, setDestination] = useState("");
@@ -65,7 +55,7 @@ const Header = () => {
 
     return (
         <div className="header">
-            <h1 className="headerTitle">FORGET BUSY WORK,<br /> START NEXT VACATION.</h1>
+            <h1 className="headerTitle">FORGET BUSY WORK,<br /> START NEXT VACATION</h1>
             <div className="headerSearch">
                 <div className="headerSearchBar">
                     <div className="headerSearchItem destination">
@@ -79,12 +69,6 @@ const Header = () => {
                                     {...params}
                                     className='headerSearchTextfield'
                                     label="Which city do you prefer?"
-                                    // InputProps={{
-                                    //     style: {
-                                    //         fontFamily: 'Montserrat, sans-serif',
-                                    //         borderRadius: '99px',
-                                    //     },
-                                    // }}
                                     InputLabelProps={{
                                         style: {
                                             fontSize: '14px',
