@@ -3,6 +3,7 @@ import axiosClient from "./axiosClient";
 const hotelAPI = {
 	getAllHotel:() => axiosClient.get(`/hotels`),
 	getHotelById: (id) => axiosClient.get(`/hotels/${id}`),
+	getLatestHotel: () => axiosClient.get(`/hotels/latest`),
 	getHotelNearby: (city) => axiosClient.get(`/hotels/nearby`),
 	getHotelByName: (name) => axiosClient.get(`/hotels/name/${name}`),
 	getHotelByAddress: (address) => axiosClient.get(`/hotels/address/${address}`),
