@@ -71,6 +71,14 @@ const Navbar = ({ type }) => {
         navigate('/user/profile');
     }
 
+    const handleResevations = () => {
+        navigate('user/reservations');
+    }
+
+    const handleHostResevations = () => {
+        navigate('/host/resevations');
+    }
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -121,7 +129,7 @@ const Navbar = ({ type }) => {
                                 </>
                             ) : context?.user?.role === 'hotel' ? (
                                 <>
-                                    <div className="navItemMenuContainerLinks">
+                                    <div className="navItemMenuContainerLinks" onClick={handleHostResevations}>
                                         <p><span>Reservations</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks" onClick={handleListProperty}>
@@ -138,7 +146,7 @@ const Navbar = ({ type }) => {
                                 </>
                             ) : context?.user?.role === 'user' ? (
                                 <>
-                                    <div className="navItemMenuContainerLinks">
+                                    <div className="navItemMenuContainerLinks" onClick={handleResevations}>
                                         <p><span>Reservations</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks" onClick={handleWishlist}>

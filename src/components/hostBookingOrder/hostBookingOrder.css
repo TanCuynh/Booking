@@ -1,0 +1,89 @@
+.hostBookingOrder {
+    width: 90%;
+    height: 100px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #484848;
+}
+
+.hostBookingOrderContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.hostBookingOrderImgContainer {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.hostBookingOrderImgContainer img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.hostBookingOrderContentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.hostBookingOrderNameContainer p {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+.hostBookingOrderInfoContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hostBookingOrderInfoContainer span {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.hostBookingOrderCheckinContainer,
+.hostBookingOrderDurationContainer,
+.hostBookingOrderGuestsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+
+.hostBookingOrderInfoContainer p {
+    font-weight: 500;
+    font-size: 13px;
+    color: #9A9A9A;
+}
+
+.hostBookingOrderPriceContainer p {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.hostBookingOrderAcceptedContainer {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #43C28C;
+    border-radius: 99px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
