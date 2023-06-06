@@ -67,7 +67,7 @@ const RoomsTable = ({ dataCategory }) => {
             {showPrices &&
                 <div className="roomDetailModalContainer" onClick={closePopup}>
                     <div className="roomDetailModal" onClick={(e) => e.stopPropagation()}>
-                        <RoomDetail onClose={closePopup} />
+                        <RoomDetail categoryId={dataCategory?.id} onClose={closePopup} />
                     </div>
                 </div>}
         </div>

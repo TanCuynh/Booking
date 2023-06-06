@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './roomDetail.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faCheck, faDoorOpen, faMountainSun, faShower, faVolumeXmark, faWifi, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faSnowflake } from '@fortawesome/free-regular-svg-icons'
 import Slideshow from '../slideshow/Slideshow'
+import categoryAPI from '../../api/categoryAPI'
+import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
 
 const images = [
     "https://cf.bstatic.com/xdata/images/hotel/max1280x900/213244036.jpg?k=4d029a6a277dda491d6c94398932e9f7ece6e3c76fa5062131ca354c4ca8edc2&o=&hp=1",
@@ -14,7 +16,36 @@ const images = [
     "https://cf.bstatic.com/xdata/images/hotel/max1280x900/373917970.jpg?k=e9ca04d3911f6ff3dc37e1a157b2baa9fefd9871c0f9ec905cbac61809c8bca8&o=&hp=1",
 ];
 
-const RoomDetail = ({ onClose }) => {
+const RoomDetail = ({ categoryId, onClose }) => {
+
+    const [dataCategoryDetail, setDataCategoryDetail] = useState({});
+    const [categoryImages, setCatetogyImages] = useState([]);
+    const [bathroomOptions, setBathroomOptions] = useState([]);
+    const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
+    const [amenitiesOptions, setAmenityOptions] = useState([]);
+
+
+    console.log("id", categoryId);
+
+    const getDataCategoryDetail = async () => {
+        const res = await categoryAPI.getCategoryById(categoryId);
+        if (res.status === 200) {
+            console.log("getCategoryById", res.data.data);
+            setDataCategoryDetail(res.data.data);
+            setCatetogyImages(res.data.data.category_images);
+            setBathroomOptions(res.data.data.bathroom_facilities.split("\n"));
+            setDirectionsViewOptions(res.data.data.directions_view.split("\n"));
+            setAmenityOptions(res.data.data.amenities.split("\n"));
+        } else {
+            setDataCategoryDetail({});
+            console.log("Error");
+        }
+    }
+    useEffect(() => {
+        getDataCategoryDetail();
+    }, [])
+
+
 
     const handleClose = () => {
         onClose();
@@ -25,122 +56,58 @@ const RoomDetail = ({ onClose }) => {
             <div className="roomDetailDesc">
                 <div className="roomDetailImgContainer">
                     <div className="roomDetailImgSlideshowContainer">
-                        <Slideshow images={images} className='roomDetailSlideshow' />
+                        <Slideshow images={categoryImages.map((categoryImage) => categoryImage.image_url)} className='roomDetailSlideshow' />
                     </div>
                 </div>
                 <div className="roomDetailContentContainer">
-                    <h3 className='roomDetailName'>Small Double Room</h3>
-                    <div className="roomDetailAmenities">
-                        <div className="roomDetailAmenity">
-                            <FontAwesomeIcon icon={faDoorOpen} />
-                            <span>Room</span>
-                        </div>
-                        <div className="roomDetailAmenity">
-                            <FontAwesomeIcon icon={faMountainSun} />
-                            <span>View of the courtyard</span>
-                        </div>
-                        <div className="roomDetailAmenity">
-                            <FontAwesomeIcon icon={faSnowflake} />
-                            <span>Air conditioner</span>
-                        </div>
-                        <div className="roomDetailAmenity">
-                            <FontAwesomeIcon icon={faShower} />
-                            <span>Private bathroom in the room</span>
-                        </div>
-                        <div className="roomDetailAmenity">
-                            <FontAwesomeIcon icon={faVolumeXmark} />
-                            <span>Soundproofing system</span>
-                        </div>
-                        <div className="roomDetailAmenity">
-                            <FontAwesomeIcon icon={faWifi} />
-                            <span>Free Wi-Fi</span>
-                        </div>
-                    </div>
+                    <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
                     <div className="roomDetailBedType">
-                        <span>1 double bed</span>
+                        <span>{dataCategoryDetail?.bed} bed</span>
                         <FontAwesomeIcon icon={faBed} />
                     </div>
                     <div className="roomDetailDescContent">
                         <span>In your private bathroom:</span>
                         <div className="roomDetailDescContentContainer">
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Toilet</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Hairdryer</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Bathtub or Shower</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Towel</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Toilet paper</span>
-                            </div>
+                            {
+                                bathroomOptions.map((item, index) => {
+                                    return (
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div className="roomDetailDescContent">
                         <span>Direction of vision:</span>
                         <div className="roomDetailDescContentContainer">
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>View of the courtyard</span>
-                            </div>
+                            {
+                                directionsViewOptions.map((item, index) => {
+                                    return (
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div className="roomDetailDescContent">
                         <span>Room amenities:</span>
                         <div className="roomDetailDescContentContainer">
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Upper floors go up by elevator</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Heating system</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Bed spread</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Cleaning products</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Air conditioner</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Desk</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Does not cause allergies</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Electrical outlet near the bed</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Soundproofing system</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Clothes hanger</span>
-                            </div>
-                            <div className="roomDetailDescContentItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>There are rooms connecting through the connecting doors</span>
-                            </div>
+                            {
+                                amenitiesOptions.map((item, index) => {
+                                    return (
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
@@ -149,10 +116,10 @@ const RoomDetail = ({ onClose }) => {
                 <div className="roomDetailPriceContainer">
                     <div className="roomDetailPriceDesc">
                         <div className="roomDetailPriceDescTitle">
-                            <h3>Small Double Room</h3>
+                            <h3>{dataCategoryDetail?.name}</h3>
                         </div>
                         <div className="roomDetailPriceDescContent">
-                            <span>1 double bed</span>
+                            <span>{dataCategoryDetail?.bed} bed</span>
                             <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
