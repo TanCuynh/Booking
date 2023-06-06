@@ -151,9 +151,31 @@ const safetyHygieneOptions = [
   },
 ];
 
+const starRatingOptions = [
+  {
+    label: "1 Star",
+  },
+  {
+    label: "2 Stars",
+  },
+  {
+    label: "3 Stars",
+  },
+  {
+    label: "4 Stars",
+  },
+  {
+    label: "5 Stars",
+  },
+  {
+    label: "Not rated",
+  },
+]
+
 export {
   bathroomFacilitieOptions,
   directionsViewOptions,
   amenitieOptions,
   safetyHygieneOptions,
+  starRatingOptions,
 };

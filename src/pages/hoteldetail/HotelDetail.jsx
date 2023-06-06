@@ -269,10 +269,6 @@ const HotelDetail = () => {
                                     )
                                 })
                             }
-                            {/* <RoomsTable />
-                            <RoomsTable />
-                            <RoomsTable />
-                            <RoomsTable /> */}
                         </div>
                     </div>
                     <div className="hotelDetailOfferedAmenities">

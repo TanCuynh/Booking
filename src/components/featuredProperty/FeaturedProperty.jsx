@@ -17,11 +17,13 @@ const FeaturedProperty = ({ dataHotel }) => {
     return (
         <div className="featuredProperty">
             <div className="featuredPropertyImg">
-                <img
-                    className='imgContainer'
-                    src={dataHotel?.hotel_image[0].image_url}
-                    alt="prop"
-                />
+                <Link to={`/hotel/${dataHotel?.id}`}>
+                    <img
+                        className='imgContainer'
+                        src={dataHotel?.hotel_image[0].image_url}
+                        alt="prop"
+                    />
+                </Link>
                 <div className={`featuredWishlistIcon ${isLiked ? 'active' : ''}`}>
                     <FontAwesomeIcon
                         icon={isLiked ? solidHeart : heart}
@@ -31,7 +33,9 @@ const FeaturedProperty = ({ dataHotel }) => {
                 <span className='featuredPropertyPrice'>$ {dataHotel?.price} USD</span>
             </div>
             <div className="featuredPropertyDesc">
-                <h3>{dataHotel?.name}</h3>
+                <Link to={`/hotel/${dataHotel?.id}`}>
+                    <h3>{dataHotel?.name}</h3>
+                </Link>
                 <span>{dataHotel?.address}</span>
                 <div className="featuredPropertyAmenities">
                     <FontAwesomeIcon icon={faBed} />
