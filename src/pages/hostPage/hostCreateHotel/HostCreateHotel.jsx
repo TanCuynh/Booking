@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import './HostCreateHotel.css';
-import { TextField, Checkbox, FormGroup, FormControlLabel } from '@mui/material';
+import { TextField, Checkbox, FormGroup, FormControlLabel, TextareaAutosize } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faBuilding, faCar, faPhone, faPaw, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faHeart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
@@ -17,11 +17,15 @@ import { amenitieOptions, bathroomFacilitieOptions, directionsViewOptions, safet
 import { pink } from '@mui/material/colors';
 
 
+
 const markerIcon = L.icon({
 	iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
 	iconSize: [25, 41],
 	iconAnchor: [12, 41],
 });
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneNumberRegex = /^[0-9]{10}$/;
 
 const HostCreateHotel = () => {
 
@@ -92,6 +96,24 @@ const HostCreateHotel = () => {
 		}
 	}, [imgFiles]);
 
+	const [email, setEmail] = useState('');
+	const [isValidEmail, setIsValidEmail] = useState(true);
+
+	const handleEmailChange = (event) => {
+		const newEmail = event.target.value;
+		setEmail(newEmail);
+		setIsValidEmail(emailRegex.test(newEmail));
+	};
+
+	const [phoneNumber, setPhoneNumber] = useState('');
+	const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
+
+	const handlePhoneNumberChange = (event) => {
+		const newPhoneNumber = event.target.value;
+		setPhoneNumber(newPhoneNumber);
+		setIsValidPhoneNumber(phoneNumberRegex.test(newPhoneNumber));
+	};
+
 	return (
 		<div className="hostCreateHotelComponent">
 			<div className="hostCreateHotelImg">
@@ -137,8 +159,8 @@ const HostCreateHotel = () => {
 										}
 									}}
 								/>
-
 							</div>
+
 							<div className="hostCreateHotelAddress">
 								<TextField
 									id="outlined-basic"
@@ -165,33 +187,119 @@ const HostCreateHotel = () => {
 								/>
 							</div>
 
+							<div className="hostCreateHotelEmail">
+								<TextField
+									id="outlined-basic"
+									label="Email"
+									variant="standard"
+									value={email}
+									onChange={handleEmailChange}
+									InputLabelProps={{
+										style: {
+											fontSize: '15px',
+											paddingLeft: '1rem',
+											fontFamily: 'Montserrat, sans-serif',
+											color: "#484848",
+										}
+									}}
+									InputProps={{
+										style: {
+											width: "200%",
+											fontWeight: "500",
+											fontSize: "16px",
+											lineHeight: "20px",
+											color: "#484848",
+											fontFamily: 'Montserrat, sans-serif',
+										}
+									}}
+									error={!isValidEmail}
+									helperText={!isValidEmail ? 'Please enter a valid email address' : ''}
+								/>
+							</div>
+
+							<div className="hostCreateHotelPhoneNumber">
+								<TextField
+									id="outlined-basic"
+									label="Phone number"
+									variant="standard"
+									value={phoneNumber}
+									onChange={handlePhoneNumberChange}
+									InputLabelProps={{
+										style: {
+											width: '200%',
+											fontSize: '15px',
+											paddingLeft: '1rem',
+											fontFamily: 'Montserrat, sans-serif',
+											color: "#484848",
+										}
+									}}
+									InputProps={{
+										style: {
+											width: "200%",
+											fontWeight: "500",
+											fontSize: "16px",
+											lineHeight: "20px",
+											color: "#484848",
+											fontFamily: 'Montserrat, sans-serif',
+										}
+									}}
+									error={!isValidPhoneNumber}
+									helperText={!isValidPhoneNumber ? 'Please enter a valid phone number' : ''}
+								/>
+							</div>
+
 							<div className="hostCreateHotelMainAmenities">
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faBed} className='hostCreateHotelAmenityIcon' />
-									<span>3 Bedrooms</span>
+									{/* <span>3 Bedrooms</span> */}
+									<input type="number" className="mainAmenityQuantity" />
+									<span>Bedrooms</span>
 								</div>
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faBath} className='hostCreateHotelAmenityIcon' />
-									<span>2 Bathrooms</span>
+									<input type="number" className="mainAmenityQuantity" />
+									<span>Bathrooms</span>
 								</div>
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faCar} className='hostCreateHotelAmenityIcon' />
-									<span>3 Cars/2 Bikes</span>
+									<input type="number" className="mainAmenityQuantity" />
+									<span>Parking Slots</span>
 								</div>
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faPaw} className='hostCreateHotelAmenityIcon' />
-									<span>0 Pets Allowed</span>
+									<Checkbox
+										sx={{
+											color: 'white',
+											'&.Mui-checked': {
+												color: 'white',
+											},
+											transform: 'scale(1.75)',
+										}}
+									/>
+									<span>Pets Allowed</span>
 								</div>
 							</div>
 
 							<div className="hostCreateHotelDesc">
-								<h3>Your Hotel Description</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								<h3>Description</h3>
+								<TextareaAutosize
+									aria-label="minimum height"
+									minRows={7}
+									maxRows={7}
+									placeholder="Your hotel description.."
+									style={{
+										border: '1px solid #4173d8',
+										borderRadius: '10px',
+										color: '#484848',
+										padding: '10px',
+										fontSize: '16px',
+										fontFamily: 'Montserrat, sans-serif',
+									}}
+								/>
 							</div>
 
 							<div className="hostCreateHotelMapLocation">
-								<h3>Your Hotel Location On Map</h3>
+								<h3>Location On Map</h3>
 								<MapContainer center={[16.06827770014092, 108.2009288146462]} zoom={18} scrollWheelZoom={false} style={{ height: '400px', width: '100%' }}>
 									<TileLayer
 										attribution='Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>OpenStreetMap</a> contributors'
@@ -206,64 +314,6 @@ const HostCreateHotel = () => {
 								</MapContainer>
 							</div>
 
-							<div className="hostCreateHotelDirectionsView">
-								<h3>Directions View Options</h3>
-								<FormGroup sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-									{
-										directionsViewOptions.map((ele) => {
-											return (
-												<FormControlLabel
-													control={
-														<Checkbox
-															sx={{
-																color: pink[800],
-																'&.Mui-checked': {
-																	color: '#4173D8',
-																},
-															}}
-														/>
-													}
-													label={
-														<span style={{ fontFamily: 'Montserrat, sans-serif' }}>
-															{ele.label}
-														</span>
-													}
-												/>
-											)
-										})
-									}
-								</FormGroup>
-							</div>
-
-							<div className="hostCreateHotelBathroomFacility">
-								<h3>Bathroom Facility Options</h3>
-								<FormGroup sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-									{
-										bathroomFacilitieOptions.map((ele) => {
-											return (
-												<FormControlLabel
-													control={
-														<Checkbox
-															sx={{
-																color: pink[800],
-																'&.Mui-checked': {
-																	color: '#4173D8',
-																},
-															}}
-														/>
-													}
-													label={
-														<span style={{ fontFamily: 'Montserrat, sans-serif' }}>
-															{ele.label}
-														</span>
-													}
-												/>
-											)
-										})
-									}
-								</FormGroup>
-							</div>
-
 							<div className="hostCreateHotelAmenities">
 								<h3>Amenity Options</h3>
 								<FormGroup sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
@@ -274,7 +324,7 @@ const HostCreateHotel = () => {
 													control={
 														<Checkbox
 															sx={{
-																color: pink[800],
+																color: '#4173D8',
 																'&.Mui-checked': {
 																	color: '#4173D8',
 																},
@@ -303,7 +353,7 @@ const HostCreateHotel = () => {
 													control={
 														<Checkbox
 															sx={{
-																color: pink[800],
+																color: '#4173D8',
 																'&.Mui-checked': {
 																	color: '#4173D8',
 																},
@@ -320,6 +370,11 @@ const HostCreateHotel = () => {
 										})
 									}
 								</FormGroup>
+							</div>
+							<div className="hostCreateHotelNextStepBtnContainer">
+								<div className="hostCreateHotelNextStepBtn">
+									<span>Save your hotel</span>
+								</div>
 							</div>
 						</div>
 					</div>

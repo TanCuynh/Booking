@@ -296,24 +296,27 @@
 }
 
 .hotelDetailDesc {
-    padding-top: 3rem;
+    margin-top: 3rem;
+    padding:  2rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background: #eee;
+    color: #484848;
+    border-radius: 10px;
 }
 
 .hotelDetailDesc h3 {
     font-weight: 700;
-    font-size: 22px;
+    font-size: 24px;
     line-height: 27px;
-    color: #484848;
+    padding-bottom: 10px;
 }
 
 .hotelDetailDesc p {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 20px;
-    color: #9A9A9A;
 }
 
 .hotelDetailMapLocation {

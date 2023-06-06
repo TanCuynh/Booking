@@ -7,7 +7,7 @@
 
 .roomDetailContainer {
     width: 1400px;
-    height: 800px;
+    height: fit-content;
     overflow: hidden;
     border-radius: 10px;
     background: #fff;
@@ -22,19 +22,26 @@
     height: max-content;
     display: grid;
     grid-template-columns: 6fr 4fr;
-    gap: 10px;
 }
 
 .roomDetailImgContainer {
-    width: 100%;
-    height: 100%;
+    width: 800px;
+    height: auto;
     object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 1rem;
 }
 
 .roomDetailImgSlideshowContainer {
-    width: 800px;
+    width: 100%;
     height: auto;
+}
+
+.roomDetailSlideshow {
+    object-fit: cover;
+
 }
 
 .roomDetailContentContainer {
@@ -51,21 +58,6 @@
     font-weight: 700;
 }
 
-.roomDetailAmenities {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 5px;
-}
-
-.roomDetailAmenity {
-    display: flex;
-    gap: 5px;
-}
-
-.roomDetailAmenity span {
-    font-size: 15px;
-}
 
 .roomDetailBedType {
     display: flex;
@@ -102,9 +94,9 @@
 }
 
 .roomDetailBookingContainer {
-    padding: 2rem;
+    padding: 1rem 2rem;
     width: 100%;
-    height: fit-content;
+    height: max-content;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -131,31 +123,32 @@
 }
 
 .roomDetailPriceDescContent span {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .roomDetailPrice span {
     font-size: 18px;
     font-weight: 600;
 }
-/* .roomDetailAvailableRooms {
+
+.roomDetailAvailableRooms {
     padding-top: 1rem;
-} */
+}
 
 .roomDetailAvailableRooms span {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 800;
     color: green;
 }
 
 .roomDetailBookingBtn {
     background: #0071c2;
     color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    width: 200px;
-    height: 70px;
-    border-radius: 888px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 180px;
+    height: 60px;
+    border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,4 +165,8 @@
     right: 1.5rem;
     font-size: 30px;
     cursor: pointer;
+}
+
+.roomDetailCloseBtn:hover {
+    opacity: 0.8;
 }
