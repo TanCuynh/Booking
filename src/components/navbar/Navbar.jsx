@@ -55,6 +55,22 @@ const Navbar = ({ type }) => {
         navigate('/admin');
     }
 
+    const handleListProperty = () => {
+        navigate('/host/page');
+    }
+
+    const handleStatistic = () => {
+        navigate('/host/statistic');
+    }
+
+    const handleWishlist = () => {
+        navigate('/user/wishlist');
+    }
+
+    const handleProfile = () => {
+        navigate('/user/profile');
+    }
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -97,7 +113,6 @@ const Navbar = ({ type }) => {
                                     <div className="navItemMenuContainerLinks" onClick={handleClickAdmin}>
                                         <p><span>Admin Page</span></p>
                                     </div>
-                                    {/* <Line /> */}
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
                                     >
@@ -107,9 +122,14 @@ const Navbar = ({ type }) => {
                             ) : context?.user?.role === 'hotel' ? (
                                 <>
                                     <div className="navItemMenuContainerLinks">
-                                        <p><span>Host Page</span></p>
+                                        <p><span>Reservations</span></p>
                                     </div>
-                                    {/* <Line /> */}
+                                    <div className="navItemMenuContainerLinks" onClick={handleListProperty}>
+                                        <p><span>List Property</span></p>
+                                    </div>
+                                    <div className="navItemMenuContainerLinks" onClick={handleStatistic}>
+                                        <p><span>Statistic</span></p>
+                                    </div>
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
                                     >
@@ -121,13 +141,12 @@ const Navbar = ({ type }) => {
                                     <div className="navItemMenuContainerLinks">
                                         <p><span>Reservations</span></p>
                                     </div>
-                                    <div className="navItemMenuContainerLinks">
+                                    <div className="navItemMenuContainerLinks" onClick={handleWishlist}>
                                         <p><span>Wishlists</span></p>
                                     </div>
-                                    <div className="navItemMenuContainerLinks">
+                                    <div className="navItemMenuContainerLinks" onClick={handleProfile}>
                                         <p><span>Account</span></p>
                                     </div>
-                                    {/* <Line /> */}
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
                                     >

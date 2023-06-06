@@ -16,6 +16,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import hotelAPI from '../../api/hotelAPI'
+import { toast } from 'react-hot-toast'
 
 
 
@@ -135,11 +136,22 @@ const HotelDetail = () => {
         return Math.round(time / timeUnit);
     }
 
+    const handleCopy = () => {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url)
+            .then(() => {
+                toast.success("Hotel link copied to clipboard");
+            })
+            .catch((error) => {
+                toast.error("Failed to copy hotel link to clipboard")
+            });
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
         getHotelDetail(id);
     }, []);
-    
+
 
     return (
         <div className="hotelDetailComponent">
@@ -181,7 +193,11 @@ const HotelDetail = () => {
                                 icon={isLiked ? solidHeart : heart}
                                 onClick={handleToggleLike}
                             />
-                            <FontAwesomeIcon icon={faShareFromSquare} />
+                            <FontAwesomeIcon
+                                className='hotelDetailShareIcon'
+                                icon={faShareFromSquare}
+                                onClick={handleCopy}
+                            />
                         </div>
                     </div>
                     <div className="hotelDetailAmenities">
@@ -265,7 +281,7 @@ const HotelDetail = () => {
                             {
                                 categories.map((category) => {
                                     return (
-                                        <RoomsTable key={category?.id} dataCategory={category}/>
+                                        <RoomsTable key={category?.id} dataCategory={category} />
                                     )
                                 })
                             }
