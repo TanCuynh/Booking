@@ -32,6 +32,14 @@
     cursor: pointer;
 }
 
+.searchedWishlistIcon.active {
+    color: #ff3040;
+}
+
+.searchedWishlistIcon:hover {
+    opacity: 0.7;
+}
+
 .searchedPropertyImg span {
     color: #fff;
     font-size: 20px;

@@ -25,7 +25,7 @@
 }
 
 .searchedInputTitle {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 900;
     padding: 1rem 0;
     text-align: center;
@@ -39,22 +39,22 @@
 }
 
 .searchedInputItem>label {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     text-align: center;
 }
 
 .searchedInputItem>input {
-    height: 40px;
+    height: 35px;
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 3px;
     border: none;
+
 }
 
 .searchedInputItem>span {
-    height: 40px;
-    padding: 10px;
+    height: 35px;
     font-size: 18px;
     border-radius: 3px;
     border: none;
@@ -64,13 +64,14 @@
 }
 
 .searchedOptions {
-    padding: 10px;
+    padding-top: 10px;
 }
 
 .searchedOptionItem {
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     justify-content: space-between;
+    text-align: center;
     margin-bottom: 1rem;
 }
 
@@ -85,19 +86,20 @@
 }
 
 .searchedInput>button {
-    padding: 1rem;
+    padding: 0.75rem;
     background-color: #0071c2;
     color: white;
     border: none;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     border-radius: 10px;
+    margin-bottom: 0.5rem;
     cursor: pointer;
 }
 
 .searchedInput>button:hover {
-    background: #2497e9;
+    opacity: 0.9;
 }
 
 .searchResults {
@@ -118,7 +120,7 @@
 }
 
 .searchedResultsCounts h3 {
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 900;
     background: #0071c2;
     color: #fff;
@@ -126,7 +128,7 @@
 }
 
 .searchedResultsCounts span {
-    font-size: 32px;
+    font-size: 27px;
     font-weight: 900;
 }
 
@@ -148,7 +150,7 @@
 
 .searchFilterDetailsTitle {
     font-size: 16px;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
 }
 
 .searchFilterItem {
@@ -161,11 +163,12 @@
 
 .searchFilterItemOption label,
 .searchFilterItemOption input {
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
 }
 
 .searchFilterDetails span {
+    font-size: 16px;
     font-weight: 600;
 }
 
