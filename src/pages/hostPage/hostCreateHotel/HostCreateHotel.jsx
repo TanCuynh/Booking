@@ -114,6 +114,49 @@ const HostCreateHotel = () => {
 		setIsValidPhoneNumber(phoneNumberRegex.test(newPhoneNumber));
 	};
 
+	const [bedrooms, setBedrooms] = useState('');
+	const [bathrooms, setBathrooms] = useState('');
+	const [parkingslots, setParkingslots] = useState('');
+	const [error1, setError1] = useState('');
+	const [error2, setError2] = useState('');
+	const [error3, setError3] = useState('');
+
+	const handleBedroomsChange = (event) => {
+		const inputValue = event.target.value;
+		const parsedNumber = parseFloat(inputValue);
+
+		if (isNaN(parsedNumber) || parsedNumber < 0) {
+			setError1('Invalid number');
+		} else {
+			setError1('');
+			setBedrooms(inputValue);
+		}
+	};
+
+	const handleBathroomsChange = (event) => {
+		const inputValue = event.target.value;
+		const parsedNumber = parseFloat(inputValue);
+
+		if (isNaN(parsedNumber) || parsedNumber < 0) {
+			setError2('Invalid number');
+		} else {
+			setError2('');
+			setBathrooms(inputValue);
+		}
+	};
+
+	const handleParkingslotsChange = (event) => {
+		const inputValue = event.target.value;
+		const parsedNumber = parseFloat(inputValue);
+
+		if (isNaN(parsedNumber) || parsedNumber < 0) {
+			setError3('Invalid number');
+		} else {
+			setError3('');
+			setParkingslots(inputValue);
+		}
+	};
+
 	return (
 		<div className="hostCreateHotelComponent">
 			<div className="hostCreateHotelImg">
@@ -251,19 +294,33 @@ const HostCreateHotel = () => {
 							<div className="hostCreateHotelMainAmenities">
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faBed} className='hostCreateHotelAmenityIcon' />
-									{/* <span>3 Bedrooms</span> */}
-									<input type="number" className="mainAmenityQuantity" />
+									<input
+										type="number"
+										className="mainAmenityQuantity"
+										onChange={handleBedroomsChange}
+									/>
 									<span>Bedrooms</span>
+									{error1 && <p>{error1}</p>}
 								</div>
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faBath} className='hostCreateHotelAmenityIcon' />
-									<input type="number" className="mainAmenityQuantity" />
+									<input
+										type="number"
+										className="mainAmenityQuantity"
+										onChange={handleBathroomsChange}
+									/>
 									<span>Bathrooms</span>
+									{error2 && <p>{error2}</p>}
 								</div>
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faCar} className='hostCreateHotelAmenityIcon' />
-									<input type="number" className="mainAmenityQuantity" />
+									<input
+										type="number"
+										className="mainAmenityQuantity"
+										onChange={handleParkingslotsChange}
+									/>
 									<span>Parking Slots</span>
+									{error3 && <p>{error3}</p>}
 								</div>
 								<div className="hostCreateHotelAmenity">
 									<FontAwesomeIcon icon={faPaw} className='hostCreateHotelAmenityIcon' />
