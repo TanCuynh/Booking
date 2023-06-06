@@ -6,40 +6,46 @@ import { faBath, faBed, faCar, faHeart as solidHeart, faPaw } from '@fortawesome
 import { Link } from 'react-router-dom'
 
 
-const FeaturedProperty = () => {
+const FeaturedProperty = ({ dataHotel }) => {
 
     const [isLiked, setIsLiked] = useState(false);
 
     const handleToggleLike = () => {
         setIsLiked(!isLiked);
     };
+
     return (
         <div className="featuredProperty">
             <div className="featuredPropertyImg">
-                <img
-                    src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/164870768.jpg?k=30c92fd45582c990b9e64427cd7f8feb4f3485ff6688a6df0da4f9a1963a8902&o=&hp=1"
-                    alt="prop"
-                />
+                <Link to={`/hotel/${dataHotel?.id}`}>
+                    <img
+                        className='imgContainer'
+                        src={dataHotel?.hotel_image[0].image_url}
+                        alt="prop"
+                    />
+                </Link>
                 <div className={`featuredWishlistIcon ${isLiked ? 'active' : ''}`}>
                     <FontAwesomeIcon
                         icon={isLiked ? solidHeart : heart}
                         onClick={handleToggleLike}
                     />
                 </div>
-                <span className='featuredPropertyPrice'>$1000-3000 USD</span>
+                <span className='featuredPropertyPrice'>$ {dataHotel?.price} USD</span>
             </div>
             <div className="featuredPropertyDesc">
-                <h3><Link to="/unknown_hotel">Supreme's Apartment</Link></h3>
-                <span>100 Grove Street, Los Santos, USA</span>
+                <Link to={`/hotel/${dataHotel?.id}`}>
+                    <h3>{dataHotel?.name}</h3>
+                </Link>
+                <span>{dataHotel?.address}</span>
                 <div className="featuredPropertyAmenities">
                     <FontAwesomeIcon icon={faBed} />
-                    <span>2</span>
+                    <span>{dataHotel?.room_total}</span>
                     <FontAwesomeIcon icon={faBath} />
-                    <span>2</span>
+                    <span>{dataHotel?.bathrooms}</span>
                     <FontAwesomeIcon icon={faCar} />
-                    <span>2</span>
+                    <span>{dataHotel?.parking_slot}</span>
                     <FontAwesomeIcon icon={faPaw} />
-                    <span>2</span>
+                    <span>0</span>
                 </div>
             </div>
         </div>

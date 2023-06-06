@@ -30,6 +30,5 @@
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
     padding: 3rem;
-    column-gap: 5rem;
     row-gap: 2rem;
 }

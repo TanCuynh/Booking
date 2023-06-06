@@ -19,7 +19,7 @@ const SearchedProperty = () => {
                     src="https://media.moddb.com/images/downloads/1/12/11394/gallery150.jpg"
                     alt="searchedProp"
                 />
-                <div className="searchedWishlistIcon">
+                <div className={`searchedWishlistIcon ${isLiked ? 'active' : ''}`}>
                     <FontAwesomeIcon
                         icon={isLiked ? solidHeart : heart}
                         onClick={handleToggleLike}

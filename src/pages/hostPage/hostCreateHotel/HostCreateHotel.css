@@ -6,10 +6,12 @@
 	font-family: 'Montserrat', sans-serif;
 	color: #484848;
 }
+
 .hostCreateHotelImgLarge {
 	border: 6px solid rgb(209 213 219);
 	border-radius: 8px;
 }
+
 .hostCreateHotelImg {
 	width: 100%;
 	padding: 4rem;
@@ -18,21 +20,25 @@
 	grid-template-rows: 1fr;
 	gap: 1rem;
 }
+
 .borderCustom {
 	border: 6px solid rgb(209 213 219);
 	border-radius: 8px;
 }
+
 .selectImgWapperLarge {
 	height: 100%;
 }
+
 .selectImgWapper {
 	position: relative;
-	background-position: center; 
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	min-width: 336px;
 	min-height: 252px;
 }
+
 .editBtn {
 	position: absolute;
 	top: 12px;
@@ -40,15 +46,19 @@
 	padding: 4px 5px;
 	border-radius: 99px;
 	border-color: transparent;
-	background-color: rgb(209 213 219);
+	background-color: #9A9A9A;
+	color: #ffffff;
 	cursor: pointer;
 }
+
 .editClear {
 	padding: 4px 7px;
 }
+
 .inputEdit {
 	display: none;
 }
+
 .addImageWrapper {
 	display: flex;
 	justify-content: center;
@@ -57,17 +67,21 @@
 	min-width: 336px;
 	min-height: 252px;
 }
+
 .addImageWrapper:hover {
 	cursor: pointer;
 	border-color: rgb(107 114 128);
 	color: rgb(107 114 128);
 }
+
 .editBtn:hover {
 	background-color: rgb(107 114 128);
 }
+
 .iconEdit {
 	color: #ffffff;
 }
+
 .hostCreateHotelImgLarge img {
 	width: 100%;
 	height: 100%;
@@ -91,123 +105,26 @@
 }
 
 .hostCreateHotel {
-	width: 100%;	
-	display: grid;
-	grid-template-columns: 7fr 3fr;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 	gap: 2rem;
 	padding-left: 4rem;
 	padding-right: 4rem;
 }
 
-.hostCreateHotelReserve {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-.reserveBox {
-	border: none;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-	width: 80%;
-	height: fit-content;
-	border-radius: 10px;
-	padding: 2rem;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.reserveBoxPrice {
-	color: #484848;
-}
-
-.reserveBoxPrice h3 {
-	font-weight: 700;
-	font-size: 22px;
-	line-height: 27px;
-}
-
-.reserveBoxPriceDesc {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding-top: 2rem;
-}
-
-.reserveBoxPriceDesc span {
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 30px;
-
-	color: #9A9A9A;
-}
-
-.reserveBtnComponent {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding-top: 2rem;
-}
-
-.reserveBtn {
-	width: 100%;
-	height: 100%;
-	background: #FDC32D;
-	text-align: center;
-	border-radius: 25px;
-	cursor: pointer;
-}
-
-.reserveBtn:hover {
-	background: #f7b100;
-}
-
-.reserveBtn span {
-	font-weight: 700;
-	font-size: 15px;
-	line-height: 50px;
-}
-
-.reserveBoxFuncs {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 20px;
-	justify-content: space-around;
-	padding-top: 2rem;
-}
-
-.reserveBoxFunc {
-	display: flex;
-	flex-direction: row;
-	gap: 5px;
-	color: #484848;
-}
-
-.reserveBoxIcon {
-	font-size: 17px;
-}
-
-.reserveBoxFunc span {
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 18px;
-}
 
 .hostCreateHotelContent {
 	padding-left: 3rem;
 }
 
 .hostCreateHotelTitle {
-	display: flex;
-	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 }
 
 .hostCreateHotelTitleContent {
+	width: 70%;
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
@@ -224,28 +141,35 @@
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 20px;
-	color: #9A9A9A;
 }
 
-.hostCreateHotelAction {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	font-size: 33px;
+.hostCreateHotelName {
+	width: 100%;
 }
 
-.hostCreateHotelAmenities {
+.hostCreateHotelAddress {
+	padding-top: 2rem;
+}
+
+.hostCreateHotelEmail,
+.hostCreateHotelPhoneNumber {
+	padding-top: 1rem;
+}
+
+.hostCreateHotelMainAmenities {
 	padding-top: 3rem;
 	width: 100%;
-	height: 275px;
+	height: 300px;
 	display: flex;
 	flex-direction: row;
-	gap: 3%;
+	gap: 3rem;
 }
 
 .hostCreateHotelAmenity {
-	width: 100%;
-	background: #7EBAF1;
+	width: 200px;
+	height: 200px;
+	background: #357bbc;
+	color: white;
 	border-radius: 10px;
 
 	display: flex;
@@ -259,14 +183,25 @@
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 20px;
+	color: white;
 }
 
 .hostCreateHotelAmenityIcon {
 	font-size: 33px;
 }
 
+.mainAmenityQuantity {
+	width: 70px;
+	height: 40px;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 23px;
+	font-weight: 700;
+	color: #484848;
+	border: none;
+}
+
 .hostCreateHotelDesc {
-	padding-top: 3rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -287,339 +222,77 @@
 }
 
 .hostCreateHotelMapLocation {
-	padding-top: 3rem;
+	padding-top: 2rem;
 }
 
-.hostCreateHotelRoomOptions {
-	padding-top: 3rem;
-}
-
-.hostCreateHotelRoomOptions>h3 {
+.hostCreateHotelMapLocation h3 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 27px;
+	color: #484848;
+	padding-bottom: 1rem;
 }
 
-.hostCreateHotelSearchBarContainer {
+.hostCreateHotelDirectionsView {
 	padding-top: 1rem;
 }
 
-.hostCreateHotelSearchBar {
-	width: 75%;
-	height: 70px;
-	border-radius: 35px;
-	background-color: #fff;
-	color: #484848;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	-webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-	box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.hostCreateHotelSearchItem {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 3rem;
-}
-
-.hostCreateHotelSearchItemTitle {
-	font-family: 'Montserrat';
-	font-weight: 600;
-	font-size: 14px;
-	line-height: 30px;
-	color: #484848;
-}
-
-.hostCreateHotelSearchItem span {
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 17px;
-	cursor: pointer;
-}
-
-.hostCreateHotelSearchInput {
-	font-family: 'Montserrat';
-	width: 100%;
-	font-size: 18px;
-	line-height: 17px;
-	font-weight: 600;
-	color: #484848;
-	border: none;
-	outline: none;
-}
-
-.hostCreateHotelSearchText {
-	font-family: 'Montserrat';
-	font-weight: 600;
-	font-size: 18px;
-	color: #9A9A9A;
-	cursor: pointer;
-}
-
-.hostCreateHotelSearchBtn {
-	background: #FDC32D;
-	color: #fff;
-	font-size: 23px;
-	margin-right: 0.5rem;
-	width: 60px;
-	height: 60px;
-	border-radius: 90px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-}
-
-.hostCreateHotelSearchBtn:hover {
-	background: #ffb700;
-}
-
-.hostCreateHotelDate {
-	position: absolute;
-	top: 2000px;
-	left: 200px;
-	font-family: 'Montserrat', sans-serif;
-	border-radius: 10px;
-	-webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-	box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.hostCreateHotelOptions {
-	position: absolute;
-	top: 2000px;
-	background: #fff;
-	color: #484848;
-	border-radius: 10px;
-	-webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-	box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.6);
-}
-
-.optionItem {
-	width: 200px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 20px;
-	font-family: 'Montserrat', sans-serif;
-}
-
-.optionCounter {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-family: 'Open Sans', sans-serif;
-	gap: 15px;
-	font-size: 13px;
-	color: #484848;
-}
-
-.optionCounterBtn {
-	width: 30px;
-	height: 30px;
-	border: 1px solid #0071c2;
-	color: #0071c2;
-	background-color: #fff;
-	cursor: pointer;
-}
-
-.optionCounterBtn:disabled {
-	cursor: not-allowed;
-}
-
-#hostCreateHotelSearchCalendar {
-	z-index: 999;
-}
-
-
-.hostCreateHotelRoomsTable {
-	margin-top: 1rem;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	gap: 0;
-}
-
-.hostCreateHotelRoomsTableTitle {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 5fr 4fr 2fr 3fr;
+.hostCreateHotelDirectionsView h3 {
 	padding: 1rem 0;
-	background: #4c76b2;
-	color: #fff;
-	font-size: 15px;
-	font-weight: 600;
-	gap: 1px;
-}
-
-.hostCreateHotelRoomType,
-.hostCreateHotelRoomSleeps,
-.hostCreateHotelRoomQuantity {
-	padding-left: 2rem;
-	border-right: 1px solid #fff;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-.hostCreateHotelOfferedAmenities {
-	padding-top: 4rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-}
-
-.hostCreateHotelOfferedAmenities h3 {
-	/* padding: 1rem 0; */
-	font-weight: 700;
-	font-size: 22px;
-	line-height: 30px;
-	color: #484848;
-}
-
-.offeredAmenities {
-	padding-top: 1rem;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-	row-gap: 1.5rem;
-}
-
-.hostCreateHotelItem {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-}
-
-.offeredAmenityIcon {
-	font-size: 20px;
-}
-
-.offeredAmenity span {
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 18px;
-	color: #484848;
-}
-
-.showAmenitiesBtnContainer {
-	padding-top: 1rem;
-}
-
-.showAmenitiesBtn {
-	width: 30%;
-	padding: 1.5rem 0;
-	background: #FDC32D;
-	text-align: center;
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 18px;
-	color: #484848;
-	border-radius: 999px;
-	cursor: pointer;
-}
-
-.showAmenitiesBtn:hover {
-	background: #ffb700;
-}
-
-.hostCreateHotelSafetyHygiene {
-	padding-top: 4rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-}
-
-.hostCreateHotelSafetyHygiene h3 {
-	/* padding-top: 1rem; */
-	font-weight: 700;
-	font-size: 22px;
-	line-height: 30px;
-	color: #484848;
-}
-
-.safetyHygiene {
-	padding-top: 1rem;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	row-gap: 1.5rem;
-}
-
-.hostCreateHotelReview {
-	padding-top: 4rem;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.hostCreateHotelReviewTitle {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
-	gap: 10px;
-}
-
-.hostCreateHotelReviewTitle h3 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 27px;
-}
-
-.hostCreateHotelReviewTitleIcon {
-	font-size: 20px;
-}
-
-.hostCreateHotelReviewRate {
-	padding-top: 1.5rem;
-	width: 100%;
-	height: max-content;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	row-gap: 1.5rem;
-}
-
-.hostCreateHotelReviewRateItem {
-	display: grid;
-	grid-template-columns: 5fr 4fr 2fr;
-	align-items: center;
-	gap: 1rem;
-}
-
-.hostCreateHotelReviewRateItem>span {
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 20px;
-}
-
-.hostCreateHotelReviewRateItem .ratingCount {
-	font-weight: 700;
-	font-size: 18px;
-}
-
-.hostCreateHotelReviewShowCommentBtnContainer {
-	padding-top: 3rem;
-	/* background: #9A9A9A; */
-}
-
-.hostCreateHotelReviewShowCommentBtn {
-	width: 30%;
-	padding: 1.5rem 0;
-	background: #ddd;
-	text-align: center;
-	font-weight: 600;
-	font-size: 15px;
-	line-height: 18px;
 	color: #484848;
-	border-radius: 999px;
-	cursor: pointer;
 }
 
-.hostCreateHotelReviewShowCommentBtn:hover {
-	background: #ccc;
+.hostCreateHotelBathroomFacility {
+	padding-top: 1rem;
+}
+
+.hostCreateHotelBathroomFacility h3 {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 27px;
+	color: #484848;
+	padding-bottom: 1rem;
+}
+
+.hostCreateHotelAmenities {
+	padding-top: 2rem;
+}
+
+.hostCreateHotelAmenities h3 {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 27px;
+	color: #484848;
+	padding-bottom: 1rem;
+}
+
+.hostCreateHotelSafetyAndHygiene {
+	padding-top: 1rem;
+}
+
+.hostCreateHotelSafetyAndHygiene h3 {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 27px;
+	color: #484848;
+	padding-bottom: 1rem;
+}
+
+.hostCreateHotelNextStepBtnContainer {
+	padding-top: 2rem;
+}
+
+.hostCreateHotelNextStepBtn {
+	width: 200px;
+	height: 60px;
+	background: #357bbc;
+	color: #fff;
+	border-radius: 99px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
