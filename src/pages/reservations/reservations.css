@@ -1,0 +1,25 @@
+.btnitemm {
+    background-color: #ffffff;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    height: 40px;
+    transform: scale(0.98);
+    background: transparent;
+    cursor: pointer;
+    margin-top: 1px;
+    margin-right: 10px;
+}
+
+.btnitemm:hover {
+    border-bottom:  2px solid #484848 ;
+}
+
+.btnitemm.active {
+
+    border-bottom:  2px solid #484848 ;
+}
+.slt-container {
+    margin-left: 7%;
+}
