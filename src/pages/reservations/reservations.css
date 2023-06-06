@@ -1,25 +1,44 @@
-.btnitemm {
+.reservationsContainer {
+    padding: 4rem;
+    padding-left: 10rem;
+    color: #484848;
+}
+
+.reservationsTitle {
+    /* border: 1px dashed red; */
+    margin-bottom: 2rem;
+}
+
+.reservationsTitle p {
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 46px;
+}
+
+.optionContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.optionBtn {
     background-color: #ffffff;
+    color: #484848;
     border: none;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
     height: 40px;
-    transform: scale(0.98);
-    background: transparent;
     cursor: pointer;
-    margin-top: 1px;
-    margin-right: 10px;
 }
 
-.btnitemm:hover {
-    border-bottom:  2px solid #484848 ;
+.optionBtn:hover {
+    border-bottom: 1px solid #484848;
 }
 
-.btnitemm.active {
-
-    border-bottom:  2px solid #484848 ;
+.optionBtn.active {
+    border-bottom: 1px solid #484848;
 }
-.slt-container {
+
+.optionContainer {
     margin-left: 7%;
 }
