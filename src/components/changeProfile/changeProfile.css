@@ -1,0 +1,124 @@
+.profileContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .information {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    height: 100px;
+    border-top: 1px solid #484848;
+    margin-left: 3%;
+    align-items: center;
+  }
+  
+  .input-field {
+    font-size: 22px;
+    height: 40px;
+    width: 37%;
+    margin-left: 10%;
+  }
+  
+  .info-field {
+    font-size: 22px;
+    margin-left: 10%;
+    width: 40%;
+  }
+  
+  .edit-btn {
+    height: 30px;
+    width: 50px;
+    font-size: 20px;
+    color: #3245f7;
+    background-color: #ffffff;
+    border: none;
+    margin-left: 31.5%;
+  }
+  
+  .save-btn {
+    height: 30px;
+    width: 50px;
+    font-size: 20px;
+    color: #3245f7;
+    background-color: #ffffff;
+    border: none;
+    margin-left: 28.5%;
+  }
+  
+  .cancel-btn {
+    height: 30px;
+    width: 50px;
+    font-size: 20px;
+    color: #3245f7;
+    background-color: #ffffff;
+    border: none;
+    margin-left: 3%;
+  }
+
+   .label {
+    font-size: 22px;
+    width: 200px;
+   }
+
+   .current-password {
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 35%;
+  }
+  
+  .current-password label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .current-password input {
+    width: 300px;
+  }
+
+  .new-password {
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 35%;
+  }
+  
+  .new-password label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .new-password input {
+    width: 300px;
+  }
+
+  .new-password2 {
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 35%;
+  }
+  
+  .new-password2 label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .new-password2 input {
+    width: 300px;
+  }
+
+  .verify {
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 35%;
+  }
+  
+  .verify label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .verify input {
+    width: 300px;
+  }
