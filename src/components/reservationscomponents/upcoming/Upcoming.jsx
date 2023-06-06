@@ -1,13 +1,12 @@
 import React from "react";
-import BookingOder from "../../bookingoder/BookingOder";
-import './upcoming.css'
+import BookingOrder from "../../bookingOrder/BookingOrder";
 
 const Upcoming = () => {
     return (
-        <div>
-            <BookingOder/>
-            <BookingOder/>
-            <BookingOder/>
+        <div className="upcomingContiner">
+            <BookingOrder/>
+            <BookingOrder/>
+            <BookingOrder/>
         </div>
     );
 }
