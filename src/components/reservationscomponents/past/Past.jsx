@@ -1,9 +1,17 @@
 import React from "react";
+import BookingOrderFinished from "../../bookingOrder/past/BookingOderFinished";
 import './past.css'
 
 const Past = () => {
     return (
         <div>
+            <div className="upcomingContiner">
+            <BookingOrderFinished/>
+            <BookingOrderFinished/>
+            <BookingOrderFinished/>
+            <BookingOrderFinished/>
+            <BookingOrderFinished/>
+        </div>
         </div>
     );
 }
