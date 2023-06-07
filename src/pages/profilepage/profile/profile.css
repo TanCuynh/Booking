@@ -16,6 +16,7 @@
 }
 
 .profileLayoutContainer {
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -24,10 +25,10 @@
 }
 
 .avatar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    width: 250px;
+    height: 200px;
+    border-radius: 999px;
+    overflow: hidden;
 }
 
 .AccountAvt {

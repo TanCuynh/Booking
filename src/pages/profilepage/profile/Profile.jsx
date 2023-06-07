@@ -35,7 +35,6 @@ const Profile = () => {
     };
     return (
         <div>
-
             <div className="main-layoutt">
                 <div className="profile-layout">
                     <div className="profileLayoutContainer">
@@ -44,10 +43,10 @@ const Profile = () => {
                                 <div className="account-img-modal-layout" onClick={closePopupAvt}>
                                     <div className="account-img-modal" onClick={(e) => e.stopPropagation()}>
                                         <div className='AccountImg'>
-                                        <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/273163403_1119529748849359_6980097327525230278_n.jpg?stp=dst-jpg_s200x200&_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=oKc1wENFVegAX-JPV-M&_nc_ht=scontent.fdad3-4.fna&oh=00_AfCTNGYbgo0hex-yUAWzYJUm2FlSNHmN09E3dpDJNWe2Vg&oe=64777543"
-                                            alt="avatar"
-                                            className="imagee-popup"
-                                        />
+                                            <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/273163403_1119529748849359_6980097327525230278_n.jpg?stp=dst-jpg_s200x200&_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=oKc1wENFVegAX-JPV-M&_nc_ht=scontent.fdad3-4.fna&oh=00_AfCTNGYbgo0hex-yUAWzYJUm2FlSNHmN09E3dpDJNWe2Vg&oe=64777543"
+                                                alt="avatar"
+                                                className="imagee-popup"
+                                            />
                                         </div>
                                     </div>
                                 </div>
