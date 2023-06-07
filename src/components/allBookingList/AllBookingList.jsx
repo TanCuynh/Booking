@@ -1,15 +1,13 @@
-import React from "react";  
+import React from "react";
 import './allBookingList.css';
 
 const AllBookingList = () => {
     return (
-        <div>
-            <p style={{
-                    fontSize: '30px',
-                    fontWeight: 'bold',
-                    marginLeft: '15px',
-            }}
-            >Danh sách đặt phòng</p>
+        <div className="allBookingListContainer">
+            <div className="allBookingListHeader">
+                <h3>All of your booking list</h3>
+            </div>
+            <div className="horizontalLine"></div>
         </div>
     );
 };

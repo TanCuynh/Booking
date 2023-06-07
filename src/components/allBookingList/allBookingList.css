@@ -1,0 +1,18 @@
+.allBookingListContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+}
+
+.allBookingListHeader h3 {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.horizontalLine {
+    margin: 0.5rem 0;
+    height: 1px;
+    width: 90%;
+    background: #7a7a7a;
+}

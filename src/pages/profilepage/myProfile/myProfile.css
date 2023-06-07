@@ -1,41 +1,45 @@
 .mainlayout {
-    display: flex;
-    flex-direction: row;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    color: #484848;
 }
 
 .leftlayout {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 25%;
-    height:fit-content;
+    height: fit-content;
+    gap: 10px;
 }
 
-.rightlayout {
-    width: 100%;
-    border-left: 1px solid #484848;
-    height:700px;
+.leftlayout span {
+    font-size: 30px;
+    font-weight: 900;
+    margin-left: 15px;
 }
 
-.btnitem {
-    background-color: #ffffff;
+.profileOptionItem {
+    background-color: #fff;
     border: none;
-    font-size: 20px;
+    font-size: 16px;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 1rem;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 10px;
     transform: scale(0.98);
     background: transparent;
     cursor: pointer;
-    margin-top: 1px;
 }
 
-.btnitem:hover {
-    background-color: #d8d2d2;
+.profileOptionItem:hover {
+    background-color: #eee;
 }
 
-.btnitem.active {
+.profileOptionItem.active {
+    background-color: #ddd;
+}
 
-    background-color: #d8d2d2;
-  }
+.rightlayout {
+    border-left: 1px solid #707070;
+} 
