@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-
 import './hostReservations.css'
 import HostUpcoming from '../../../components/hostReservationsComponents/hostUpcomimg/HostUpcoming';
 import HostPast from '../../../components/hostReservationsComponents/hostPast/HostPast';
@@ -8,7 +7,7 @@ import HostRejected from '../../../components/hostReservationsComponents/hostRej
 
 const HostReservation = () => {
 
-    const [selectedButton, setSelectedButton] = useState(null);
+    const [selectedButton, setSelectedButton] = useState(1);
 
     const handleButtonClick = (buttonId) => {
         setSelectedButton(buttonId);
