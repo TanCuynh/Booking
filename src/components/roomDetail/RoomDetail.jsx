@@ -6,6 +6,7 @@ import { faSnowflake } from '@fortawesome/free-regular-svg-icons'
 import Slideshow from '../slideshow/Slideshow'
 import categoryAPI from '../../api/categoryAPI'
 import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
+import { useNavigate } from 'react-router-dom'
 
 const images = [
     "https://cf.bstatic.com/xdata/images/hotel/max1280x900/213244036.jpg?k=4d029a6a277dda491d6c94398932e9f7ece6e3c76fa5062131ca354c4ca8edc2&o=&hp=1",
@@ -17,6 +18,8 @@ const images = [
 ];
 
 const RoomDetail = ({ categoryId, onClose }) => {
+
+    const navigate = useNavigate();
 
     const [dataCategoryDetail, setDataCategoryDetail] = useState({});
     const [categoryImages, setCatetogyImages] = useState([]);
@@ -40,6 +43,10 @@ const RoomDetail = ({ categoryId, onClose }) => {
             setDataCategoryDetail({});
             console.log("Error");
         }
+    }
+
+    const handleBooking = () => {
+        navigate('/booking/step1');
     }
     useEffect(() => {
         getDataCategoryDetail();
@@ -131,7 +138,7 @@ const RoomDetail = ({ categoryId, onClose }) => {
                     </div>
                 </div>
                 <div className="roomDetailBookingBtnContainer">
-                    <div className="roomDetailBookingBtn">
+                    <div className="roomDetailBookingBtn" onClick={handleBooking}>
                         <span>Book Now</span>
                     </div>
                 </div>

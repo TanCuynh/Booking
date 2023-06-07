@@ -1,136 +1,76 @@
-.header-layout {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  height: 90px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+.bookingStep1Container {
+  font-family: 'Montserrat';
+  color: #484848;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.body-layout {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.bookingStep1Stepper {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-layout h2 {
+  margin-top: 2rem;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.header-layout h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9a9a9a;
+}
+
+.bookingStep1Content {
+  margin-top: 2rem;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-container {
+  margin-right: 5rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-container {
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  border-radius: 10px;
 }
 
 .input-container {
-  padding-top: 1rem;
-  padding-left: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1rem;
 }
 
-.step-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin-top: 50px;
-}
-
-.step-item {
-  position: relative;
-  display: flex;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #ccc;
-  color: #484848;
-  margin-right: 50px;
-}
-
-.step-item-last-child {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #ccc;
-  color: #484848;
-  margin-right: 0;
-}
-
-.step-item::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  width: 50px;
-  /* Chiều dài của gạch nối */
-  height: 2px;
-  background-color: #ccc;
-}
-
-.step-item-active {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 2px solid #003580;
-  color: #003580;
-  margin-right: 50px;
-  background-color: #ccc;
-}
-
-.step-item-active::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  width: 50px;
-  /* Chiều dài của gạch nối */
-  height: 2px;
-  background-color: #ccc;
-}
-
-.header-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.booking-information {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.note {
-  font-size: 13px;
-  font-weight: normal;
-  text-align: center;
-  color: #ccc;
-}
-
-.image-container {
-  position: relative;
-  width: 420px;
-  height: 339px;
-  padding-right: 1rem;
-  border-right: 1px solid #ccc;
-}
-
 .text-container {
-  position: absolute;
-  bottom: -50;
-  left: 50;
-  width: 90%;
-  clear: both;
-  /* Các thuộc tính khác của text container */
-}
-
-.image {
-  width: 100%;
-  height: 80%;
-  border-radius: 3%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  gap: 1rem;
 }
 
 .left-text {
@@ -141,26 +81,17 @@
 .right-text {
   float: right;
   margin-top: 20px;
-  /* Điều chỉnh khoảng cách giữa hai đoạn chữ */
   text-align: right;
-}
-
-.custom-line {
-  border: none;
-  border-left: 1px solid #E5E5E5;
-  height: 100%;
 }
 
 .name-hotel {
   color: #003580;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .address {
   font-size: 14px;
-  line-height: 0;
-  margin-top: 10px;
 }
 
 .price {
@@ -181,153 +112,82 @@
 }
 
 .bed {
-  position: relative;
-  padding-bottom: 100px;
-  line-height: 1.4;
-  font-weight: bolder;
-  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.first-name {
-  position: relative;
-  width: 320px;
-  height: 80px;
+.input-container {
+  width: 50%;
 }
 
-.first-name label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.first-name input {
-  width: 100%;
+.bookingStep1Input {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .lable-custom {
   color: #003580;
-  /*font-weight: bolder;*/
-  font-size: 15;
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 5px;
 }
 
 .input-custom {
-  font-size: 15;
-  background-color: #f5f6f8;
+  padding: 1rem;
+  font-size: 14px;
+  background-color: #e3e9f6;
   color: #003580;
   border: none;
   width: 320px;
-  height: 30px;
+  height: 40px;
+  border-radius: 5px;
 }
 
 .input-custom:focus {
   outline: none;
 }
 
-.last-name {
-  width: 100%;
-  margin-top: 15px;
-}
-
-.last-name label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.last-name input {
-  width: 100%;
-}
-
-.email {
-  position: relative;
-  width: 320px;
-  height: 80px;
-  margin-top: 15px;
-}
-
-.email label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.email input {
-  width: 100%;
-}
-
-.phone-number {
-  position: relative;
-  width: 320px;
-  height: 80px;
-  margin-top: 15px;
-}
-
-.phone-number label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.phone-number input {
-  width: 100%;
-}
-
-.link {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.link:hover {
-  text-decoration: none;
-}
-
-.skip-button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  position: relative;
-  width: 298px;
-  height: 57px;
-  border-radius: 10px;
-  border: none;
-  background: #003580;
-  color: #ffffff;
-  left: 15px;
-}
-
-.skip-button:hover,
-.cancel-button:hover {
-  opacity: 0.8;
-}
-
-.button-container {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.cancel-button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  position: relative;
-  background: #ddd;
-  width: 298px;
-  height: 57px;
-  border-radius: 10px;
-  border: none;
-  right: 15px;
-}
-
-.button-layout {
-  height: 70px;
-  margin-top: 50px;
-}
-
 .error-message {
-  color: #f95454;
+  color: #ff0000;
   font-size: 12px;
   margin-top: 5px;
 }
 
 .button-layout {
-  position: relative;
+  margin-top: 2rem;
+  height: 100px;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: center;
+  gap: 2rem;
+}
+
+.button-container {
+  /* border: 1px dashed red; */
+}
+
+
+.skip-button {
+  width: 200px;
+  height: 60px;
+  font-weight: 500;
+  background: #003580;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+}
+
+.cancel-button {
+  width: 200px;
+  height: 60px;
+  font-weight: 500;
+  background: #ddd;
+  border-radius: 10px;
+  border: none;
+}
+
+.skip-button:hover,
+.cancel-button:hover {
+  opacity: 0.8;
 }

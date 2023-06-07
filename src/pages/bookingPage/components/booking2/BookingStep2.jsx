@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './bookingstep2.css';
+import { Step, StepLabel, Stepper } from "@mui/material";
+
+const steps = [
+    'Booking Information',
+    'Your Booking Bill',
+    'Booking Complete',
+];
 
 const BookingStep2 = () => {
     const [formData, setFormData] = useState({
@@ -9,7 +16,7 @@ const BookingStep2 = () => {
         name: ''
     });
 
-    const { bank, cardNumber, name } = formData
+    const { bank, cardNumber, name } = formData;
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +27,6 @@ const BookingStep2 = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Kiểm tra các trường dữ liệu đã được nhập
         if (bank.trim() === '') {
             alert('Please enter your bank');
             return;
@@ -39,87 +45,33 @@ const BookingStep2 = () => {
     };
 
     return (
-        <div>
-            <nav>
-                <ul className='step-list'>
-                    <li className='step-item step-item-image' ></li>
-                    <li className='step-item-active'>2</li>
-                    <li className='step-item-last-child'>3</li>
-                </ul>
-            </nav>
+        <div className="bookingStep2Container">
+            <div className="bookingStep1Stepper">
+                <Stepper activeStep={1} alternativeLabel style={{ width: '600px' }}>
+                    {steps.map((label) => (
+                        <Step key={label}>
+                            <StepLabel>{label}</StepLabel>
+                        </Step>
+                    ))}
+                </Stepper>
+            </div>
 
             <div className='header-layout'>
-                <h2 className="payment-text">Payment</h2>
+                <h2>Your Hotel Reservation Bill</h2>
+                <h4>This is the detailed description of your hotel reservation</h4>
             </div>
 
-            <div className="body-layout">
-                <div class="vertical-vector"></div>
+            <div className="bookingStep2Bill">
 
-                <div className="payment-information-container">
-                    <p className="text">Payment Transfer:</p>
-                    <p className="text">Sub total: $480 USD</p>
-                    <p className="text">Tax: 10%</p>
-                    <p className="text">Total: $580 USD</p>
-                </div>
-
-                <div className='input-container'>
-                    <div class="transfer-proof">
-                        <label for="transfer-proof">Upload Transfer Proof:</label>
-                        <input type="file" id="transfer-proof" name="transfer-proof" accept="image/*" />
-                    </div>
-
-                    <div class='bank'>
-                        <label htmlFor="bank-input" className="lable-custom">Bank</label>
-                        <input
-                            type="text"
-                            id="bank-input"
-                            value={ bank }
-                            name="bank"
-                            className="input-custom"
-                            onChange={ handleChange }
-                        />
-                        {bank === '' && <p className='error-message'>Please enter a Bank.</p>}
-                    </div>
-
-                    <div class='card-number'>
-                        <label htmlFor="card-number-input" className="lable-custom">Card Number</label>
-                        <input
-                            type="text"
-                            id="card-number-input"
-                            value={ cardNumber }
-                            name="cardNumber"
-                            className="input-custom"
-                            onChange={ handleChange }
-                        />
-                        {cardNumber === '' && <p className='error-message'>Please enter a Card Number.</p>}
-                    </div>
-
-                    <div class="name">
-                        <label htmlFor="name-input" className="lable-custom">Name</label>
-                        <input
-                            type="text"
-                            id="name-input"
-                            value={ name }
-                            name="name"
-                            className="input-custom"
-                            onChange={ handleChange }
-                        />
-                        {name === '' && <p className='error-message'>Please enter Your Name.</p>}
-                    </div>
-                </div>
             </div>
-            <div className="button-container">
-                <button className="continue-button">
-                    Payment Layter
-                </button>
-            </div>
+
             <div className='button-layout'>
                 <div className='button-container'>
                     <button className='cancel-button' >Cancel</button>
                 </div>
                 <div className="button-container">
-                    <button className="skip-button" onClick={ handleSubmit }>
-                        Skip this step
+                    <button className="skip-button" onClick={handleSubmit}>
+                        Next step
                     </button>
                 </div>
             </div>
