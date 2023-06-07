@@ -1,6 +1,8 @@
 import React from "react";
 import { Rating } from '@mui/material'
 import './userReview.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 function UserReview() {
     return (
@@ -8,7 +10,7 @@ function UserReview() {
             <div className="hotel">
                 <div className="hotelIntroContainer">
                     <div className="avt">
-                        <p>H</p>
+                        <FontAwesomeIcon icon={faUser} />
                     </div>
 
                     <div className="hotelContent">

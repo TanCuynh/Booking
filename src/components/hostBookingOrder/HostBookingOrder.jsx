@@ -45,9 +45,13 @@ const HostBookingOrder = () => {
 
                 </div>
             </div>
-
-            <div className="hostBookingOrderAcceptedContainer">
-                <p>Accepted</p>
+            <div className="hostBookingOrderActions">
+                <div className="hostBookingOrderActionBtn btn-custom btn-custom-accept">
+                    <p>Approve</p>
+                </div>
+                <div className="hostBookingOrderActionBtn btn-custom btn-custom-danger">
+                    <p>Reject</p>
+                </div>
             </div>
         </div>
     );
