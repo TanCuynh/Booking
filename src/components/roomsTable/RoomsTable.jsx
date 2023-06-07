@@ -1,21 +1,32 @@
 import React, { useState } from 'react'
 import './roomsTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faChild, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faBed, faUser } from '@fortawesome/free-solid-svg-icons'
 import RoomDetail from '../roomDetail/RoomDetail'
 
-const RoomsTable = ({ dataCategory }) => {
+const RoomsTable = ({ date, notShowPrice, dataCategory }) => {
+    const [roomQuantity, setRoomQuantity] = useState(0);
     const [showPrices, setShowPrices] = useState(false);
+    const [bookDate, setBookDate] = useState(date);
 
-    const openPopup = () => {
-        setShowPrices(true);
-        document.body.style.overflow = 'hidden';
+    const [roomQuantityError, setRoomQuantityError] = useState('');
+
+    const openPopup = (value) => {
+        if (value == 0) {
+            setRoomQuantityError("You must choose at least 1 room");
+            setShowPrices(false);
+        } else {
+            setRoomQuantityError("");
+            setShowPrices(true);
+            document.body.style.overflow = 'hidden';
+        }
     };
 
     const closePopup = () => {
         setShowPrices(false);
         document.body.style.overflow = 'auto';
     };
+
     return (
         <div className="roomsTableContainer">
             <div className="roomsTableRoomTypeContainer">
@@ -56,18 +67,30 @@ const RoomsTable = ({ dataCategory }) => {
                 </div>
             </div>
             <div className="roomsTableRoomQuantity">
-                <input type="number" min={0} max={4} className='roomTableRoomQuantityNumber' />
+                <input
+                    type="number"
+                    min={0}
+                    max={4}
+                    value={roomQuantity}
+                    onChange={(e) => setRoomQuantity(e.target.value)}
+                    className='roomTableRoomQuantityNumber'
+                />
+                {roomQuantityError && <div className="roomQuanityError">{roomQuantityError}</div>}
             </div>
             <div className="roomsTableShowPricesBtnContainer">
-                <div className="roomsTableShowPriceBtn" onClick={openPopup}>
+                <button
+                    className="roomsTableShowPriceBtn"
+                    onClick={() => openPopup(roomQuantity)}
+                    disabled={notShowPrice}
+                >
                     <span>Show Price</span>
-                </div>
+                </button>
             </div>
 
             {showPrices &&
                 <div className="roomDetailModalContainer" onClick={closePopup}>
                     <div className="roomDetailModal" onClick={(e) => e.stopPropagation()}>
-                        <RoomDetail categoryId={dataCategory?.id} onClose={closePopup} />
+                        <RoomDetail room={roomQuantity} date={bookDate} categoryId={dataCategory?.id} onClose={closePopup} />
                     </div>
                 </div>}
         </div>

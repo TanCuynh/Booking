@@ -87,15 +87,6 @@ const BookingStep1 = () => {
 
   return (
     <div className='bookingStep1Container'>
-      <div className="bookingStep1Stepper">
-        <Stepper activeStep={ 0 } alternativeLabel style={ { width: '600px' } }>
-          { steps.map((label) => (
-            <Step key={ label }>
-              <StepLabel>{ label }</StepLabel>
-            </Step>
-          )) }
-        </Stepper>
-      </div>
 
       <div className='header-layout'>
         <h2>Booking Information</h2>
@@ -131,12 +122,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="first-name-input"
-                value={ firstName }
+                value={firstName}
                 name="firstName"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { firstName === '' && <p className='error-message'>Please enter your first name</p> }
+              {firstName === '' && <p className='error-message'>Please enter your first name</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -144,12 +135,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="last-name-input"
-                value={ lastName }
+                value={lastName}
                 name="lastName"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { lastName === '' && <p className='error-message'>Please enter your last name</p> }
+              {lastName === '' && <p className='error-message'>Please enter your last name</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -157,12 +148,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="email-input"
-                value={ email }
+                value={email}
                 name="email"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { email === '' && <p className='error-message'>Please enter your email address</p> }
+              {email === '' && <p className='error-message'>Please enter your email address</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -170,24 +161,14 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="phone-number-input"
-                value={ phoneNumber }
+                value={phoneNumber}
                 name="phoneNumber"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { phoneNumber === '' && <p className='error-message'>Please enter your phone number</p> }
+              {phoneNumber === '' && <p className='error-message'>Please enter your phone number</p>}
             </div>
           </div>
-        </div>
-
-      </div>
-
-      <div className='button-layout'>
-        <div className='button-container'>
-          <button className='cancel-button'>Cancel</button>
-        </div>
-        <div className="button-container">
-          <button className="skip-button" onClick={ handleSubmit }>Next step</button>
         </div>
       </div>
     </div>

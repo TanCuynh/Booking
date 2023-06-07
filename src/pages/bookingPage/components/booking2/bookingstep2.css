@@ -15,7 +15,7 @@
 }
 
 .bookingStep2Bill {
-  border: 1px dashed red;
+  border: 1px dashed #003280;
   margin-top: 2rem;
   padding: 3rem;
   display: grid;
@@ -54,21 +54,7 @@
   font-weight: 400;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .billInfo {
-  /* border: 1px dashed orange; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
