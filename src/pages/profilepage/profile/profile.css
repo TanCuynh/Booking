@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 2fr 8fr;
     gap: 3rem;
+    color: #484848;
 }
 
 .verify-layout {
@@ -17,10 +18,10 @@
     flex-direction: column;
     gap: 3rem;
 }
+
 .profile-layout {
     width: 100%;
     height: max-content;
-    /* background: #EFF0F2; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -74,30 +75,38 @@
 
 .hello-text {
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 800;
     line-height: 0.6;
 }
 
 .time-join {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 500;
     color: #484848;
 }
 
 .btn-edit-profile {
+    width: 150px;
+    height: 50px;
     font-size: 13px;
-    background-color: #ffffff;
-    border: 1px solid #484848;
-    height: 40px;
-    width: 130px;
-    border-radius: 4%;
-} 
+    color: #fff;
+    background: #FDC32D;
+    border: none;
+    border-radius: 99px;
+    cursor: pointer;
+}
+
+.btn-edit-profile:hover {
+    opacity: 0.9;
+}
 
 .reviews-text {
-    font-weight:inherit;
+    font-weight: inherit;
     line-height: 0.6;
 }
 
 .horizontal-vector {
+    margin: 0.5rem 0;
     position: relative;
     width: 90%;
     height: 2px;
@@ -109,10 +118,36 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 17.5px;
     width: 100%;
     height: max-content;
     margin-left: 40px;
+}
+
+.review-container h3 {
+    font-size: 18px;
+    font-weight: 800;
+
+}
+
+.profileShowAllReviewsBtn {
+    margin-top: 2rem;
+    width: 200px;
+    height: 55px;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4270cb;
+    cursor: pointer;
+}
+
+.profileShowAllReviewsBtn span {
+    font-size: 14px;
+    color: #fff;
+}
+
+.profileShowAllReviewsBtn:hover {
+    opacity: 0.9;
 }
 
 .all-reviews-modal-layout {
@@ -127,7 +162,8 @@
     align-items: center;
     overflow: hidden;
     z-index: 9999;
-} 
+}
+
 .all-reviews-modal {
     position: fixed;
     top: 50%;

@@ -1,15 +1,15 @@
-.reservationsContainer {
+.hostReservationsContainer {
     padding: 4rem;
     padding-left: 10rem;
     color: #484848;
 }
 
-.reservationsTitle {
+.hostReservationsTitle {
     /* border: 1px dashed red; */
     margin-bottom: 2rem;
 }
 
-.reservationsTitle p {
+.hostReservationsTitle p {
     font-weight: 800;
     font-size: 38px;
     line-height: 46px;

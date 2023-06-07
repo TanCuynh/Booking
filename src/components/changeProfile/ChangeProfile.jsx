@@ -55,20 +55,11 @@ const ChangeProfile = () => {
 
   return (
     <div>
-      <div className="profileeContainer">
-      <p style={{
-                    fontSize: '30px',
-                    fontWeight: 'bold',
-                    marginLeft: '4%',
-                    marginBottom: '20px',
-            }}
-            >Personal details</p>
-            <p style={{
-                    fontSize: '18px',
-                    marginLeft: '4%',
-                    marginBottom: '20px'
-            }}
-            >Update your information and find out how it's used.</p>
+      <div className="profileContainer">
+        <div className="changeProfileContainer">
+          <h3>Personal details</h3>
+          <p>Update your information and find out how it's used.</p>
+        </div>
         <div className="information">
           <p className="label">Name</p>
           {editing ? (
@@ -145,25 +136,25 @@ const ChangeProfile = () => {
             />
           ) : (
             <p className="info-field">{address}</p>
-          )}      
-        </div>   
+          )}
+        </div>
       </div>
       <div className="actions">
-            {editing ? (
-              <>
-                <button className="save-btn" onClick={handleSaveClick}>
-                  Save
-                </button>
-                <button className="cancel-btn" onClick={handleCancelClick}>
-                  Cancel
-                </button>
-              </>
-            ) : (
-              <button className="edit-btn" onClick={handleEditClick}>
-                Edit
-              </button>
-            )}
-        </div>
+        {editing ? (
+          <>
+            <button className="save-btn" onClick={handleSaveClick}>
+              Save
+            </button>
+            <button className="cancel-btn" onClick={handleCancelClick}>
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button className="edit-btn" onClick={handleEditClick}>
+            Edit
+          </button>
+        )}
+      </div>
     </div>
   );
 };

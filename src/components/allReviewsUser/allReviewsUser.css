@@ -6,12 +6,27 @@
 }
 
 .all-reviews-layout {
-    width: 1400px;
-    height: 800px;
+    padding: 2rem;
+    width: 1300px;
+    height: 700px;
     overflow: hidden;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 0px 8px rgba(194, 198, 204, 0.6);
+}
+
+.allReviewsUser {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.horizontalVector {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: #E5E5E5;
 }
 
 .allReviewsCloseBtn {
@@ -21,35 +36,13 @@
     font-size: 30px;
     cursor: pointer;
 }
-.search-review-layout {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    border: 1px solid #484848;
-    border-radius: 35px;
-    height: 80px;
-    width: 600px;
-    margin-top: 20px;
-    margin-left: 30px;
-}
-
-.hotel-search-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding-left: 1rem;
-    width: 300px;
-    justify-content: center;
-    align-items: center;
-}
 
 .reviews-layout {
-     display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  width: 100%;
-  height: 600px;
-  overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 600px;
+    overflow: auto;
 }

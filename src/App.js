@@ -24,6 +24,7 @@ import AdminLayout from "./admin/AdminLayout";
 import Home from "./admin/pages/Home/Home";
 import Hotel from "./admin/pages/Hotel/Hotel";
 import User from "./admin/pages/User/User";
+import HostReservation from "./pages/hostPage/hostReservations/HostReservations";
 
 
 export const APP_CONTEXT = createContext({});
@@ -46,6 +47,7 @@ const App = () => {
                             <Route path="create" element={<HostCreateHotelPage />} />
                             <Route path="statistic" element={<HostStatisticPage />} />
                             <Route path="hotelproperties" element={<HotelProperties/>}/>
+                            <Route path="resevations" element={<HostReservation />} />
                         </Route>
                         <Route path="booking" element={<BookingLayout />}>
                             <Route path="step1" element={<BookingStepPage1 />} />
