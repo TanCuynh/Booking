@@ -1,5 +1,5 @@
 import React from "react";
-import BookingOrderFinished from "../../bookingOrder/past/BookingOderFinished";
+import BookingOrderFinished from "../../bookingOrder/past/BookingOrderFinished";
 import './past.css'
 
 const Past = () => {
