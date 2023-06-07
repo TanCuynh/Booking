@@ -298,7 +298,7 @@
 
 .hotelDetailDesc {
     margin-top: 3rem;
-    padding:  2rem 1rem;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -411,6 +411,14 @@
 
 .hotelDetailSearchBtn:hover {
     background: #ffb700;
+}
+
+.dateAlert {
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+    font-size: 12px;
+    font-weight: 400;
+    color: red;
 }
 
 .hotelDetailDate {

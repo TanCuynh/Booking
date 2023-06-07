@@ -6,13 +6,6 @@
   align-items: center;
 }
 
-.bookingStep1Stepper {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .header-layout {
   display: flex;
   flex-direction: column;
@@ -152,42 +145,4 @@
   color: #ff0000;
   font-size: 12px;
   margin-top: 5px;
-}
-
-.button-layout {
-  margin-top: 2rem;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.button-container {
-  /* border: 1px dashed red; */
-}
-
-
-.skip-button {
-  width: 200px;
-  height: 60px;
-  font-weight: 500;
-  background: #003580;
-  color: #ffffff;
-  border-radius: 10px;
-  border: none;
-}
-
-.cancel-button {
-  width: 200px;
-  height: 60px;
-  font-weight: 500;
-  background: #ddd;
-  border-radius: 10px;
-  border: none;
-}
-
-.skip-button:hover,
-.cancel-button:hover {
-  opacity: 0.8;
 }

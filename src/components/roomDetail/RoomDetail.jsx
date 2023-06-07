@@ -8,16 +8,7 @@ import categoryAPI from '../../api/categoryAPI'
 import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
 import { useNavigate } from 'react-router-dom'
 
-const images = [
-    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/213244036.jpg?k=4d029a6a277dda491d6c94398932e9f7ece6e3c76fa5062131ca354c4ca8edc2&o=&hp=1",
-    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/409418397.jpg?k=41d6819de7f349f0ee02538d5a1a038259156dccaefd22d5fb1c7a994339335f&o=&hp=1",
-    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/409417991.jpg?k=78d702994684868968bae67a1b5a853253b787c085e66cad5046a38bf13a0bfc&o=&hp=1",
-    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/409417930.jpg?k=ee526dbfec57be575b9bc6672fd47162da4a8a7ce9ba1e9b30822197c00d1dde&o=&hp=1",
-    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/409417240.jpg?k=a9c9e129b69144eaa5dc9ad01dc9de503ee1582d472a33191c8679622ab55ef0&o=&hp=1",
-    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/373917970.jpg?k=e9ca04d3911f6ff3dc37e1a157b2baa9fefd9871c0f9ec905cbac61809c8bca8&o=&hp=1",
-];
-
-const RoomDetail = ({ categoryId, onClose }) => {
+const RoomDetail = ({ room, date, categoryId, onClose }) => {
 
     const navigate = useNavigate();
 
@@ -26,7 +17,7 @@ const RoomDetail = ({ categoryId, onClose }) => {
     const [bathroomOptions, setBathroomOptions] = useState([]);
     const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
     const [amenitiesOptions, setAmenityOptions] = useState([]);
-
+    const [bookingDate, setBookingDate] = useState(date);
 
     console.log("id", categoryId);
 
@@ -46,13 +37,11 @@ const RoomDetail = ({ categoryId, onClose }) => {
     }
 
     const handleBooking = () => {
-        navigate('/booking/step1');
+        navigate('/booking');
     }
     useEffect(() => {
         getDataCategoryDetail();
     }, [])
-
-
 
     const handleClose = () => {
         onClose();
@@ -67,7 +56,12 @@ const RoomDetail = ({ categoryId, onClose }) => {
                     </div>
                 </div>
                 <div className="roomDetailContentContainer">
-                    <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
+                    <div className="roomDetailIntroduction">
+                        <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
+                        <div className="roomDetailRoomsAvailable">
+                            <span>4 rooms available</span>
+                        </div>
+                    </div>
                     <div className="roomDetailBedType">
                         <span>{dataCategoryDetail?.bed} bed</span>
                         <FontAwesomeIcon icon={faBed} />
@@ -130,11 +124,11 @@ const RoomDetail = ({ categoryId, onClose }) => {
                             <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>2 rooms</span>
+                            <span>You book {room} rooms</span>
                         </div>
                     </div>
                     <div className="roomDetailPrice">
-                        <span>$ 2000 USD for 2 nights</span>
+                        <span>$ {dataCategoryDetail?.price} USD <small>for 1 night per room</small></span>
                     </div>
                 </div>
                 <div className="roomDetailBookingBtnContainer">

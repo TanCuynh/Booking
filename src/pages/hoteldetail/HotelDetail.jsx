@@ -43,7 +43,6 @@ const HotelDetail = () => {
             setCategories(res.data.data.categories);
         } else {
             setDataHotel({});
-            console.log('err');
         }
     }
 
@@ -106,6 +105,7 @@ const HotelDetail = () => {
             targetElement.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
     const renderSmallImgs = useMemo(() => {
         if (dataHotel?.images) {
             const temp = [...dataHotel.images];
@@ -121,12 +121,10 @@ const HotelDetail = () => {
         const sum = calculateDays(item.selection.startDate, item.selection.endDate)
         const temp = item.selection;
         temp.totalDate = sum;
-        console.log(23, temp, sum);
         const tempDate = [...date];
         tempDate[0] = temp;
 
         setDate(tempDate)
-
     }
 
     const calculateDays = (startDate, endDate) => {
@@ -143,8 +141,24 @@ const HotelDetail = () => {
                 toast.success("Hotel link copied to clipboard");
             })
             .catch((error) => {
-                toast.error("Failed to copy hotel link to clipboard")
+                toast.error("Failed to copy hotel link to clipboard");
             });
+    };
+
+
+    const [dateAlertShown, setDateAlertShown] = useState(false);
+    const [disableShowPrice, setDisableShowPrice] = useState(true);
+    const handleSearchCategory = (item) => {
+        if (calculateDays(date[0].startDate, date[0].endDate) === 0) {
+            setDateAlertShown(true);
+            setDisableShowPrice(true);
+        } else {
+            {
+                // loc category o day
+            }
+            setDateAlertShown(false);
+            setDisableShowPrice(false);
+        }
     };
 
     useEffect(() => {
@@ -215,7 +229,7 @@ const HotelDetail = () => {
                         </div>
                         <div className="hotelDetailAmenity">
                             <FontAwesomeIcon icon={faPaw} className='hotelDetailAmenityIcon' />
-                            <span onClick={() => console.log(date)}>0 Pets Allowed</span>
+                            <span>0 Pets Allowed</span>
                         </div>
                     </div>
                     <div className="hotelDetailDesc">
@@ -256,13 +270,16 @@ const HotelDetail = () => {
                                             minDate={new Date()}
                                         />}
                                 </div>
-                                <div className="hotelDetailSearchBtn">
+                                <div className="hotelDetailSearchBtn" onClick={handleSearchCategory}>
                                     <FontAwesomeIcon
                                         icon={faMagnifyingGlass}
                                         className='hotelDetailSearchBtnIcon'
                                     />
                                 </div>
                             </div>
+                            {dateAlertShown && (
+                                <div className="dateAlert"> * Check in date and check out date can not match</div>
+                            )}
                         </div>
                         <div className="hotelDetailRoomsTable">
                             <div className="hotelDetailRoomsTableTitle">
@@ -281,7 +298,7 @@ const HotelDetail = () => {
                             {
                                 categories.map((category) => {
                                     return (
-                                        <RoomsTable key={category?.id} dataCategory={category} />
+                                        <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} />
                                     )
                                 })
                             }
