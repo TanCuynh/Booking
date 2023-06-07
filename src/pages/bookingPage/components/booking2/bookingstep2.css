@@ -13,3 +13,65 @@
   display: flex;
   justify-content: space-between;
 }
+
+.bookingStep2Bill {
+  border: 1px dashed red;
+  margin-top: 2rem;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15rem;
+}
+
+.customerInfo {
+  /* border: 1px dashed green; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+
+}
+
+.customerInfo span {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.customerName h3,
+.customerPhone h3 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.customerAddress p {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.customerEmail h3 {
+  font-style: 32px;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.billInfo {
+  /* border: 1px dashed orange; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+}
