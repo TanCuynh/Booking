@@ -14,6 +14,7 @@ import Wishlist from "./pages/wishlist/Wishlist";
 import Profile from "./pages/profilepage/profile/Profile";
 import MyProfile from "./pages/profilepage/myProfile/MyProfile";
 import Reservations from "./pages/reservations/Reservations";
+import HotelProperties from "./pages/hotelproperties/HotelProperties"; 
 import BlogPage from "./pages/blogPage/BlogPage";
 import AboutUs from "./pages/aboutus/AboutUs";
 import StartOnTop from "./StartOnTop";
@@ -44,6 +45,7 @@ const App = () => {
                             <Route path="modify" element={<HostPropertiesModifyPage />} />
                             <Route path="create" element={<HostCreateHotelPage />} />
                             <Route path="statistic" element={<HostStatisticPage />} />
+                            <Route path="hotelproperties" element={<HotelProperties/>}/>
                         </Route>
                         <Route path="booking" element={<BookingLayout />}>
                             <Route path="step1" element={<BookingStepPage1 />} />

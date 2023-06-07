@@ -23,8 +23,11 @@ const HotelItem = () => {
 			<div className="hotel-item-content">
 				<img src='https://cf.bstatic.com/xdata/images/hotel/max1280x900/297693925.jpg?k=c5cfc34421f30c8fb83452c7a9be6b0741e55bcbcc02b4e5c61fa500b99b8f80&o=&hp=1' alt="img-hotel" className="hotel-item-img" />
 				<div className="short-description">
-					<h1 className="short-description-h1">Family Apartment</h1>
-					<span className="short-description-span">100 Smart Street,LA,USA</span>
+					<a href="/host/hotelproperties" style={{color: '#fff',}}>
+						<h1 className="short-description-h1">Family Apartment</h1>
+						<span className="short-description-span">100 Smart Street, LA, USA</span>
+					</a>
+
 				</div>
 			</div>
 			<div className="hotel-item-action">

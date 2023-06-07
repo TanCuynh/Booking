@@ -4,7 +4,7 @@ import Past from '../../components/reservationscomponents/past/Past'
 import './reservations.css'
 
 const Reservations = () => {
-    const [selectedButton, setSelectedButton] = useState(null);
+    const [selectedButton, setSelectedButton] = useState(1);
 
     const handleButtonClick = (buttonId) => {
         setSelectedButton(buttonId);
