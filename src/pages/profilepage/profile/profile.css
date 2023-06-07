@@ -31,12 +31,35 @@
     overflow: hidden;
 }
 
-.avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.AccountAvt {
+    width: 200px;
+    height: 200px;
+    background: #FDC32D;
+    border-radius: 999px;
+    cursor: pointer;
 }
 
+.imagee-popup {
+    width: 600px;
+    height: 600px;
+    background: #FDC32D;
+    border-radius: 999px;
+}
+
+.imagee {
+    width: 200px;
+    height: 200px;
+    background: #FDC32D;
+    border-radius: 999px;
+}
+
+.AccountChangeImg {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #484848;
+    cursor: pointer;
+}
 
 .verification {
     display: flex;

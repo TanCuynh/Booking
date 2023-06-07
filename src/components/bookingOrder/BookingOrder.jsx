@@ -46,7 +46,7 @@ const BookingOrder = () => {
                 </div>
             </div>
 
-            <div className="bookingOrderAcceptedContainer">
+            <div className="bookingOrderAcceptedContainer" btn-custom btn-custom-accept>
                 <p>Accepted</p>
             </div>
         </div>
