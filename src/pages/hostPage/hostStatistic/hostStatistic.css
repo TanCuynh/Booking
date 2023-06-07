@@ -5,17 +5,16 @@
     display: grid;
     grid-template-columns: 2fr 8fr;
     gap: 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .hostStatisticInfo {
-    width: 100%;
-    height: fit-content;
-    padding: 4rem;
-    background: #EFF0F2;
-    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+
 }
 
 .hostAccountAvt {
@@ -30,60 +29,35 @@
     height: 200px;
     background: #FDC32D;
     border-radius: 999px;
+    cursor: pointer;
 }
 
+.AccountImg {
+    width: 600px;
+    height: 600px;
+    background: #FDC32D;
+    border-radius: 999px;
+}
 .hostAccountChangeImg {
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #484848;
+    cursor: pointer;
 }
 
-.hostAccountVerify {
+.profilehotel-container {
+    width: 100%;
+    /* background: #EFF0F2; */
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.hostAccountVerify h3 {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    color: #484848;
-}
-
-.hostAccountVerify span {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #9A9A9A;
-}
-
-.hostAccountVerifyConfirmContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.hostAccountVerifyConfirmContainer h3 {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    color: #484848;
-}
-
-.hostAccountVerifyConfirm {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
-    color: #9A9A9A;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+    gap: 1rem;
+    justify-content: center;
+    margin-left: 40px;
 }
 
 .hostStatisticContent {
-    width: 100%;
+    width: 90%;
     height: max-content;
     /* background: #EFF0F2; */
     display: flex;
@@ -97,6 +71,7 @@
     gap: 1rem;
     border: 1px solid #E6EDFF;
     border-radius: 10px;
+    margin-top: 5px;
 }
 
 .hostStatisticDataItem {
@@ -141,4 +116,25 @@
     padding: 1rem;
     border: 1px solid #E6EDFF;
     border-radius: 10px;
+}
+
+.account-img-modal-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.account-img-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
