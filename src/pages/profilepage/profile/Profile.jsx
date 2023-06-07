@@ -26,11 +26,14 @@ const Profile = () => {
     }
     return (
         <div>
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"></link>
+
             <div className="main-layoutt">
                 <div className="verify-layout">
                     <div className="avatar">
-                        <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/273163403_1119529748849359_6980097327525230278_n.jpg?stp=dst-jpg_s200x200&_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=oKc1wENFVegAX-JPV-M&_nc_ht=scontent.fdad3-4.fna&oh=00_AfCTNGYbgo0hex-yUAWzYJUm2FlSNHmN09E3dpDJNWe2Vg&oe=64777543" alt="avartar" className="imagee  " />
+                        <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/273163403_1119529748849359_6980097327525230278_n.jpg?stp=dst-jpg_s200x200&_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=oKc1wENFVegAX-JPV-M&_nc_ht=scontent.fdad3-4.fna&oh=00_AfCTNGYbgo0hex-yUAWzYJUm2FlSNHmN09E3dpDJNWe2Vg&oe=64777543"
+                            alt="avatar"
+                            className="imagee"
+                        />
                     </div>
 
                     <div className="hostAccountVerify">
@@ -58,21 +61,24 @@ const Profile = () => {
                         <button className="btn-edit-profile" onClick={handleClick}>
                             My Profile
                         </button>
-                        <p className="reviews-text">&#x2605; 0 Reviews</p>
                     </div>
 
                     <div class="horizontal-vector"></div>
 
                     <div className="review-container">
-                        <Link onClick={openPopup} >Show All Reviews</Link>
+                        <h3>Your reviews</h3>
                         {showReviews &&
                             <div className="all-reviews-modal-layout" onClick={closePopup}>
-                            <div className="all-reviews-modal" onClick={(e) => e.stopPropagation()}>
-                                <AllReviewsUser onClose={closePopup} />
+                                <div className="all-reviews-modal" onClick={(e) => e.stopPropagation()}>
+                                    <AllReviewsUser onClose={closePopup} />
+                                </div>
                             </div>
-                        </div>}
-                        <UserReview/>
-                        <UserReview/>
+                        }
+                        <UserReview />
+                        <UserReview />
+                        <div className="profileShowAllReviewsBtn" onClick={openPopup}>
+                            <span>Show all reviews</span>
+                        </div>
                     </div>
                 </div>
             </div>
