@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
     BrowserRouter,
     Routes,
@@ -9,12 +9,12 @@ import Searchpage from "./pages/searchpage/Searchpage";
 import HotelDetail from "./pages/hoteldetail/HotelDetail";
 import AppLayout from "./layout/AppLayout";
 import './App.css';
-import { Toaster } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 import Wishlist from "./pages/wishlist/Wishlist";
 import Profile from "./pages/profilepage/profile/Profile";
 import MyProfile from "./pages/profilepage/myProfile/MyProfile";
 import Reservations from "./pages/reservations/Reservations";
-import HotelProperties from "./pages/hotelproperties/HotelProperties"; 
+import HotelProperties from "./pages/hotelproperties/HotelProperties";
 import BlogPage from "./pages/blogPage/BlogPage";
 import AboutUs from "./pages/aboutus/AboutUs";
 import StartOnTop from "./StartOnTop";
@@ -25,12 +25,31 @@ import Home from "./admin/pages/Home/Home";
 import Hotel from "./admin/pages/Hotel/Hotel";
 import User from "./admin/pages/User/User";
 import HostReservation from "./pages/hostPage/hostReservations/HostReservations";
+import { AuthAPI } from "./api/AuthAPI";
 
 
 export const APP_CONTEXT = createContext({});
 const App = () => {
+
+    const token = localStorage.getItem('token');
     const [user, setUser] = useState({});
     const [dataAllHotels, setDataAllHotels] = useState([]);
+
+
+    const getInformationUser = async () => {
+        const res = await AuthAPI.getUserByToken();
+        if (res.status === 200) {
+            setUser(res.data.data);
+        } else {
+            toast.error(`Get User Fail`);
+        }
+    }
+
+    useEffect(() => {
+        if (token) {
+            getInformationUser();
+        }
+    }, [token])
 
     return (
         <APP_CONTEXT.Provider value={{ user, setUser, dataAllHotels, setDataAllHotels }}>
@@ -46,7 +65,7 @@ const App = () => {
                             <Route path="modify" element={<HostPropertiesModifyPage />} />
                             <Route path="create" element={<HostCreateHotelPage />} />
                             <Route path="statistic" element={<HostStatisticPage />} />
-                            <Route path="hotelproperties" element={<HotelProperties/>}/>
+                            <Route path="hotelproperties" element={<HotelProperties />} />
                             <Route path="resevations" element={<HostReservation />} />
                         </Route>
                         <Route path="booking" element={<BookingLayout />}>
@@ -64,7 +83,7 @@ const App = () => {
                         <Route path="wishlist" element={<Wishlist />} />
                         <Route path="profile" element={<Profile />} />
                         <Route path="myprofile" element={<MyProfile />} />
-                        <Route path="reservations" element={<Reservations/>}/>
+                        <Route path="reservations" element={<Reservations />} />
                     </Route>
                     <Route path="admin" element={<AdminLayout />}>
                         <Route path="" element={<Home />} />
