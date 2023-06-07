@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './bookingstep1.css';
 import 'typeface-montserrat';
 import { Step, StepLabel, Stepper } from '@mui/material';
+import { bookingAPI } from '../../../../api/bookingAPI';
 
 const steps = [
   'Booking Information',
@@ -17,6 +18,33 @@ const BookingStep1 = () => {
     email: '',
     phoneNumber: ''
   });
+
+  const createBooking = async () => {
+    const params = {
+      hotel_id: 5,
+      description: "nothing",
+      is_payment: 1,
+      payment_type: "cash",
+      date_in: "2023-06-05 15:00:00",
+      date_out: "2023-06-07 15:00:01",
+      room_id: [
+        137,
+        138,
+        139,
+        140,
+        141
+      ],
+      room_count: 2
+    }
+    const res = await bookingAPI.createBooking(params);
+    if (res.status === 200) {
+      console.log('success', res);
+
+    }
+    else {
+      console.log('error', res);
+    }
+  }
 
   const { firstName, lastName, email, phoneNumber } = formData;
 
@@ -53,18 +81,19 @@ const BookingStep1 = () => {
   };
 
   useEffect(() => {
+    createBooking();
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className='bookingStep1Container'>
       <div className="bookingStep1Stepper">
-        <Stepper activeStep={0} alternativeLabel style={{ width: '600px' }}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+        <Stepper activeStep={ 0 } alternativeLabel style={ { width: '600px' } }>
+          { steps.map((label) => (
+            <Step key={ label }>
+              <StepLabel>{ label }</StepLabel>
             </Step>
-          ))}
+          )) }
         </Stepper>
       </div>
 
@@ -102,12 +131,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="first-name-input"
-                value={firstName}
+                value={ firstName }
                 name="firstName"
                 className="input-custom"
-                onChange={handleChange}
+                onChange={ handleChange }
               />
-              {firstName === '' && <p className='error-message'>Please enter your first name</p>}
+              { firstName === '' && <p className='error-message'>Please enter your first name</p> }
             </div>
 
             <div className="bookingStep1Input">
@@ -115,12 +144,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="last-name-input"
-                value={lastName}
+                value={ lastName }
                 name="lastName"
                 className="input-custom"
-                onChange={handleChange}
+                onChange={ handleChange }
               />
-              {lastName === '' && <p className='error-message'>Please enter your last name</p>}
+              { lastName === '' && <p className='error-message'>Please enter your last name</p> }
             </div>
 
             <div className="bookingStep1Input">
@@ -128,12 +157,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="email-input"
-                value={email}
+                value={ email }
                 name="email"
                 className="input-custom"
-                onChange={handleChange}
+                onChange={ handleChange }
               />
-              {email === '' && <p className='error-message'>Please enter your email address</p>}
+              { email === '' && <p className='error-message'>Please enter your email address</p> }
             </div>
 
             <div className="bookingStep1Input">
@@ -141,12 +170,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="phone-number-input"
-                value={phoneNumber}
+                value={ phoneNumber }
                 name="phoneNumber"
                 className="input-custom"
-                onChange={handleChange}
+                onChange={ handleChange }
               />
-              {phoneNumber === '' && <p className='error-message'>Please enter your phone number</p>}
+              { phoneNumber === '' && <p className='error-message'>Please enter your phone number</p> }
             </div>
           </div>
         </div>
@@ -158,7 +187,7 @@ const BookingStep1 = () => {
           <button className='cancel-button'>Cancel</button>
         </div>
         <div className="button-container">
-          <button className="skip-button" onClick={handleSubmit}>Next step</button>
+          <button className="skip-button" onClick={ handleSubmit }>Next step</button>
         </div>
       </div>
     </div>
