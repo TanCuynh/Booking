@@ -2,9 +2,9 @@ import axiosClient from "./axiosClient";
 
 const categoryAPI = {
   getCategoryById: (id) => axiosClient.get(`/categories/${id}`),
-  getCategoryByDate: (checkin, checkout, hotelid) =>
+  getCategoryByCheckInOut: (dateIn, dateOut, hotelId) =>
     axiosClient.get(
-      `/categories/?date_in=${checkin}&date_out=${checkout}&hotel_id=${hotelid}`
+      `/categories/?date_in=${dateIn}&date_out=${dateOut}&hotel_id=${hotelId}`
     ),
 };
 

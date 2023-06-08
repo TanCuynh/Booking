@@ -27,11 +27,23 @@ const markerIcon = L.icon({
     iconAnchor: [12, 41],
 });
 
+const getDateFormat = (date) => {
+    const newDate = new Date(date);
+    const year = newDate.getFullYear();
+    const month = ('0' + (newDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + newDate.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+}
 const HotelDetail = () => {
     const [dataHotel, setDataHotel] = useState({});
     const [safetyHygiene, setSafetyHygiene] = useState([]);
     const [amenities, setAmenities] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [emptyRoom, setEmptyRoom] = useState([]);
+    const [params, setParams] = useState({
+        dateStart: '',
+        dateEnd: '',
+    });
 
     const { id } = useParams();
 
@@ -158,7 +170,7 @@ const HotelDetail = () => {
             .then(() => {
                 toast.success("Hotel link copied to clipboard");
             })
-            .catch((error) => {
+            .catch(() => {
                 toast.error("Failed to copy hotel link to clipboard");
             });
     };
@@ -166,20 +178,41 @@ const HotelDetail = () => {
 
     const [dateAlertShown, setDateAlertShown] = useState(false);
     const [disableShowPrice, setDisableShowPrice] = useState(true);
-    const handleSearchCategory = (item) => {
+    const handleSearchCategory = async () => {
+
         if (calculateDays(date[0].startDate, date[0].endDate) === 0) {
             setDateAlertShown(true);
             setDisableShowPrice(true);
         } else {
             {
-                // loc category o day
+                const dateStartFormat = getDateFormat(date[0].startDate)
+                const dateEndFormat = getDateFormat(date[0].endDate)
+                setParams({ ...params, dateStart: dateStartFormat, dateEnd: dateEndFormat })
+                const res = await categoryAPI.getCategoryByCheckInOut(dateStartFormat, dateEndFormat, id);
+                if (res.status === 200) {
+                    setCategories(res.data.data.category)
+                    setEmptyRoom(res.data.data.roomIDPerDisplay)
+                } else {
+                    console.log('error', res)
+                }
             }
             setDateAlertShown(false);
             setDisableShowPrice(false);
         }
     };
 
+    const renderListCategory = useMemo(() => {
+        return categories.map((category, index) => {
+            return (
+                <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} emptyRoom={emptyRoom[index]} idHotel={id} dateParams={params} />
+            )
+        })
+    }, [categories, emptyRoom, id])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getHotelDetail(id);
+    }, []);
 
 
     return (
@@ -311,11 +344,7 @@ const HotelDetail = () => {
                                 </div>
                             </div>
                             {
-                                categories.map((category) => {
-                                    return (
-                                        <RoomsTable key={category?.id} notShowPrice={disableShowPrice} hotelId={dataHotel?.id} date={date} dataCategory={category} />
-                                    )
-                                })
+                                renderListCategory
                             }
                         </div>
                     </div>

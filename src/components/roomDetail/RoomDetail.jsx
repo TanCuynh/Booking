@@ -7,8 +7,9 @@ import Slideshow from '../slideshow/Slideshow'
 import categoryAPI from '../../api/categoryAPI'
 import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
 import { useNavigate } from 'react-router-dom'
+import { bookingAPI } from '../../api/bookingAPI'
 
-const RoomDetail = ({ room, date, categoryId, onClose }) => {
+const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateParams }) => {
 
     const navigate = useNavigate();
 
@@ -17,9 +18,7 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
     const [bathroomOptions, setBathroomOptions] = useState([]);
     const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
     const [amenitiesOptions, setAmenityOptions] = useState([]);
-    const [bookingDate, setBookingDate] = useState(date);
 
-    console.log("id", categoryId);
 
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
@@ -35,9 +34,28 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
             console.log("Error");
         }
     }
+    const createBooking = async () => {
+        console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
+        const res = await bookingAPI.createBooking({
+            description: "nothing",
+            date_in: dateParams.dateStart,
+            date_out: dateParams.dateEnd,
+            hotel_id: +idHotel,
+            room_id: emptyRoom,
+            room_count: +room
+        });
+        if (res.status === 200) {
+            localStorage.setItem('bookingId', res.data.data.booking.id);
+
+        } else {
+            console.log('error creating booking', res);
+        }
+    }
 
     const handleBooking = () => {
         navigate('/booking');
+        console.log(11111)
+        createBooking();
     }
     useEffect(() => {
         getDataCategoryDetail();
@@ -121,6 +139,7 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                             <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
+                            <span>You book {room} rooms</span>
                             <div className="roomDetailRoomsAvailable">
                                 <span>You book {room} rooms</span>
                             </div>

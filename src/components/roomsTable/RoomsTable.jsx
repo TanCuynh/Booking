@@ -1,31 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './roomsTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faUser } from '@fortawesome/free-solid-svg-icons'
 import RoomDetail from '../roomDetail/RoomDetail'
-import categoryAPI from '../../api/categoryAPI'
+import { APP_CONTEXT } from '../../App'
 
-const RoomsTable = ({ hotelId, date, notShowPrice, dataCategory }) => {
+const RoomsTable = ({ date, notShowPrice, dataCategory, emptyRoom, idHotel, dateParams }) => {
+    const context = useContext(APP_CONTEXT);
     const [roomQuantity, setRoomQuantity] = useState(0);
     const [showPrices, setShowPrices] = useState(false);
     const [bookDate, setBookDate] = useState(date);
-    const [dataCategoryByDate, setDataCategoryByDate] = useState({});
-
-    const startBookDate = bookDate[0].startDate.toISOString().slice(0, 10);
-    const endBookDate = bookDate[0].endDate.toISOString().slice(0, 10);
-
-    const getDataCategoryByDate = async () => {
-        const res = await categoryAPI.getCategoryByDate(startBookDate, endBookDate, hotelId);
-        if (res.status === 200) {
-            console.log("getCategoryByDate", res.data.data);
-        } else {
-            console.log("Error");
-        }
-    }
-    useEffect(() => {
-        getDataCategoryByDate();
-    }, [])
-
 
     const [roomQuantityError, setRoomQuantityError] = useState('');
 
@@ -39,8 +23,13 @@ const RoomsTable = ({ hotelId, date, notShowPrice, dataCategory }) => {
             document.body.style.overflow = 'hidden';
         }
     };
+    const handleClickShow = () => {
+        openPopup(roomQuantity);
+        context.setSelectCategory(dataCategory.id)
+    }
 
     const closePopup = () => {
+        console.log('111', date, notShowPrice, dataCategory)
         setShowPrices(false);
         document.body.style.overflow = 'auto';
     };
@@ -98,7 +87,7 @@ const RoomsTable = ({ hotelId, date, notShowPrice, dataCategory }) => {
             <div className="roomsTableShowPricesBtnContainer">
                 <button
                     className="roomsTableShowPriceBtn"
-                    onClick={() => openPopup(roomQuantity)}
+                    onClick={handleClickShow}
                     disabled={notShowPrice}
                 >
                     <span>Show Price</span>
@@ -108,7 +97,7 @@ const RoomsTable = ({ hotelId, date, notShowPrice, dataCategory }) => {
             {showPrices &&
                 <div className="roomDetailModalContainer" onClick={closePopup}>
                     <div className="roomDetailModal" onClick={(e) => e.stopPropagation()}>
-                        <RoomDetail room={roomQuantity} date={bookDate} categoryId={dataCategory?.id} onClose={closePopup} />
+                        <RoomDetail room={roomQuantity} date={bookDate} categoryId={dataCategory?.id} onClose={closePopup} emptyRoom={emptyRoom} idHotel={idHotel} dateParams={dateParams} />
                     </div>
                 </div>}
         </div>

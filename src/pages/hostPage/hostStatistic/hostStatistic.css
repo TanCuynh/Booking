@@ -46,6 +46,12 @@
     cursor: pointer;
 }
 
+.hostAccountChangeImg:hover {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+
 .profilehotel-container {
     width: 100%;
     /* background: #EFF0F2; */
