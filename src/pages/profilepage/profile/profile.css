@@ -54,11 +54,16 @@
 
 .AccountChangeImg {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 20px;
     color: #484848;
     cursor: pointer;
 }
+
+.AccountChangeImg:hover {
+    text-decoration: underline;
+    font-weight: 700;
+  }
 
 .verification {
     display: flex;
