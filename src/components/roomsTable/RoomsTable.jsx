@@ -1,13 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './roomsTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faUser } from '@fortawesome/free-solid-svg-icons'
 import RoomDetail from '../roomDetail/RoomDetail'
+import categoryAPI from '../../api/categoryAPI'
 
-const RoomsTable = ({ date, notShowPrice, dataCategory }) => {
+const RoomsTable = ({ hotelId, date, notShowPrice, dataCategory }) => {
     const [roomQuantity, setRoomQuantity] = useState(0);
     const [showPrices, setShowPrices] = useState(false);
     const [bookDate, setBookDate] = useState(date);
+    const [dataCategoryByDate, setDataCategoryByDate] = useState({});
+
+    const startBookDate = bookDate[0].startDate.toISOString().slice(0, 10);
+    const endBookDate = bookDate[0].endDate.toISOString().slice(0, 10);
+
+    const getDataCategoryByDate = async () => {
+        const res = await categoryAPI.getCategoryByDate(startBookDate, endBookDate, hotelId);
+        if (res.status === 200) {
+            console.log("getCategoryByDate", res.data.data);
+        } else {
+            console.log("Error");
+        }
+    }
+    useEffect(() => {
+        getDataCategoryByDate();
+    }, [])
+
 
     const [roomQuantityError, setRoomQuantityError] = useState('');
 

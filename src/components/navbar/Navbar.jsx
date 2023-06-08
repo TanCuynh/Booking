@@ -136,7 +136,7 @@ const Navbar = ({ type }) => {
                                         <p><span>List Property</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks" onClick={handleStatistic}>
-                                        <p><span>Statistic</span></p>
+                                        <p><span>Account</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}

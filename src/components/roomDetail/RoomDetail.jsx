@@ -24,7 +24,7 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
         if (res.status === 200) {
-            console.log("getCategoryById", res.data.data);
+            // console.log("getCategoryById", res.data.data);
             setDataCategoryDetail(res.data.data);
             setCatetogyImages(res.data.data.category_images);
             setBathroomOptions(res.data.data.bathroom_facilities.split(","));
@@ -121,10 +121,10 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                             <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>You book {room} rooms</span>
                             <div className="roomDetailRoomsAvailable">
-                                <span>4 rooms available</span>
+                                <span>You book {room} rooms</span>
                             </div>
+                            <span>4 rooms available</span>
                         </div>
                     </div>
                     <div className="roomDetailPrice">

@@ -17,6 +17,7 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import hotelAPI from '../../api/hotelAPI'
 import { toast } from 'react-hot-toast'
+import categoryAPI from '../../api/categoryAPI'
 
 
 
@@ -45,6 +46,23 @@ const HotelDetail = () => {
             setDataHotel({});
         }
     }
+
+    const getDataCategoryByDate = async () => {
+        const res = await categoryAPI.getCategoryByDate();
+        if (res.status === 200) {
+            console.log("getCategoryByDate", res.data.data);
+        } else {
+            console.log("Error");
+        }
+    }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getHotelDetail(id);
+        getDataCategoryByDate();
+    }, []);
+
+
 
     const remainingSafetyHygieneCount = safetyHygiene.length - 7;
     const remainingAmenitiesCount = amenities.length - 7;
@@ -161,10 +179,7 @@ const HotelDetail = () => {
         }
     };
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        getHotelDetail(id);
-    }, []);
+
 
 
     return (
@@ -298,7 +313,7 @@ const HotelDetail = () => {
                             {
                                 categories.map((category) => {
                                     return (
-                                        <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} />
+                                        <RoomsTable key={category?.id} notShowPrice={disableShowPrice} hotelId={dataHotel?.id} date={date} dataCategory={category} />
                                     )
                                 })
                             }
