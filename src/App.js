@@ -34,6 +34,7 @@ const App = () => {
   const token = localStorage.getItem("token");
   const [user, setUser] = useState({});
   const [dataAllHotels, setDataAllHotels] = useState([]);
+  const [selectCategory, setSelectCategory] = useState(0);
 
   const getInformationUser = async () => {
     const res = await AuthAPI.getUserByToken();
@@ -52,7 +53,7 @@ const App = () => {
 
   return (
     <APP_CONTEXT.Provider
-      value={{ user, setUser, dataAllHotels, setDataAllHotels }}
+      value={{ user, setUser, dataAllHotels, setDataAllHotels, selectCategory, setSelectCategory }}
     >
       <BrowserRouter>
         <StartOnTop />
