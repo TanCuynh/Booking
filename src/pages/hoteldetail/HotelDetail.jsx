@@ -38,7 +38,7 @@ const HotelDetail = () => {
         const res = await hotelAPI.getHotelById(id);
         if (res.status === 200) {
             setDataHotel(res.data.data);
-            setSafetyHygiene(res.data.data.Safety_Hygiene.split(" \n"));
+            setSafetyHygiene(res.data.data.Safety_Hygiene.split(","));
             setAmenities(res.data.data.amenities.split(","));
             setCategories(res.data.data.categories);
         } else {
