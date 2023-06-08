@@ -28,6 +28,21 @@ const HostStatistic = () => {
     const handleClick = () => {
         navigate('/user/myprofile');
     }
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        // Xử lý file hình ảnh ở đây nè cu(chắc vậy)
+        console.log('Đã chọn file:', file);
+      };
+    
+    const chooseaphoto = () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.addEventListener('change', handleFileUpload);
+        fileInput.click();
+    };
+
     return (
         <div className="hostStatisticContainer">
             <div className='profile-layout'>
@@ -42,7 +57,7 @@ const HostStatistic = () => {
                         }
                         <div className="hostAccountImg" onClick={openPopup}></div>
                         <div className="hostAccountChangeImg">
-                            <span>Upload Photo</span>
+                            <span onClick={chooseaphoto}>Upload Photo</span>
                         </div>
                     </div>
                     <div className="profilehotel-container">

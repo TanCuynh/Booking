@@ -25,10 +25,10 @@
 }
 
 .avatar {
-    width: 250px;
-    height: 200px;
-    border-radius: 999px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .AccountAvt {
@@ -49,18 +49,47 @@
 .imagee {
     width: 200px;
     height: 200px;
-    background: #FDC32D;
     border-radius: 999px;
 }
 
 .AccountChangeImg {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 20px;
     color: #484848;
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+.AccountChangeImg:hover {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+.verification {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #484848;
+}
+
+.confirmed-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.name-confirmed {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #484848;
+}
+
+>>>>>>> f8b1a718c6e3523aeb6c3b9bad079adac1f7a63b
 .profile-container {
     width: 100%;
     height: fit-content;
