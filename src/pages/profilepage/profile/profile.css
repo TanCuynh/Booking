@@ -25,10 +25,10 @@
 }
 
 .avatar {
-    width: 250px;
-    height: 200px;
-    border-radius: 999px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .AccountAvt {
@@ -49,7 +49,6 @@
 .imagee {
     width: 200px;
     height: 200px;
-    background: #FDC32D;
     border-radius: 999px;
 }
 
