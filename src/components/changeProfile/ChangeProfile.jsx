@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './changeProfile.css';
+import { APP_CONTEXT } from "../../App";
 
 const ChangeProfile = () => {
+
+  const context = useContext(APP_CONTEXT);
+
+  console.log("User:", context.user)
+
+
   const [editing, setEditing] = useState(false);
-  const [name, setName] = useState("Trần Hồng Đức");
+  const [name, setName] = useState(context.user.name);
   const [tempName, setTempName] = useState(name);
-  const [emailAddress, setEmailAddress] = useState("tranhongduc@gmail.com");
+  const [emailAddress, setEmailAddress] = useState(context.user.email);
   const [tempEmailAddress, setTempEmailAddress] = useState(emailAddress);
-  const [phoneNumber, setPhoneNumber] = useState("0123456789");
+  const [phoneNumber, setPhoneNumber] = useState(context.user.phone_number);
   const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber);
-  const [dateOfBirth, setDateOfBirth] = useState("22-03-2002");
+  const [dateOfBirth, setDateOfBirth] = useState(context.user.date_of_birth);
   const [tempDateOfBirth, setTempDateOfBirth] = useState(dateOfBirth);
-  const [gender, setGender] = useState("Male");
+  const [gender, setGender] = useState(context.user.gender);
   const [tempGender, setTempGender] = useState(gender);
-  const [address, setAddress] = useState("123 Street, City, Country");
+  const [address, setAddress] = useState(context.user.address);
   const [tempAddress, setTempAddress] = useState(address);
 
   const handleEditClick = () => {
@@ -117,7 +124,7 @@ const ChangeProfile = () => {
           {editing ? (
             <input
               type="text"
-              value={tempGender}
+              value={(gender == 0) ? "Male" : "Female"}
               onChange={(event) => handleInputChange(event, setTempGender)}
               className="input-field"
             />

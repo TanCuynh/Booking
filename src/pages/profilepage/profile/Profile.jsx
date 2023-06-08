@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import UserReview from "../../../components/userReview/UserReview";
 import AllReviewsUser from '../../../components/allReviewsUser/AllReviewsUser'
 import "./profile.css";
+import { APP_CONTEXT } from "../../../App";
 
 const Profile = () => {
     const navigate = useNavigate();
+    const context = useContext(APP_CONTEXT);
 
     const [showReviews, setShowReviews] = useState(false);
 
@@ -69,8 +71,7 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="profile-container">
-                            <p className="hello-text">Hello, Trần Hồng Đức</p>
-                            <p className="time-join">Joined in 11/9/2023</p>
+                            <p className="hello-text">Hello, {context.user.name}</p>
 
                             <button
                                 className="btn-edit-profile"

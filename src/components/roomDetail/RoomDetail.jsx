@@ -23,7 +23,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
         if (res.status === 200) {
-            console.log("getCategoryById", res.data.data);
+            // console.log("getCategoryById", res.data.data);
             setDataCategoryDetail(res.data.data);
             setCatetogyImages(res.data.data.category_images);
             setBathroomOptions(res.data.data.bathroom_facilities.split(","));
@@ -70,16 +70,16 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
             <div className="roomDetailDesc">
                 <div className="roomDetailImgContainer">
                     <div className="roomDetailImgSlideshowContainer">
-                        <Slideshow images={ categoryImages.map((categoryImage) => categoryImage.image_url) } className='roomDetailSlideshow' />
+                        <Slideshow images={categoryImages.map((categoryImage) => categoryImage.image_url)} className='roomDetailSlideshow' />
                     </div>
                 </div>
                 <div className="roomDetailContentContainer">
                     <div className="roomDetailIntroduction">
-                        <h3 className='roomDetailName'>{ dataCategoryDetail?.name }</h3>
+                        <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
                     </div>
                     <div className="roomDetailBedType">
-                        <span>{ dataCategoryDetail?.bed } bed</span>
-                        <FontAwesomeIcon icon={ faBed } />
+                        <span>{dataCategoryDetail?.bed} bed</span>
+                        <FontAwesomeIcon icon={faBed} />
                     </div>
                     <div className="roomDetailDescContent">
                         <span>In your private bathroom:</span>
@@ -87,9 +87,9 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             {
                                 bathroomOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={ index }>
-                                            <FontAwesomeIcon icon={ faCheck } />
-                                            <span>{ item }</span>
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
                                         </div>
                                     )
                                 })
@@ -102,9 +102,9 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             {
                                 directionsViewOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={ index }>
-                                            <FontAwesomeIcon icon={ faCheck } />
-                                            <span>{ item }</span>
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
                                         </div>
                                     )
                                 })
@@ -117,9 +117,9 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             {
                                 amenitiesOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={ index }>
-                                            <FontAwesomeIcon icon={ faCheck } />
-                                            <span>{ item }</span>
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
                                         </div>
                                     )
                                 })
@@ -132,30 +132,31 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                 <div className="roomDetailPriceContainer">
                     <div className="roomDetailPriceDesc">
                         <div className="roomDetailPriceDescTitle">
-                            <h3>{ dataCategoryDetail?.name }</h3>
+                            <h3>{dataCategoryDetail?.name}</h3>
                         </div>
                         <div className="roomDetailPriceDescContent">
-                            <span>{ dataCategoryDetail?.bed } bed</span>
-                            <FontAwesomeIcon icon={ faBed } />
+                            <span>{dataCategoryDetail?.bed} bed</span>
+                            <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>You book { room } rooms</span>
+                            <span>You book {room} rooms</span>
                             <div className="roomDetailRoomsAvailable">
-                                <span>4 rooms available</span>
+                                <span>You book {room} rooms</span>
                             </div>
+                            <span>4 rooms available</span>
                         </div>
                     </div>
                     <div className="roomDetailPrice">
-                        <span>$ { dataCategoryDetail?.price } USD <small>for 1 night per room</small></span>
+                        <span>$ {dataCategoryDetail?.price} USD <small>for 1 night per room</small></span>
                     </div>
                 </div>
                 <div className="roomDetailBookingBtnContainer">
-                    <div className="roomDetailBookingBtn" onClick={ handleBooking }>
+                    <div className="roomDetailBookingBtn" onClick={handleBooking}>
                         <span>Book Now</span>
                     </div>
                 </div>
             </div>
-            <FontAwesomeIcon icon={ faXmark } className='roomDetailCloseBtn' onClick={ handleClose } />
+            <FontAwesomeIcon icon={faXmark} className='roomDetailCloseBtn' onClick={handleClose} />
         </div>
     )
 }
