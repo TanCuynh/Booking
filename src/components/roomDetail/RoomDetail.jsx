@@ -7,8 +7,9 @@ import Slideshow from '../slideshow/Slideshow'
 import categoryAPI from '../../api/categoryAPI'
 import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
 import { useNavigate } from 'react-router-dom'
+import { bookingAPI } from '../../api/bookingAPI'
 
-const RoomDetail = ({ room, date, categoryId, onClose }) => {
+const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateParams }) => {
 
     const navigate = useNavigate();
 
@@ -17,9 +18,7 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
     const [bathroomOptions, setBathroomOptions] = useState([]);
     const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
     const [amenitiesOptions, setAmenityOptions] = useState([]);
-    const [bookingDate, setBookingDate] = useState(date);
 
-    console.log("id", categoryId);
 
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
@@ -35,9 +34,28 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
             console.log("Error");
         }
     }
+    const createBooking = async () => {
+        console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
+        const res = await bookingAPI.createBooking({
+            description: "nothing",
+            date_in: dateParams.dateStart,
+            date_out: dateParams.dateEnd,
+            hotel_id: +idHotel,
+            room_id: emptyRoom,
+            room_count: +room
+        });
+        if (res.status === 200) {
+            localStorage.setItem('bookingId', res.data.data.booking.id);
+
+        } else {
+            console.log('error creating booking', res);
+        }
+    }
 
     const handleBooking = () => {
         navigate('/booking');
+        console.log(11111)
+        createBooking();
     }
     useEffect(() => {
         getDataCategoryDetail();
@@ -52,16 +70,16 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
             <div className="roomDetailDesc">
                 <div className="roomDetailImgContainer">
                     <div className="roomDetailImgSlideshowContainer">
-                        <Slideshow images={categoryImages.map((categoryImage) => categoryImage.image_url)} className='roomDetailSlideshow' />
+                        <Slideshow images={ categoryImages.map((categoryImage) => categoryImage.image_url) } className='roomDetailSlideshow' />
                     </div>
                 </div>
                 <div className="roomDetailContentContainer">
                     <div className="roomDetailIntroduction">
-                        <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
+                        <h3 className='roomDetailName'>{ dataCategoryDetail?.name }</h3>
                     </div>
                     <div className="roomDetailBedType">
-                        <span>{dataCategoryDetail?.bed} bed</span>
-                        <FontAwesomeIcon icon={faBed} />
+                        <span>{ dataCategoryDetail?.bed } bed</span>
+                        <FontAwesomeIcon icon={ faBed } />
                     </div>
                     <div className="roomDetailDescContent">
                         <span>In your private bathroom:</span>
@@ -69,9 +87,9 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                             {
                                 bathroomOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCheck} />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCheck } />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
@@ -84,9 +102,9 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                             {
                                 directionsViewOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCheck} />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCheck } />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
@@ -99,9 +117,9 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                             {
                                 amenitiesOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCheck} />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCheck } />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
@@ -114,30 +132,30 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                 <div className="roomDetailPriceContainer">
                     <div className="roomDetailPriceDesc">
                         <div className="roomDetailPriceDescTitle">
-                            <h3>{dataCategoryDetail?.name}</h3>
+                            <h3>{ dataCategoryDetail?.name }</h3>
                         </div>
                         <div className="roomDetailPriceDescContent">
-                            <span>{dataCategoryDetail?.bed} bed</span>
-                            <FontAwesomeIcon icon={faBed} />
+                            <span>{ dataCategoryDetail?.bed } bed</span>
+                            <FontAwesomeIcon icon={ faBed } />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>You book {room} rooms</span>
+                            <span>You book { room } rooms</span>
                             <div className="roomDetailRoomsAvailable">
                                 <span>4 rooms available</span>
                             </div>
                         </div>
                     </div>
                     <div className="roomDetailPrice">
-                        <span>$ {dataCategoryDetail?.price} USD <small>for 1 night per room</small></span>
+                        <span>$ { dataCategoryDetail?.price } USD <small>for 1 night per room</small></span>
                     </div>
                 </div>
                 <div className="roomDetailBookingBtnContainer">
-                    <div className="roomDetailBookingBtn" onClick={handleBooking}>
+                    <div className="roomDetailBookingBtn" onClick={ handleBooking }>
                         <span>Book Now</span>
                     </div>
                 </div>
             </div>
-            <FontAwesomeIcon icon={faXmark} className='roomDetailCloseBtn' onClick={handleClose} />
+            <FontAwesomeIcon icon={ faXmark } className='roomDetailCloseBtn' onClick={ handleClose } />
         </div>
     )
 }

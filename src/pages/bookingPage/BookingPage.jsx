@@ -3,6 +3,7 @@ import './bookingPage.css';
 import { useState } from 'react';
 import BookingStep1 from './components/booking1/BookingStep1';
 import BookingStep2 from './components/booking2/BookingStep2';
+import BookingStep3 from './components/booking3/BookingStep3';
 const steps = [
     {
         title: 'Booking Information',
@@ -14,7 +15,7 @@ const steps = [
     },
     {
         title: 'Booking Conplete',
-        content: 'Booking Conplete',
+        content: <BookingStep3 />,
     },
 ];
 const BookingPage = () => {
@@ -39,37 +40,37 @@ const BookingPage = () => {
         <div className="bookingPage">
 
             <div className="bookingPageStep">
-                <Steps current={current} items={items} />
+                <Steps current={ current } items={ items } />
             </div>
 
 
             <div className='bookingPageContent'>
-                {steps[current].content}
+                { steps[current].content }
             </div>
 
             <div className='bookingPageBtns'>
 
-                {current > 0 && (
+                { current > 0 && (
                     <Button
-                        style={{
+                        style={ {
                             margin: '0 8px',
-                        }}
-                        onClick={() => prev()}
+                        } }
+                        onClick={ () => prev() }
                     >
                         Previous
                     </Button>
-                )}
-                {current < steps.length - 1 && (
-                    <Button type="primary" onClick={() => next()}>
+                ) }
+                { current < steps.length - 1 && (
+                    <Button type="primary" onClick={ () => next() }>
                         Next
                     </Button>
-                )}
+                ) }
 
-                {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                { current === steps.length - 1 && (
+                    <Button type="primary" onClick={ () => message.success('Processing complete!') }>
                         Done
                     </Button>
-                )}
+                ) }
             </div>
         </div>
     );

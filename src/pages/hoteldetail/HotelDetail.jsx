@@ -17,6 +17,7 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import hotelAPI from '../../api/hotelAPI'
 import { toast } from 'react-hot-toast'
+import categoryAPI from '../../api/categoryAPI'
 
 
 
@@ -26,11 +27,23 @@ const markerIcon = L.icon({
     iconAnchor: [12, 41],
 });
 
+const getDateFormat = (date) => {
+    const newDate = new Date(date);
+    const year = newDate.getFullYear();
+    const month = ('0' + (newDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + newDate.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+}
 const HotelDetail = () => {
     const [dataHotel, setDataHotel] = useState({});
     const [safetyHygiene, setSafetyHygiene] = useState([]);
     const [amenities, setAmenities] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [emptyRoom, setEmptyRoom] = useState([]);
+    const [params, setParams] = useState({
+        dateStart: '',
+        dateEnd: '',
+    });
 
     const { id } = useParams();
 
@@ -111,7 +124,7 @@ const HotelDetail = () => {
             const temp = [...dataHotel.images];
             return temp.slice(1).map((image, index) => {
                 return (
-                    <img key={index} onClick={() => handleOpen(index + 1)} src={image.image_url} alt="" className="smallImg" />
+                    <img key={ index } onClick={ () => handleOpen(index + 1) } src={ image.image_url } alt="" className="smallImg" />
                 )
             })
         }
@@ -140,7 +153,7 @@ const HotelDetail = () => {
             .then(() => {
                 toast.success("Hotel link copied to clipboard");
             })
-            .catch((error) => {
+            .catch(() => {
                 toast.error("Failed to copy hotel link to clipboard");
             });
     };
@@ -148,18 +161,36 @@ const HotelDetail = () => {
 
     const [dateAlertShown, setDateAlertShown] = useState(false);
     const [disableShowPrice, setDisableShowPrice] = useState(true);
-    const handleSearchCategory = (item) => {
+    const handleSearchCategory = async () => {
+
         if (calculateDays(date[0].startDate, date[0].endDate) === 0) {
             setDateAlertShown(true);
             setDisableShowPrice(true);
         } else {
             {
-                // loc category o day
+                const dateStartFormat = getDateFormat(date[0].startDate)
+                const dateEndFormat = getDateFormat(date[0].endDate)
+                setParams({ ...params, dateStart: dateStartFormat, dateEnd: dateEndFormat })
+                const res = await categoryAPI.getCategoryByCheckInOut(dateStartFormat, dateEndFormat, id);
+                if (res.status === 200) {
+                    setCategories(res.data.data.category)
+                    setEmptyRoom(res.data.data.roomIDPerDisplay)
+                } else {
+                    console.log('error', res)
+                }
             }
             setDateAlertShown(false);
             setDisableShowPrice(false);
         }
     };
+
+    const renderListCategory = useMemo(() => {
+        return categories.map((category, index) => {
+            return (
+                <RoomsTable key={ category?.id } notShowPrice={ disableShowPrice } date={ date } dataCategory={ category } emptyRoom={ emptyRoom[index] } idHotel={ id } dateParams={ params } />
+            )
+        })
+    }, [categories, emptyRoom, id])
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -169,15 +200,15 @@ const HotelDetail = () => {
 
     return (
         <div className="hotelDetailComponent">
-            {openPopup &&
+            { openPopup &&
                 <div className="hotelDetailPopupImgContainer">
-                    <FontAwesomeIcon icon={faCircleXmark} className='closePopupBtn' onClick={() => setOpenPopup(false)} />
+                    <FontAwesomeIcon icon={ faCircleXmark } className='closePopupBtn' onClick={ () => setOpenPopup(false) } />
                     <div className="hotelDetailPopupImg">
-                        <FontAwesomeIcon icon={faCircleArrowLeft} className='arrowPopupBtn' onClick={() => handleMove("l")} />
+                        <FontAwesomeIcon icon={ faCircleArrowLeft } className='arrowPopupBtn' onClick={ () => handleMove("l") } />
                         <div className="popupImgWrapper">
-                            <img src={dataHotel?.images[slideIndex].image_url} alt="popupImg" />
+                            <img src={ dataHotel?.images[slideIndex].image_url } alt="popupImg" />
                         </div>
-                        <FontAwesomeIcon icon={faCircleArrowRight} className='arrowPopupBtn' onClick={() => handleMove("r")} />
+                        <FontAwesomeIcon icon={ faCircleArrowRight } className='arrowPopupBtn' onClick={ () => handleMove("r") } />
                     </div>
                 </div>
             }
@@ -185,7 +216,7 @@ const HotelDetail = () => {
                 {
                     dataHotel?.images &&
                     <div className="hotelDetailImgLarge">
-                        <img onClick={() => handleOpen(0)} src={dataHotel?.images[0].image_url} alt="" className="bigImg" />
+                        <img onClick={ () => handleOpen(0) } src={ dataHotel?.images[0].image_url } alt="" className="bigImg" />
                     </div>
                 }
                 <div className="hotelDetailImgSmall">
@@ -198,37 +229,37 @@ const HotelDetail = () => {
                 <div className="hotelDetailContent">
                     <div className="hotelDetailTitle">
                         <div className="hotelDetailTitleContent">
-                            <h3>{dataHotel?.name}</h3>
-                            <span>{dataHotel?.address}</span>
+                            <h3>{ dataHotel?.name }</h3>
+                            <span>{ dataHotel?.address }</span>
                         </div>
                         <div className="hotelDetailAction">
                             <FontAwesomeIcon
-                                className={`hotelDetailHeartIcon ${isLiked ? 'active' : ''}`}
-                                icon={isLiked ? solidHeart : heart}
-                                onClick={handleToggleLike}
+                                className={ `hotelDetailHeartIcon ${isLiked ? 'active' : ''}` }
+                                icon={ isLiked ? solidHeart : heart }
+                                onClick={ handleToggleLike }
                             />
                             <FontAwesomeIcon
                                 className='hotelDetailShareIcon'
-                                icon={faShareFromSquare}
-                                onClick={handleCopy}
+                                icon={ faShareFromSquare }
+                                onClick={ handleCopy }
                             />
                         </div>
                     </div>
                     <div className="hotelDetailAmenities">
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faBed} className='hotelDetailAmenityIcon' />
-                            <span>{dataHotel?.room_total} Rooms</span>
+                            <FontAwesomeIcon icon={ faBed } className='hotelDetailAmenityIcon' />
+                            <span>{ dataHotel?.room_total } Rooms</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faBath} className='hotelDetailAmenityIcon' />
-                            <span>{dataHotel?.bathrooms} Bathrooms</span>
+                            <FontAwesomeIcon icon={ faBath } className='hotelDetailAmenityIcon' />
+                            <span>{ dataHotel?.bathrooms } Bathrooms</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faSquareParking} className='hotelDetailAmenityIcon' />
-                            <span>{dataHotel?.parking_slot} Parking Slots</span>
+                            <FontAwesomeIcon icon={ faSquareParking } className='hotelDetailAmenityIcon' />
+                            <span>{ dataHotel?.parking_slot } Parking Slots</span>
                         </div>
                         <div className="hotelDetailAmenity">
-                            <FontAwesomeIcon icon={faPaw} className='hotelDetailAmenityIcon' />
+                            <FontAwesomeIcon icon={ faPaw } className='hotelDetailAmenityIcon' />
                             <span>0 Pets Allowed</span>
                         </div>
                     </div>
@@ -241,12 +272,12 @@ const HotelDetail = () => {
                         </p>
                     </div>
                     <div className="hotelDetailMapLocation">
-                        <MapContainer center={[16.06827770014092, 108.2009288146462]} zoom={18} scrollWheelZoom={false} style={{ height: '400px', width: '100%' }}>
+                        <MapContainer center={ [16.06827770014092, 108.2009288146462] } zoom={ 18 } scrollWheelZoom={ false } style={ { height: '400px', width: '100%' } }>
                             <TileLayer
                                 attribution='Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            <Marker position={[16.06827770014092, 108.2009288146462]} icon={markerIcon}>
+                            <Marker position={ [16.06827770014092, 108.2009288146462] } icon={ markerIcon }>
                                 <Popup>
                                     The hotel's location.
                                 </Popup>
@@ -259,27 +290,27 @@ const HotelDetail = () => {
                             <div className="hotelDetailSearchBar">
                                 <div className="hotelDetailSearchItem" id="hotelDetailSearchCalendar">
                                     <p className='hotelDetailSearchItemTitle'>Check in - Check out date</p>
-                                    <span onClick={() => { setOpenDate(!openDate); }} className='hotelDetailSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-                                    {openDate &&
+                                    <span onClick={ () => { setOpenDate(!openDate); } } className='hotelDetailSearchText'>{ `${format(date[0].startDate, "dd/MM/yyyy")} - ${format(date[0].endDate, "dd/MM/yyyy")}` }</span>
+                                    { openDate &&
                                         <DateRange
-                                            editableDateInputs={true}
-                                            onChange={handleChangeDate}
-                                            moveRangeOnFirstSelection={false}
-                                            ranges={date}
+                                            editableDateInputs={ true }
+                                            onChange={ handleChangeDate }
+                                            moveRangeOnFirstSelection={ false }
+                                            ranges={ date }
                                             className='hotelDetailDate'
-                                            minDate={new Date()}
-                                        />}
+                                            minDate={ new Date() }
+                                        /> }
                                 </div>
-                                <div className="hotelDetailSearchBtn" onClick={handleSearchCategory}>
+                                <div className="hotelDetailSearchBtn" onClick={ handleSearchCategory }>
                                     <FontAwesomeIcon
-                                        icon={faMagnifyingGlass}
+                                        icon={ faMagnifyingGlass }
                                         className='hotelDetailSearchBtnIcon'
                                     />
                                 </div>
                             </div>
-                            {dateAlertShown && (
+                            { dateAlertShown && (
                                 <div className="dateAlert"> * Check in date and check out date can not match</div>
-                            )}
+                            ) }
                         </div>
                         <div className="hotelDetailRoomsTable">
                             <div className="hotelDetailRoomsTableTitle">
@@ -296,11 +327,7 @@ const HotelDetail = () => {
                                 </div>
                             </div>
                             {
-                                categories.map((category) => {
-                                    return (
-                                        <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} />
-                                    )
-                                })
+                                renderListCategory
                             }
                         </div>
                     </div>
@@ -310,18 +337,18 @@ const HotelDetail = () => {
                             {
                                 amenities.slice(0, 7).map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
                             }
-                            {remainingAmenitiesCount > 0 && (
+                            { remainingAmenitiesCount > 0 && (
                                 <div className="hotelDetailItem">
-                                    <span>+<b>{remainingAmenitiesCount}</b> more</span>
+                                    <span>+<b>{ remainingAmenitiesCount }</b> more</span>
                                 </div>
-                            )}
+                            ) }
                         </div>
                     </div>
                     <div className="hotelDetailSafetyHygiene">
@@ -330,50 +357,50 @@ const HotelDetail = () => {
                             {
                                 safetyHygiene.slice(0, 7).map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={index}>
-                                            <FontAwesomeIcon icon={faCircleCheck} className='offeredAmenityIcon' />
-                                            <span>{item}</span>
+                                        <div className="hotelDetailItem" key={ index }>
+                                            <FontAwesomeIcon icon={ faCircleCheck } className='offeredAmenityIcon' />
+                                            <span>{ item }</span>
                                         </div>
                                     )
                                 })
                             }
-                            {remainingSafetyHygieneCount > 0 && (
+                            { remainingSafetyHygieneCount > 0 && (
                                 <div className="hotelDetailItem">
-                                    <span>+<b>{remainingSafetyHygieneCount}</b> more</span>
+                                    <span>+<b>{ remainingSafetyHygieneCount }</b> more</span>
                                 </div>
-                            )}
+                            ) }
                         </div>
                     </div>
                     <div className="hotelDetailReview">
                         <div className="hotelDetailReviewTitle">
                             <h3>Reviews</h3>
-                            <FontAwesomeIcon icon={faStar} className='hotelDetailReviewTitleIcon' />
+                            <FontAwesomeIcon icon={ faStar } className='hotelDetailReviewTitleIcon' />
                             <h3>5.0</h3>
                         </div>
                         <div className="hotelDetailReviewRate">
                             <div className="hotelDetailReviewRateItem">
                                 <span>Amenity</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Hygiene</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Communication</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Location of Property</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                             <div className="hotelDetailReviewRateItem">
                                 <span>Value for Money</span>
-                                <LinearProgress variant="determinate" value={value} />
+                                <LinearProgress variant="determinate" value={ value } />
                                 <span className='ratingCount'>5.0</span>
                             </div>
                         </div>
@@ -392,27 +419,27 @@ const HotelDetail = () => {
                 <div className="hotelDetailReserve">
                     <div className="reserveBox">
                         <div className="reserveBoxPrice">
-                            <h3>{`$ ${dataHotel?.price} USD`}</h3>
+                            <h3>{ `$ ${dataHotel?.price} USD` }</h3>
                         </div>
                         <hr className='thin-line' />
                         <div className="reserveBoxPriceDesc">
-                            <span>Short Period: $ {dataHotel?.price} USD</span>
-                            <span>Medium Period: $ {dataHotel?.price * 2} USD</span>
-                            <span>Long Period: $ {dataHotel?.price * 3} USD</span>
+                            <span>Short Period: $ { dataHotel?.price } USD</span>
+                            <span>Medium Period: $ { dataHotel?.price * 2 } USD</span>
+                            <span>Long Period: $ { dataHotel?.price * 3 } USD</span>
                         </div>
                         <div className="reserveBtnComponent">
-                            <div className="reserveBtn" onClick={handleScroll}>
+                            <div className="reserveBtn" onClick={ handleScroll }>
                                 <span>Reserve Now</span>
                             </div>
                         </div>
                         <div className="reserveBoxFuncs">
                             <div className="reserveBoxFunc">
-                                <FontAwesomeIcon icon={faEnvelope} className='reserveBoxIcon' />
-                                <span>{dataHotel?.email}</span>
+                                <FontAwesomeIcon icon={ faEnvelope } className='reserveBoxIcon' />
+                                <span>{ dataHotel?.email }</span>
                             </div>
                             <div className="reserveBoxFunc">
-                                <FontAwesomeIcon icon={faPhone} className='reserveBoxIcon' />
-                                <span>{dataHotel?.hotline}</span>
+                                <FontAwesomeIcon icon={ faPhone } className='reserveBoxIcon' />
+                                <span>{ dataHotel?.hotline }</span>
                             </div>
                         </div>
                     </div>
