@@ -21,12 +21,6 @@ import {
   HostCreateHotelPage,
   HostStatisticPage,
 } from "./pages/hostPage/HostLayout";
-import {
-  BookingLayout,
-  BookingStepPage1,
-  BookingStepPage2,
-  BookingStepPage3,
-} from "./pages/bookingPage/BookingLayout";
 import AdminLayout from "./admin/AdminLayout";
 import Home from "./admin/pages/Home/Home";
 import Hotel from "./admin/pages/Hotel/Hotel";
@@ -75,13 +69,7 @@ const App = () => {
               <Route path="hotelproperties" element={<HotelProperties />} />
               <Route path="resevations" element={<HostReservation />} />
             </Route>
-            <Route path="booking" element={<BookingPage />}>
-              {/* <Route path="step1" element={<BookingStepPage1 />} /> */}
-
-              {/* <Route path="step1" element={<BookingStepPage1 />} />
-              <Route path="step2" element={<BookingStepPage2 />} />
-              <Route path="step3" element={<BookingStepPage3 />} /> */}
-            </Route>
+            <Route path="booking" element={<BookingPage />} />
             <Route path="hotel/:id" element={<HotelDetail />} />
           </Route>
           <Route path="search" element={<AppLayout />}>

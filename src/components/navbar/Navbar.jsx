@@ -72,7 +72,7 @@ const Navbar = ({ type }) => {
     }
 
     const handleResevations = () => {
-        navigate('user/reservations');
+        navigate('/user/reservations');
     }
 
     const handleHostResevations = () => {

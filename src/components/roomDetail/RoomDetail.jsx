@@ -27,9 +27,9 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
             console.log("getCategoryById", res.data.data);
             setDataCategoryDetail(res.data.data);
             setCatetogyImages(res.data.data.category_images);
-            setBathroomOptions(res.data.data.bathroom_facilities.split("\n"));
-            setDirectionsViewOptions(res.data.data.directions_view.split("\n"));
-            setAmenityOptions(res.data.data.amenities.split("\n"));
+            setBathroomOptions(res.data.data.bathroom_facilities.split(","));
+            setDirectionsViewOptions(res.data.data.directions_view.split(","));
+            setAmenityOptions(res.data.data.amenities.split(","));
         } else {
             setDataCategoryDetail({});
             console.log("Error");
@@ -58,9 +58,6 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                 <div className="roomDetailContentContainer">
                     <div className="roomDetailIntroduction">
                         <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
-                        <div className="roomDetailRoomsAvailable">
-                            <span>4 rooms available</span>
-                        </div>
                     </div>
                     <div className="roomDetailBedType">
                         <span>{dataCategoryDetail?.bed} bed</span>
@@ -125,6 +122,9 @@ const RoomDetail = ({ room, date, categoryId, onClose }) => {
                         </div>
                         <div className="roomDetailAvailableRooms">
                             <span>You book {room} rooms</span>
+                            <div className="roomDetailRoomsAvailable">
+                                <span>4 rooms available</span>
+                            </div>
                         </div>
                     </div>
                     <div className="roomDetailPrice">
