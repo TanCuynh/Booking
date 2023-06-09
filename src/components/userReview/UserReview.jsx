@@ -14,7 +14,7 @@ function UserReview() {
                     </div>
 
                     <div className="hotelContent">
-                        <p className="hotelName">Wink Hotel</p>
+                        <p className="userReviewHotelName">Wink Hotel</p>
                         <p className="address-hotel">Da Nang, Viet Nam</p>
                         <div className="day-review">
                             <p>24 May 2023</p>

@@ -1,17 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './changeProfile.css';
 import { APP_CONTEXT } from "../../App";
+import { AuthAPI } from "../../api/AuthAPI";
+import { toast } from "react-hot-toast";
 
 const ChangeProfile = () => {
 
   const context = useContext(APP_CONTEXT);
 
   const [editing, setEditing] = useState(false);
+
   const [name, setName] = useState(context.user.name);
   const [tempName, setTempName] = useState(name);
 
   const [emailAddress, setEmailAddress] = useState(context.user.email);
-  const [tempEmailAddress, setTempEmailAddress] = useState(emailAddress);
 
   const [phoneNumber, setPhoneNumber] = useState(context.user.phone_number);
   const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber);
@@ -19,7 +21,10 @@ const ChangeProfile = () => {
   const [dateOfBirth, setDateOfBirth] = useState(context.user.date_of_birth);
   const [tempDateOfBirth, setTempDateOfBirth] = useState(dateOfBirth);
 
-  const [gender, setGender] = useState(context.user.gender);
+  const [gender, setGender] = useState(0);
+  useEffect(() => {
+    setGender(context.user.gender);
+  }, [context.user.gender])
   const [tempGender, setTempGender] = useState(gender);
 
   const [address, setAddress] = useState(context.user.address);
@@ -27,14 +32,12 @@ const ChangeProfile = () => {
 
   const [error, setError] = useState("");
 
-  const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
 
   const handleEditClick = () => {
     if (editing) {
       setTempName(name);
-      setTempEmailAddress(emailAddress);
       setTempPhoneNumber(phoneNumber);
       setTempDateOfBirth(dateOfBirth);
       setTempGender(gender);
@@ -48,16 +51,14 @@ const ChangeProfile = () => {
     setTempGender(parseInt(event.target.value));
   };
 
-  const handleSaveClick = () => {
+  const [accId, setAccId] = useState(context.user.id);
 
-    setEmailError("");
+  const handleSaveClick = async () => {
     setPhoneError("");
-
-    console.log("gender", gender, tempGender);
+    setPhoneError("");
 
     if (
       !tempName ||
-      !tempEmailAddress ||
       !tempPhoneNumber ||
       !tempDateOfBirth ||
       !tempAddress
@@ -65,36 +66,40 @@ const ChangeProfile = () => {
       setError('Please fill in all the required fields');
       return;
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneNumberRegex = /^\d{10}$/;
-
-    if (!emailRegex.test(tempEmailAddress)) {
-      setEmailError("Your email is invalid");
-      return;
-    }
 
     if (!phoneNumberRegex.test(tempPhoneNumber)) {
       setPhoneError("Your phone number is invalid");
       return;
     }
 
+    try {
+      const res = await AuthAPI.editProfile(accId, {
+        name: tempName,
+        phone_number: tempPhoneNumber,
+        date_of_birth: tempDateOfBirth,
+        gender: tempGender,
+        address: tempAddress,
+      });
 
-    setName(tempName);
-    setEmailAddress(tempEmailAddress);
-    setPhoneNumber(tempPhoneNumber);
-    setDateOfBirth(tempDateOfBirth);
-    setGender(tempGender);
-    setAddress(tempAddress);
-    setEditing(false);
+      if (res.status === 200) {
+        setName(tempName);
+        setPhoneNumber(tempPhoneNumber);
+        setDateOfBirth(tempDateOfBirth);
+        setGender(tempGender);
+        setAddress(tempAddress);
 
-    setError("");
-    setPhoneError("");
-    setEmailError("");
+        setEditing(false);
+      } else {
+        setError("Failed to update the profile");
+      }
+    } catch (error) {
+      toast.error("An error occurred while updating the profile");
+    }
   };
 
   const handleCancelClick = () => {
     setTempName(name);
-    setTempEmailAddress(emailAddress);
     setTempPhoneNumber(phoneNumber);
     setTempGender(gender);
     setTempAddress(address);
@@ -102,7 +107,6 @@ const ChangeProfile = () => {
 
     setError("");
     setPhoneError("");
-    setEmailError("");
   };
 
 
@@ -129,18 +133,8 @@ const ChangeProfile = () => {
         <div className="information">
           <div className="infoLabel">
             <p className="label">Email Address</p>
-            <span>{emailError}</span>
           </div>
-          {editing ? (
-            <input
-              type="text"
-              value={tempEmailAddress}
-              onChange={(event) => handleInputChange(event, setTempEmailAddress)}
-              className="input-field"
-            />
-          ) : (
-            <p className="info-field">{emailAddress}</p>
-          )}
+          <p className="info-field">{emailAddress}</p>
         </div>
         <div className="information">
           <div className="infoLabel">
@@ -177,10 +171,10 @@ const ChangeProfile = () => {
             <select
               value={tempGender}
               onChange={(event) => handleInputChange(event, setTempGender)}
-              className="input-field"
+              className="select-field"
             >
-              <option value={0}>Male</option>
-              <option value={1}>Female</option>
+              <option className="select-option" value={0}>Male</option>
+              <option className="select-option" value={1}>Female</option>
             </select>
           ) : (
             <p className="info-field">{gender === 0 ? "Male" : "Female"}</p>

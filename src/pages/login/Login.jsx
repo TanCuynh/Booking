@@ -66,7 +66,7 @@ const Login = ({ onClose }) => {
 						<h2>Login</h2>
 					</div>
 				</div>
-				<form onSubmit={ handleSubmit } onKeyPress={ (e) => e.key === 'Enter' && handleSubmit(e) }>
+				<form onSubmit={handleSubmit} onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}>
 					<div className="loginContainerMail">
 						<div className="loginContainerMailInputContainer">
 							<span>Email</span>
@@ -74,13 +74,13 @@ const Login = ({ onClose }) => {
 								required=""
 								type="email"
 								name='email'
-								value={ data.email }
-								onChange={ handleChange }
+								value={data.email}
+								onChange={handleChange}
 								className="loginContainerMailInput"
 								placeholder="Enter your email"
 							/>
 						</div>
-						{ emailAlert && <span className='loginContainerAlert'>You haven't entered your email!</span> }
+						{emailAlert && <span className='loginContainerAlert'>You haven't entered your email!</span>}
 					</div>
 					<div className="loginContainerPassword">
 						<div className="loginContainerPasswordInputContainer">
@@ -89,22 +89,22 @@ const Login = ({ onClose }) => {
 								required=""
 								type="password"
 								name='password'
-								value={ data.password }
-								onChange={ handleChange }
+								value={data.password}
+								onChange={handleChange}
 								className="loginContainerPasswordInput"
 								placeholder="Enter your password"
 							/>
 						</div>
-						{ passwordAlert && <span className='loginContainerAlert'>You haven't enter your password!</span> }
+						{passwordAlert && <span className='loginContainerAlert'>You haven't enter your password!</span>}
 					</div>
 					<div className="loginContainerConfirm">
 						<span className="loginContainerMailMess">We’ll send you a message to confirm your email. Standard message and data
 							rates apply.</span>
-						<button className="loginContainerBtn" disabled={ isLoading } type='submit'>
+						<button className="loginContainerBtn" disabled={isLoading} type='submit'>
 							{
 								isLoading ?
 									<div className='loadingWrap'>
-										<CircularProgress className='iconSpinner' size={ 24 } style={{ color: 'white' }} />
+										<CircularProgress className='iconSpinner' size={24} style={{ color: 'white' }} />
 										<span>Pending</span>
 									</div>
 									:
@@ -134,7 +134,7 @@ const Login = ({ onClose }) => {
 				</form>
 
 
-				<FontAwesomeIcon icon={ faXmark } className='loginCloseBtn' onClick={ handleClose } />
+				<FontAwesomeIcon icon={faXmark} className='loginCloseBtn' onClick={handleClose} />
 			</div >
 		</>
 

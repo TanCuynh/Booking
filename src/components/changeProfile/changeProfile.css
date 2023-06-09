@@ -48,16 +48,34 @@
 .input-field,
 .info-field {
   padding: 1rem;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
+  outline: none;
   width: 40%;
 }
 
 .input-field {
   border-radius: 10px;
-  background: #eee;
-  font-weight: 400;
+  background: #e8f0ff;
+  font-weight: 500;
+  outline: none;
   border: none;
+}
+
+.select-field {
+  padding: 1rem;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  background: #e8f0ff;
+  border: none;
+  outline: none;
+}
+
+.select-option {
+  padding: 10px;
+  height: 40px;
+  width: 200px;
 }
 
 .info-field {

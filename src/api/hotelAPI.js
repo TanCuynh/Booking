@@ -20,6 +20,8 @@ const hotelAPI = {
   getImageByHotel: (id) => axiosClient.get(`/hotel-images/hotel/${id}`),
 
   searchBarHotel: () => axiosClient.get(`/hotels/city`),
+
+  getHotelByHost: (id) => axiosClient.get(`/hotels/host`),
 };
 
 export default hotelAPI;
