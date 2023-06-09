@@ -165,7 +165,6 @@ const HotelDetail = () => {
     const [disableShowPrice, setDisableShowPrice] = useState(true);
 
     const handleSearchCategory = () => {
-        // setDisableShowPrice(true);
         if (calculateDays(date[0].startDate, date[0].endDate) === 0) {
             setDateAlertShown(true);
             setDisableShowPrice(true);
@@ -218,10 +217,8 @@ const HotelDetail = () => {
 
         const toDate = getDateFormat(today);
         const oneWeekLaterDate = getDateFormat(oneWeekLater);
-
-        // console.log("today", toDate);
-        // console.log("week", oneWeekLaterDate);
         getCategory(toDate, oneWeekLaterDate);
+        ;
     }, []);
 
 

@@ -1,48 +1,61 @@
 import React, { useState } from "react";
 import './changePassword.css';
 import { toast } from "react-hot-toast";
+import { AuthAPI } from "../../api/AuthAPI";
 
 const ChangePassword = () => {
-    const [formData, setFormData] = useState({
-        currentPassword: '',
-        newPassword: '',
-        reNewPassword: '',
-    });
-    const { currentPassword, newPassword, reNewPassword } = formData;
+    const [formData, setFormData] = useState(
+        {
+            old_password: '',
+            new_password: '',
+            re_new_password: '',
+        }
+    );
+    const { old_password, new_password, re_new_password } = formData;
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState(""); // eslint-disable
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (currentPassword.trim() === '') {
-            // alert('Please enter Current Password');
+        if (old_password.trim() === '') {
             toast.error("You must enter your current password");
-            return;
         }
-
-        if (newPassword.trim() === '') {
-            // alert('Please enter New Password');
+        if (new_password.trim() === '') {
             toast.error("You must enter a new password");
-
-            return;
         }
-
-        if (reNewPassword.trim() === '') {
-            // alert('Please enter New Password');
+        if (re_new_password.trim() === '') {
             toast.error("You must confirm your new password");
-
-            return;
         }
-
-        if (newPassword !== reNewPassword) {
-            // alert('New password and confirm password do not match');
+        if (new_password !== re_new_password) {
             toast.error("Your new password and confirmation must match");
-
-            return;
+        }
+        try {
+            const res = await AuthAPI.changePassword(formData);
+            if (res.status === 200) {
+                console.log("success", res);
+                setFormData(
+                    {
+                        old_password: '',
+                        new_password: '',
+                        re_new_password: '',
+                    }
+                );
+            } else {
+                const responseJson = await res.json();
+                const { error } = responseJson;
+                setError(error);
+            }
+        }
+        catch (error) {
+            if (error.response.data.error.toLowerCase() === "new password must be different from old password") {
+                toast.error("New password must be different from old password");
+            }
+            if (error.response.data.error.toLowerCase() === "old password is incorrect") {
+                toast.error("Old password is incorrect");
+            }
         }
     };
 
@@ -58,37 +71,37 @@ const ChangePassword = () => {
                     <input
                         type="password"
                         id="current-password-input"
-                        value={currentPassword}
-                        name="currentPassword"
+                        value={old_password}
+                        name="old_password"
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {currentPassword === '' && <p className='error-message'>Please enter your current password.</p>}
+                    {old_password === '' && <p className='error-message'>Please enter your current password.</p>}
                 </div>
                 <div className="changePasswordInput">
                     <label className="changePasswordLabel">Your new password</label>
                     <input
                         type="password"
                         id="new-password-input"
-                        value={newPassword}
-                        name="newPassword"
+                        value={new_password}
+                        name="new_password"
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {newPassword === '' && <p className='error-message'>Please enter your new password.</p>}
+                    {new_password === '' && <p className='error-message'>Please enter your new password.</p>}
                 </div>
                 <div className="changePasswordInput">
                     <label className="changePasswordLabel">Confirm your new password</label>
                     <input
                         type="password"
                         id="new-password2-input"
-                        value={reNewPassword}
-                        name="reNewPassword"
+                        value={re_new_password}
+                        name="re_new_password"
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {reNewPassword === '' && <p className='error-message'>Please enter your new password again.</p> ||
-                        reNewPassword !== newPassword && <p className='error-message'>Password incorrect</p>}
+                    {re_new_password === '' && <p className='error-message'>Please enter your new password again.</p> ||
+                        re_new_password !== new_password && <p className='error-message'>Password incorrect</p>}
                 </div>
                 <div className="changePasswordBtn">
                     <button onClick={handleSubmit}>

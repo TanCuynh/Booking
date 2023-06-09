@@ -38,12 +38,12 @@ const RoomsTable = ({ date, notShowPrice, dataCategory, emptyRoom, idHotel, date
     }
 
     const closePopup = () => {
-        // console.log('111', date, notShowPrice, dataCategory)
         setShowPrices(false);
         document.body.style.overflow = 'auto';
     };
 
     useEffect(() => {
+        console.log("roomCount", emptyRoom, emptyRoom?.length);
     });
 
     return (
