@@ -43,7 +43,6 @@ const RoomsTable = ({ date, notShowPrice, dataCategory, emptyRoom, idHotel, date
     };
 
     useEffect(() => {
-        console.log("roomCount", emptyRoom, emptyRoom?.length);
     });
 
     return (

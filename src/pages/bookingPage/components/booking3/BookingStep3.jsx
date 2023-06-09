@@ -37,11 +37,11 @@ const BookingStep3 = (data) => {
     }
     const updatePayment = async () => {
         const bookingId = localStorage.getItem('bookingId');
-
         const res = await paymentAPI.updatePayment(bookingId, { payment_status: 1 })
         if (res.status === 200) {
             toast.success("Your payment has been updated")
             console.log('success payment', res);
+            navigate('/');
         } else {
             toast.error("Update payment fails");
             console.log('error payment', res);

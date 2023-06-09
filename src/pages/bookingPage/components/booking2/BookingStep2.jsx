@@ -51,7 +51,7 @@ const BookingStep2 = (data) => {
             </div>
 
             <div className="bookingStep2Bill">
-                <div className="hotelName">
+                <div className="billHotelName">
                     <span>YOUR ONLINE INVOICE</span>
                 </div>
 

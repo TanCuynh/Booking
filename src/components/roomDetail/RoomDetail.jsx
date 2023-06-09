@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './roomDetail.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faCheck, faDoorOpen, faMountainSun, faShower, faVolumeXmark, faWifi, faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -8,12 +8,14 @@ import categoryAPI from '../../api/categoryAPI'
 import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
 import { useNavigate } from 'react-router-dom'
 import { bookingAPI } from '../../api/bookingAPI'
+import { APP_CONTEXT } from '../../App'
+import { toast } from 'react-hot-toast'
 
 const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateParams }) => {
 
-    const navigate = useNavigate();
+    const context = useContext(APP_CONTEXT);
 
-    console.log("siuuuuuu", room, date, emptyRoom, dateParams)
+    const navigate = useNavigate();
 
     const [dataCategoryDetail, setDataCategoryDetail] = useState({});
     const [categoryImages, setCatetogyImages] = useState([]);
@@ -26,7 +28,6 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
         if (res.status === 200) {
-            console.log("dataNeeded:", res.data.data);
             setDataCategoryDetail(res.data.data);
             setCatetogyImages(res.data.data.category_images);
             setBathroomOptions(res.data.data.bathroom_facilities.split(","));
@@ -38,7 +39,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         }
     }
     const createBooking = async () => {
-        console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
+        // console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
         const res = await bookingAPI.createBooking({
             description: "nothing",
             date_in: dateParams.dateStart,
@@ -49,22 +50,25 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         });
         if (res.status === 200) {
             localStorage.setItem('bookingId', res.data.data.booking.id);
-            console.log("book", res.data);
+            // console.log("book", res.data);
 
         } else {
-            console.log('error creating booking', res);
+            console.log('Error creating booking', res);
         }
     }
 
     const handleBooking = () => {
-        navigate('/booking', { state: { dataCategoryDetail } }); // them vo doan nay`
-        createBooking();
+        if (context.user.role === "admin" || context.user.role === "hotel") {
+            toast.error("You can't make any booking requests if you are a host");
+            navigate('/');
+        } else {
+            navigate('/booking', { state: { dataCategoryDetail } });
+            createBooking();
+        }
     }
     useEffect(() => {
         getDataCategoryDetail();
     }, [])
-
-    console.log("sadsadas", emptyRoom);
 
     const handleClose = () => {
         onClose();

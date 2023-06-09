@@ -40,6 +40,7 @@ const HotelDetail = () => {
     const [amenities, setAmenities] = useState([]);
     const [categories, setCategories] = useState([]);
     const [emptyRoom, setEmptyRoom] = useState([]);
+    const [reviews, setReviews] = useState([]);
     const [params, setParams] = useState({
         dateStart: '',
         dateEnd: '',
@@ -54,10 +55,13 @@ const HotelDetail = () => {
             setSafetyHygiene(res.data.data.Safety_Hygiene.split(","));
             setAmenities(res.data.data.amenities.split(","));
             setCategories(res.data.data.categories);
+            setReviews(res.data.reviews.data);
         } else {
             setDataHotel({});
         }
     }
+
+    console.log("showReviews", reviews);
 
 
 
@@ -185,7 +189,6 @@ const HotelDetail = () => {
         } else {
             console.log('error', res)
         }
-        // setDateAlertShown(false);
     };
 
     const renderListCategory = useMemo(() => {
@@ -211,15 +214,13 @@ const HotelDetail = () => {
         getHotelDetail(id);
 
         const today = new Date();
-
         const oneWeekLater = new Date(today);
         oneWeekLater.setDate(oneWeekLater.getDate() + 7);
-
         const toDate = getDateFormat(today);
         const oneWeekLaterDate = getDateFormat(oneWeekLater);
         getCategory(toDate, oneWeekLaterDate);
-        ;
-    }, []);
+
+    }, [id]);
 
 
     return (
@@ -404,9 +405,13 @@ const HotelDetail = () => {
                             <h3>5.0</h3>
                         </div>
                         <div className="hotelDetailReviewComment">
-                            <ReviewComment />
-                            <ReviewComment />
-                            <ReviewComment />
+                            {
+                                reviews.map((review, index) => {
+                                    return (
+                                        <ReviewComment key={index} dataReview={review} />
+                                    )
+                                })
+                            }
                         </div>
                         <div className="hotelDetailReviewShowCommentBtnContainer">
                             <div className="hotelDetailReviewShowCommentBtn">

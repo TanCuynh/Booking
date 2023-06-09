@@ -53,7 +53,14 @@ const App = () => {
 
   return (
     <APP_CONTEXT.Provider
-      value={{ user, setUser, dataAllHotels, setDataAllHotels, selectCategory, setSelectCategory }}
+      value={{
+        user,
+        setUser,
+        dataAllHotels,
+        setDataAllHotels,
+        selectCategory,
+        setSelectCategory,
+      }}
     >
       <BrowserRouter>
         <StartOnTop />
