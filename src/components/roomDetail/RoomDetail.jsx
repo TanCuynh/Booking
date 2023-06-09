@@ -13,6 +13,8 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
 
     const navigate = useNavigate();
 
+    console.log("siuuuuuu", room, date, emptyRoom, dateParams)
+
     const [dataCategoryDetail, setDataCategoryDetail] = useState({});
     const [categoryImages, setCatetogyImages] = useState([]);
     const [bathroomOptions, setBathroomOptions] = useState([]);
@@ -20,10 +22,11 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     const [amenitiesOptions, setAmenityOptions] = useState([]);
 
 
+
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
         if (res.status === 200) {
-            // console.log("getCategoryById", res.data.data);
+            console.log("dataNeeded:", res.data.data);
             setDataCategoryDetail(res.data.data);
             setCatetogyImages(res.data.data.category_images);
             setBathroomOptions(res.data.data.bathroom_facilities.split(","));
@@ -53,13 +56,14 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     }
 
     const handleBooking = () => {
-        navigate('/booking');
-        console.log(11111)
+        navigate('/booking', { state: { dataCategoryDetail } }); // them vo doan nay`
         createBooking();
     }
     useEffect(() => {
         getDataCategoryDetail();
     }, [])
+
+    console.log("sadsadas", emptyRoom);
 
     const handleClose = () => {
         onClose();
@@ -139,11 +143,10 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>You book {room} rooms</span>
                             <div className="roomDetailRoomsAvailable">
                                 <span>You book {room} rooms</span>
                             </div>
-                            <span>4 rooms available</span>
+                            <span>{emptyRoom.length} rooms available</span>
                         </div>
                     </div>
                     <div className="roomDetailPrice">

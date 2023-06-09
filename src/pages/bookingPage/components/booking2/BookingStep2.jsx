@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './bookingstep2.css';
-import { Step, StepLabel, Stepper } from "@mui/material";
+import { APP_CONTEXT } from "../../../../App";
 
+const BookingStep2 = (data) => {
 
-const BookingStep2 = () => {
+    const context = useContext(APP_CONTEXT);
     const [formData, setFormData] = useState({
         bank: '',
         cardNumber: '',
@@ -12,6 +13,9 @@ const BookingStep2 = () => {
     });
 
     const { bank, cardNumber, name } = formData;
+
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().split('T')[0];
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,36 +51,42 @@ const BookingStep2 = () => {
             </div>
 
             <div className="bookingStep2Bill">
-                <div className="customerInfo">
-                    <div className="customerName">
-                        <span>Customer's name: </span>
-                        <h3>Tran Hong Duc</h3>
-                    </div>
-
-                    <div className="customerAddress">
-                        <span>Address: </span>
-                        <p>23B Thai Thi Boi - Da Nang</p>
-                    </div>
-
-                    <div className="customerPhone">
-                        <span>Phone number: </span>
-                        <h3>0989112223</h3>
-                    </div>
-
-                    <div className="customerEmail">
-                        <span>Email: </span>
-                        <h3>hongduc@gmail.com</h3>
-                    </div>
+                <div className="hotelName">
+                    <span>YOUR ONLINE INVOICE</span>
                 </div>
 
-                <div className="billInfo">
-                    <div className="billDate">
-                        <span>Date: </span>
-                        <h3>7 Jun 2023</h3>
+                <div className="billDetail">
+                    <div className="customerInfo">
+                        <div className="customerName">
+                            <span>Customer's name: </span>
+                            <h3>{context.user.name}</h3>
+                        </div>
+
+                        <div className="customerAddress">
+                            <span>Address: </span>
+                            <p>{context.user.address}</p>
+                        </div>
+
+                        <div className="customerPhone">
+                            <span>Phone number: </span>
+                            <h3>{context.user.phone_number}</h3>
+                        </div>
+
+                        <div className="customerEmail">
+                            <span>Email: </span>
+                            <h3>{context.user.email}</h3>
+                        </div>
                     </div>
-                    <div className="billPrice">
-                        <span>Price: </span>
-                        <h3>$ 2000 USD</h3>
+
+                    <div className="billInfo">
+                        <div className="billDate">
+                            <span>Date: </span>
+                            <h3>{formattedDate}</h3>
+                        </div>
+                        <div className="billPrice">
+                            <span>Price: </span>
+                            <h3>$ {data.data.price} USD</h3>
+                        </div>
                     </div>
                 </div>
             </div>

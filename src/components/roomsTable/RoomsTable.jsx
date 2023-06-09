@@ -1,9 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './roomsTable.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faUser } from '@fortawesome/free-solid-svg-icons'
 import RoomDetail from '../roomDetail/RoomDetail'
 import { APP_CONTEXT } from '../../App'
+import categoryAPI from '../../api/categoryAPI'
+
+const getDateFormat = (date) => {
+    const newDate = new Date(date);
+    const year = newDate.getFullYear();
+    const month = ('0' + (newDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + newDate.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+}
 
 const RoomsTable = ({ date, notShowPrice, dataCategory, emptyRoom, idHotel, dateParams }) => {
     const context = useContext(APP_CONTEXT);
@@ -29,10 +38,13 @@ const RoomsTable = ({ date, notShowPrice, dataCategory, emptyRoom, idHotel, date
     }
 
     const closePopup = () => {
-        console.log('111', date, notShowPrice, dataCategory)
+        // console.log('111', date, notShowPrice, dataCategory)
         setShowPrices(false);
         document.body.style.overflow = 'auto';
     };
+
+    useEffect(() => {
+    });
 
     return (
         <div className="roomsTableContainer">
@@ -77,7 +89,7 @@ const RoomsTable = ({ date, notShowPrice, dataCategory, emptyRoom, idHotel, date
                 <input
                     type="number"
                     min={0}
-                    max={4}
+                    max={emptyRoom?.length}
                     value={roomQuantity}
                     onChange={(e) => setRoomQuantity(e.target.value)}
                     className='roomTableRoomQuantityNumber'
