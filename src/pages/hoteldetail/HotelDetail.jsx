@@ -439,7 +439,7 @@ const HotelDetail = () => {
                         <div className="reserveBoxFuncs">
                             <div className="reserveBoxFunc">
                                 <FontAwesomeIcon icon={faEnvelope} className='reserveBoxIcon' />
-                                <span>{dataHotel?.email}</span>
+                                <p>{dataHotel?.email}</p>
                             </div>
                             <div className="reserveBoxFunc">
                                 <FontAwesomeIcon icon={faPhone} className='reserveBoxIcon' />
