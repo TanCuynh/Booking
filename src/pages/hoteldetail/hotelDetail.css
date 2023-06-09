@@ -213,8 +213,16 @@
 }
 
 .reserveBoxFunc span {
+    width: 100px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.reserveBoxFunc p {
+    width: 100px;
+    font-weight: 600;
+    font-size: 13px;
     line-height: 18px;
 }
 

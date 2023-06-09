@@ -85,7 +85,7 @@ const User = () => {
                             close();
                         }}
                     >
-                        close
+                        Close
                     </Button>
                 </Space>
             </div>

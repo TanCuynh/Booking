@@ -50,6 +50,7 @@ const Navbar = ({ type }) => {
     const handleLogout = () => {
         context.setUser({});
         toast.success('Logged out');
+        navigate('/');
     };
     const handleClickAdmin = () => {
         navigate('/admin');

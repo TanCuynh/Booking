@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HotelItem from "../../../components/hotelItem/HotelItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './hostProperties.css';
 import { useNavigate } from "react-router-dom";
+import { APP_CONTEXT } from "../../../App";
+import hotelAPI from "../../../api/hotelAPI";
 const HostProperties = () => {
 	const navigate = useNavigate();
+	const context = useContext(APP_CONTEXT);
+	const [hotels, setHotels] = useState([]);
 
 	const handleClickCreate = () => {
 		navigate('/host/create');
 	};
 
+	const getHotelByHost = async () => {
+		const res = await hotelAPI.getHotelByHost();
+		if (res.status === 200) {
+			setHotels(res.data.data.data);
+		} else {
+			setHotels([]);
+			console.log("Error")
+		}
+	}
 
+	useEffect(() => {
+		getHotelByHost();
+	}, []);
 
 	return (
 		<div className="host-properties">
@@ -28,7 +44,14 @@ const HostProperties = () => {
 					</div>
 				</div>
 				<div className="host-properties-container">
-					<HotelItem />
+					{
+						hotels.map((hotel, index) => {
+							return (
+								<HotelItem key={index} dataHotel={hotel} />
+							)
+						})
+					}
+
 				</div>
 			</div>
 
