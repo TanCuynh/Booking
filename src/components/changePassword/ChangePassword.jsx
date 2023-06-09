@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import './changePassword.css';
-import { Height } from "@mui/icons-material";
+import { toast } from "react-hot-toast";
 
 const ChangePassword = () => {
     const [formData, setFormData] = useState({
         currentPassword: '',
         newPassword: '',
-        newPassword2: '',
-        verify: ''
+        reNewPassword: '',
     });
-    const { currentPassword, newPassword, newPassword2, verify } = formData;
+    const { currentPassword, newPassword, reNewPassword } = formData;
+
+    const [error, setError] = useState("");
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,22 +19,29 @@ const ChangePassword = () => {
         e.preventDefault();
 
         if (currentPassword.trim() === '') {
-            alert('Please enter Current Password');
+            // alert('Please enter Current Password');
+            toast.error("You must enter your current password");
             return;
         }
 
         if (newPassword.trim() === '') {
-            alert('Please enter New Password');
+            // alert('Please enter New Password');
+            toast.error("You must enter a new password");
+
             return;
         }
 
-        if (newPassword2.trim() === '') {
-            alert('Please enter New Password');
+        if (reNewPassword.trim() === '') {
+            // alert('Please enter New Password');
+            toast.error("You must confirm your new password");
+
             return;
         }
 
-        if (verify.trim() === '') {
-            alert('Please enter Verify Code');
+        if (newPassword !== reNewPassword) {
+            // alert('New password and confirm password do not match');
+            toast.error("Your new password and confirmation must match");
+
             return;
         }
     };
@@ -74,13 +82,13 @@ const ChangePassword = () => {
                     <input
                         type="password"
                         id="new-password2-input"
-                        value={newPassword2}
-                        name="newPassword2"
+                        value={reNewPassword}
+                        name="reNewPassword"
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {newPassword2 === '' && <p className='error-message'>Please enter your new password again.</p> ||
-                        newPassword2 !== newPassword && <p className='error-message'>Password incorrect</p>}
+                    {reNewPassword === '' && <p className='error-message'>Please enter your new password again.</p> ||
+                        reNewPassword !== newPassword && <p className='error-message'>Password incorrect</p>}
                 </div>
                 <div className="changePasswordBtn">
                     <button onClick={handleSubmit}>

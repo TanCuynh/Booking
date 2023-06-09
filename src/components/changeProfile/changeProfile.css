@@ -19,7 +19,8 @@
 
 .changeProfileContainer p {
   font-size: 14px;
-  color: #2353b3;
+  font-weight: 500;
+  color: red;
 }
 
 .information {
@@ -27,10 +28,21 @@
   display: flex;
   flex-direction: row;
   gap: 200px;
-  width: 75%;
+  width: 90%;
   height: 75px;
   border-top: 1px solid #484848;
   align-items: center;
+}
+
+.infoLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.information span {
+  font-size: 12px;
+  font-weight: 500;
+  color: red;
 }
 
 .input-field,
@@ -81,7 +93,7 @@
   border-radius: 99px;
   font-size: 14px;
   color: #fff;
-  background-color: #aaa;
+  background-color: #e24e4e;
   border: none;
 }
 

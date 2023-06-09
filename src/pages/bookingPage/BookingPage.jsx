@@ -23,7 +23,7 @@ const BookingPage = () => {
         },
         {
             title: 'Booking Conplete',
-            content: <BookingStep3 />,
+            content: <BookingStep3 data={dataCategory} />,
         },
     ];
 

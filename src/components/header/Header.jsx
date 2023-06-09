@@ -13,9 +13,9 @@ import hotelAPI from '../../api/hotelAPI';
 const Header = () => {
     const navigate = useNavigate();
     const [destination, setDestination] = useState("");
-    const [price, setPrice] = useState([2000, 3000]);
+    const [price, setPrice] = useState([200, 500]);
 
-    const [searchBarCities, setSearchBarCities] = useState([]); 
+    const [searchBarCities, setSearchBarCities] = useState([]);
 
     const getSearchBarCities = async () => {
         const res = await hotelAPI.searchBarHotel();
@@ -96,9 +96,9 @@ const Header = () => {
                                     valueLabelDisplay="auto"
                                     getAriaValueText={valuetext}
                                     valueLabelFormat={valuetext}
-                                    step={100}
-                                    min={1000}
-                                    max={5000}
+                                    step={10}
+                                    min={50}
+                                    max={1000}
                                     size='small'
                                     disableSwap
                                 />

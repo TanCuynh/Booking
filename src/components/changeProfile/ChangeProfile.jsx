@@ -6,8 +6,6 @@ const ChangeProfile = () => {
 
   const context = useContext(APP_CONTEXT);
 
-  console.log("User:", context.user)
-
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(context.user.name);
   const [tempName, setTempName] = useState(name);
@@ -27,6 +25,11 @@ const ChangeProfile = () => {
   const [address, setAddress] = useState(context.user.address);
   const [tempAddress, setTempAddress] = useState(address);
 
+  const [error, setError] = useState("");
+
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+
 
   const handleEditClick = () => {
     if (editing) {
@@ -42,9 +45,40 @@ const ChangeProfile = () => {
 
   const handleInputChange = (event, setter) => {
     setter(event.target.value);
+    setTempGender(parseInt(event.target.value));
   };
 
   const handleSaveClick = () => {
+
+    setEmailError("");
+    setPhoneError("");
+
+    console.log("gender", gender, tempGender);
+
+    if (
+      !tempName ||
+      !tempEmailAddress ||
+      !tempPhoneNumber ||
+      !tempDateOfBirth ||
+      !tempAddress
+    ) {
+      setError('Please fill in all the required fields');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneNumberRegex = /^\d{10}$/;
+
+    if (!emailRegex.test(tempEmailAddress)) {
+      setEmailError("Your email is invalid");
+      return;
+    }
+
+    if (!phoneNumberRegex.test(tempPhoneNumber)) {
+      setPhoneError("Your phone number is invalid");
+      return;
+    }
+
+
     setName(tempName);
     setEmailAddress(tempEmailAddress);
     setPhoneNumber(tempPhoneNumber);
@@ -52,16 +86,23 @@ const ChangeProfile = () => {
     setGender(tempGender);
     setAddress(tempAddress);
     setEditing(false);
+
+    setError("");
+    setPhoneError("");
+    setEmailError("");
   };
 
   const handleCancelClick = () => {
     setTempName(name);
     setTempEmailAddress(emailAddress);
     setTempPhoneNumber(phoneNumber);
-    setTempDateOfBirth(dateOfBirth);
     setTempGender(gender);
     setTempAddress(address);
     setEditing(false);
+
+    setError("");
+    setPhoneError("");
+    setEmailError("");
   };
 
 
@@ -70,7 +111,7 @@ const ChangeProfile = () => {
       <div className="profileContainer">
         <div className="changeProfileContainer">
           <h3>Personal details</h3>
-          <p>Update your information and find out how it's used.</p>
+          {<p>{error}</p>}
         </div>
         <div className="information">
           <p className="label">Name</p>
@@ -86,7 +127,10 @@ const ChangeProfile = () => {
           )}
         </div>
         <div className="information">
-          <p className="label">Email Address</p>
+          <div className="infoLabel">
+            <p className="label">Email Address</p>
+            <span>{emailError}</span>
+          </div>
           {editing ? (
             <input
               type="text"
@@ -99,7 +143,10 @@ const ChangeProfile = () => {
           )}
         </div>
         <div className="information">
-          <p className="label">Phone Number</p>
+          <div className="infoLabel">
+            <p className="label">Phone Number</p>
+            <span>{phoneError}</span>
+          </div>
           {editing ? (
             <input
               type="text"
@@ -115,7 +162,7 @@ const ChangeProfile = () => {
           <p className="label">Date of Birth</p>
           {editing ? (
             <input
-              type="text"
+              type="date"
               value={tempDateOfBirth}
               onChange={(event) => handleInputChange(event, setTempDateOfBirth)}
               className="input-field"

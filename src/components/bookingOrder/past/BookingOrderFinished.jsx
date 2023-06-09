@@ -39,7 +39,7 @@ const BookingOrderFinished = () => {
         setReview(inputValue);
         setShowTextField(false);
         setShowConfirmation(false);
-        setShowReviewButton(true); 
+        setShowReviewButton(true);
     };
 
     const handleCancelClick = () => {
@@ -96,12 +96,12 @@ const BookingOrderFinished = () => {
                 )}
                 {showReview && (
                     <button className="show-review-btn btn-custom btn-custom-danger" onClick={() => setShowReview(false)}>
-                    Hide Review
+                        Hide Review
                     </button>
                 )}
                 {!showReview && review && (
                     <button className="show-review-btn btn-custom btn-custom-accept" onClick={handleShowReviewClick}>
-                    Show Review
+                        Show Review
                     </button>
                 )}
             </div>
@@ -125,7 +125,7 @@ const BookingOrderFinished = () => {
 
                     <div className="ratingAndReviewActions">
                         <button className="send-btn  btn-custom" onClick={handleSendClick}>Send</button>
-                        <button className="cancel-btn  btn-custom" onClick={handleCancelClick}>Cancel</button>
+                        <button className="bookingFinishedOrderBtn  btn-custom" onClick={handleCancelClick}>Cancel</button>
                     </div>
 
                 </div>

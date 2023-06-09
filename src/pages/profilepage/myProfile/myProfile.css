@@ -35,7 +35,7 @@
 
 .profileOptionCancel {
     margin-right: 1rem;
-    background-color: #cf7272;
+    background-color: #597fbd;
     color: #fff;
     border: none;
     font-size: 16px;
@@ -53,8 +53,7 @@
 }
 
 .profileOptionCancel:hover {
-    background: #eb9d9d;
-    color: #fff;
+    opacity: 0.8;
 }
 
 .profileOptionItem.active {
