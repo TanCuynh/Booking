@@ -25,7 +25,7 @@ const MyProfile = () => {
                 <span>My Profile</span>
                 <button className={`profileOptionItem ${selectedButton === 1 ? 'active' : ''}`} onClick={() => handleButtonClick(1)}>Profile</button>
                 <button className={`profileOptionItem ${selectedButton === 2 ? 'active' : ''}`} onClick={() => handleButtonClick(2)}>Change Password</button>
-                <button className={`profileOptionItem ${selectedButton === 3 ? 'active' : ''}`} onClick={() => handleButtonClick(3)}>Cancel</button>
+                <button className={`profileOptionCancel ${selectedButton === 3 ? 'active' : ''}`} onClick={() => handleButtonClick(3)}>Cancel</button>
             </div>
             <div className="rightlayout">
                 {selectedButton === 1 && <ChangeProfile />}

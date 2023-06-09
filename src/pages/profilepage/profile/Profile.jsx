@@ -38,10 +38,10 @@ const Profile = () => {
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
-        // Xử lý file hình ảnh ở đây nè cu(chắc vậy)
+        // Xử lý file hình ảnh ở đây
         console.log('Đã chọn file:', file);
-      };
-    
+    };
+
     const chooseaphoto = () => {
         const fileInput = document.createElement('input');
         fileInput.type = 'file';

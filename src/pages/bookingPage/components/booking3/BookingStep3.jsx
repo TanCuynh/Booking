@@ -19,8 +19,7 @@ const BookingStep3 = () => {
                     description: `You have successfully paid for bill`,
                     amount: {
                         currency_code: 'USD',
-                        value: 1
-                        // value: price
+                        value: 1,
                     },
                 },
             ],
@@ -55,28 +54,23 @@ const BookingStep3 = () => {
         })
     }
     return (
-        <div>
+        <div className='paypalContainer'>
             <PayPalScriptProvider
-                options={ {
+                options={{
                     "client-id": "AT3vWwXuO1R3qJ337XKSQyBN7Ty-Bp_CbHWI6txcr1wvkVDqROUe2JdQ4msfxdsXKiQWDHbZC55XXpQ4"
-                } }
+                }}
             >
                 <h3>Payment Bill</h3>
                 <h2>100 USD</h2>
-                <PayPalButtons style={ { layout: 'vertical' } } createOrder={ createOrder }
-                    onApprove={ onApprove } onError={ onError } />
+                <PayPalButtons style={{ layout: 'vertical' }} createOrder={createOrder}
+                    onApprove={onApprove} onError={onError} />
 
-                { success ? (
+                {success ? (
                     <h5>Your Payment has been done successfully please check email</h5>
-                ) : <h5>Payment is pending</h5> }
+                ) : <h5>Payment is pending</h5>}
 
             </PayPalScriptProvider>
 
-            <div className="button-container">
-                <button onClick={ handleClick } className="home-button">
-                    Back to Home
-                </button>
-            </div>
         </div>
     );
 }

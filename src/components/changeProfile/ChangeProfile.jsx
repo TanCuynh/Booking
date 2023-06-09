@@ -8,20 +8,25 @@ const ChangeProfile = () => {
 
   console.log("User:", context.user)
 
-
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(context.user.name);
   const [tempName, setTempName] = useState(name);
+
   const [emailAddress, setEmailAddress] = useState(context.user.email);
   const [tempEmailAddress, setTempEmailAddress] = useState(emailAddress);
+
   const [phoneNumber, setPhoneNumber] = useState(context.user.phone_number);
   const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber);
+
   const [dateOfBirth, setDateOfBirth] = useState(context.user.date_of_birth);
   const [tempDateOfBirth, setTempDateOfBirth] = useState(dateOfBirth);
+
   const [gender, setGender] = useState(context.user.gender);
   const [tempGender, setTempGender] = useState(gender);
+
   const [address, setAddress] = useState(context.user.address);
   const [tempAddress, setTempAddress] = useState(address);
+
 
   const handleEditClick = () => {
     if (editing) {
@@ -122,14 +127,16 @@ const ChangeProfile = () => {
         <div className="information">
           <p className="label">Gender</p>
           {editing ? (
-            <input
-              type="text"
-              value={(gender == 0) ? "Male" : "Female"}
+            <select
+              value={tempGender}
               onChange={(event) => handleInputChange(event, setTempGender)}
               className="input-field"
-            />
+            >
+              <option value={0}>Male</option>
+              <option value={1}>Female</option>
+            </select>
           ) : (
-            <p className="info-field">{gender}</p>
+            <p className="info-field">{gender === 0 ? "Male" : "Female"}</p>
           )}
         </div>
         <div className="information">

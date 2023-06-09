@@ -20,6 +20,7 @@
 }
 
 .profileOptionItem {
+    margin-right: 1rem;
     background-color: #fff;
     border: none;
     font-size: 16px;
@@ -32,8 +33,28 @@
     cursor: pointer;
 }
 
+.profileOptionCancel {
+    margin-right: 1rem;
+    background-color: #cf7272;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 1rem;
+    height: 40px;
+    border-radius: 10px;
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
 .profileOptionItem:hover {
     background-color: #eee;
+}
+
+.profileOptionCancel:hover {
+    background: #eb9d9d;
+    color: #fff;
 }
 
 .profileOptionItem.active {
@@ -42,4 +63,4 @@
 
 .rightlayout {
     border-left: 1px solid #707070;
-} 
+}

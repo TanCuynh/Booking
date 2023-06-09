@@ -38,7 +38,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .image-container {
@@ -59,49 +59,24 @@
 }
 
 .text-container {
-  margin-top: 1rem;
+  padding: 1rem;
   display: flex;
-  flex-direction: row;
-  text-align: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
-}
-
-.left-text {
-  float: left;
-  text-align: left;
-}
-
-.right-text {
-  float: right;
-  margin-top: 20px;
-  text-align: right;
 }
 
 .name-hotel {
   color: #003580;
-  font-size: 20px;
-  font-weight: 800;
-}
-
-.address {
-  font-size: 14px;
+  font-size: 22px;
+  font-weight: 900;
 }
 
 .price {
+  font-family: "Arial";
   color: #003580;
-  font-size: 15;
-  font-weight: bolder;
-}
-
-.for {
-  color: #aaa;
-  font-size: 14;
-}
-
-.day {
-  color: #003580;
-  font-size: 15;
-  font-weight: bolder;
+  font-size: 38px;
+  font-weight: 500;
 }
 
 .bed {

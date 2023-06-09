@@ -5,7 +5,7 @@ import ReviewComment from '../../components/reviewComment/ReviewComment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faMagnifyingGlass, faPaw, faPhone, faStar, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart, faSquareParking, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck, faHeart as heart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
-import { LinearProgress } from '@mui/material'
+import { LinearProgress, Rating } from '@mui/material'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
@@ -58,21 +58,6 @@ const HotelDetail = () => {
             setDataHotel({});
         }
     }
-
-    const getDataCategoryByDate = async () => {
-        const res = await categoryAPI.getCategoryByDate();
-        if (res.status === 200) {
-            console.log("getCategoryByDate", res.data.data);
-        } else {
-            console.log("Error");
-        }
-    }
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        getHotelDetail(id);
-        getDataCategoryByDate();
-    }, []);
 
 
 
@@ -178,40 +163,65 @@ const HotelDetail = () => {
 
     const [dateAlertShown, setDateAlertShown] = useState(false);
     const [disableShowPrice, setDisableShowPrice] = useState(true);
-    const handleSearchCategory = async () => {
 
+    const handleSearchCategory = () => {
+        // setDisableShowPrice(true);
         if (calculateDays(date[0].startDate, date[0].endDate) === 0) {
             setDateAlertShown(true);
             setDisableShowPrice(true);
         } else {
-            {
-                const dateStartFormat = getDateFormat(date[0].startDate)
-                const dateEndFormat = getDateFormat(date[0].endDate)
-                setParams({ ...params, dateStart: dateStartFormat, dateEnd: dateEndFormat })
-                const res = await categoryAPI.getCategoryByCheckInOut(dateStartFormat, dateEndFormat, id);
-                if (res.status === 200) {
-                    setCategories(res.data.data.category)
-                    setEmptyRoom(res.data.data.roomIDPerDisplay)
-                } else {
-                    console.log('error', res)
-                }
-            }
+            const dateStartFormat = getDateFormat(date[0].startDate)
+            const dateEndFormat = getDateFormat(date[0].endDate)
+            setParams({ ...params, dateStart: dateStartFormat, dateEnd: dateEndFormat })
+            getCategory(dateStartFormat, dateEndFormat)
             setDateAlertShown(false);
             setDisableShowPrice(false);
         }
+    }
+    const getCategory = async (dateStart, dateEnd) => {
+        const res = await categoryAPI.getCategoryByCheckInOut(dateStart, dateEnd, id);
+        if (res.status === 200) {
+            setCategories(res.data.data.category)
+            setEmptyRoom(res.data.data.roomIDPerDisplay)
+        } else {
+            console.log('error', res)
+        }
+        // setDateAlertShown(false);
     };
 
     const renderListCategory = useMemo(() => {
-        return categories.map((category, index) => {
-            return (
-                <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} emptyRoom={emptyRoom[index]} idHotel={id} dateParams={params} />
-            )
-        })
+        if (emptyRoom) {
+
+            return categories.map((category, index) => {
+                return (
+                    <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} emptyRoom={emptyRoom[index]} idHotel={id} dateParams={params} />
+                )
+            })
+        } else {
+            return categories.map((category, index) => {
+                return (
+                    <RoomsTable key={category?.id} notShowPrice={disableShowPrice} date={date} dataCategory={category} emptyRoom={[]} idHotel={id} dateParams={params} />
+                )
+            })
+        }
     }, [categories, emptyRoom, id])
 
     useEffect(() => {
         window.scrollTo(0, 0);
+
         getHotelDetail(id);
+
+        const today = new Date();
+
+        const oneWeekLater = new Date(today);
+        oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+
+        const toDate = getDateFormat(today);
+        const oneWeekLaterDate = getDateFormat(oneWeekLater);
+
+        // console.log("today", toDate);
+        // console.log("week", oneWeekLaterDate);
+        getCategory(toDate, oneWeekLaterDate);
     }, []);
 
 
@@ -319,10 +329,7 @@ const HotelDetail = () => {
                                         />}
                                 </div>
                                 <div className="hotelDetailSearchBtn" onClick={handleSearchCategory}>
-                                    <FontAwesomeIcon
-                                        icon={faMagnifyingGlass}
-                                        className='hotelDetailSearchBtnIcon'
-                                    />
+                                    <span>Search</span>
                                 </div>
                             </div>
                             {dateAlertShown && (
@@ -391,35 +398,13 @@ const HotelDetail = () => {
                     <div className="hotelDetailReview">
                         <div className="hotelDetailReviewTitle">
                             <h3>Reviews</h3>
-                            <FontAwesomeIcon icon={faStar} className='hotelDetailReviewTitleIcon' />
+                            <Rating
+                                name="my-rating"
+                                value={5}
+                                style={{ fontSize: "40px" }}
+                                readOnly
+                            />
                             <h3>5.0</h3>
-                        </div>
-                        <div className="hotelDetailReviewRate">
-                            <div className="hotelDetailReviewRateItem">
-                                <span>Amenity</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelDetailReviewRateItem">
-                                <span>Hygiene</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelDetailReviewRateItem">
-                                <span>Communication</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelDetailReviewRateItem">
-                                <span>Location of Property</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelDetailReviewRateItem">
-                                <span>Value for Money</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
                         </div>
                         <div className="hotelDetailReviewComment">
                             <ReviewComment />
