@@ -60,7 +60,6 @@ const Signup = ({ onClose }) => {
             setPasswordAlert(true);
             setRepasswordAlert(true);
             messageError = "Your password needs to be at least 8 characters long.";
-
         }
         if (dataSignUp.password !== dataSignUp.repassword) {
             flag = false;

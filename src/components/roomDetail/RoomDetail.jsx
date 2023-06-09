@@ -49,6 +49,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         });
         if (res.status === 200) {
             localStorage.setItem('bookingId', res.data.data.booking.id);
+            console.log("book", res.data);
 
         } else {
             console.log('error creating booking', res);
