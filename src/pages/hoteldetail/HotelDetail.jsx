@@ -189,8 +189,6 @@ const HotelDetail = () => {
         }
     };
 
-    const trueRating = dataHotel?.rating;
-    console.log("Rating", trueRating);
 
     const renderListCategory = useMemo(() => {
         if (emptyRoom) {
@@ -425,11 +423,6 @@ const HotelDetail = () => {
                                     )
                                 })
                             }
-                        </div>
-                        <div className="hotelDetailReviewShowCommentBtnContainer">
-                            <div className="hotelDetailReviewShowCommentBtn">
-                                <span>Show All Reviews</span>
-                            </div>
                         </div>
                     </div>
                 </div>

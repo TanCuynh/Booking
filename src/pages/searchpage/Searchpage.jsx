@@ -25,7 +25,8 @@ const Searchpage = () => {
         }
         context?.setIsLoading(false);
     }
-    const handleChaneField = (e) => {
+
+    const handleChangeField = (e) => {
         if (e.target.name === 'destination') {
             setDestination(e.target.value);
         } else {
@@ -60,18 +61,18 @@ const Searchpage = () => {
                         <h1 className="searchedInputTitle">Search</h1>
                         <div className="searchedInputItem">
                             <label>City</label>
-                            <input name='destination' type="text" value={destination} onChange={handleChaneField} />
+                            <input name='destination' type="text" value={destination} onChange={handleChangeField} />
                         </div>
                         <div className="searchedInputItem">
                             <label>Options</label>
                             <div className="searchedOptions">
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Minimum price <small>per night</small></span>
-                                    <input type="number" className="searchedOptionInput" name='min' value={price[0]} onChange={handleChaneField} />
+                                    <input type="number" className="searchedOptionInput" name='min' value={price[0]} onChange={handleChangeField} />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Maximum price <small>per night</small></span>
-                                    <input type="number" className="searchedOptionInput" name='max' value={price[1]} onChange={handleChaneField} />
+                                    <input type="number" className="searchedOptionInput" name='max' value={price[1]} onChange={handleChangeField} />
                                 </div>
                             </div>
                         </div>

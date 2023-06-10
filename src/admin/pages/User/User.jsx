@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useRef, useCallback, useMemo, useContext } from 'react';
 import adminAPI from '../../../api/adminAPI';
 import { Link, useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
@@ -9,9 +9,11 @@ import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import './User.css';
 import { toast } from 'react-hot-toast';
 import { Footer } from '../../../components';
+import { APP_CONTEXT } from '../../../App';
 
 const User = () => {
     const navigate = useNavigate();
+    const context = useContext(APP_CONTEXT);
     const [listUser, setListUser] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');

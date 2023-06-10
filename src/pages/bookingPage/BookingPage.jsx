@@ -4,17 +4,20 @@ import { useState } from 'react';
 import BookingStep1 from './components/booking1/BookingStep1';
 import BookingStep2 from './components/booking2/BookingStep2';
 import BookingStep3 from './components/booking3/BookingStep3';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const BookingPage = () => {
-
+    const navigate = useNavigate();
     const location = useLocation();
+
+    const handleDone = () => {
+        message.success('Processing complete!');
+        navigate("/");
+    }
 
     const [dataCategory, setDataCategory] = useState(location.state.dataCategoryDetail);
     const roomQuantity = location.state.room;
     const stayDuration = location.state.duration;
-
-    console.log("data", dataCategory, roomQuantity, stayDuration);
 
     const steps = [
         {
@@ -30,9 +33,6 @@ const BookingPage = () => {
             content: <BookingStep3 data={dataCategory} rooms={roomQuantity} duration={stayDuration} />,
         },
     ];
-
-    console.log("show", dataCategory);
-
 
     const { token } = theme.useToken();
     const [current, setCurrent] = useState(0);
@@ -81,7 +81,7 @@ const BookingPage = () => {
                 )}
 
                 {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                    <Button type="primary" onClick={() => handleDone}>
                         Done
                     </Button>
                 )}

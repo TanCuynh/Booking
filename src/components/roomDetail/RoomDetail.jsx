@@ -23,8 +23,6 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
     const [amenitiesOptions, setAmenityOptions] = useState([]);
 
-    // console.log("thang nhoc", dateParams);
-
     const calculateDays = (startDate, endDate) => {
         const time = new Date(endDate) - new Date(startDate);
         const timeUnit = 24 * 60 * 60 * 1000;
@@ -33,8 +31,6 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     }
 
     const duration = calculateDays(dateParams.dateStart, dateParams.dateEnd);
-
-    // console.log("duration", duration);
 
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
@@ -50,7 +46,6 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         }
     }
     const createBooking = async () => {
-        // console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
         const res = await bookingAPI.createBooking({
             description: "nothing",
             date_in: dateParams.dateStart,
@@ -61,7 +56,6 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         });
         if (res.status === 200) {
             localStorage.setItem('bookingId', res.data.data.booking.id);
-            // console.log("book", res.data);
 
         } else {
             console.log('Error creating booking', res);
@@ -69,7 +63,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     }
 
     const handleBooking = () => {
-        if (context.user.role === "admin" || context.user.role === "hotel") {
+        if (context.user.role !== "user") {
             toast.error("You can't make any booking requests if you are a host");
             navigate('/');
         } else {
