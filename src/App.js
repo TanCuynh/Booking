@@ -28,7 +28,7 @@ import User from "./admin/pages/User/User";
 import HostReservation from "./pages/hostPage/hostReservations/HostReservations";
 import { AuthAPI } from "./api/AuthAPI";
 import BookingPage from "./pages/bookingPage/BookingPage";
-import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
+import NotFound from "./pages/notFound/NotFound";
 
 export const APP_CONTEXT = createContext({});
 const App = () => {
@@ -83,9 +83,11 @@ const App = () => {
               <Route path="statistic" element={<HostStatisticPage />} />
               <Route path="hotelproperties" element={<HotelProperties />} />
               <Route path="resevations" element={<HostReservation />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="booking" element={<BookingPage />} />
             <Route path="hotel/:id" element={<HotelDetail />} />
+            <Route path="hotel/*" element={<NotFound />} />
           </Route>
           <Route path="search" element={<AppLayout />}>
             <Route path="" element={<Searchpage />} />
@@ -96,13 +98,14 @@ const App = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="myprofile" element={<MyProfile />} />
             <Route path="reservations" element={<Reservations />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="admin" element={<User />}>
             {/* <Route path="" element={<Home />} />
             <Route path="hotel" element={<Hotel />} />
             <Route path="user" element={<User />} /> */}
           </Route>
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Toaster />

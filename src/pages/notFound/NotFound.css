@@ -1,0 +1,11 @@
+.not-found-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 600px;
+}
+.not-found-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
