@@ -10,20 +10,24 @@ const BookingPage = () => {
 
     const location = useLocation();
 
-    const [dataCategory, setDataCategory] = useState(location.state.dataCategoryDetail)
+    const [dataCategory, setDataCategory] = useState(location.state.dataCategoryDetail);
+    const roomQuantity = location.state.room;
+    const stayDuration = location.state.duration;
+
+    console.log("data", dataCategory, roomQuantity, stayDuration);
 
     const steps = [
         {
             title: 'Booking Information',
-            content: <BookingStep1 data={dataCategory} />,
+            content: <BookingStep1 data={dataCategory} rooms={roomQuantity} duration={stayDuration} />,
         },
         {
             title: 'Your Booking Bill',
-            content: <BookingStep2 data={dataCategory} />,
+            content: <BookingStep2 data={dataCategory} rooms={roomQuantity} duration={stayDuration} />,
         },
         {
             title: 'Booking Conplete',
-            content: <BookingStep3 data={dataCategory} />,
+            content: <BookingStep3 data={dataCategory} rooms={roomQuantity} duration={stayDuration} />,
         },
     ];
 

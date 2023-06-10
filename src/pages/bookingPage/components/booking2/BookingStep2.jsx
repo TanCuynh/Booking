@@ -12,6 +12,8 @@ const BookingStep2 = (data) => {
         name: ''
     });
 
+    const totalPrice = (data.data.price) * data.rooms * data.duration;
+
     const { bank, cardNumber, name } = formData;
 
     const currentDate = new Date();
@@ -80,12 +82,20 @@ const BookingStep2 = (data) => {
 
                     <div className="billInfo">
                         <div className="billDate">
-                            <span>Date: </span>
+                            <span>Bill date: </span>
                             <h3>{formattedDate}</h3>
+                        </div>
+                        <div className="billDuration">
+                            <span>Duration: </span>
+                            <h3>{data.duration} nights</h3>
+                        </div>
+                        <div className="billRoomsQuantity">
+                            <span>Room quantity: </span>
+                            <h3>{data.rooms} rooms</h3>
                         </div>
                         <div className="billPrice">
                             <span>Price: </span>
-                            <h3>$ {data.data.price} USD</h3>
+                            <h3>$ {totalPrice} USD</h3>
                         </div>
                     </div>
                 </div>

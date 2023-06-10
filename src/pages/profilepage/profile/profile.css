@@ -32,8 +32,8 @@
 }
 
 .AccountAvt {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background: #FDC32D;
     border-radius: 999px;
     cursor: pointer;
@@ -47,15 +47,14 @@
 }
 
 .imagee {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 999px;
 }
 
 .AccountChangeImg {
     font-weight: 600;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 14px;
     color: #484848;
     cursor: pointer;
 }

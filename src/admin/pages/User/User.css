@@ -1,12 +1,28 @@
 .btn-option {
 	background-color: transparent;
 	border: none;
-	padding: 2px;
 }
+
 .btn-option:hover {
 	cursor: pointer;
 	opacity: 0.5;
 }
+
 .btn-option-danger {
 	color: rgb(220 38 38);
+}
+
+.mt-4 {
+	border: 1px solid #003280;
+	margin: 1rem 3rem;
+	border-radius: 10px;
+}
+
+.flex.justify-between h1 {
+	width: fit-content;
+	margin: 2rem;
+	font-size: 26px;
+	font-weight: 900;
+	color: #003280;
+	cursor: pointer;
 }

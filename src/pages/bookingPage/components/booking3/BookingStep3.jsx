@@ -12,6 +12,9 @@ const BookingStep3 = (data) => {
     const handleClick = () => {
         navigate('/');
     };
+
+    const totalPrice = (data.data.price) * data.rooms * data.duration;
+
     const createOrder = (data, actions) => {
         return actions.order.create({
             purchase_units: [
@@ -61,7 +64,7 @@ const BookingStep3 = (data) => {
                 }}
             >
                 <h3>Payment Bill</h3>
-                <h2>${data.data.price} USD</h2>
+                <h2>${totalPrice} USD</h2>
                 <PayPalButtons style={{ layout: 'vertical' }} createOrder={createOrder}
                     onApprove={onApprove} onError={onError} />
 

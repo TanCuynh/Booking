@@ -22,6 +22,8 @@ const hotelAPI = {
   searchBarHotel: () => axiosClient.get(`/hotels/city`),
 
   getHotelByHost: (id) => axiosClient.get(`/hotels/host`),
+
+  getStatistic: () => axiosClient.get(`/hotels/statistic`),
 };
 
 export default hotelAPI;

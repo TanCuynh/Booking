@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ChangeProfile from '../../../components/changeProfile/ChangeProfile'
 import AllBookingList from '../../../components/allBookingList/AllBookingList'
 import ChangePassword from '../../../components/changePassword/ChangePassword'
 import './myProfile.css'
 import { useNavigate } from "react-router-dom";
+import { APP_CONTEXT } from "../../../App";
 
 const MyProfile = () => {
+    const context = useContext(APP_CONTEXT);
 
     const navigate = useNavigate();
     const [selectedButton, setSelectedButton] = useState(1);
 
     const handleButtonClick = (buttonId) => {
         if (buttonId === 3) {
-            navigate('/user/profile');
+            if (context.user.role === "hotel") {
+                navigate('/host/statistic');
+            } else {
+                navigate('/user/profile');
+            }
         }
         else {
             setSelectedButton(buttonId);

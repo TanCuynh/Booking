@@ -76,7 +76,7 @@ const ChangePassword = () => {
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {old_password === '' && <p className='error-message'>Please enter your current password.</p>}
+                    {old_password === '' && <p className='error-message'>Please enter your current password</p>}
                 </div>
                 <div className="changePasswordInput">
                     <label className="changePasswordLabel">Your new password</label>
@@ -88,7 +88,7 @@ const ChangePassword = () => {
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {new_password === '' && <p className='error-message'>Please enter your new password.</p>}
+                    {new_password === '' && <p className='error-message'>Please enter your new password</p>}
                 </div>
                 <div className="changePasswordInput">
                     <label className="changePasswordLabel">Confirm your new password</label>
@@ -100,7 +100,7 @@ const ChangePassword = () => {
                         className="input-custom"
                         onChange={handleChange}
                     />
-                    {re_new_password === '' && <p className='error-message'>Please enter your new password again.</p> ||
+                    {re_new_password === '' && <p className='error-message'>Please enter your new password again</p> ||
                         re_new_password !== new_password && <p className='error-message'>Password incorrect</p>}
                 </div>
                 <div className="changePasswordBtn">

@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from '@mui/material'
 import './userReview.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-function UserReview() {
+function UserReview(dataReview) {
+
+    console.log("one review", dataReview);
+    const [formattedCreatedAt, setFormattedCreatedAt] = useState('');
+
+    useEffect(() => {
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            return formattedDate;
+        };
+
+        setFormattedCreatedAt(formatDate(dataReview?.dataReview.created_at));
+    }, [dataReview?.dataReview.created_at])
+
     return (
         <div className="user-review">
             <div className="hotel">
@@ -17,20 +35,21 @@ function UserReview() {
                         <p className="userReviewHotelName">Wink Hotel</p>
                         <p className="address-hotel">Da Nang, Viet Nam</p>
                         <div className="day-review">
-                            <p>24 May 2023</p>
+                            <p>{formattedCreatedAt}</p>
                         </div>
                     </div>
                 </div>
                 <Rating
                     name="my-rating"
-                    value={5}
+                    value={dataReview?.dataReview.rating}
                     readOnly
+                    precision={0.5}
                 />
             </div>
 
             <div className="reviewContainer">
                 <div className="reviewsText">
-                    <p>Chất lượng phục vụ cuc ki` tot, nhu sua me tu` nguon chay ra, cong cha nhu nui thai son, long` me bao la nhu bien Thai Binh</p>
+                    <p>{dataReview?.dataReview.content}</p>
                 </div>
             </div>
         </div>

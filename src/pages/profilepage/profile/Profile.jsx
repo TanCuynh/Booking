@@ -1,16 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import UserReview from "../../../components/userReview/UserReview";
 import AllReviewsUser from '../../../components/allReviewsUser/AllReviewsUser'
 import "./profile.css";
 import { APP_CONTEXT } from "../../../App";
+import { AuthAPI } from "../../../api/AuthAPI";
 
 const Profile = () => {
     const navigate = useNavigate();
-    const context = useContext(APP_CONTEXT);
 
     const [showReviews, setShowReviews] = useState(false);
+    const [formattedCreatedAt, setFormattedCreatedAt] = useState('');
+
+
+    const context = useContext(APP_CONTEXT);
+
+    const [dataReviews, setDataReviews] = useState([]);
+
+    const userId = context.user.id;
+
+    const getDataReviews = async (userId) => {
+        const res = await AuthAPI.getReviewByUserID(userId);
+        if (res.status === 200) {
+            console.log("dataReviews", res.data.data);
+            setDataReviews(res.data.data);
+        } else {
+            console.log("Error", res);
+        }
+    }
+
+    useEffect(() => {
+        getDataReviews(userId);
+
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            return formattedDate;
+        };
+
+        setFormattedCreatedAt(formatDate(context.user.created_at));
+
+    }, [context.user.created_at])
 
     const openPopup = () => {
         setShowReviews(true);
@@ -72,7 +107,7 @@ const Profile = () => {
                         </div>
                         <div className="profile-container">
                             <p className="hello-text">Hello, {context.user.name}</p>
-
+                            <p className="time-join">Joined in {formattedCreatedAt}</p>
                             <button
                                 className="btn-edit-profile"
                                 onClick={handleClick}
@@ -80,7 +115,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div class="horizontal-vector"></div>
+                    <div className="horizontal-vector"></div>
 
                     <div className="review-container">
                         <h3>Your reviews</h3>
@@ -91,8 +126,13 @@ const Profile = () => {
                                 </div>
                             </div>
                         }
-                        <UserReview />
-                        <UserReview />
+                        {
+                            dataReviews.slice(0, 2).map((review, index) => {
+                                return (
+                                    <UserReview key={index} dataReview={review} />
+                                )
+                            })
+                        }
                         <div className="profileShowAllReviewsBtn" onClick={openPopup}>
                             <span>Show all reviews</span>
                         </div>

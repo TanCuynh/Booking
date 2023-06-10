@@ -1,5 +1,6 @@
 .mainlayout {
     padding: 3rem;
+    padding-bottom: 0;
     display: grid;
     grid-template-columns: 2fr 8fr;
     color: #484848;
