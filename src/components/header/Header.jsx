@@ -2,14 +2,11 @@ import React, { useEffect, useState, useContext } from 'react'
 import './header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { format } from 'date-fns'
 import { useNavigate } from "react-router-dom";
 import { Autocomplete, Box, Slider, TextField } from '@mui/material';
 import hotelAPI from '../../api/hotelAPI';
-import { async } from 'q';
 import { searchAPI } from '../../api/searchAPI';
 import { APP_CONTEXT } from '../../App';
 
@@ -38,11 +35,11 @@ const Header = () => {
 
     const minDistance = 100;
 
-    function valuetext (value) {
+    const valuetext = (value) => {
         return `${value} USD`;
     }
 
-    const handlePrice = (event, newValue, activeThumb) => {
+    const handlePrice = (_event, newValue, activeThumb) => {
         if (!Array.isArray(newValue)) {
             return;
         }
@@ -57,7 +54,7 @@ const Header = () => {
         const res = await searchAPI.searchByPriceAndCity(price[0], price[1], destination);
         if (res.status === 200) {
             console.log('search successful', res);
-            context.setDataHotelSearch(res.data.data.data);
+            context.setDataHotelSearch({ ...context.dataHotelSearch, searchData: res.data.data.data, destination: destination, price: price });
         } else {
             console.log('search failed', res);
         }

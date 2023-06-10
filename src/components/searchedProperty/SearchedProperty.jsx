@@ -5,7 +5,7 @@ import { faHeart as heart } from '@fortawesome/free-regular-svg-icons'
 import { faBath, faBed, faCar, faHeart as solidHeart, faPaw } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
-const SearchedProperty = () => {
+const SearchedProperty = ({ data }) => {
     const [isLiked, setIsLiked] = useState(false);
 
     const handleToggleLike = () => {
@@ -15,40 +15,45 @@ const SearchedProperty = () => {
     return (
         <div className="searchedProperty">
             <div className="searchedPropertyImg">
-                <img
-                    src="https://media.moddb.com/images/downloads/1/12/11394/gallery150.jpg"
-                    alt="searchedProp"
-                />
-                <div className={`searchedWishlistIcon ${isLiked ? 'active' : ''}`}>
+                {
+                    data?.hotel_image[0] &&
+                    <img
+                        src={ data.hotel_image[0].image_url }
+                        alt="searchedProp"
+                    />
+                }
+                <div className={ `searchedWishlistIcon ${isLiked ? 'active' : ''}` }>
                     <FontAwesomeIcon
-                        icon={isLiked ? solidHeart : heart}
-                        onClick={handleToggleLike}
+                        icon={ isLiked ? solidHeart : heart }
+                        onClick={ handleToggleLike }
                     />
                 </div>
                 <span>$1000-3000 USD</span>
             </div>
             <div className="searchedPropertyDesc">
                 <h3 className="searchedPropertyName">
-                    <Link to="/unknown-hotel">Well Furnished Apartment</Link>
+                    <Link to="/unknown-hotel">{ data?.name }</Link>
                 </h3>
                 <span className="searchedPropertyAddress">
-                    100 Grove Street, LS, USA
+                    {
+                        data?.address
+                    }
                 </span>
                 <div className="searchedPropertyAmenities">
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={faBed} />
+                        <FontAwesomeIcon icon={ faBed } />
                         <span>2</span>
                     </div>
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={faBath} />
+                        <FontAwesomeIcon icon={ faBath } />
                         <span>2</span>
                     </div>
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={faCar} />
+                        <FontAwesomeIcon icon={ faCar } />
                         <span>2</span>
                     </div>
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={faPaw} />
+                        <FontAwesomeIcon icon={ faPaw } />
                         <span>2</span>
                     </div>
                 </div>
