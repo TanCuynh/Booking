@@ -100,11 +100,7 @@ const App = () => {
             <Route path="reservations" element={<Reservations />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="admin" element={<User />}>
-            {/* <Route path="" element={<Home />} />
-            <Route path="hotel" element={<Hotel />} />
-            <Route path="user" element={<User />} /> */}
-          </Route>
+          <Route path="admin" element={<User />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

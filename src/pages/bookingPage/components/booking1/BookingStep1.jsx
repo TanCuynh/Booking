@@ -12,9 +12,32 @@ const BookingStep1 = (data) => {
 
   const { firstName, lastName, email, phoneNumber } = formData;
 
+  const [emailError, setEmailError] = useState('Please enter a valid email address');
+  const [phoneError, setPhoneError] = useState('Please enter a valid 10-digit phone number');
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError('Please enter a valid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const validatePhoneNumber = () => {
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      setPhoneError('Please enter a valid 10-digit phone number');
+    } else {
+      setPhoneError('');
+    }
+  }
+
+
 
   const totalPrice = (data.data.price) * data.rooms * data.duration;
 
@@ -84,8 +107,9 @@ const BookingStep1 = (data) => {
                 name="email"
                 className="input-custom"
                 onChange={handleChange}
+                onBlur={validateEmail}
               />
-              {email === '' && <p className='error-message'>Please enter your email address</p>}
+              {emailError && <p className="error-message">{emailError}</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -97,8 +121,9 @@ const BookingStep1 = (data) => {
                 name="phoneNumber"
                 className="input-custom"
                 onChange={handleChange}
+                onBlur={validatePhoneNumber}
               />
-              {phoneNumber === '' && <p className='error-message'>Please enter your phone number</p>}
+              {phoneError && <p className="error-message">{phoneError}</p>}
             </div>
           </div>
         </div>

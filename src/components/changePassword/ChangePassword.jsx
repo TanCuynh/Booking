@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './changePassword.css';
 import { toast } from "react-hot-toast";
 import { AuthAPI } from "../../api/AuthAPI";
+import { useNavigate } from "react-router-dom";
+import { APP_CONTEXT } from "../../App";
 
 const ChangePassword = () => {
+    const navigate = useNavigate();
+    const context = useContext(APP_CONTEXT);
     const [formData, setFormData] = useState(
         {
             old_password: '',
@@ -36,6 +40,10 @@ const ChangePassword = () => {
             const res = await AuthAPI.changePassword(formData);
             if (res.status === 200) {
                 console.log("success", res);
+                toast.success("Password updated successfully");
+                navigate("/");
+                localStorage.setItem('token', '');
+                context.setUser({});
                 setFormData(
                     {
                         old_password: '',

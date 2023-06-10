@@ -9,9 +9,6 @@ const BookingStep3 = (data) => {
     const [success, setSuccess] = useState(false)
     const [orderId, setOrderId] = useState(false)
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/');
-    };
 
     const totalPrice = (data.data.price) * data.rooms * data.duration;
 
@@ -43,11 +40,10 @@ const BookingStep3 = (data) => {
         const res = await paymentAPI.updatePayment(bookingId, { payment_status: 1 })
         if (res.status === 200) {
             toast.success("Your payment has been updated")
-            console.log('success payment', res);
-            navigate('/');
+            console.log('Success payment', res);
         } else {
             toast.error("Update payment fails");
-            console.log('error payment', res);
+            console.log('Error payment', res);
         }
     }
     const onApprove = (data, actions) => {

@@ -10,14 +10,6 @@ const HostStatistic = () => {
 
     const navigate = useNavigate();
     const context = useContext(APP_CONTEXT);
-    const options = {
-        title: {
-            text: 'Total revenue statistic'
-        },
-        series: [{
-            data: [1, 2.5, 2, 1.5, 3]
-        }]
-    }
     const [formattedCreatedAt, setFormattedCreatedAt] = useState('');
 
     const [showAvatar, setAvatar] = useState(false);
@@ -53,11 +45,19 @@ const HostStatistic = () => {
     const getHotelStatistic = async () => {
         const res = await hotelAPI.getStatistic();
         if (res.status === 200) {
-            // console.log("superData", res.data.data);
             setDataStatistic(res.data.data);
         } else {
             console.log("Error", res);
         }
+    }
+
+    const options = {
+        title: {
+            text: `Total revenue: $${dataStatistic?.Amount}`
+        },
+        series: [{
+            data: [1, 2.5, 2, 1.5, 3]
+        }]
     }
 
     useEffect(() => {
@@ -108,21 +108,21 @@ const HostStatistic = () => {
                     <div className="hostStatisticData">
                         <div className="hostStatisticDataItemContainer">
                             <div className="hostStatisticDataItem">
-                                <h1 className='dataNumber'>{dataStatistic?.Booked}</h1>
+                                <h1 className='dataBooked'>{dataStatistic?.Booked}</h1>
                                 <span className='dataTitle'>Reservations</span>
                                 {/* <span className='dataPercentages'>+11.4% this week</span> */}
                             </div>
                         </div>
                         <div className="hostStatisticDataItemContainer">
                             <div className="hostStatisticDataItem">
-                                <h1 className='dataNumber'>{dataStatistic?.Rejected}</h1>
+                                <h1 className='dataRejected'>{dataStatistic?.Rejected}</h1>
                                 <span className='dataTitle'>Reservations rejected</span>
                                 {/* <span className='dataPercentages'>+11.1% this week</span> */}
                             </div>
                         </div>
                         <div className="hostStatisticDataItemContainer">
                             <div className="hostStatisticDataItem">
-                                <h1 className='dataNumber'>{dataStatistic?.Pending}</h1>
+                                <h1 className='dataPending'>{dataStatistic?.Pending}</h1>
                                 <span className='dataTitle'>Reservations pending</span>
                                 {/* <span className='dataPercentages'>-50% this week</span> */}
                             </div>

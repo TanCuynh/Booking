@@ -3,10 +3,12 @@ import './changeProfile.css';
 import { APP_CONTEXT } from "../../App";
 import { AuthAPI } from "../../api/AuthAPI";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const ChangeProfile = () => {
 
   const context = useContext(APP_CONTEXT);
+  const navigate = useNavigate();
 
   const [editing, setEditing] = useState(false);
 
@@ -88,6 +90,10 @@ const ChangeProfile = () => {
         setDateOfBirth(tempDateOfBirth);
         setGender(tempGender);
         setAddress(tempAddress);
+        toast.success("Profile updated successfully");
+        navigate("/");
+        localStorage.setItem('token', '');
+        context.setUser({});
 
         setEditing(false);
       } else {

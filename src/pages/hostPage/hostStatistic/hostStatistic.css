@@ -97,10 +97,29 @@
     border-right: 1px solid #E6EDFF;
 }
 
-.dataNumber {
+.dataBooked,
+.dataRejected,
+.dataPending {
     font-weight: 700;
     font-size: 30px;
     line-height: 150%;
+}
+
+.dataBooked {
+    color: #41ad7e;
+}
+
+.dataRejected {
+    color: #cc0000;
+}
+
+.dataPending {
+    color: #125cd4;
+}
+
+.highcharts-title {
+    fill: #1a652a !important;
+    /* color: #1a652a !important; */
 }
 
 .dataTitle {

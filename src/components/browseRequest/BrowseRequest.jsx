@@ -4,13 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const BrowseRequest = () => {
 
-    const navigate = useNavigate();
-
-    const [destination, setDestination] = useState("");
-    const [price, setPrice] = useState([2000, 3000]);
-
-    const handleSearch = () => {
-        navigate("/search", { state: { destination, price } });
+    const handleScroll = () => {
+        window.scrollTo(0, 0);
     };
 
     return (
@@ -18,7 +13,7 @@ const BrowseRequest = () => {
             <div className="browseRequestItems">
                 <h3>Browse For More Hotels</h3>
                 <span>Explore properties by their categories/types...</span>
-                <div className="browseRequestBtn" onClick={() => handleSearch()}>
+                <div className="browseRequestBtn" onClick={() => handleScroll()}>
                     <span>Find A Property</span>
                 </div>
             </div>
