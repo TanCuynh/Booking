@@ -50,6 +50,7 @@ const Header = () => {
     };
 
     const handleSearch = async () => {
+        context?.setIsLoading(true);
         const res = await searchAPI.searchByPriceAndCity(price[0], price[1], destination);
         if (res.status === 200) {
             console.log('search successful', res);
@@ -57,6 +58,7 @@ const Header = () => {
         } else {
             console.log('search failed', res);
         }
+        context?.setIsLoading(false);
         navigate("/search");
     };
 

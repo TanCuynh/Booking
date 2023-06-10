@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './bookingstep1.css';
-import 'typeface-montserrat';
 
 const BookingStep1 = (data) => {
 
