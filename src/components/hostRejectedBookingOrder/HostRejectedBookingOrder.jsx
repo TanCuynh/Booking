@@ -30,46 +30,44 @@ const HostRejectedBookingOrder = (data) => {
 
     return (
         <div className="hostBookingOrder">
-            {data.data[0].booking.status === "rejected" && (
-                <>
-                    <div className="hostBookingOrderImgContainer">
-                        <img src={data.data[0].category_image.image_url} alt="" />
+            <div className="hostBookingOrderContainer">
+                <div className="hostBookingOrderImgContainer">
+                    <img src={data.data[0].category_image.image_url} alt="" />
+                </div>
+
+                <div className="hostBookingOrderContentContainer">
+                    <div className="hostBookingOrderNameContainer">
+                        <p>{data.data[0].category.name}</p>
                     </div>
 
-                    <div className="hostBookingOrderContentContainer">
-                        <div className="hostBookingOrderNameContainer">
-                            <p>{data.data[0].category.name}</p>
+                    <div className="hostBookingOrderInfoContainer">
+                        <div className="hostBookingOrderCheckinContainer">
+                            <span>Check-in: </span>
+                            <p>{formattedDateIn}</p>
                         </div>
 
-                        <div className="hostBookingOrderInfoContainer">
-                            <div className="hostBookingOrderCheckinContainer">
-                                <span>Check-in: </span>
-                                <p>{formattedDateIn}</p>
-                            </div>
-
-                            <div className="hostBookingOrderDurationContainer">
-                                <span>Duration: </span>
-                                <p>{duration} nights</p>
-                            </div>
-
-                            <div className="hostBookingOrderGuestsContainer">
-                                <span>Guests: </span>
-                                <p>{data.data[0].category.max_people} people</p>
-                            </div>
+                        <div className="hostBookingOrderDurationContainer">
+                            <span>Duration: </span>
+                            <p>{duration} nights</p>
                         </div>
 
-                        <div className="hostBookingOrderPriceContainer">
-                            <p>Price: $ {data.data[0].booking.total_amount} USD</p>
+                        <div className="hostBookingOrderGuestsContainer">
+                            <span>Guests: </span>
+                            <p>{data.data[0].category.max_people} people</p>
                         </div>
                     </div>
 
-                    <div className="hostBookingOrderActions">
-                        <div className="hostBookingOrderActionBtn btn-custom btn-custom-danger">
-                            <p>Rejected</p>
-                        </div>
+                    <div className="hostBookingOrderPriceContainer">
+                        <p>Price: $ {data.data[0].booking.total_amount} USD</p>
                     </div>
-                </>
-            )}
+                </div>
+            </div>
+
+            <div className="hostBookingOrderActions">
+                <div className="hostBookingOrderActionBtn btn-custom-danger">
+                    <p>Rejected</p>
+                </div>
+            </div>
         </div>
     );
 }

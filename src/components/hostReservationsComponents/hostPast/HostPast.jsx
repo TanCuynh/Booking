@@ -8,7 +8,7 @@ const HostPast = (data) => {
             {
                 hostPastBooking.map((booking, index) => {
                     return (
-                        <HostBookingOrder data={booking} />
+                        <HostBookingOrder key={index} data={booking} />
                     )
                 })
             }

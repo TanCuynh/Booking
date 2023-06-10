@@ -9,7 +9,7 @@ const HostRejected = (data) => {
             {
                 hostRejectedBooking.map((booking, index) => {
                     return (
-                        <HostRejectedBookingOrder data={booking} />
+                        <HostRejectedBookingOrder key={index} data={booking} />
                     )
                 })
             }

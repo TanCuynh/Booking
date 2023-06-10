@@ -28,7 +28,7 @@ const HostBookingOrder = (data) => {
             });
             if (res.status === 200) {
                 toast.success('Reservation accepted');
-                navigate('/')
+                navigate('/');
             }
         }
         catch (err) {
@@ -43,6 +43,7 @@ const HostBookingOrder = (data) => {
             });
             if (res.status === 200) {
                 toast.success('Reservation rejected');
+                navigate('/');
             }
         }
         catch (err) {
@@ -113,7 +114,7 @@ const HostBookingOrder = (data) => {
                                 <p>Reject</p>
                             </div>
                         </> : <>
-                            <div className="hostBookingOrderActionBtn btn-custom btn-custom-accept">
+                            <div className="hostBookingOrderActionBtn btn-custom-accept">
                                 <p>Accepted</p>
                             </div>
                         </>

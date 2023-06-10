@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import './bookingOrderFinished.css'
-import { toast } from "react-hot-toast";
 
 const BookingOrderFinished = (data) => {
 
@@ -108,12 +107,8 @@ const BookingOrderFinished = (data) => {
                     </div>
                 </div>
 
-                <div className="bookingOrderFinishedStatusContainer" >
-                    {data.data[0].booking.status === "accepted" ? (
-                        <p>Accepted</p>
-                    ) : (
-                        <p>Rejected</p>
-                    )}
+                <div className={`bookingOrderFinishedStatusContainer ${data.data[0].booking.status === "accepted" ? "accepted" : "rejected"}`}>
+                    <p>{data.data[0].booking.status === "accepted" ? "Accepted" : "Rejected"}</p>
                 </div>
                 {!review && !showReview && (
                     <button className="bookingOrderFinishedBtnReview btn-custom" onClick={handleReviewClick}>Review</button>

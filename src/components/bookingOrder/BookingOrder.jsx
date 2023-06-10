@@ -5,8 +5,6 @@ const BookingOrder = (data) => {
 
     const [formattedDateIn, setFormattedDateIn] = useState('');
 
-    console.log("bookingOrder", data.data[0]);
-
     const calculateDays = (startDate, endDate) => {
         const time = new Date(endDate) - new Date(startDate);
         const timeUnit = 24 * 60 * 60 * 1000;

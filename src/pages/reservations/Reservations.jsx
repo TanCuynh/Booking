@@ -11,32 +11,31 @@ const Reservations = () => {
 
     const userID = context.user.id;
 
-    const [dataAllBookings, setDataAllBookings] = useState([]);
-
-    const getDataAllBookings = async (id) => {
-        const res = await bookingAPI.getBookingsByUserID(id);
+    const [pendingBookingByUser, setPendingBookingByUser] = useState([]);
+    const getPendingBookings = async (id) => {
+        const res = await bookingAPI.getPendingBookingsByUserID(id);
         if (res.status === 200) {
-            // console.log("dataAllBookings", res.data.data);
-            setDataAllBookings(res.data.data);
+            console.log("pending", res.data.data);
+            setPendingBookingByUser(res.data.data);
         } else {
             console.log("Error");
         }
     }
 
-    const [dataAllPastBookings, setDataAllPastBookings] = useState([]);
-    const getDataAllPastBooking = async (id) => {
+    const [pastBookingByUser, setPastBookingByUser] = useState([]);
+    const getPastBookingByUser = async (id) => {
         const res = await bookingAPI.getPastBookingsByUserID(id);
         if (res.status === 200) {
-            // console.log("dataAllPastBooking", res.data.data);
-            setDataAllPastBookings(res.data.data);
+            console.log("past", res.data.data);
+            setPastBookingByUser(res.data.data);
         } else {
             console.log("Error");
         }
     }
 
     useEffect(() => {
-        getDataAllBookings(userID);
-        getDataAllPastBooking(userID);
+        getPendingBookings(userID);
+        getPastBookingByUser(userID);
     }, [userID])
 
     const [selectedButton, setSelectedButton] = useState(1);
@@ -57,8 +56,8 @@ const Reservations = () => {
             </div>
 
             <div>
-                {selectedButton === 1 && <Upcoming data={dataAllBookings} />}
-                {selectedButton === 2 && <Past data={dataAllPastBookings} />}
+                {selectedButton === 1 && <Upcoming data={pendingBookingByUser} />}
+                {selectedButton === 2 && <Past data={pastBookingByUser} />}
             </div>
         </div>
     );
