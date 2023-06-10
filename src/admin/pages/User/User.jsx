@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import adminAPI from '../../../api/adminAPI';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Popconfirm, Select } from 'antd';
 import Highlighter from 'react-highlight-words';
@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import './User.css';
 import { toast } from 'react-hot-toast';
+import { Footer } from '../../../components';
 
 const User = () => {
     const navigate = useNavigate();
@@ -15,6 +16,10 @@ const User = () => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
+
+    const handleHome = () => {
+        navigate("/");
+    }
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         confirm();
         setSearchText(selectedKeys[0]);
@@ -248,15 +253,20 @@ const User = () => {
     useEffect(() => {
         getAllUser();
     }, []);
+
     return (
-        <div>
+        <div className='userPageContainer'>
             <div className='flex justify-between'>
-                <h1>
-                    Member
-                </h1>
+                <h1 onClick={handleHome}>STAYCATION.</h1>
             </div>
-            <Table columns={columns} dataSource={dataSource} className='mt-4' />;
+            <Table
+                columns={columns}
+                dataSource={dataSource}
+                className='mt-4'
+            />
+            <Footer />
         </div>
+
     )
 }
 

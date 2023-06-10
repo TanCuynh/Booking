@@ -23,7 +23,18 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
     const [amenitiesOptions, setAmenityOptions] = useState([]);
 
+    // console.log("thang nhoc", dateParams);
 
+    const calculateDays = (startDate, endDate) => {
+        const time = new Date(endDate) - new Date(startDate);
+        const timeUnit = 24 * 60 * 60 * 1000;
+
+        return Math.round(time / timeUnit);
+    }
+
+    const duration = calculateDays(dateParams.dateStart, dateParams.dateEnd);
+
+    // console.log("duration", duration);
 
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
@@ -62,7 +73,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
             toast.error("You can't make any booking requests if you are a host");
             navigate('/');
         } else {
-            navigate('/booking', { state: { dataCategoryDetail } });
+            navigate('/booking', { state: { dataCategoryDetail, room, duration } });
             createBooking();
         }
     }

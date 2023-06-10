@@ -7,4 +7,5 @@ export const AuthAPI = {
   changePassword: (params) => axiosClient.post("/change-password", params),
   editProfile: (id, params) =>
     axiosClient.put(`/users/editProfile/${id}`, params),
+  getReviewByUserID: (id) => axiosClient.get(`reviews/user/${id}`),
 };

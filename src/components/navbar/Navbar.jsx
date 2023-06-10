@@ -120,7 +120,7 @@ const Navbar = ({ type }) => {
                             context?.user?.role === 'admin' ? (
                                 <>
                                     <div className="navItemMenuContainerLinks" onClick={handleClickAdmin}>
-                                        <p><span>Admin Page</span></p>
+                                        <p><span>User Management</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}

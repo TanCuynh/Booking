@@ -17,6 +17,8 @@ const BookingStep1 = (data) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const totalPrice = (data.data.price) * data.rooms * data.duration;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -43,7 +45,7 @@ const BookingStep1 = (data) => {
                 <p className='bed'>{data.data.bed} bed</p>
               </div>
               <div className="right-text">
-                <span className='price'>${data.data.price} USD</span>
+                <span className='price'>${totalPrice} USD</span>
               </div>
             </div>
           </div>
