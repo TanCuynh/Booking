@@ -17,13 +17,16 @@ const SearchedProperty = ({ data }) => {
         <div className="searchedProperty">
             <div className="searchedPropertyImg">
                 <Link to={`/hotel/${data?.id}`}>
-                    {
-                        data?.hotel_image[0] &&
-                        <img
-                            src={data.hotel_image[0].image_url}
-                            alt="searchedProp"
-                        />
-                    }
+                    <div className="searchedPropertyImgContainer">
+                        {
+
+                            data?.hotel_image[0] &&
+                            <img
+                                src={data.hotel_image[0].image_url}
+                                alt="searchedProp"
+                            />
+                        }
+                    </div>
                 </Link>
                 <div className={`searchedWishlistIcon ${isLiked ? 'active' : ''}`}>
                     <FontAwesomeIcon
