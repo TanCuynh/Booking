@@ -202,6 +202,7 @@
 }
 
 .reserveBoxFunc {
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -220,10 +221,19 @@
 }
 
 .reserveBoxFunc p {
-    width: 100px;
+    width: 100%;
     font-weight: 600;
     font-size: 13px;
     line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emailText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hotelDetailContent {

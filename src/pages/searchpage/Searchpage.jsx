@@ -60,22 +60,22 @@ const Searchpage = () => {
                         <h1 className="searchedInputTitle">Search</h1>
                         <div className="searchedInputItem">
                             <label>City</label>
-                            <input name='destination' type="text" value={ destination } onChange={ handleChaneField } />
+                            <input name='destination' type="text" value={destination} onChange={handleChaneField} />
                         </div>
                         <div className="searchedInputItem">
                             <label>Options</label>
                             <div className="searchedOptions">
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Minimum price <small>per night</small></span>
-                                    <input type="number" className="searchedOptionInput" name='min' value={ price[0] } onChange={ handleChaneField } />
+                                    <input type="number" className="searchedOptionInput" name='min' value={price[0]} onChange={handleChaneField} />
                                 </div>
                                 <div className="searchedOptionItem">
                                     <span className="searchedOptionText">Maximum price <small>per night</small></span>
-                                    <input type="number" className="searchedOptionInput" name='max' value={ price[1] } onChange={ handleChaneField } />
+                                    <input type="number" className="searchedOptionInput" name='max' value={price[1]} onChange={handleChaneField} />
                                 </div>
                             </div>
                         </div>
-                        <button onClick={ handleClickSearch }>Search</button>
+                        <button onClick={handleClickSearch}>Search</button>
                     </div>
                     <div className="searchFilterDetails">
                         <div className="searchFilterDetailsTitle">
@@ -90,18 +90,18 @@ const Searchpage = () => {
                                             <FormControlLabel
                                                 control={
                                                     <Checkbox
-                                                        sx={ {
+                                                        sx={{
                                                             color: '#484848',
                                                             '&.Mui-checked': {
                                                                 color: '#4173D8',
                                                             },
                                                             transform: 'scale(0.75)',
-                                                        } }
+                                                        }}
                                                     />
                                                 }
                                                 label={
-                                                    <span style={ { fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' } }>
-                                                        { ele.label }
+                                                    <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' }}>
+                                                        {ele.label}
                                                     </span>
                                                 }
                                             />
@@ -119,18 +119,18 @@ const Searchpage = () => {
                                             <FormControlLabel
                                                 control={
                                                     <Checkbox
-                                                        sx={ {
+                                                        sx={{
                                                             color: '#484848',
                                                             '&.Mui-checked': {
                                                                 color: '#4173D8',
                                                             },
                                                             transform: 'scale(0.75)',
-                                                        } }
+                                                        }}
                                                     />
                                                 }
                                                 label={
-                                                    <span style={ { fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' } }>
-                                                        { ele.label }
+                                                    <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' }}>
+                                                        {ele.label}
                                                     </span>
                                                 }
                                             />
@@ -148,18 +148,18 @@ const Searchpage = () => {
                                             <FormControlLabel
                                                 control={
                                                     <Checkbox
-                                                        sx={ {
+                                                        sx={{
                                                             color: '#484848',
                                                             '&.Mui-checked': {
                                                                 color: '#4173D8',
                                                             },
                                                             transform: 'scale(0.75)',
-                                                        } }
+                                                        }}
                                                     />
                                                 }
                                                 label={
-                                                    <span style={ { fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' } }>
-                                                        { ele.label }
+                                                    <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' }}>
+                                                        {ele.label}
                                                     </span>
                                                 }
                                             />
@@ -177,18 +177,18 @@ const Searchpage = () => {
                                             <FormControlLabel
                                                 control={
                                                     <Checkbox
-                                                        sx={ {
+                                                        sx={{
                                                             color: '#484848',
                                                             '&.Mui-checked': {
                                                                 color: '#4173D8',
                                                             },
                                                             transform: 'scale(0.75)',
-                                                        } }
+                                                        }}
                                                     />
                                                 }
                                                 label={
-                                                    <span style={ { fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' } }>
-                                                        { ele.label }
+                                                    <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', fontWeight: '400' }}>
+                                                        {ele.label}
                                                     </span>
                                                 }
                                             />
@@ -201,14 +201,14 @@ const Searchpage = () => {
                 </div>
                 <div className="searchResults">
                     <div className="searchedResultsCounts">
-                        <h3 className='resultCount'>{ searchData?.length }</h3>
+                        <h3 className='resultCount'>{searchData?.length}</h3>
                         <span>results found</span>
                     </div>
                     <div className="searchResultsItems">
                         {
                             searchData?.map((hotel, index) => {
                                 return (
-                                    <SearchedProperty data={ hotel } key={ index } />
+                                    <SearchedProperty data={hotel} key={index} />
                                 )
                             })
                         }

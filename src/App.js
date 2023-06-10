@@ -28,6 +28,7 @@ import User from "./admin/pages/User/User";
 import HostReservation from "./pages/hostPage/hostReservations/HostReservations";
 import { AuthAPI } from "./api/AuthAPI";
 import BookingPage from "./pages/bookingPage/BookingPage";
+import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 
 export const APP_CONTEXT = createContext({});
 const App = () => {
@@ -65,7 +66,7 @@ const App = () => {
         dataHotelSearch,
         setDataHotelSearch,
         isLoading,
-        setIsLoading
+        setIsLoading,
       }}
     >
       <BrowserRouter>
@@ -101,6 +102,7 @@ const App = () => {
             <Route path="hotel" element={<Hotel />} />
             <Route path="user" element={<User />} /> */}
           </Route>
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
       <Toaster />

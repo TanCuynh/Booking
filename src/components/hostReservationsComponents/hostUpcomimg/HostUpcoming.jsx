@@ -1,12 +1,18 @@
 import React from 'react'
 import HostBookingOrder from '../../hostBookingOrder/HostBookingOrder'
 
-const HostUpcoming = () => {
+const HostUpcoming = (data) => {
+    const hostUpcomingBookings = data.data;
+    // console.log("HUC", data, hostUpcomingBookings);
     return (
         <div className="upcomingContainer">
-            <HostBookingOrder />
-            <HostBookingOrder />
-            <HostBookingOrder />
+            {
+                hostUpcomingBookings?.map((booking, index) => {
+                    return (
+                        <HostBookingOrder data={booking} />
+                    )
+                })
+            }
         </div>
     )
 }

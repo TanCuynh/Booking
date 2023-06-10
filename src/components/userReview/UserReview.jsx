@@ -32,8 +32,8 @@ function UserReview(dataReview) {
                     </div>
 
                     <div className="hotelContent">
-                        <p className="userReviewHotelName">Wink Hotel</p>
-                        <p className="address-hotel">Da Nang, Viet Nam</p>
+                        <p className="userReviewHotelName">{dataReview?.dataReview.hotel}</p>
+                        <p className="address-hotel">{dataReview?.dataReview.hotel_address}</p>
                         <div className="day-review">
                             <p>{formattedCreatedAt}</p>
                         </div>

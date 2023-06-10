@@ -1,31 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './bookingOrder.css'
 
-const BookingOrder = () => {
-    const name = "Fully Furnished Apartment";
-    const checkin = "12 Mar 2021";
-    const duration = 3;
-    const guests = 2;
-    const price = 1000;
+const BookingOrder = (data) => {
+
+    const [formattedDateIn, setFormattedDateIn] = useState('');
+
+    console.log("bookingOrder", data.data[0]);
+
+    const calculateDays = (startDate, endDate) => {
+        const time = new Date(endDate) - new Date(startDate);
+        const timeUnit = 24 * 60 * 60 * 1000;
+
+        return Math.round(time / timeUnit);
+    }
+
+    const duration = calculateDays(data.data[0].booking.date_in, data.data[0].booking.date_out);
+
+    useEffect(() => {
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            return formattedDate;
+        };
+
+        setFormattedDateIn(formatDate(data.data[0].booking.date_in));
+    }, [data.data[0].booking.date_in])
+
+
 
     return (
         <div className="bookingOrder" >
-
             <div className="bookingOrderContainer">
                 <div className="bookingOrderImgContainer">
-                    <img src="https://cdn.pixabay.com/photo/2023/03/29/10/27/hotel-7885138_640.jpg" alt="" />
+                    <img src={data.data[0].category_image.image_url} alt="" />
                 </div>
 
                 <div className="bookingOrderContentContainer">
 
                     <div className="bookingOrderNameContainer">
-                        <p> {name} </p>
+                        <p> {data.data[0].category.name} </p>
                     </div>
 
                     <div className="bookingOrderInfoContainer">
                         <div className="bookingOrderCheckinContainer">
                             <span>Check-in: </span>
-                            <p>{checkin}</p>
+                            <p>{formattedDateIn}</p>
                         </div>
 
                         <div className="bookingOrderDurationContainer">
@@ -35,19 +58,19 @@ const BookingOrder = () => {
 
                         <div className="bookingOrderGuestsContainer">
                             <span>Guests: </span>
-                            <p>{guests} Adults</p>
+                            <p>{data.data[0].category.max_people} people</p>
                         </div>
                     </div>
 
                     <div className="bookingOrderPriceContainer">
-                        <p>Price: $ {price} USD</p>
+                        <p>Price: $ {data.data[0].booking.total_amount} USD</p>
                     </div>
 
                 </div>
             </div>
 
             <div className="bookingOrderAcceptedContainer" btn-custom btn-custom-accept>
-                <p>Accepted</p>
+                <p>Pending</p>
             </div>
         </div>
     );

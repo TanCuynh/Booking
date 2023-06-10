@@ -12,7 +12,7 @@ const Blog = ({ imgUrl }) => {
                 </Link>
             </div>
             <div className="blogDesc">
-                <h3><Link to="blog">Choose the right property!</Link></h3>
+                <h3><Link to="blog">Choose the right hotel!</Link></h3>
                 <span>Ecomomy</span>
             </div>
         </div>

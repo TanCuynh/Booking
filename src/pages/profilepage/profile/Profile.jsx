@@ -9,16 +9,16 @@ import { AuthAPI } from "../../../api/AuthAPI";
 
 const Profile = () => {
     const navigate = useNavigate();
+    const context = useContext(APP_CONTEXT);
 
     const [showReviews, setShowReviews] = useState(false);
     const [formattedCreatedAt, setFormattedCreatedAt] = useState('');
 
-
-    const context = useContext(APP_CONTEXT);
-
     const [dataReviews, setDataReviews] = useState([]);
 
     const userId = context.user.id;
+
+    console.log("userID", userId); // 7
 
     const getDataReviews = async (userId) => {
         const res = await AuthAPI.getReviewByUserID(userId);
@@ -122,12 +122,12 @@ const Profile = () => {
                         {showReviews &&
                             <div className="all-reviews-modal-layout" onClick={closePopup}>
                                 <div className="all-reviews-modal" onClick={(e) => e.stopPropagation()}>
-                                    <AllReviewsUser onClose={closePopup} />
+                                    <AllReviewsUser data={dataReviews} onClose={closePopup} />
                                 </div>
                             </div>
                         }
                         {
-                            dataReviews.slice(0, 2).map((review, index) => {
+                            dataReviews.map((review, index) => {
                                 return (
                                     <UserReview key={index} dataReview={review} />
                                 )

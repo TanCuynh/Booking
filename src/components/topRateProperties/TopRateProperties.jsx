@@ -12,7 +12,7 @@ SwiperCore.use([Autoplay]);
 const TopRateProperties = () => {
     return (
         <div className="topRateProperties">
-            <div className="topRatePropertiesTitle"><h1>Top Rated Properties</h1></div>
+            <div className="topRatePropertiesTitle"><h1>Top Low-Cost Hotels</h1></div>
             <div className='a-sticky-thing'></div>
             <div className="topRatePropertiesItem">
                 <Swiper
@@ -22,8 +22,6 @@ const TopRateProperties = () => {
                         delay: 3000,
                         disableOnInteraction: false
                     }}
-                    // onSlideChange={() => console.log('Slide Change')}
-                    // onSwiper={(swiper) => console.log(swiper)}
                 >
                     <div className="next"></div>
                     <div className="prev"></div>

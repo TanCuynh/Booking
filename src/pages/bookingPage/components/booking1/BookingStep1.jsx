@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './bookingstep1.css';
-// import 'typeface-montserrat';
 
 const BookingStep1 = (data) => {
 
@@ -35,17 +34,17 @@ const BookingStep1 = (data) => {
         <div className="bookingStep1Content">
           <div className="image-container">
             <img
-              src={ data.data.category_images[0].image_url }
+              src={data.data.category_images[0].image_url}
               alt="Ảnh hotel"
               className="image"
             />
             <div className="text-container">
               <div className="left-text">
-                <p className='name-hotel'>{ data.data.name }</p>
-                <p className='bed'>{ data.data.bed } bed</p>
+                <p className='name-hotel'>{data.data.name}</p>
+                <p className='bed'>{data.data.bed} bed</p>
               </div>
               <div className="right-text">
-                <span className='price'>${ totalPrice } USD</span>
+                <span className='price'>${totalPrice} USD</span>
               </div>
             </div>
           </div>
@@ -55,12 +54,12 @@ const BookingStep1 = (data) => {
               <input
                 type="text"
                 id="first-name-input"
-                value={ firstName }
+                value={firstName}
                 name="firstName"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { firstName === '' && <p className='error-message'>Please enter your first name</p> }
+              {firstName === '' && <p className='error-message'>Please enter your first name</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -68,12 +67,12 @@ const BookingStep1 = (data) => {
               <input
                 type="text"
                 id="last-name-input"
-                value={ lastName }
+                value={lastName}
                 name="lastName"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { lastName === '' && <p className='error-message'>Please enter your last name</p> }
+              {lastName === '' && <p className='error-message'>Please enter your last name</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -81,12 +80,12 @@ const BookingStep1 = (data) => {
               <input
                 type="text"
                 id="email-input"
-                value={ email }
+                value={email}
                 name="email"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { email === '' && <p className='error-message'>Please enter your email address</p> }
+              {email === '' && <p className='error-message'>Please enter your email address</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -94,12 +93,12 @@ const BookingStep1 = (data) => {
               <input
                 type="text"
                 id="phone-number-input"
-                value={ phoneNumber }
+                value={phoneNumber}
                 name="phoneNumber"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { phoneNumber === '' && <p className='error-message'>Please enter your phone number</p> }
+              {phoneNumber === '' && <p className='error-message'>Please enter your phone number</p>}
             </div>
           </div>
         </div>
