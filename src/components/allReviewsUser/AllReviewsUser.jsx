@@ -5,10 +5,12 @@ import { styled, Box, Rating, TextField } from '@mui/material';
 import './allReviewsUser.css'
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const AllReviewsUser = ({ onClose }) => {
+const AllReviewsUser = ({ dataReviews, onClose }) => {
     const handleClose = () => {
         onClose();
     };
+
+    console.log("AllReviewsUser", dataReviews);
 
     const StyledRating = styled(Rating)({
         '& .MuiRating-iconFilled': {

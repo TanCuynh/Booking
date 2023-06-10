@@ -21,7 +21,6 @@ const Header = () => {
     const getSearchBarCities = async () => {
         const res = await hotelAPI.searchBarHotel();
         if (res.status === 200) {
-            console.log("searchBarCities", res.data.data);
             setSearchBarCities(res.data.data);
         }
         else {
@@ -70,52 +69,52 @@ const Header = () => {
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"
-                            options={ searchBarCities }
-                            sx={ { width: 300 } }
-                            renderInput={ (params) => (
+                            options={searchBarCities}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => (
                                 <TextField
-                                    { ...params }
+                                    {...params}
                                     className='headerSearchTextfield'
                                     label="Which city do you prefer?"
-                                    InputLabelProps={ {
+                                    InputLabelProps={{
                                         style: {
                                             fontSize: '14px',
                                             paddingLeft: '1rem',
                                             fontFamily: 'Montserrat, sans-serif',
                                         }
-                                    } }
+                                    }}
                                     variant="standard"
                                 />
-                            ) }
-                            onInputChange={ (event, value) => setDestination(value) }
+                            )}
+                            onInputChange={(event, value) => setDestination(value)}
                         />
                     </div>
                     <div className="headerSearchItem">
                         <div className="headerSearchPriceTag">
                             <p className='headerSearchItemTitle'>Room price:</p>
-                            <span className='headerSearchText'>{ `${price[0]} USD - ${price[1]} USD` }</span>
+                            <span className='headerSearchText'>{`${price[0]} USD - ${price[1]} USD`}</span>
                         </div>
                         <div className="headerSearchPriceSlider">
-                            <Box width={ 300 }>
+                            <Box width={300}>
                                 <Slider
-                                    getAriaLabel={ () => 'Room price' }
-                                    value={ price }
-                                    onChange={ handlePrice }
+                                    getAriaLabel={() => 'Room price'}
+                                    value={price}
+                                    onChange={handlePrice}
                                     valueLabelDisplay="auto"
-                                    getAriaValueText={ valuetext }
-                                    valueLabelFormat={ valuetext }
-                                    step={ 10 }
-                                    min={ 50 }
-                                    max={ 1000 }
+                                    getAriaValueText={valuetext}
+                                    valueLabelFormat={valuetext}
+                                    step={10}
+                                    min={50}
+                                    max={1000}
                                     size='small'
                                     disableSwap
                                 />
                             </Box>
                         </div>
                     </div>
-                    <div className="headerSearchBtn" onClick={ handleSearch }>
+                    <div className="headerSearchBtn" onClick={handleSearch}>
                         <FontAwesomeIcon
-                            icon={ faMagnifyingGlass }
+                            icon={faMagnifyingGlass}
                             className='headerSearchBtnIcon'
                         />
                     </div>

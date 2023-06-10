@@ -46,22 +46,27 @@ const HotelDetail = () => {
         dateEnd: '',
     });
 
+    const [hotelNotFound, setHotelNotFound] = useState(false);
+
     const { id } = useParams();
 
     const getHotelDetail = async (id) => {
-        const res = await hotelAPI.getHotelById(id);
-        if (res.status === 200) {
-            setDataHotel(res.data.data);
-            setSafetyHygiene(res.data.data.Safety_Hygiene.split(","));
-            setAmenities(res.data.data.amenities.split(","));
-            setCategories(res.data.data.categories);
-            setReviews(res.data.reviews.data);
-        } else {
-            setDataHotel({});
+        try {
+            const res = await hotelAPI.getHotelById(id);
+            if (res.status === 200) {
+                setDataHotel(res.data.data);
+                setSafetyHygiene(res.data.data.Safety_Hygiene.split(","));
+                setAmenities(res.data.data.amenities.split(","));
+                setCategories(res.data.data.categories);
+                setReviews(res.data.reviews.data);
+            } else {
+                setDataHotel({});
+                setHotelNotFound(true);
+            }
+        } catch (error) {
+            console.error("Error:", error);
         }
-    }
-
-    console.log("showReviews", reviews);
+    };
 
 
 
@@ -219,9 +224,16 @@ const HotelDetail = () => {
         const toDate = getDateFormat(today);
         const oneWeekLaterDate = getDateFormat(oneWeekLater);
         getCategory(toDate, oneWeekLaterDate);
-
     }, [id]);
 
+    if (hotelNotFound) {
+        return (
+            <div className="hotelDetailComponent">
+                <h1>Hotel not found...</h1>
+                <p>The request hotel does not exist</p>
+            </div>
+        )
+    }
 
     return (
         <div className="hotelDetailComponent">

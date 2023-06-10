@@ -16,7 +16,7 @@ const BrowseRequest = () => {
     return (
         <div className="browseRequest">
             <div className="browseRequestItems">
-                <h3>Browse For More Properties</h3>
+                <h3>Browse For More Hotels</h3>
                 <span>Explore properties by their categories/types...</span>
                 <div className="browseRequestBtn" onClick={() => handleSearch()}>
                     <span>Find A Property</span>

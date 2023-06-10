@@ -6,33 +6,36 @@ import { faBath, faBed, faCar, faHeart as solidHeart, faPaw } from '@fortawesome
 import { Link } from 'react-router-dom'
 
 const SearchedProperty = ({ data }) => {
+
     const [isLiked, setIsLiked] = useState(false);
 
     const handleToggleLike = () => {
         setIsLiked(!isLiked);
-    };
+    }
 
     return (
         <div className="searchedProperty">
             <div className="searchedPropertyImg">
-                {
-                    data?.hotel_image[0] &&
-                    <img
-                        src={ data.hotel_image[0].image_url }
-                        alt="searchedProp"
-                    />
-                }
-                <div className={ `searchedWishlistIcon ${isLiked ? 'active' : ''}` }>
+                <Link to={`/hotel/${data?.id}`}>
+                    {
+                        data?.hotel_image[0] &&
+                        <img
+                            src={data.hotel_image[0].image_url}
+                            alt="searchedProp"
+                        />
+                    }
+                </Link>
+                <div className={`searchedWishlistIcon ${isLiked ? 'active' : ''}`}>
                     <FontAwesomeIcon
-                        icon={ isLiked ? solidHeart : heart }
-                        onClick={ handleToggleLike }
+                        icon={isLiked ? solidHeart : heart}
+                        onClick={handleToggleLike}
                     />
                 </div>
-                <span>$1000-3000 USD</span>
+                <span>${data?.price} USD</span>
             </div>
             <div className="searchedPropertyDesc">
                 <h3 className="searchedPropertyName">
-                    <Link to="/unknown-hotel">{ data?.name }</Link>
+                    <Link to={`/hotel/${data?.id}`}>{data?.name}</Link>
                 </h3>
                 <span className="searchedPropertyAddress">
                     {
@@ -41,25 +44,25 @@ const SearchedProperty = ({ data }) => {
                 </span>
                 <div className="searchedPropertyAmenities">
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={ faBed } />
-                        <span>2</span>
+                        <FontAwesomeIcon icon={faBed} />
+                        <span>{data?.room_total}</span>
                     </div>
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={ faBath } />
-                        <span>2</span>
+                        <FontAwesomeIcon icon={faBath} />
+                        <span>{data?.bathrooms}</span>
                     </div>
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={ faCar } />
-                        <span>2</span>
+                        <FontAwesomeIcon icon={faCar} />
+                        <span>{data?.parking_slot}</span>
                     </div>
                     <div className="searchedPropertyAmenity">
-                        <FontAwesomeIcon icon={ faPaw } />
-                        <span>2</span>
+                        <FontAwesomeIcon icon={faPaw} />
+                        <span>0</span>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default SearchedProperty

@@ -17,7 +17,6 @@ const NearbyProperties = () => {
     const getHotelNearby = async () => {
         const res = await hotelAPI.getHotelNearby();
         if (res.status === 200) {
-            console.log("getHotelByCity", res.data.data);
             setDataHotelNearby(res.data.data);
         } else {
             setDataHotelNearby([]);
@@ -30,7 +29,7 @@ const NearbyProperties = () => {
 
     return (
         <div className="nearbyProperties">
-            <div className="nearbyPropertiesTitle"><h1>Nearby Listed Properties</h1></div>
+            <div className="nearbyPropertiesTitle"><h1>Nearby Listed Hotels</h1></div>
             <div className='a-sticky-thing'></div>
             <div className="nearbyPropertiesItem">
                 <Swiper
@@ -45,7 +44,7 @@ const NearbyProperties = () => {
                         dataHotelNearby.map((hotel) => {
                             return (
                                 <SwiperSlide key={hotel?.id}>
-                                    <Feature dataHotel={hotel}/>
+                                    <Feature dataHotel={hotel} />
                                 </SwiperSlide>
                             )
                         })

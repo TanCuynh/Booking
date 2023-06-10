@@ -13,24 +13,23 @@ SwiperCore.use([Autoplay]);
 
 const LatestProperties = () => {
     // const context = useContext(APP_CONTEXT);
-const [dataLatestHotel, setDataLatestHotel] = useState([]);
-const getDataLatestHotel = async () => {
-    const res = await hotelAPI.getLatestHotel();
-    if (res.status === 200) {
-        console.log("getLatestHotels", res.data.data);
-        setDataLatestHotel(res.data.data);
-    } else {
-        setDataLatestHotel({});
-        console.log("Error");
+    const [dataLatestHotel, setDataLatestHotel] = useState([]);
+    const getDataLatestHotel = async () => {
+        const res = await hotelAPI.getLatestHotel();
+        if (res.status === 200) {
+            setDataLatestHotel(res.data.data);
+        } else {
+            setDataLatestHotel({});
+            console.log("Error");
+        }
     }
-}
-useEffect(() => {
-    getDataLatestHotel();
-}, [])
+    useEffect(() => {
+        getDataLatestHotel();
+    }, [])
 
     return (
         <div className="latestProperties">
-            <div className="latestPropertiesTitle"><h1>Latest on the Property Listing</h1></div>
+            <div className="latestPropertiesTitle"><h1>Latest on the Hotel Listing</h1></div>
             <div className='a-sticky-thing'></div>
             <div className="latestPropertiesItem">
                 <Swiper
@@ -45,7 +44,7 @@ useEffect(() => {
                         dataLatestHotel.map((hotel) => {
                             return (
                                 <SwiperSlide key={hotel?.id}>
-                                    <Feature dataHotel={hotel}/>
+                                    <Feature dataHotel={hotel} />
                                 </SwiperSlide>
                             )
                         })
