@@ -10,7 +10,7 @@ const Past = (data) => {
                 {
                     pastBookings.map((booking, index) => {
                         return (
-                            <BookingOrderFinished data={booking} />
+                            <BookingOrderFinished key={index} data={booking} />
                         )
                     })
                 }

@@ -7,6 +7,8 @@ const hotelAPI = {
   getHotelNearby: (city) => axiosClient.get(`/hotels/nearby`),
 
   getMostBookedHotel: () => axiosClient.get(`/hotels/top-booked`),
+
+  getLowCostHotel: () => axiosClient.get(`/hotels/cheapest`),
   getHotelByName: (name) => axiosClient.get(`/hotels/name/${name}`),
   getHotelByAddress: (address) => axiosClient.get(`/hotels/address/${address}`),
   getHotelByNation: (nation) => axiosClient.get(`/hotels/nation/${nation}`),

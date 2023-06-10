@@ -5,13 +5,17 @@ export const bookingAPI = {
 
   getBookingsByHotelID: (id) => axiosClient.get(`/bookings/hotel/${id}`),
 
-  getBookingsByUserID: (id) => axiosClient.get(`/bookings/user/${id}`),
+  getPendingBookingsByUserID: (id) => axiosClient.get(`/bookings/user/${id}`),
 
   getPastBookingsByUserID: (id) => axiosClient.get(`/bookings/user/past/${id}`),
 
-  getBookingsByHostID: (id) => axiosClient.get(`/bookings/host/${id}`),
+  getPendingBookingsByHostID: (id) => axiosClient.get(`/bookings/host/${id}`),
 
-  getPastBookingsByHostID: (id) => axiosClient.get(`/bookings/host/past/${id}`),
+  getAcceptedBookingsByHostID: (id) =>
+    axiosClient.get(`/bookings/host/past/${id}`),
+
+  getRejectedBookingsByHostID: (id) =>
+    axiosClient.get(`/bookings/host/reject/${id}`),
 
   acceptBooking: (id, params) =>
     axiosClient.put(`/bookings/accept/${id}`, params),

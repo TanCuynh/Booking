@@ -15,36 +15,57 @@ const HostReservation = () => {
 
     const hostID = context.user.id;
 
-    const [dataBookingsByHost, setDataBookingsByHost] = useState({});
 
+
+
+    const [dataPendingBookingsByHost, setDataPendingBookingsByHost] = useState([]);
     const getDataBookingsByHost = async (id) => {
-        const res = await bookingAPI.getBookingsByHostID(id);
-
+        const res = await bookingAPI.getPendingBookingsByHostID(id);
         if (res.status === 200) {
-            // console.log("allBookings", res.data.data);
-            setDataBookingsByHost(res.data.data);
-            // console.log("allBookingByHost", res.data.data);
+            // console.log("pending", res.data.data);
+            setDataPendingBookingsByHost(res.data.data);
         } else {
             console.log("Error", res);
         }
     }
 
-    const [dataPastBookingsByHost, setDataPastBookingsByHost] = useState({});
 
+
+
+    const [dataAcceptedBookingsByHost, setDataAcceptedBookingsByHost] = useState([]);
     const getDataPastBookingsByHost = async (id) => {
-        const res = await bookingAPI.getPastBookingsByHostID(id);
-
+        const res = await bookingAPI.getAcceptedBookingsByHostID(id);
         if (res.status === 200) {
-            // console.log("allPastBookings", res.data.data);
-            setDataPastBookingsByHost(res.data.data);
+            // console.log("accepted", res.data.data);
+            setDataAcceptedBookingsByHost(res.data.data);
         } else {
             console.log("Error", res);
         }
     }
+
+
+
+
+    const [dataRejectedBookingsByHost, setDataRejectedBookingsByHost] = useState([]);
+    const getDataBookingsRejectedByHost = async (id) => {
+        const res = await bookingAPI.getRejectedBookingsByHostID(id);
+        if (res.status === 200) {
+            // console.log("rejected", res.data.data);
+            setDataRejectedBookingsByHost(res.data.data);
+        } else {
+            console.log("Error", res);
+        }
+    }
+
+
+
+
+
 
     useEffect(() => {
         getDataBookingsByHost(hostID);
         getDataPastBookingsByHost(hostID);
+        getDataBookingsRejectedByHost(hostID);
     }, [hostID])
 
     const handleButtonClick = (buttonId) => {
@@ -63,14 +84,10 @@ const HostReservation = () => {
             </div>
 
             <div>
-                {
-                    Object.keys(dataBookingsByHost)?.length === 0 ? <></> :
-                        <>
-                            {selectedButton === 1 && <HostUpcoming data={dataBookingsByHost} />}
-                            {selectedButton === 2 && <HostPast data={dataPastBookingsByHost} />}
-                            {selectedButton === 3 && <HostRejected data={dataPastBookingsByHost} />}
-                        </>
-                }
+
+                {selectedButton === 1 && <HostUpcoming data={dataPendingBookingsByHost} />}
+                {selectedButton === 2 && <HostPast data={dataAcceptedBookingsByHost} />}
+                {selectedButton === 3 && <HostRejected data={dataRejectedBookingsByHost} />}
 
             </div>
         </div>

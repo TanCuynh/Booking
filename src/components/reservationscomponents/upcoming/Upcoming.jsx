@@ -8,7 +8,7 @@ const Upcoming = (data) => {
             {
                 upcomingBookings.map((booking, index) => {
                     return (
-                        <BookingOrder data={booking} />
+                        <BookingOrder key={index} data={booking} />
                     )
                 })
             }

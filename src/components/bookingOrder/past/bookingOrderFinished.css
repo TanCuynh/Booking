@@ -224,3 +224,11 @@
 .finishedReviewContainer p {
     color: #484848;
 }
+
+.bookingOrderFinishedStatusContainer.accepted {
+    background-color: rgb(63, 160, 119);
+}
+
+.bookingOrderFinishedStatusContainer.rejected {
+    background-color: rgb(243, 73, 73);
+}
