@@ -4,10 +4,6 @@
     margin: 0;
     scroll-behavior: smooth;
 }
-.main-layout {
-    /* margin: 0 4rem; */
-    /* margin-top: 100px; */
-}
 .btn-custom {
     border-radius: 999px;
     padding: 10px 20px;
