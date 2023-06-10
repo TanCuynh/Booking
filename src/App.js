@@ -36,6 +36,7 @@ const App = () => {
   const [dataAllHotels, setDataAllHotels] = useState([]);
   const [dataHotelSearch, setDataHotelSearch] = useState({});
   const [selectCategory, setSelectCategory] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getInformationUser = async () => {
     const res = await AuthAPI.getUserByToken();
@@ -62,7 +63,9 @@ const App = () => {
         selectCategory,
         setSelectCategory,
         dataHotelSearch,
-        setDataHotelSearch
+        setDataHotelSearch,
+        isLoading,
+        setIsLoading
       }}
     >
       <BrowserRouter>

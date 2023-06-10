@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Footer, Navbar } from '../components';
 import { Outlet } from 'react-router-dom';
+import { APP_CONTEXT } from '../App';
+import Loading from '../components/loading/Loading';
 
 const AppLayout = () => {
+	const context = useContext(APP_CONTEXT);
 	return (
 		<>
-			<Navbar />
-			<div className='main-layout'>
-				<Outlet />
-			</div>
-			
-			<Footer />
+			{
+				context.isLoading ? <Loading />
+					:
+					<>
+						<Navbar />
+						<div className='main-layout'>
+							<Outlet />
+						</div>
+
+						<Footer />
+					</>
+			}
+
 		</>
 	)
 }
