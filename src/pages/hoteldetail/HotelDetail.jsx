@@ -68,8 +68,6 @@ const HotelDetail = () => {
         }
     };
 
-
-
     const remainingSafetyHygieneCount = safetyHygiene.length - 7;
     const remainingAmenitiesCount = amenities.length - 7;
 
@@ -83,7 +81,6 @@ const HotelDetail = () => {
             totalDate: 0
         }
     ]);
-    const [value, setValue] = React.useState(100);
 
     const handleToggleLike = () => {
         setIsLiked(!isLiked);
@@ -99,10 +96,6 @@ const HotelDetail = () => {
             click: handleMapClick,
         });
         return null;
-    };
-
-    const handleRatingChange = (event, newValue) => {
-        setValue(newValue);
     };
 
     const [slideIndex, setSlideIndex] = useState(0);
@@ -195,6 +188,9 @@ const HotelDetail = () => {
             console.log('error', res)
         }
     };
+
+    const trueRating = dataHotel?.rating;
+    console.log("Rating", trueRating);
 
     const renderListCategory = useMemo(() => {
         if (emptyRoom) {
@@ -405,16 +401,21 @@ const HotelDetail = () => {
                             )}
                         </div>
                     </div>
+
                     <div className="hotelDetailReview">
                         <div className="hotelDetailReviewTitle">
                             <h3>Reviews</h3>
-                            <Rating
-                                name="my-rating"
-                                value={5}
-                                style={{ fontSize: "40px" }}
-                                readOnly
-                            />
-                            <h3>5.0</h3>
+                            {
+                                dataHotel?.rating > 0 && <Rating
+                                    name="hotel-rating"
+                                    precision={0.5}
+                                    value={dataHotel?.rating}
+                                    style={{ fontSize: "40px" }}
+                                    readOnly
+                                />
+                            }
+
+                            <h3 onClick={() => console.log(dataHotel?.rating)}>{dataHotel?.rating}</h3>
                         </div>
                         <div className="hotelDetailReviewComment">
                             {
