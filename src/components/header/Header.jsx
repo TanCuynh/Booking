@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +9,13 @@ import { format } from 'date-fns'
 import { useNavigate } from "react-router-dom";
 import { Autocomplete, Box, Slider, TextField } from '@mui/material';
 import hotelAPI from '../../api/hotelAPI';
+import { async } from 'q';
+import { searchAPI } from '../../api/searchAPI';
+import { APP_CONTEXT } from '../../App';
 
 const Header = () => {
     const navigate = useNavigate();
+    const context = useContext(APP_CONTEXT);
     const [destination, setDestination] = useState("");
     const [price, setPrice] = useState([200, 500]);
 
@@ -34,7 +38,7 @@ const Header = () => {
 
     const minDistance = 100;
 
-    function valuetext(value) {
+    function valuetext (value) {
         return `${value} USD`;
     }
 
@@ -49,8 +53,15 @@ const Header = () => {
         }
     };
 
-    const handleSearch = () => {
-        navigate("/search", { state: { destination, price } });
+    const handleSearch = async () => {
+        const res = await searchAPI.searchByPriceAndCity(price[0], price[1], destination);
+        if (res.status === 200) {
+            console.log('search successful', res);
+            context.setDataHotelSearch(res.data.data.data);
+        } else {
+            console.log('search failed', res);
+        }
+        navigate("/search");
     };
 
     return (
@@ -62,52 +73,52 @@ const Header = () => {
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"
-                            options={searchBarCities}
-                            sx={{ width: 300 }}
-                            renderInput={(params) => (
+                            options={ searchBarCities }
+                            sx={ { width: 300 } }
+                            renderInput={ (params) => (
                                 <TextField
-                                    {...params}
+                                    { ...params }
                                     className='headerSearchTextfield'
                                     label="Which city do you prefer?"
-                                    InputLabelProps={{
+                                    InputLabelProps={ {
                                         style: {
                                             fontSize: '14px',
                                             paddingLeft: '1rem',
                                             fontFamily: 'Montserrat, sans-serif',
                                         }
-                                    }}
+                                    } }
                                     variant="standard"
                                 />
-                            )}
-                            onInputChange={(event, value) => setDestination(value)}
+                            ) }
+                            onInputChange={ (event, value) => setDestination(value) }
                         />
                     </div>
                     <div className="headerSearchItem">
                         <div className="headerSearchPriceTag">
                             <p className='headerSearchItemTitle'>Room price:</p>
-                            <span className='headerSearchText'>{`${price[0]} USD - ${price[1]} USD`}</span>
+                            <span className='headerSearchText'>{ `${price[0]} USD - ${price[1]} USD` }</span>
                         </div>
                         <div className="headerSearchPriceSlider">
-                            <Box width={300}>
+                            <Box width={ 300 }>
                                 <Slider
-                                    getAriaLabel={() => 'Room price'}
-                                    value={price}
-                                    onChange={handlePrice}
+                                    getAriaLabel={ () => 'Room price' }
+                                    value={ price }
+                                    onChange={ handlePrice }
                                     valueLabelDisplay="auto"
-                                    getAriaValueText={valuetext}
-                                    valueLabelFormat={valuetext}
-                                    step={10}
-                                    min={50}
-                                    max={1000}
+                                    getAriaValueText={ valuetext }
+                                    valueLabelFormat={ valuetext }
+                                    step={ 10 }
+                                    min={ 50 }
+                                    max={ 1000 }
                                     size='small'
                                     disableSwap
                                 />
                             </Box>
                         </div>
                     </div>
-                    <div className="headerSearchBtn" onClick={() => handleSearch()}>
+                    <div className="headerSearchBtn" onClick={ handleSearch }>
                         <FontAwesomeIcon
-                            icon={faMagnifyingGlass}
+                            icon={ faMagnifyingGlass }
                             className='headerSearchBtnIcon'
                         />
                     </div>

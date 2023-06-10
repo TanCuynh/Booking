@@ -34,6 +34,7 @@ const App = () => {
   const token = localStorage.getItem("token");
   const [user, setUser] = useState({});
   const [dataAllHotels, setDataAllHotels] = useState([]);
+  const [dataHotelSearch, setDataHotelSearch] = useState([]);
   const [selectCategory, setSelectCategory] = useState(0);
 
   const getInformationUser = async () => {
