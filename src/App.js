@@ -54,7 +54,14 @@ const App = () => {
 
   return (
     <APP_CONTEXT.Provider
-      value={{ user, setUser, dataAllHotels, setDataAllHotels, selectCategory, setSelectCategory, dataHotelSearch, setDataHotelSearch }}
+      value={{
+        user,
+        setUser,
+        dataAllHotels,
+        setDataAllHotels,
+        selectCategory,
+        setSelectCategory,
+      }}
     >
       <BrowserRouter>
         <StartOnTop />
@@ -84,10 +91,10 @@ const App = () => {
             <Route path="myprofile" element={<MyProfile />} />
             <Route path="reservations" element={<Reservations />} />
           </Route>
-          <Route path="admin" element={<AdminLayout />}>
-            <Route path="" element={<Home />} />
+          <Route path="admin" element={<User />}>
+            {/* <Route path="" element={<Home />} />
             <Route path="hotel" element={<Hotel />} />
-            <Route path="user" element={<User />} />
+            <Route path="user" element={<User />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './roomDetail.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faCheck, faDoorOpen, faMountainSun, faShower, faVolumeXmark, faWifi, faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -8,8 +8,12 @@ import categoryAPI from '../../api/categoryAPI'
 import { safetyHygieneOptions } from '../../pages/hostPage/hostCreateHotel/option'
 import { useNavigate } from 'react-router-dom'
 import { bookingAPI } from '../../api/bookingAPI'
+import { APP_CONTEXT } from '../../App'
+import { toast } from 'react-hot-toast'
 
 const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateParams }) => {
+
+    const context = useContext(APP_CONTEXT);
 
     const navigate = useNavigate();
 
@@ -19,11 +23,22 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
     const [directionsViewOptions, setDirectionsViewOptions] = useState([]);
     const [amenitiesOptions, setAmenityOptions] = useState([]);
 
+    // console.log("thang nhoc", dateParams);
+
+    const calculateDays = (startDate, endDate) => {
+        const time = new Date(endDate) - new Date(startDate);
+        const timeUnit = 24 * 60 * 60 * 1000;
+
+        return Math.round(time / timeUnit);
+    }
+
+    const duration = calculateDays(dateParams.dateStart, dateParams.dateEnd);
+
+    // console.log("duration", duration);
 
     const getDataCategoryDetail = async () => {
         const res = await categoryAPI.getCategoryById(categoryId);
         if (res.status === 200) {
-            console.log("getCategoryById", res.data.data);
             setDataCategoryDetail(res.data.data);
             setCatetogyImages(res.data.data.category_images);
             setBathroomOptions(res.data.data.bathroom_facilities.split(","));
@@ -35,7 +50,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         }
     }
     const createBooking = async () => {
-        console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
+        // console.log('end', dateParams.dateEnd, 'start', dateParams.dateStart);
         const res = await bookingAPI.createBooking({
             description: "nothing",
             date_in: dateParams.dateStart,
@@ -46,16 +61,21 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
         });
         if (res.status === 200) {
             localStorage.setItem('bookingId', res.data.data.booking.id);
+            // console.log("book", res.data);
 
         } else {
-            console.log('error creating booking', res);
+            console.log('Error creating booking', res);
         }
     }
 
     const handleBooking = () => {
-        navigate('/booking');
-        console.log(11111)
-        createBooking();
+        if (context.user.role === "admin" || context.user.role === "hotel") {
+            toast.error("You can't make any booking requests if you are a host");
+            navigate('/');
+        } else {
+            navigate('/booking', { state: { dataCategoryDetail, room, duration } });
+            createBooking();
+        }
     }
     useEffect(() => {
         getDataCategoryDetail();
@@ -70,16 +90,16 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
             <div className="roomDetailDesc">
                 <div className="roomDetailImgContainer">
                     <div className="roomDetailImgSlideshowContainer">
-                        <Slideshow images={ categoryImages.map((categoryImage) => categoryImage.image_url) } className='roomDetailSlideshow' />
+                        <Slideshow images={categoryImages.map((categoryImage) => categoryImage.image_url)} className='roomDetailSlideshow' />
                     </div>
                 </div>
                 <div className="roomDetailContentContainer">
                     <div className="roomDetailIntroduction">
-                        <h3 className='roomDetailName'>{ dataCategoryDetail?.name }</h3>
+                        <h3 className='roomDetailName'>{dataCategoryDetail?.name}</h3>
                     </div>
                     <div className="roomDetailBedType">
-                        <span>{ dataCategoryDetail?.bed } bed</span>
-                        <FontAwesomeIcon icon={ faBed } />
+                        <span>{dataCategoryDetail?.bed} bed</span>
+                        <FontAwesomeIcon icon={faBed} />
                     </div>
                     <div className="roomDetailDescContent">
                         <span>In your private bathroom:</span>
@@ -87,9 +107,9 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             {
                                 bathroomOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={ index }>
-                                            <FontAwesomeIcon icon={ faCheck } />
-                                            <span>{ item }</span>
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
                                         </div>
                                     )
                                 })
@@ -102,9 +122,9 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             {
                                 directionsViewOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={ index }>
-                                            <FontAwesomeIcon icon={ faCheck } />
-                                            <span>{ item }</span>
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
                                         </div>
                                     )
                                 })
@@ -117,9 +137,9 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                             {
                                 amenitiesOptions.map((item, index) => {
                                     return (
-                                        <div className="hotelDetailItem" key={ index }>
-                                            <FontAwesomeIcon icon={ faCheck } />
-                                            <span>{ item }</span>
+                                        <div className="hotelDetailItem" key={index}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span>{item}</span>
                                         </div>
                                     )
                                 })
@@ -132,30 +152,30 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
                 <div className="roomDetailPriceContainer">
                     <div className="roomDetailPriceDesc">
                         <div className="roomDetailPriceDescTitle">
-                            <h3>{ dataCategoryDetail?.name }</h3>
+                            <h3>{dataCategoryDetail?.name}</h3>
                         </div>
                         <div className="roomDetailPriceDescContent">
-                            <span>{ dataCategoryDetail?.bed } bed</span>
-                            <FontAwesomeIcon icon={ faBed } />
+                            <span>{dataCategoryDetail?.bed} bed</span>
+                            <FontAwesomeIcon icon={faBed} />
                         </div>
                         <div className="roomDetailAvailableRooms">
-                            <span>You book { room } rooms</span>
                             <div className="roomDetailRoomsAvailable">
-                                <span>4 rooms available</span>
+                                <span>You book {room} rooms</span>
                             </div>
+                            <span>{emptyRoom.length} rooms available</span>
                         </div>
                     </div>
                     <div className="roomDetailPrice">
-                        <span>$ { dataCategoryDetail?.price } USD <small>for 1 night per room</small></span>
+                        <span>$ {dataCategoryDetail?.price} USD <small>for 1 night per room</small></span>
                     </div>
                 </div>
                 <div className="roomDetailBookingBtnContainer">
-                    <div className="roomDetailBookingBtn" onClick={ handleBooking }>
+                    <div className="roomDetailBookingBtn" onClick={handleBooking}>
                         <span>Book Now</span>
                     </div>
                 </div>
             </div>
-            <FontAwesomeIcon icon={ faXmark } className='roomDetailCloseBtn' onClick={ handleClose } />
+            <FontAwesomeIcon icon={faXmark} className='roomDetailCloseBtn' onClick={handleClose} />
         </div>
     )
 }

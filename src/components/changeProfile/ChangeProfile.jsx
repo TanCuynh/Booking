@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './changeProfile.css';
+import { APP_CONTEXT } from "../../App";
+import { AuthAPI } from "../../api/AuthAPI";
+import { toast } from "react-hot-toast";
 
 const ChangeProfile = () => {
+
+  const context = useContext(APP_CONTEXT);
+
   const [editing, setEditing] = useState(false);
-  const [name, setName] = useState("Trần Hồng Đức");
+
+  const [name, setName] = useState(context.user.name);
   const [tempName, setTempName] = useState(name);
-  const [emailAddress, setEmailAddress] = useState("tranhongduc@gmail.com");
-  const [tempEmailAddress, setTempEmailAddress] = useState(emailAddress);
-  const [phoneNumber, setPhoneNumber] = useState("0123456789");
+
+  const [emailAddress, setEmailAddress] = useState(context.user.email);
+
+  const [phoneNumber, setPhoneNumber] = useState(context.user.phone_number);
   const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber);
-  const [dateOfBirth, setDateOfBirth] = useState("22-03-2002");
+
+  const [dateOfBirth, setDateOfBirth] = useState(context.user.date_of_birth);
   const [tempDateOfBirth, setTempDateOfBirth] = useState(dateOfBirth);
-  const [gender, setGender] = useState("Male");
+
+  const [gender, setGender] = useState(0);
+  useEffect(() => {
+    setGender(context.user.gender);
+  }, [context.user.gender])
   const [tempGender, setTempGender] = useState(gender);
-  const [address, setAddress] = useState("123 Street, City, Country");
+
+  const [address, setAddress] = useState(context.user.address);
   const [tempAddress, setTempAddress] = useState(address);
+
+  const [error, setError] = useState("");
+
+  const [phoneError, setPhoneError] = useState("");
+
 
   const handleEditClick = () => {
     if (editing) {
       setTempName(name);
-      setTempEmailAddress(emailAddress);
       setTempPhoneNumber(phoneNumber);
       setTempDateOfBirth(dateOfBirth);
       setTempGender(gender);
@@ -30,26 +48,65 @@ const ChangeProfile = () => {
 
   const handleInputChange = (event, setter) => {
     setter(event.target.value);
+    setTempGender(parseInt(event.target.value));
   };
 
-  const handleSaveClick = () => {
-    setName(tempName);
-    setEmailAddress(tempEmailAddress);
-    setPhoneNumber(tempPhoneNumber);
-    setDateOfBirth(tempDateOfBirth);
-    setGender(tempGender);
-    setAddress(tempAddress);
-    setEditing(false);
+  const [accId, setAccId] = useState(context.user.id);
+
+  const handleSaveClick = async () => {
+    setPhoneError("");
+    setPhoneError("");
+
+    if (
+      !tempName ||
+      !tempPhoneNumber ||
+      !tempDateOfBirth ||
+      !tempAddress
+    ) {
+      setError('Please fill in all the required fields');
+      return;
+    }
+    const phoneNumberRegex = /^\d{10}$/;
+
+    if (!phoneNumberRegex.test(tempPhoneNumber)) {
+      setPhoneError("Your phone number is invalid");
+      return;
+    }
+
+    try {
+      const res = await AuthAPI.editProfile(accId, {
+        name: tempName,
+        phone_number: tempPhoneNumber,
+        date_of_birth: tempDateOfBirth,
+        gender: tempGender,
+        address: tempAddress,
+      });
+
+      if (res.status === 200) {
+        setName(tempName);
+        setPhoneNumber(tempPhoneNumber);
+        setDateOfBirth(tempDateOfBirth);
+        setGender(tempGender);
+        setAddress(tempAddress);
+
+        setEditing(false);
+      } else {
+        setError("Failed to update the profile");
+      }
+    } catch (error) {
+      toast.error("An error occurred while updating the profile");
+    }
   };
 
   const handleCancelClick = () => {
     setTempName(name);
-    setTempEmailAddress(emailAddress);
     setTempPhoneNumber(phoneNumber);
-    setTempDateOfBirth(dateOfBirth);
     setTempGender(gender);
     setTempAddress(address);
     setEditing(false);
+
+    setError("");
+    setPhoneError("");
   };
 
 
@@ -58,7 +115,7 @@ const ChangeProfile = () => {
       <div className="profileContainer">
         <div className="changeProfileContainer">
           <h3>Personal details</h3>
-          <p>Update your information and find out how it's used.</p>
+          {<p>{error}</p>}
         </div>
         <div className="information">
           <p className="label">Name</p>
@@ -74,20 +131,16 @@ const ChangeProfile = () => {
           )}
         </div>
         <div className="information">
-          <p className="label">Email Address</p>
-          {editing ? (
-            <input
-              type="text"
-              value={tempEmailAddress}
-              onChange={(event) => handleInputChange(event, setTempEmailAddress)}
-              className="input-field"
-            />
-          ) : (
-            <p className="info-field">{emailAddress}</p>
-          )}
+          <div className="infoLabel">
+            <p className="label">Email Address</p>
+          </div>
+          <p className="info-field">{emailAddress}</p>
         </div>
         <div className="information">
-          <p className="label">Phone Number</p>
+          <div className="infoLabel">
+            <p className="label">Phone Number</p>
+            <span>{phoneError}</span>
+          </div>
           {editing ? (
             <input
               type="text"
@@ -103,7 +156,7 @@ const ChangeProfile = () => {
           <p className="label">Date of Birth</p>
           {editing ? (
             <input
-              type="text"
+              type="date"
               value={tempDateOfBirth}
               onChange={(event) => handleInputChange(event, setTempDateOfBirth)}
               className="input-field"
@@ -115,14 +168,16 @@ const ChangeProfile = () => {
         <div className="information">
           <p className="label">Gender</p>
           {editing ? (
-            <input
-              type="text"
+            <select
               value={tempGender}
               onChange={(event) => handleInputChange(event, setTempGender)}
-              className="input-field"
-            />
+              className="select-field"
+            >
+              <option className="select-option" value={0}>Male</option>
+              <option className="select-option" value={1}>Female</option>
+            </select>
           ) : (
-            <p className="info-field">{gender}</p>
+            <p className="info-field">{gender === 0 ? "Male" : "Female"}</p>
           )}
         </div>
         <div className="information">

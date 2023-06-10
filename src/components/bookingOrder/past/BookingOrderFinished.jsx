@@ -19,20 +19,27 @@ const BookingOrderFinished = () => {
     const [review, setReview] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [showReviewButton, setShowReviewButton] = useState(false);
+    const [showReview, setShowReview] = useState(false);
 
     const handleReviewClick = () => {
         setShowTextField(true);
+        setShowReviewButton(false);
     };
 
     const handleSendClick = () => {
         setShowConfirmation(true);
     };
 
+    const handleShowReviewClick = () => {
+        setShowReview(true);
+    };
+
     const handleConfirmOkClick = () => {
         setReview(inputValue);
         setShowTextField(false);
         setShowConfirmation(false);
-        toast.success("Review successfully");
+        setShowReviewButton(true);
     };
 
     const handleCancelClick = () => {
@@ -84,8 +91,18 @@ const BookingOrderFinished = () => {
                 <div className="bookingOrderFinishedStatusContainer" >
                     <p>Finished</p>
                 </div>
-                {!review && (
+                {!review && !showReview && (
                     <button className="bookingOrderFinishedBtnReview btn-custom" onClick={handleReviewClick}>Review</button>
+                )}
+                {showReview && (
+                    <button className="show-review-btn btn-custom btn-custom-danger" onClick={() => setShowReview(false)}>
+                        Hide Review
+                    </button>
+                )}
+                {!showReview && review && (
+                    <button className="show-review-btn btn-custom btn-custom-accept" onClick={handleShowReviewClick}>
+                        Show Review
+                    </button>
                 )}
             </div>
             {showTextField && (
@@ -108,12 +125,12 @@ const BookingOrderFinished = () => {
 
                     <div className="ratingAndReviewActions">
                         <button className="send-btn  btn-custom" onClick={handleSendClick}>Send</button>
-                        <button className="cancel-btn  btn-custom" onClick={handleCancelClick}>Cancel</button>
+                        <button className="bookingFinishedOrderBtn  btn-custom" onClick={handleCancelClick}>Cancel</button>
                     </div>
 
                 </div>
             )}
-            {review && (
+            {showReview && (
                 <div className="booking-review-container">
                     <div className="reviewHeader">
                         <Stack spacing={1}>

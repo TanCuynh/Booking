@@ -27,13 +27,17 @@ const listMenu = [
 
 const AdminLayout = () => {
 	const navigate = useNavigate();
+
+	const handleHome = () => {
+		navigate("/");
+	}
+
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
 	return (
 		<Layout style={{ minHeight: '100vh', }}>
-			<Sider theme='light'>
-				<div className='logoContainer'>STAYCATION.</div>
+			{/* <Sider theme='light'>
 				<Menu theme="light" defaultSelectedKeys={['0']} mode="inline">
 					{
 						listMenu.map((item) => {
@@ -47,35 +51,33 @@ const AdminLayout = () => {
 						})
 					}
 				</Menu>
-			</Sider>
+			</Sider> */}
+
 			<Layout className="site-layout">
-				<div className='avatarWrapper'>
-					<Popover content={<></>} trigger="click">
-						<div className='userClick'>
-							<div className=''>
-								<Avatar src='https://game8.vn/media/202203/images/-1591253249203679369585(1).jpg' size='large' alt="admin" />
-								<span className='userClickName'>
-									Admin
-								</span>
+				<div className="adminPageHeader">
+					<div className='logoContainer' onClick={handleHome}>STAYCATION.</div>
+					<div className='avatarWrapper'>
+						<Popover content={<></>} trigger="click">
+							<div className='userClick'>
+								<div className=''>
+									<Avatar src='https://game8.vn/media/202203/images/-1591253249203679369585(1).jpg' size='large' alt="admin" />
+									<span className='userClickName'>
+										Admin
+									</span>
+								</div>
 							</div>
-						</div>
-					</Popover>
+						</Popover>
+					</div>
 				</div>
 				<Content
 					style={{
 						margin: '0 16px',
 					}}
 				>
-					<Breadcrumb
-						style={{
-							margin: '16px 0',
-						}}
-					>
-					</Breadcrumb>
 					<div
 						style={{
-							padding: 24,
-							minHeight: 360,
+							padding: '24px',
+							minHeight: 'max-content',
 							background: colorBgContainer,
 						}}
 					>

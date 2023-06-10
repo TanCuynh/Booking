@@ -71,13 +71,9 @@
 }
 
 .featureHotelAddress {
-    color: #484848;
-
-}
-
-.featureHotelAddress {
-    width: 85%;
-    font-weight: 600;
-    font-size: 18px;
+    width: 80%;
+    font-weight: 500;
+    font-size: 14px;
     line-height: 16px;
+    color: #484848;
 }

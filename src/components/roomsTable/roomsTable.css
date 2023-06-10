@@ -111,6 +111,11 @@
     background: #00487a;
 }
 
+.roomsTableShowPriceBtn:disabled {
+    background: #00487a;
+    cursor: default;
+}
+
 .roomDetailModalContainer {
     position: fixed;
     top: 0;

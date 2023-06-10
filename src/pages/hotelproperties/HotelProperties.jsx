@@ -5,7 +5,7 @@ import ReviewComment from '../../components/reviewComment/ReviewComment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faMagnifyingGlass, faPaw, faPhone, faStar, faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faHeart as solidHeart, faSquareParking, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck, faHeart as heart, faShareFromSquare } from '@fortawesome/free-regular-svg-icons'
-import { LinearProgress } from '@mui/material'
+import { LinearProgress, Rating } from '@mui/material'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
@@ -34,8 +34,8 @@ const HotelProperties = () => {
     const { id } = useParams();
 
 
-    const remainingSafetyHygieneCount = safetyHygiene.length -7 ;
-    const remainingAmenitiesCount = amenities.length -7;
+    const remainingSafetyHygieneCount = safetyHygiene.length - 7;
+    const remainingAmenitiesCount = amenities.length - 7;
 
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
@@ -94,62 +94,62 @@ const HotelProperties = () => {
     return (
         <div className="hotelPropertiesComponent">
             {openPopup && (
-            <div className="hotelPropertiesPopupImgContainer">
-                <FontAwesomeIcon
-                icon={faCircleXmark}
-                className="closePopupBtn"
-                onClick={() => setOpenPopup(false)}
-                />
-                <div className="hotelPropertiesPopupImg">
-                <FontAwesomeIcon
-                    icon={faCircleArrowLeft}
-                    className="arrowPopupBtn"
-                    onClick={() => handleMove("l")}
-                />
-                <div className="popupImgWrapper">
-                    <img src="https://cdn.pixabay.com/photo/2013/04/18/14/39/ship-105596_640.jpg" alt="popupImg" />
+                <div className="hotelPropertiesPopupImgContainer">
+                    <FontAwesomeIcon
+                        icon={faCircleXmark}
+                        className="closePopupBtn"
+                        onClick={() => setOpenPopup(false)}
+                    />
+                    <div className="hotelPropertiesPopupImg">
+                        <FontAwesomeIcon
+                            icon={faCircleArrowLeft}
+                            className="arrowPopupBtn"
+                            onClick={() => handleMove("l")}
+                        />
+                        <div className="popupImgWrapper">
+                            <img src="https://cdn.pixabay.com/photo/2013/04/18/14/39/ship-105596_640.jpg" alt="popupImg" />
+                        </div>
+                        <FontAwesomeIcon
+                            icon={faCircleArrowRight}
+                            className="arrowPopupBtn"
+                            onClick={() => handleMove("r")}
+                        />
+                    </div>
                 </div>
-                <FontAwesomeIcon
-                    icon={faCircleArrowRight}
-                    className="arrowPopupBtn"
-                    onClick={() => handleMove("r")}
-                />
-                </div>
-            </div>
             )}
             <div className="hotelPropertiesImg">
                 <div className="hotelPropertiesImgLarge">
                     <img
-                    onClick={() => handleOpen(0)}
-                    src="https://cdn.pixabay.com/photo/2013/04/18/14/39/ship-105596_640.jpg"
-                    alt=""
-                    className="bigImg"
+                        onClick={() => handleOpen(0)}
+                        src="https://cdn.pixabay.com/photo/2013/04/18/14/39/ship-105596_640.jpg"
+                        alt=""
+                        className="bigImg"
                     />
                 </div>
                 <div className="hotelPropertiesImgSmall">
                     <img
-                    onClick={() => handleOpen(1)}
-                    src="https://cdn.pixabay.com/photo/2021/08/27/01/33/bedroom-6577523_640.jpg"
-                    alt=""
-                    className="smallImg"
+                        onClick={() => handleOpen(1)}
+                        src="https://cdn.pixabay.com/photo/2021/08/27/01/33/bedroom-6577523_640.jpg"
+                        alt=""
+                        className="smallImg"
                     />
                     <img
-                    onClick={() => handleOpen(2)}
-                    src="https://cdn.pixabay.com/photo/2018/06/14/21/15/bedroom-3475656_640.jpg"
-                    alt=""
-                    className="smallImg"
+                        onClick={() => handleOpen(2)}
+                        src="https://cdn.pixabay.com/photo/2018/06/14/21/15/bedroom-3475656_640.jpg"
+                        alt=""
+                        className="smallImg"
                     />
                     <img
-                    onClick={() => handleOpen(3)}
-                    src="https://cdn.pixabay.com/photo/2020/03/04/18/02/sacher-4902327_640.jpg"
-                    alt=""
-                    className="smallImg"
+                        onClick={() => handleOpen(3)}
+                        src="https://cdn.pixabay.com/photo/2020/03/04/18/02/sacher-4902327_640.jpg"
+                        alt=""
+                        className="smallImg"
                     />
                     <img
-                    onClick={() => handleOpen(4)}
-                    src="https://cdn.pixabay.com/photo/2016/06/10/01/05/hotel-room-1447201_640.jpg"
-                    alt=""
-                    className="smallImg"
+                        onClick={() => handleOpen(4)}
+                        src="https://cdn.pixabay.com/photo/2016/06/10/01/05/hotel-room-1447201_640.jpg"
+                        alt=""
+                        className="smallImg"
                     />
                 </div>
             </div>
@@ -182,7 +182,7 @@ const HotelProperties = () => {
                     <div className="hotelPropertiesDesc">
                         <h3>Apartment Description</h3>
                         <p>
-                                USECASE STATETION P Hotel is a luxurious and conveniently located destination in XYZ city. With modern design, friendly staff, and upscale accommodations, it offers a memorable stay experience. Enjoy comfortable rooms, excellent amenities, and easy access to nearby attractions. Choose XYZ Hotel for an unforgettable trip.
+                            USECASE STATETION P Hotel is a luxurious and conveniently located destination in XYZ city. With modern design, friendly staff, and upscale accommodations, it offers a memorable stay experience. Enjoy comfortable rooms, excellent amenities, and easy access to nearby attractions. Choose XYZ Hotel for an unforgettable trip.
                         </p>
                     </div>
                     <div className="hotelPropertiesMapLocation">
@@ -240,7 +240,7 @@ const HotelProperties = () => {
                             {
                                 categories.map((category) => {
                                     return (
-                                        <RoomsTable  />
+                                        <RoomsTable />
                                     )
                                 })
                             }
@@ -289,35 +289,13 @@ const HotelProperties = () => {
                     <div className="hotelPropertiesReview">
                         <div className="hotelPropertiesReviewTitle">
                             <h3>Reviews</h3>
-                            <FontAwesomeIcon icon={faStar} className='hotelPropertiesReviewTitleIcon' />
+                            <Rating
+                                name="my-rating"
+                                value={5}
+                                style={{ fontSize: "40px" }}
+                                readOnly
+                            />
                             <h3>5.0</h3>
-                        </div>
-                        <div className="hotelPropertiesReviewRate">
-                            <div className="hotelPropertiesReviewRateItem">
-                                <span>Amenity</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelPropertiesReviewRateItem">
-                                <span>Hygiene</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelPropertiesReviewRateItem">
-                                <span>Communication</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelPropertiesReviewRateItem">
-                                <span>Location of Property</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
-                            <div className="hotelPropertiesReviewRateItem">
-                                <span>Value for Money</span>
-                                <LinearProgress variant="determinate" value={value} />
-                                <span className='ratingCount'>5.0</span>
-                            </div>
                         </div>
                         <div className="hotelPropertiesReviewComment">
                             <ReviewComment />

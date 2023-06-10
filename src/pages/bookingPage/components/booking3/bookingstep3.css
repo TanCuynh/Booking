@@ -1,56 +1,32 @@
-.step-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.paypalContainer {
+  margin-top: 5rem;
+  padding: 3rem;
+  border: 1px dashed #003280;
+  width: 500px;
+  height: max-content;
+  color: #484848;
+  border-radius: 10px;
 }
 
-.step-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #ccc;
-    color: #484848;
-    margin-right: 50px; /* Không có khoảng cách ở vòng tròn cuối cùng */
-  }
+.paypalContainer h3 {
+  font-size: 30px;
+  font-weight: 900;
+  padding-bottom: 1rem;
+  text-align: center;
+  text-decoration: underline;
+}
 
-  .complex-text{
-    text-align: center;
-    line-height: 0.8;
-    margin-top: 30px;
-    font-size: 18;
-  }
+.paypalContainer h2 {
+  padding: 1rem 0;
+  font-family: "Arial", sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+}
 
-  .body-layout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .body-layout img{
-    width: 50%;
-    height: max-content;
-
-  }
-  .miss {
-    text-align: center;
-    color: #ccc;
-  }
-
-  .home-button {
-    position: relative;
-    width: 298px;
-    height: 57px;
-    border-radius: 10px;
-    border: none;
-    background: #003580;
-    color: #ffffff;
-    top: 50px;
-  }
-
-  .home-button:hover {
-    opacity: 0.9;
-  }
+.paypalContainer h5 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #003280;
+  margin-top: 1rem;
+}

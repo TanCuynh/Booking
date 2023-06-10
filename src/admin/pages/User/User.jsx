@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import adminAPI from '../../../api/adminAPI';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Popconfirm, Select } from 'antd';
 import Highlighter from 'react-highlight-words';
@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import './User.css';
 import { toast } from 'react-hot-toast';
+import { Footer } from '../../../components';
 
 const User = () => {
     const navigate = useNavigate();
@@ -15,6 +16,10 @@ const User = () => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
+
+    const handleHome = () => {
+        navigate("/");
+    }
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         confirm();
         setSearchText(selectedKeys[0]);
@@ -28,73 +33,73 @@ const User = () => {
     const getColumnSearchProps = (dataIndex) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
             <div
-                style={ {
+                style={{
                     padding: 8,
-                } }
-                onKeyDown={ (e) => e.stopPropagation() }
+                }}
+                onKeyDown={(e) => e.stopPropagation()}
             >
                 <Input
-                    ref={ searchInput }
-                    placeholder={ `Search ${dataIndex}` }
-                    value={ selectedKeys[0] }
-                    onChange={ (e) => setSelectedKeys(e.target.value ? [e.target.value] : []) }
-                    onPressEnter={ () => handleSearch(selectedKeys, confirm, dataIndex) }
-                    style={ {
+                    ref={searchInput}
+                    placeholder={`Search ${dataIndex}`}
+                    value={selectedKeys[0]}
+                    onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                    style={{
                         marginBottom: 8,
                         display: 'block',
-                    } }
+                    }}
                 />
                 <Space>
                     <Button
                         type="primary"
-                        onClick={ () => handleSearch(selectedKeys, confirm, dataIndex) }
-                        icon={ <SearchOutlined /> }
+                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                        icon={<SearchOutlined />}
                         size="small"
-                        style={ {
+                        style={{
                             width: 90,
-                        } }
+                        }}
                     >
                         Search
                     </Button>
                     <Button
-                        onClick={ () => clearFilters && handleReset(clearFilters) }
+                        onClick={() => clearFilters && handleReset(clearFilters)}
                         size="small"
-                        style={ {
+                        style={{
                             width: 90,
-                        } }
+                        }}
                     >
                         Reset
                     </Button>
                     <Button
                         type="link"
                         size="small"
-                        onClick={ () => {
+                        onClick={() => {
                             confirm({
                                 closeDropdown: false,
                             });
                             setSearchText(selectedKeys[0]);
                             setSearchedColumn(dataIndex);
-                        } }
+                        }}
                     >
                         Filter
                     </Button>
                     <Button
                         type="link"
                         size="small"
-                        onClick={ () => {
+                        onClick={() => {
                             close();
-                        } }
+                        }}
                     >
-                        close
+                        Close
                     </Button>
                 </Space>
             </div>
         ),
         filterIcon: (filtered) => (
             <SearchOutlined
-                style={ {
+                style={{
                     color: filtered ? '#1890ff' : undefined,
-                } }
+                }}
             />
         ),
         onFilter: (value, record) =>
@@ -107,13 +112,13 @@ const User = () => {
         render: (text) =>
             searchedColumn === dataIndex ? (
                 <Highlighter
-                    highlightStyle={ {
+                    highlightStyle={{
                         backgroundColor: '#ffc069',
                         padding: 0,
-                    } }
-                    searchWords={ [searchText] }
+                    }}
+                    searchWords={[searchText]}
                     autoEscape
-                    textToHighlight={ text ? text.toString() : '' }
+                    textToHighlight={text ? text.toString() : ''}
                 />
             ) : (
                 text
@@ -195,12 +200,12 @@ const User = () => {
                     ...user,
                     role:
                         <Select
-                            defaultValue={ user.role }
-                            style={ {
+                            defaultValue={user.role}
+                            style={{
                                 width: '100%',
-                            } }
-                            onChange={ (value) => handleChangeRole(value, user.email) }
-                            options={ [
+                            }}
+                            onChange={(value) => handleChangeRole(value, user.email)}
+                            options={[
                                 {
                                     value: 'user',
                                     label: 'User',
@@ -209,19 +214,19 @@ const User = () => {
                                     value: 'hotel',
                                     label: 'Hotel',
                                 }
-                            ] }
+                            ]}
                         />
                     ,
-                    edit: <button onClick={ () => console.log('edit') } className='btn-option'><FontAwesomeIcon icon={ faPenToSquare } /></button>,
+                    edit: <button onClick={() => console.log('edit')} className='btn-option'><FontAwesomeIcon icon={faPenToSquare} /></button>,
                     delete: <Popconfirm
                         placement="topRight"
                         title='Are you sure to delete this user?'
                         description='Delete the user'
-                        onConfirm={ () => confirm(user.id) }
+                        onConfirm={() => confirm(user.id)}
                         okText="Yes"
                         cancelText="No"
                     >
-                        <button className='btn-option btn-option-danger '><FontAwesomeIcon icon={ faTrashCan } /></button>
+                        <button className='btn-option btn-option-danger '><FontAwesomeIcon icon={faTrashCan} /></button>
                     </Popconfirm>
                 }
             })
@@ -242,21 +247,26 @@ const User = () => {
         if (res.status === 200) {
             toast.success(`Change role of ${res.data.email} to ${res.data.role}`);
         } else {
-            toast.error('Change role err')
+            toast.error('Change role Error')
         }
     }
     useEffect(() => {
         getAllUser();
     }, []);
+
     return (
-        <div>
+        <div className='userPageContainer'>
             <div className='flex justify-between'>
-                <h1>
-                    Member
-                </h1>
+                <h1 onClick={handleHome}>STAYCATION.</h1>
             </div>
-            <Table columns={ columns } dataSource={ dataSource } className='mt-4' />;
+            <Table
+                columns={columns}
+                dataSource={dataSource}
+                className='mt-4'
+            />
+            <Footer />
         </div>
+
     )
 }
 

@@ -17,7 +17,6 @@ const Feature = ({ dataHotel }) => {
     const getImageByHotel = async () => {
         const res = await hotelAPI.getImageByHotel(dataHotel?.id);
         if (res.status === 200) {
-            console.log("getImageByHotel", res.data.data[0]);
             setHotelImage(res.data.data[0]);
         }
         else {
@@ -25,6 +24,7 @@ const Feature = ({ dataHotel }) => {
             console.log("Error");
         }
     }
+
     useEffect(() => {
         getImageByHotel(dataHotel?.id);
     }, [])
@@ -60,10 +60,12 @@ const Feature = ({ dataHotel }) => {
             </div>
             <div className="featureHotelInfo">
                 <div className="featureHotelName">
-                    <span className="hotelName"><Link to={`/hotel/${dataHotel?.id}`}>{dataHotel?.name}</Link></span>
+                    <Link to={`/hotel/${dataHotel?.id}`}>
+                        <span>{dataHotel?.name}</span>
+                    </Link>
                 </div>
                 <div className="featureHotelAddress">
-                    <span className="address">{dataHotel?.address}</span>
+                    <span>{dataHotel?.address}</span>
                 </div>
             </div>
         </div>

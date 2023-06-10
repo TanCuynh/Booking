@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './bookingstep1.css';
 import 'typeface-montserrat';
-import { Step, StepLabel, Stepper } from '@mui/material';
-import { bookingAPI } from '../../../../api/bookingAPI';
 
-const steps = [
-  'Booking Information',
-  'Your Booking Bill',
-  'Booking Complete',
-];
+const BookingStep1 = (data) => {
 
-const BookingStep1 = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,40 +11,13 @@ const BookingStep1 = () => {
     phoneNumber: ''
   });
 
-
   const { firstName, lastName, email, phoneNumber } = formData;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (firstName.trim() === '') {
-      alert('Please enter your first name');
-      return;
-    }
-
-    if (lastName.trim() === '') {
-      alert('Please enter your last name');
-      return;
-    }
-
-    if (email.trim() === '') {
-      alert('Please enter your email address');
-      return;
-    }
-
-    if (phoneNumber.trim() === '') {
-      alert('Please enter your phone number');
-      return;
-    }
-
-    navigate('/booking/step2');
-  };
+  const totalPrice = (data.data.price) * data.rooms * data.duration;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -70,22 +35,17 @@ const BookingStep1 = () => {
         <div className="bookingStep1Content">
           <div className="image-container">
             <img
-              src="https://www.hotelgrandsaigon.com/wp-content/uploads/sites/227/2017/12/GRAND_SEDK_01.jpg"
+              src={data.data.category_images[0].image_url}
               alt="Ảnh hotel"
               className="image"
             />
             <div className="text-container">
               <div className="left-text">
-                <p className='name-hotel'>Podo Wae</p>
-                <p className='address'>Madiun, Indonesia</p>
-                <p className='bed'>1 double bed</p>
+                <p className='name-hotel'>{data.data.name}</p>
+                <p className='bed'>{data.data.bed} bed</p>
               </div>
               <div className="right-text">
-                <p>
-                  <span className='price'>$480 USD</span>
-                  <span className='for'> for </span>
-                  <span className='day'>2 nights</span>
-                </p>
+                <span className='price'>${totalPrice} USD</span>
               </div>
             </div>
           </div>
@@ -95,12 +55,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="first-name-input"
-                value={ firstName }
+                value={firstName}
                 name="firstName"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { firstName === '' && <p className='error-message'>Please enter your first name</p> }
+              {firstName === '' && <p className='error-message'>Please enter your first name</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -108,12 +68,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="last-name-input"
-                value={ lastName }
+                value={lastName}
                 name="lastName"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { lastName === '' && <p className='error-message'>Please enter your last name</p> }
+              {lastName === '' && <p className='error-message'>Please enter your last name</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -121,12 +81,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="email-input"
-                value={ email }
+                value={email}
                 name="email"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { email === '' && <p className='error-message'>Please enter your email address</p> }
+              {email === '' && <p className='error-message'>Please enter your email address</p>}
             </div>
 
             <div className="bookingStep1Input">
@@ -134,12 +94,12 @@ const BookingStep1 = () => {
               <input
                 type="text"
                 id="phone-number-input"
-                value={ phoneNumber }
+                value={phoneNumber}
                 name="phoneNumber"
                 className="input-custom"
-                onChange={ handleChange }
+                onChange={handleChange}
               />
-              { phoneNumber === '' && <p className='error-message'>Please enter your phone number</p> }
+              {phoneNumber === '' && <p className='error-message'>Please enter your phone number</p>}
             </div>
           </div>
         </div>

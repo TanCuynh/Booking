@@ -1,14 +1,51 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import UserReview from "../../../components/userReview/UserReview";
 import AllReviewsUser from '../../../components/allReviewsUser/AllReviewsUser'
 import "./profile.css";
+import { APP_CONTEXT } from "../../../App";
+import { AuthAPI } from "../../../api/AuthAPI";
 
 const Profile = () => {
     const navigate = useNavigate();
 
     const [showReviews, setShowReviews] = useState(false);
+    const [formattedCreatedAt, setFormattedCreatedAt] = useState('');
+
+
+    const context = useContext(APP_CONTEXT);
+
+    const [dataReviews, setDataReviews] = useState([]);
+
+    const userId = context.user.id;
+
+    const getDataReviews = async (userId) => {
+        const res = await AuthAPI.getReviewByUserID(userId);
+        if (res.status === 200) {
+            console.log("dataReviews", res.data.data);
+            setDataReviews(res.data.data);
+        } else {
+            console.log("Error", res);
+        }
+    }
+
+    useEffect(() => {
+        getDataReviews(userId);
+
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            return formattedDate;
+        };
+
+        setFormattedCreatedAt(formatDate(context.user.created_at));
+
+    }, [context.user.created_at])
 
     const openPopup = () => {
         setShowReviews(true);
@@ -33,6 +70,21 @@ const Profile = () => {
         setAvatar(false);
         document.body.style.overflow = 'auto';
     };
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        // Xử lý file hình ảnh ở đây
+        console.log('Đã chọn file:', file);
+    };
+
+    const chooseaphoto = () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
+        fileInput.addEventListener('change', handleFileUpload);
+        fileInput.click();
+    };
+
     return (
         <div>
             <div className="main-layoutt">
@@ -43,28 +95,19 @@ const Profile = () => {
                                 <div className="account-img-modal-layout" onClick={closePopupAvt}>
                                     <div className="account-img-modal" onClick={(e) => e.stopPropagation()}>
                                         <div className='AccountImg'>
-                                            <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/273163403_1119529748849359_6980097327525230278_n.jpg?stp=dst-jpg_s200x200&_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=oKc1wENFVegAX-JPV-M&_nc_ht=scontent.fdad3-4.fna&oh=00_AfCTNGYbgo0hex-yUAWzYJUm2FlSNHmN09E3dpDJNWe2Vg&oe=64777543"
-                                                alt="avatar"
-                                                className="imagee-popup"
-                                            />
                                         </div>
                                     </div>
                                 </div>
                             }
                             <div className="AccountAvt" onClick={openPopupAvt}>
-                                <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/273163403_1119529748849359_6980097327525230278_n.jpg?stp=dst-jpg_s200x200&_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=oKc1wENFVegAX-JPV-M&_nc_ht=scontent.fdad3-4.fna&oh=00_AfCTNGYbgo0hex-yUAWzYJUm2FlSNHmN09E3dpDJNWe2Vg&oe=64777543"
-                                    alt="avatar"
-                                    className="imagee"
-                                />
                             </div>
                             <div className="AccountChangeImg">
-                                <span>Upload Photo</span>
+                                <span onClick={chooseaphoto}>Upload Photo</span>
                             </div>
                         </div>
                         <div className="profile-container">
-                            <p className="hello-text">Hello, Trần Hồng Đức</p>
-                            <p className="time-join">Joined in 11/9/2023</p>
-
+                            <p className="hello-text">Hello, {context.user.name}</p>
+                            <p className="time-join">Joined in {formattedCreatedAt}</p>
                             <button
                                 className="btn-edit-profile"
                                 onClick={handleClick}
@@ -72,7 +115,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div class="horizontal-vector"></div>
+                    <div className="horizontal-vector"></div>
 
                     <div className="review-container">
                         <h3>Your reviews</h3>
@@ -83,8 +126,13 @@ const Profile = () => {
                                 </div>
                             </div>
                         }
-                        <UserReview />
-                        <UserReview />
+                        {
+                            dataReviews.slice(0, 2).map((review, index) => {
+                                return (
+                                    <UserReview key={index} dataReview={review} />
+                                )
+                            })
+                        }
                         <div className="profileShowAllReviewsBtn" onClick={openPopup}>
                             <span>Show all reviews</span>
                         </div>

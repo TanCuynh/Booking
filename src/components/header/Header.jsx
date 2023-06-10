@@ -17,7 +17,7 @@ const Header = () => {
     const navigate = useNavigate();
     const context = useContext(APP_CONTEXT);
     const [destination, setDestination] = useState("");
-    const [price, setPrice] = useState([2000, 3000]);
+    const [price, setPrice] = useState([200, 500]);
 
     const [searchBarCities, setSearchBarCities] = useState([]);
 
@@ -107,9 +107,9 @@ const Header = () => {
                                     valueLabelDisplay="auto"
                                     getAriaValueText={ valuetext }
                                     valueLabelFormat={ valuetext }
-                                    step={ 100 }
-                                    min={ 1000 }
-                                    max={ 5000 }
+                                    step={ 10 }
+                                    min={ 50 }
+                                    max={ 1000 }
                                     size='small'
                                     disableSwap
                                 />

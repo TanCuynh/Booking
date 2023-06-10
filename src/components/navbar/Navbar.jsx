@@ -50,6 +50,7 @@ const Navbar = ({ type }) => {
     const handleLogout = () => {
         context.setUser({});
         toast.success('Logged out');
+        navigate('/');
     };
     const handleClickAdmin = () => {
         navigate('/admin');
@@ -119,7 +120,7 @@ const Navbar = ({ type }) => {
                             context?.user?.role === 'admin' ? (
                                 <>
                                     <div className="navItemMenuContainerLinks" onClick={handleClickAdmin}>
-                                        <p><span>Admin Page</span></p>
+                                        <p><span>User Management</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
@@ -136,7 +137,7 @@ const Navbar = ({ type }) => {
                                         <p><span>List Property</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks" onClick={handleStatistic}>
-                                        <p><span>Statistic</span></p>
+                                        <p><span>Account</span></p>
                                     </div>
                                     <div className="navItemMenuContainerLinks"
                                         style={{ borderTop: '1px solid #ccc', marginTop: '5px', marginBottom: '10px' }}
