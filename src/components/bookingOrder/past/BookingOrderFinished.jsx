@@ -4,8 +4,24 @@ import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import './bookingOrderFinished.css'
+import { bookingAPI } from "../../../api/bookingAPI";
+import { toast } from "react-hot-toast";
 
 const BookingOrderFinished = (data) => {
+
+    const [dataCheckBookingReview, setDataCheckBookingReview] = useState({});
+    const getDataCheckBookingReview = async (id) => {
+        const res = await bookingAPI.getReviewByBookingID(id);
+        if (res.status === 200) {
+            // console.log("Show me the review", res.data.data[0]);
+            setDataCheckBookingReview(res.data.data[0]);
+        } else {
+            console.log("Error");
+        }
+    }
+    useEffect(() => {
+        getDataCheckBookingReview(data.data[0].booking.id);
+    }, [data.data[0].booking.id])
 
     const [formattedDateIn, setFormattedDateIn] = useState('');
 
@@ -20,9 +36,12 @@ const BookingOrderFinished = (data) => {
 
     const [showTextField, setShowTextField] = useState(false);
     const [review, setReview] = useState("");
+
+    const [ratingValue, setRatingValue] = useState(2.5);
     const [inputValue, setInputValue] = useState("");
+
     const [showConfirmation, setShowConfirmation] = useState(false);
-    const [showReviewButton, setShowReviewButton] = useState(false);
+
     const [showReview, setShowReview] = useState(false);
 
     useEffect(() => {
@@ -35,33 +54,62 @@ const BookingOrderFinished = (data) => {
             });
             return formattedDate;
         };
-
         setFormattedDateIn(formatDate(data.data[0].booking.date_in));
     }, [data.data[0].booking.date_in])
 
+
+    const [formattedReviewDate, setFormattedReviewDate] = useState("");
+    useEffect(() => {
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            return formattedDate;
+        };
+        setFormattedReviewDate(formatDate(dataCheckBookingReview.created_at));
+    }, [dataCheckBookingReview.created_at])
+
     const handleReviewClick = () => {
         setShowTextField(true);
-        setShowReviewButton(false);
     };
 
     const handleSendClick = () => {
         setShowConfirmation(true);
     };
 
-    const handleShowReviewClick = () => {
-        setShowReview(true);
-    };
+    const handleConfirmOkClick = async () => {
 
-    const handleConfirmOkClick = () => {
+        const res = await bookingAPI.createReview({
+            booking_id: data.data[0].booking.id,
+            content: inputValue,
+            rating: ratingValue,
+        });
+
+        if (res.status === 200) {
+            console.log("Success", res);
+            toast.success("Create review successfully");
+            window.location.reload();
+        } else {
+            console.log("Error", res);
+            toast.error("Error creating review");
+        }
+
         setReview(inputValue);
         setShowTextField(false);
         setShowConfirmation(false);
-        setShowReviewButton(true);
+
     };
 
     const handleCancelClick = () => {
         setShowTextField(false);
     };
+
+    const handleRatingChange = (e, newValue) => {
+        setRatingValue(newValue);
+    }
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -86,8 +134,7 @@ const BookingOrderFinished = (data) => {
                                 <span>Check-in: </span>
                                 <p>{formattedDateIn}</p>
                             </div>
-                            <div className=
-                                "bookingOrderFinishedDurationContainer">
+                            <div className="bookingOrderFinishedDurationContainer">
                                 <span>Duration: </span>
                                 <p>{duration} nights</p>
                             </div>
@@ -105,22 +152,18 @@ const BookingOrderFinished = (data) => {
                     </div>
                 </div>
 
+                {
+                    console.log("ABC", dataCheckBookingReview.content)
+                }
+
                 <div className={`bookingOrderFinishedStatusContainer ${data.data[0].booking.status === "accepted" ? "accepted" : "rejected"}`}>
                     <p>{data.data[0].booking.status === "accepted" ? "Accepted" : "Rejected"}</p>
                 </div>
-                {!review && !showReview && (
-                    <button className="bookingOrderFinishedBtnReview btn-custom" onClick={handleReviewClick}>Review</button>
-                )}
-                {showReview && (
-                    <button className="show-review-btn btn-custom btn-custom-danger" onClick={() => setShowReview(false)}>
-                        Hide Review
-                    </button>
-                )}
-                {!showReview && review && (
-                    <button className="show-review-btn btn-custom btn-custom-accept" onClick={handleShowReviewClick}>
-                        Show Review
-                    </button>
-                )}
+                {
+                    (data.data[0].booking.status === "accepted") ? (
+                        <button className="bookingOrderFinishedBtnReview btn-custom" onClick={handleReviewClick}>Review</button>)
+                        : (<></>)
+                }
             </div>
             {showTextField && (
                 <div className="booking-review-container">
@@ -128,14 +171,20 @@ const BookingOrderFinished = (data) => {
                         <div className="ratingContainer">
                             <span className="ratingTitle">Your rating:</span>
                             <Stack spacing={1}>
-                                <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+                                <Rating
+                                    name="half-rating"
+                                    defaultValue={2.5}
+                                    precision={0.5}
+                                    value={dataCheckBookingReview?.rating}
+                                    onChange={handleRatingChange}
+                                />
                             </Stack>
                         </div>
                         <input
                             className="reviewContainer"
                             type="text"
                             placeholder="Your review"
-                            value={inputValue}
+                            value={dataCheckBookingReview?.content}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -151,12 +200,12 @@ const BookingOrderFinished = (data) => {
                 <div className="booking-review-container">
                     <div className="reviewHeader">
                         <Stack spacing={1}>
-                            <Rating name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
+                            <Rating name="half-rating-read" defaultValue={dataCheckBookingReview?.rating} precision={0.5} readOnly />
                         </Stack>
-                        <p className="date-review">Mar 12 2020</p>
+                        <p className="date-review">{formattedReviewDate}</p>
                     </div>
                     <div className="finishedReviewContainer">
-                        <p className="review-txt">{review}</p>
+                        <p className="review-txt">{dataCheckBookingReview?.content}</p>
                     </div>
                 </div>
             )}

@@ -41,6 +41,7 @@ const BookingStep3 = (data) => {
         if (res.status === 200) {
             toast.success("Your payment has been updated")
             console.log('Success payment', res);
+            navigate("/");
         } else {
             toast.error("Update payment fails");
             console.log('Error payment', res);

@@ -12,7 +12,6 @@ const BookingPage = () => {
 
     const handleDone = () => {
         message.success('Processing complete!');
-        navigate("/");
     }
 
     const [dataCategory, setDataCategory] = useState(location.state.dataCategoryDetail);
@@ -77,12 +76,6 @@ const BookingPage = () => {
                 {current < steps.length - 1 && (
                     <Button type="primary" onClick={() => next()}>
                         Next
-                    </Button>
-                )}
-
-                {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => handleDone}>
-                        Done
                     </Button>
                 )}
             </div>

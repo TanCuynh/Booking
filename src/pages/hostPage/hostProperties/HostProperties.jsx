@@ -34,14 +34,14 @@ const HostProperties = () => {
 			<div className="list-properties">
 				<div className="host-properties-header">
 					<h1 className="host-properties-title">List Properties</h1>
-					<div>
+					{/* <div>
 						<button className="btn-create" onClick={handleClickCreate}>
 							<FontAwesomeIcon icon={faPlus} />
 							<span>
 								Create new hotel
 							</span>
 						</button>
-					</div>
+					</div> */}
 				</div>
 				<div className="host-properties-container">
 					{

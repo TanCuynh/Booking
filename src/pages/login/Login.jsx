@@ -112,25 +112,6 @@ const Login = ({ onClose }) => {
 							}
 						</button>
 					</div>
-					<div className="loginContainerElse">
-						<hr className="spe-first" />
-						<span className="loginContainerElseText">Or Continue With</span>
-						<hr className="spe-second" />
-					</div>
-					<div className="loginContainerElseBtn">
-						<button href="" className="btn">
-							<FacebookIcon />
-							<span>Facebook</span>
-						</button>
-						<button href="" className="btn">
-							<AppleIcon />
-							<span>AppleID</span>
-						</button>
-						<button href="" className="btn">
-							<GoogleIcon />
-							<span>Google</span>
-						</button>
-					</div>
 				</form>
 
 
