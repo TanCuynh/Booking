@@ -40,7 +40,7 @@ const ChangePassword = () => {
             const res = await AuthAPI.changePassword(formData);
             if (res.status === 200) {
                 console.log("success", res);
-                toast.success("Password updated successfully");
+                toast.success("Password updated successfully, please log in again");
                 navigate("/");
                 localStorage.setItem('token', '');
                 context.setUser({});

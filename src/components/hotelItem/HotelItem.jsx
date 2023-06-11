@@ -15,7 +15,7 @@ const HotelItem = (dataHotel) => {
 	};
 
 	const handleHostProperty = () => {
-		navigate('/host/hotelproperties');
+		navigate(`/hotel/${dataHotel?.dataHotel.id}`);
 	}
 
 	const handleOnClickRemove = () => {
@@ -29,11 +29,9 @@ const HotelItem = (dataHotel) => {
 				<div className="short-description">
 					<h1 className="short-description-h1" onClick={handleHostProperty}>{dataHotel?.dataHotel.name}</h1>
 					<span className="short-description-span">{dataHotel?.dataHotel.address}</span>
-
 				</div>
 			</div>
 			<div className="hotel-item-action">
-				<button className="btn-custom btn-custom-primary " onClick={handleOnClickModify}>Modify</button>
 				<button className="btn-custom btn-custom-default " onClick={handleOnClickRemove}>Remove</button>
 			</div>
 			<Dialog

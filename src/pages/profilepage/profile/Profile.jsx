@@ -133,9 +133,9 @@ const Profile = () => {
                                 )
                             })
                         }
-                        <div className="profileShowAllReviewsBtn" onClick={openPopup}>
+                        {/* <div className="profileShowAllReviewsBtn" onClick={openPopup}>
                             <span>Show all reviews</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

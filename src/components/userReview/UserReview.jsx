@@ -30,7 +30,6 @@ function UserReview(dataReview) {
                     <div className="avt">
                         <FontAwesomeIcon icon={faUser} />
                     </div>
-
                     <div className="hotelContent">
                         <p className="userReviewHotelName">{dataReview?.dataReview.hotel}</p>
                         <p className="address-hotel">{dataReview?.dataReview.hotel_address}</p>
@@ -46,7 +45,6 @@ function UserReview(dataReview) {
                     precision={0.5}
                 />
             </div>
-
             <div className="reviewContainer">
                 <div className="reviewsText">
                     <p>{dataReview?.dataReview.content}</p>

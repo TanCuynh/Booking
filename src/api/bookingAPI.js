@@ -22,4 +22,8 @@ export const bookingAPI = {
 
   rejectBooking: (id, params) =>
     axiosClient.put(`/bookings/reject/${id}`, params),
+
+  getReviewByBookingID: (id) => axiosClient.get(`/reviews/booking/${id}`),
+
+  createReview: (params) => axiosClient.post("/reviews/", params),
 };

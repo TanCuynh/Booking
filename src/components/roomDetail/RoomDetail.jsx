@@ -64,7 +64,7 @@ const RoomDetail = ({ room, date, categoryId, onClose, emptyRoom, idHotel, dateP
 
     const handleBooking = () => {
         if (context.user.role !== "user") {
-            toast.error("You can't make any booking requests if you are a host");
+            toast.error("You can't make any booking requests unless you are a user");
             navigate('/');
         } else {
             navigate('/booking', { state: { dataCategoryDetail, room, duration } });
