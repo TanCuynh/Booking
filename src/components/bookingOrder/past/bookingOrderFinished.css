@@ -142,6 +142,7 @@
 }
 
 .review-txt {
+    /* border: 1px dashed red; */
     width: 850px;
     border-bottom: none;
     word-wrap: break-word;

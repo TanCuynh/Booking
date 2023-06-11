@@ -196,7 +196,7 @@ const BookingOrderFinished = (data) => {
 
                 </div>
             )}
-            {showReview && (
+            {/* {showReview && (
                 <div className="booking-review-container">
                     <div className="reviewHeader">
                         <Stack spacing={1}>
@@ -208,7 +208,7 @@ const BookingOrderFinished = (data) => {
                         <p className="review-txt">{dataCheckBookingReview?.content}</p>
                     </div>
                 </div>
-            )}
+            )} */}
 
             {showConfirmation && (
                 <Dialog open={showConfirmation}>
