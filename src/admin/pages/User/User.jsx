@@ -219,17 +219,17 @@ const User = () => {
                             ]}
                         />
                     ,
-                    // edit: <button onClick={() => console.log('edit')} className='btn-option'><FontAwesomeIcon icon={faPenToSquare} /></button>,
-                    // delete: <Popconfirm
-                    //     placement="topRight"
-                    //     title='Are you sure to delete this user?'
-                    //     description='Delete the user'
-                    //     onConfirm={() => confirm(user.id)}
-                    //     okText="Yes"
-                    //     cancelText="No"
-                    // >
-                    //     <button className='btn-option btn-option-danger '><FontAwesomeIcon icon={faTrashCan} /></button>
-                    // </Popconfirm>
+                    edit: <button onClick={() => console.log('edit')} className='btn-option'><FontAwesomeIcon icon={faPenToSquare} /></button>,
+                    delete: <Popconfirm
+                        placement="topRight"
+                        title='Are you sure to delete this user?'
+                        description='Delete the user'
+                        onConfirm={() => confirm(user.id)}
+                        okText="Yes"
+                        cancelText="No"
+                    >
+                        <button className='btn-option btn-option-danger '><FontAwesomeIcon icon={faTrashCan} /></button>
+                    </Popconfirm>
                 }
             })
         }

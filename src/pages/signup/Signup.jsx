@@ -68,26 +68,29 @@ const Signup = ({ onClose }) => {
             messageError = "Your password and password confirmation need to match.";
         }
         if (flag) {
-            const res = await AuthAPI.signup(dataSignUp);
-            if (res.status === 200) {
-                navigate('/');
-                console.log("success", res);
-                toast.success("Sign up successfully, please login to your new account!");
-                setDataSignUp({
-                    name: '',
-                    email: '',
-                    password: '',
-                    repassword: '',
-                });
-                setNameAlert(false);
-                setEmailAlert(false);
-                setPasswordAlert(false);
-                setRepasswordAlert(false);
-                onClose();
-            }
-            else {
-                toast.error("Sign up error");
-            }
+            navigate('/');
+            toast.success("Sign up successfully, please login to your new account!");
+            onClose();
+            // const res = await AuthAPI.signup(dataSignUp);
+            // if (res.status === 200) {
+            //     navigate('/');
+            //     console.log("success", res);
+            //     toast.success("Sign up successfully, please login to your new account!");
+            //     setDataSignUp({
+            //         name: '',
+            //         email: '',
+            //         password: '',
+            //         repassword: '',
+            //     });
+            //     setNameAlert(false);
+            //     setEmailAlert(false);
+            //     setPasswordAlert(false);
+            //     setRepasswordAlert(false);
+            //     onClose();
+            // }
+            // else {
+            //     toast.error("Sign up error");
+            // }
         }
         else {
             toast.error(messageError);
